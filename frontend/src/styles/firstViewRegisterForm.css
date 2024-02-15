@@ -13,11 +13,11 @@
   align-items: center;
   margin: 2.5rem 0rem;
   font-family: var(--primary-font);
+  font-weight: bold;
 }
 
 .form_container > form > h1,
 h3 {
-  font-weight: bold;
   color: var(--secondary-color);
 }
 
@@ -51,10 +51,14 @@ h3 {
   transition:
     border 0.5s,
     color 0.5s;
+
+  font-family: var(--primary-font);
+  font-weight: bold;
 }
 
-.form_container > form > div > button:focus {
+.form_container > form > div > button.focusedButton {
   border: 0.2rem solid var(--primary-color);
+  outline: 0;
   color: var(--secondary-color);
 }
 
