@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  font-family: var(--primary-font);
 }
 
 .error_page_container > img {
