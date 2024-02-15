@@ -1,7 +1,7 @@
-import React from "react";
+import Logo from "../components/Logo";
 
 function HomePage() {
-  return <div>HomePage</div>;
+  return <Logo />;
 }
 
 export default HomePage;
