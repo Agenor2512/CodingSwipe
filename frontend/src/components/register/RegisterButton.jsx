@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../styles/registerButton.css";
+import "../../styles/registerButton.css";
 
 function RegisterButton() {
   return (

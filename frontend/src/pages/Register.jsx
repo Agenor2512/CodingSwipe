@@ -1,8 +1,8 @@
 import React from "react";
-import FirstViewRegisterForm from "../components/FirstViewRegisterForm";
+import FirstView from "../components/register/FirstView";
 
 function Register() {
-  return <FirstViewRegisterForm />;
+  return <FirstView />;
 }
 
 export default Register;
