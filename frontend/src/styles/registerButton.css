@@ -1,0 +1,9 @@
+.register_button {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 0;
+}
