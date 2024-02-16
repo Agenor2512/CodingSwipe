@@ -1,0 +1,17 @@
+.step_two_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--register-background-color);
+}
+
+.step_two_form > p {
+  text-align: left;
+}
+
+.step_two_form > div > label,
+.step_two_form > h1 {
+  color: aliceblue;
+}
