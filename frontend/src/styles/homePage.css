@@ -16,7 +16,7 @@
 
 @media screen and (min-width: 600px) {
   .home_page {
-    background-image: url("../assets/desktop_background.png");
+    background-image: url("../assets/desktop_background.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
