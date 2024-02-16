@@ -1,12 +1,9 @@
-import Nav from "../components/Nav.jsx";
-
-import "../styles/header.css";
+import Nav from "./Nav";
 
 function Header() {
   return (
     <div className="header">
       <Nav />
-      <button>Connexion</button>
     </div>
   );
 }

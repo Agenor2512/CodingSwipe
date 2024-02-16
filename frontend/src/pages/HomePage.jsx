@@ -1,5 +1,5 @@
 import Logo from "../components/Logo";
-import Nav from "../components/Nav";
+import Header from "../components/Header";
 
 import "../styles/homePage.css";
 
@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <>
       <Logo />
-      <Nav />
+      <Header />
       <RegisterButton />
     </>
   );
