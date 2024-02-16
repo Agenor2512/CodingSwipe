@@ -1,0 +1,27 @@
+.register_button {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .register_button {
+    cursor: pointer;
+    transition:
+      background-color 0.5s,
+      color 0.5s;
+  }
+
+  .register_button:hover {
+    background-color: var(--third-color);
+    color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+}
