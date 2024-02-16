@@ -8,15 +8,19 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 600px) {
   .home_page {
-    background-image: url("../assets/backgroundimage.png");
+    background-image: url("../assets/desktop_background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
 
   .home_page > img {
+    display: none;
+  }
+
+  .home_page > .mobile_element {
     display: none;
   }
 }

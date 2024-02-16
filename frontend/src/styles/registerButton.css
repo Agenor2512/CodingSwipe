@@ -18,8 +18,8 @@
   }
 
   .register_button:hover {
-    background-color: var(--third-color);
-    color: var(--secondary-color);
+    background-color: var(--background-color);
+    color: var(--register-background-color);
     transition:
       background-color 0.2s,
       color 0.2s;

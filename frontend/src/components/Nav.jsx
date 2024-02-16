@@ -7,13 +7,13 @@ function Nav() {
     <nav>
       <ul>
         <li>
-          <Link to="/concept">Le concept</Link>
+          <Link to="/errorPage">Le concept</Link>
         </li>
         <li>
-          <Link to="/protectionDesDonnees">Protection des données</Link>
+          <Link to="/errorPage">Protection des données</Link>
         </li>
         <li>
-          <Link to="/equipe">L'équipe</Link>
+          <Link to="/errorPage">L'équipe</Link>
         </li>
       </ul>
     </nav>
