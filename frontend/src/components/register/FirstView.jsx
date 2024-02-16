@@ -9,7 +9,7 @@ function FirstView() {
       buttonText: "Je suis une entreprise",
     },
     {
-      name: "employee",
+      name: "candidate",
       buttonText: "Je recherche un emploi",
     },
   ];
