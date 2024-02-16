@@ -41,7 +41,7 @@ h3 {
 }
 
 .form_container > form > div > button {
-  width: 15.5rem;
+  width: 16rem;
   padding: 0.5rem 2rem;
   margin-bottom: 2rem;
   border: 0.2rem solid var(--third-color);
@@ -53,6 +53,7 @@ h3 {
     color 0.2s;
 
   font-family: var(--primary-font);
+  font-size: 1rem;
   font-weight: bold;
 }
 
