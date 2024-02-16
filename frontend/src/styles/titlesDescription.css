@@ -1,14 +1,9 @@
-* {
-  background-color: gray;
-}
-
 .titles_description_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  height: 25vh;
 }
 
 .titles_description_container > h2,
@@ -21,7 +16,7 @@ p {
 
 .titles_description_container > h2 {
   margin-bottom: 0.5rem;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
 }
 
 .titles_description_container > p {
@@ -29,7 +24,13 @@ p {
 }
 
 @media screen and (min-width: 600px) {
+  .titles_description_container {
+    height: 30vh;
+    margin-top: 12rem;
+  }
+
   .titles_description_container > h2 {
+    margin-bottom: 0;
     font-size: 8rem;
   }
 
