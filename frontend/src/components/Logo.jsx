@@ -1,4 +1,4 @@
-import "../styles/logo.css";
+import "../styles/Logo.css";
 
 function Logo() {
   return (
