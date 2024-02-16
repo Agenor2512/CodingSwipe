@@ -4,8 +4,8 @@
   --primary-font: "Space Grotesk", sans-serif;
   --secondary-font: "Open Sans", sans-serif;
 
-  --secondary-color: #f0f2f4;
   --primary-color: #2a85ff;
+  --secondary-color: #f0f2f4;
   --third-color: #666a70;
   --website-background-color: #3d3d3d;
   --background-color: #f7f7f7;
@@ -22,5 +22,5 @@ html,
 body,
 #root {
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
 }
