@@ -3,12 +3,16 @@ import Nav from "../components/Nav";
 
 import "../styles/homePage.css";
 
+import RegisterButton from "../components/register/RegisterButton";
+
 function HomePage() {
   return (
-    <header>
+    <>
       <Logo />
       <Nav />
-    </header>
+      <RegisterButton />
+    </>
+
   );
 }
 
