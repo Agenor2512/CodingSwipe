@@ -1,0 +1,15 @@
+nav > ul {
+  margin-top: 830px;
+  margin-left: 20px;
+}
+
+nav > ul > li {
+  display: inline;
+  margin: 10px;
+}
+
+nav > ul > li > a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-family: var(--secondary-font);
+}
