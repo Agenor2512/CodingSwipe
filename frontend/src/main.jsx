@@ -8,7 +8,7 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
-import StepTwo from "./components/register/StepTwo";
+import StepTwo from "./components/register/CandidateStepTwo";
 import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
