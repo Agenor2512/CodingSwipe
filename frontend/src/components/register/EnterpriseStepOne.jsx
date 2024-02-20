@@ -1,3 +1,5 @@
+import "../../styles/enterpriseStepOne.css";
+
 function EnterpriseStepOne() {
   const departements = [
     {
@@ -407,63 +409,76 @@ function EnterpriseStepOne() {
   ];
 
   return (
-    <div>
+    <div className="enterprise_step_one">
       <h1>Créer Un Compte</h1>
       <h3>
         <div className="square"> </div> ETAPE 1 <span>-</span> Remplisser ce
         formulaire
       </h3>
+
       <form>
-        <label htmlFor="enterpriseName">Nom de l'entreprise</label>
-        <input
-          type="text"
-          name="enterpriseName"
-          placeholder="Windy Corporation"
-          required
-        />
+        <div className="enterprise_name_desktop">
+          <label htmlFor="enterpriseName">Nom de l'entreprise</label>
+          <input
+            type="text"
+            name="enterpriseName"
+            placeholder="Windy Corporation"
+            required
+          />
+        </div>
 
-        <label htmlFor="siretNumber">Muméro Siret</label>
-        <input
-          type="number"
-          name="siretNumber"
-          placeholder="exemple: 12345678901234"
-          required
-        />
+        <div className="siret_number_desktop">
+          <label htmlFor="siretNumber">Muméro Siret</label>
+          <input
+            type="number"
+            name="siretNumber"
+            placeholder="exemple: 12345678901234"
+            required
+          />
+        </div>
 
-        <label htmlFor="emailCompagny">Email</label>
-        <input
-          type="email"
-          name="emailCompagny"
-          placeholder="exemple@gmail.com"
-          required
-        />
+        <div className="email_company_desktop">
+          <label htmlFor="emailCompagny">Email</label>
+          <input
+            type="email"
+            name="emailCompagny"
+            placeholder="exemple@gmail.com"
+            required
+          />
+        </div>
 
-        <label htmlFor="department">Département</label>
-        <select id="department">
-          <option value="">Veuillez choisir votre département</option>
+        <div className="department_desktop">
+          <label htmlFor="department">Département</label>
+          <select id="department">
+            <option value="">Veuillez choisir votre département</option>
 
-          {departements.map(({ key, text }) => (
-            <option key={key} value={text}>
-              {text}
-            </option>
-          ))}
-        </select>
+            {departements.map(({ key, text }) => (
+              <option key={key} value={text}>
+                {text}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label htmlFor="statCompagny">Email</label>
-        <input
-          type="password"
-          name="emailCompagny"
-          placeholder="Saisissez un mot de passe"
-          required
-        />
+        <div className="password_desktop">
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Saisissez un mot de passe"
+            required
+          />
+        </div>
 
-        <label htmlFor="passwordCheck">Vérification du mot de passe</label>
-        <input
-          type="text"
-          name="passwordCheck"
-          placeholder="Vérifiez votre mot de passe"
-          required
-        />
+        <div className="password_check_desktop">
+          <label htmlFor="passwordCheck">Vérification du mot de passe</label>
+          <input
+            type="text"
+            name="passwordCheck"
+            placeholder="Vérifiez votre mot de passe"
+            required
+          />
+        </div>
 
         <input type="submit" value="Continuer" />
       </form>
