@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../../styles/stepTwo.css";
 
@@ -7,16 +7,46 @@ import "../../styles/stepTwo.css";
 */
 
 function StepTwo() {
+  const [specialtyButton, setSpecialtyButton] = useState("frontend");
+
+  const [experienceButton, setExperienceButton] = useState("junior");
+
+  const handleClickSpecialtyButton = (event) => {
+    setSpecialtyButton(event.target.name);
+  };
+
+  const handleClickExperienceButton = (event) => {
+    setExperienceButton(event.target.name);
+  };
+
   const mainCourses = [
-    { value: "Frontend" },
-    { value: "Backend" },
-    { value: "Full Stack" },
+    {
+      name: "frontend",
+      buttonText: "Frontend",
+    },
+    {
+      name: "backend",
+      buttonText: "Backend",
+    },
+    {
+      name: "fullstack",
+      buttonText: "Full Stack",
+    },
   ];
 
-  const candidateLevels = [
-    { value: "Junior" },
-    { value: "Mid-level" },
-    { value: "Senior" },
+  const candidateExperienceLevel = [
+    {
+      name: "junior",
+      buttonText: "Junior",
+    },
+    {
+      name: "mid-Level",
+      buttonText: "Mid-level",
+    },
+    {
+      name: "senior",
+      buttonText: "Senior",
+    },
   ];
 
   const enterpriseExpectations = [
@@ -121,27 +151,38 @@ function StepTwo() {
   ];
 
   return (
-    <form action="submit" className="step_two_form">
+    <form action="submit" className="candidate_step_two_form">
       <h1>Créer Un Compte</h1>
-      <p>
-        <span>"square" </span>ÉTAPE 2<span>-</span>Répondez à ces quelques
-        questions
-      </p>
+      <section className="subtitle">
+        <div className="squareSubtitle"> </div>
+        <p>
+          ÉTAPE 2<span>-</span>Répondez à ces quelques questions
+        </p>
+      </section>
+
       <p>
         Appétences <span>:</span>
       </p>
-      {mainCourses.map(({ value }) => (
-        <button type="button" className="main_course_button" key={value}>
-          {value}
-        </button>
-      ))}
+      <section className="levels_and_experience_button_container">
+        {mainCourses.map(({ name, buttonText }) => (
+          <button
+            type="button"
+            key={name}
+            name={name}
+            onClick={handleClickSpecialtyButton}
+            className={specialtyButton === name ? "focusedButton" : ""}
+          >
+            {buttonText}
+          </button>
+        ))}
+      </section>
 
       <p>
         Je recherche <span>:</span>
       </p>
       {enterpriseExpectations.map(({ key, text }) => (
         <div className="enterprise_expectation_container" key={key}>
-          <input type="checkbox" id="checkbox" value={key} />
+          <input type="checkbox" id="checkbox" />
           <label htmlFor="checkbox">{text}</label>
         </div>
       ))}
@@ -151,7 +192,7 @@ function StepTwo() {
       </p>
       {enterpriseWorkplaces.map(({ key, text }) => (
         <div className="enterprise_workplace_container" key={key}>
-          <input type="checkbox" id="checkbox" value={key} />
+          <input type="checkbox" id="checkbox" />
           <label htmlFor="checkbox">{text}</label>
         </div>
       ))}
@@ -159,18 +200,27 @@ function StepTwo() {
       <p>
         Je suis <span>:</span>
       </p>
-      {candidateLevels.map(({ value }) => (
-        <button type="button" className="candidate_level_button" key={value}>
-          {value}
-        </button>
-      ))}
+      <section className="levels_and_experience_button_container">
+        {candidateExperienceLevel.map(({ name, buttonText }) => (
+          <button
+            type="button"
+            key={buttonText}
+            name={name}
+            onClick={handleClickExperienceButton}
+            className={experienceButton === name ? "focusedButton" : ""}
+          >
+            {buttonText}
+          </button>
+        ))}
+      </section>
       <p>
         Mes langages informatiques
         <span>sélectionnez au moins un langage</span>
+        <span> : </span>
       </p>
       {computerLanguages.map(({ key, text }) => (
         <div className="computer_language_container" key={key}>
-          <input type="checkbox" id="checkbox" value={key} key={key} />
+          <input type="checkbox" id="checkbox" key={key} />
           <label htmlFor="checkbox">{text}</label>
         </div>
       ))}
