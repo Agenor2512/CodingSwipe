@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
-import EnterpriseSecondStep from "./components/register/EnterpriseSecondStep";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/secondStep",
-        element: <EnterpriseSecondStep />,
       },
     ],
     errorElement: <ErrorPage />,
