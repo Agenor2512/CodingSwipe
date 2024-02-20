@@ -8,8 +8,8 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
-import StepTwo from "./components/register/CandidateStepTwo";
 import ErrorPage from "./pages/ErrorPage";
+import EnterpriseSecondStep from "./components/register/EnterpriseSecondStep";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
       },
       {
-        path: "/stepTwo",
-        element: <StepTwo />,
+        path: "/secondStep",
+        element: <EnterpriseSecondStep />,
       },
     ],
     errorElement: <ErrorPage />,
