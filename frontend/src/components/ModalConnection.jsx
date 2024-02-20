@@ -16,13 +16,15 @@ function ModalConnection() {
 
   return (
     <>
-      <button
-        type="button"
-        className="connection_button"
-        onClick={toggleModalOnce}
-      >
-        Se connecter
-      </button>
+      <section className="connection_button_container">
+        <button
+          type="button"
+          className="connection_button"
+          onClick={toggleModalOnce}
+        >
+          Se connecter
+        </button>
+      </section>
       {modal && (
         <div className="overlay">
           <dialog className="connection_modal">
