@@ -167,6 +167,7 @@ function EnterpriseSecondStep() {
           Description de votre entreprise <span>:</span>
         </label>
         <textarea
+          required
           type="text"
           id="description-area"
           rows="10"
