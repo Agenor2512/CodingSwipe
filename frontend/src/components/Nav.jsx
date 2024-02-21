@@ -10,10 +10,10 @@ function Nav() {
           <Link to="/concept">Le concept</Link>
         </li>
         <li>
-          <Link to="/protectionDesDonnees">Protection des données</Link>
+          <Link to="/dataProtection">Protection des données</Link>
         </li>
         <li>
-          <Link to="/equipe">L'équipe</Link>
+          <Link to="/team">L'équipe</Link>
         </li>
       </ul>
     </nav>

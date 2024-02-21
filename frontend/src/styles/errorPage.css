@@ -19,12 +19,16 @@
 .error_page_container > p {
   text-align: center;
   margin: 2rem 1rem;
+  color: var(--third-color);
 }
 
 .error_page_container > div > a {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+.error_page_container > div > a > p {
   color: var(--primary-color);
 }
 

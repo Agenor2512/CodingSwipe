@@ -5,7 +5,7 @@ import "../../styles/registerButton.css";
 
 function RegisterButton() {
   return (
-    <Link to="/register">
+    <Link to="/register" className="link_register_button">
       <button type="button" className="register_button">
         Créer un compte
       </button>
