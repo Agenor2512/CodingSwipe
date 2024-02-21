@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 
-import "../../styles/stepTwo.css";
+import "../../styles/candidateStepTwo.css";
 
-/* TODO : 
-    - Trouver une solution pour les accolades dans "Mes langages informatiques" 
-*/
-
-function StepTwo() {
+function CandidateStepTwo() {
   const [specialtyButton, setSpecialtyButton] = useState("frontend");
 
   const [experienceButton, setExperienceButton] = useState("junior");
@@ -176,21 +172,23 @@ function StepTwo() {
         </p>
       </section>
 
-      <p>
-        Appétences <span>:</span>
-      </p>
-      <section className="levels_and_experience_button_container">
-        {mainCourses.map(({ name, buttonText }) => (
-          <button
-            type="button"
-            key={name}
-            name={name}
-            onClick={handleClickSpecialtyButton}
-            className={specialtyButton === name ? "focusedButton" : ""}
-          >
-            {buttonText}
-          </button>
-        ))}
+      <section className="levels_experience_part_container">
+        <p>
+          Appétences <span>:</span>
+        </p>
+        <section className="levels_and_experience_button_container">
+          {mainCourses.map(({ name, buttonText }) => (
+            <button
+              type="button"
+              key={name}
+              name={name}
+              onClick={handleClickSpecialtyButton}
+              className={specialtyButton === name ? "focusedButton" : ""}
+            >
+              {buttonText}
+            </button>
+          ))}
+        </section>
       </section>
 
       <section className="research_and_workplace_container">
@@ -218,22 +216,23 @@ function StepTwo() {
           ))}
         </div>
       </section>
-
-      <p>
-        Je suis <span>:</span>
-      </p>
-      <section className="levels_and_experience_button_container">
-        {candidateExperienceLevel.map(({ name, buttonText }) => (
-          <button
-            type="button"
-            key={buttonText}
-            name={name}
-            onClick={handleClickExperienceButton}
-            className={experienceButton === name ? "focusedButton" : ""}
-          >
-            {buttonText}
-          </button>
-        ))}
+      <section className="levels_experience_part_container">
+        <p>
+          Je suis <span>:</span>
+        </p>
+        <section className="levels_and_experience_button_container">
+          {candidateExperienceLevel.map(({ name, buttonText }) => (
+            <button
+              type="button"
+              key={buttonText}
+              name={name}
+              onClick={handleClickExperienceButton}
+              className={experienceButton === name ? "focusedButton" : ""}
+            >
+              {buttonText}
+            </button>
+          ))}
+        </section>
       </section>
 
       <p>
@@ -263,4 +262,4 @@ function StepTwo() {
   );
 }
 
-export default StepTwo;
+export default CandidateStepTwo;

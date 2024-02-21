@@ -24,8 +24,8 @@
 .candidate_step_two_form > .subtitle > .square {
   display: inline-block;
   margin-right: 0.5rem;
-  width: 9px;
-  height: 9px;
+  width: 0.7rem;
+  height: 0.7rem;
   background-color: var(--primary-color);
 }
 
@@ -47,13 +47,19 @@
   font-size: 0.75rem;
 }
 
-.candidate_step_two_form > .levels_and_experience_button_container {
+.candidate_step_two_form
+  > .levels_experience_part_container
+  > .levels_and_experience_button_container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 
-.candidate_step_two_form > .levels_and_experience_button_container > button {
+.candidate_step_two_form
+  > .levels_experience_part_container
+  > .levels_and_experience_button_container
+  > button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -61,7 +67,7 @@
   width: 7.5rem;
   height: 2rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   border: 0.15rem solid var(--third-color);
   border-radius: 2rem;
   color: var(--third-color);
@@ -76,6 +82,7 @@
 }
 
 .candidate_step_two_form
+  > .levels_experience_part_container
   > .levels_and_experience_button_container
   > button.focusedButton {
   border: 0.15rem solid var(--primary-color);
