@@ -3,6 +3,7 @@ import HeaderDesktop from "../components/HeaderDesktop";
 import Nav from "../components/Nav";
 import RegisterButton from "../components/register/RegisterButton";
 import TitlesDescription from "../components/TitlesDescription";
+import ModalConnection from "../components/ModalConnection";
 
 import mobileBackground from "../assets/mobile_background.png";
 
@@ -19,6 +20,7 @@ function HomePage() {
         <img src={mobileBackground} alt="woman in front of two screens" />
         <TitlesDescription />
         <RegisterButton />
+        <ModalConnection />
       </main>
       <div className="mobile_element">
         <Nav />
