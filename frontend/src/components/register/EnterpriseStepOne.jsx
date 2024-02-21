@@ -1,4 +1,4 @@
-import "../../styles/enterpriseStepOne.css";
+import "../../styles/registerStepOne.css";
 
 function EnterpriseStepOne() {
   const departements = [

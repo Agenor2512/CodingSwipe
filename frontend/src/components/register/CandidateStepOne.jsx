@@ -1,3 +1,5 @@
+import "../../styles/registerStepOne.css";
+
 function CandidateStepOne() {
   const departements = [
     {

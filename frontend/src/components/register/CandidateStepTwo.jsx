@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "../../styles/stepTwo.css";
-
 /* TODO : 
     - Trouver une solution pour les accolades dans "Mes langages informatiques" 
 */
