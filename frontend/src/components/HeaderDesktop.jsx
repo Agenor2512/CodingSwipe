@@ -1,5 +1,6 @@
 import Nav from "./Nav";
 import Logo from "./Logo";
+import ModalConnection from "./ModalConnection";
 
 import "../styles/headerDesktop.css";
 
@@ -8,6 +9,7 @@ function HeaderDesktop() {
     <div className="header_desktop">
       <Logo />
       <Nav />
+      <ModalConnection />
     </div>
   );
 }
