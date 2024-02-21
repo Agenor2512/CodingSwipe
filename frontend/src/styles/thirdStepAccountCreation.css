@@ -1,29 +1,38 @@
-* {
-  background-color: black;
-  box-sizing: border-box;
+body {
+  background-color: var(--register-background-color);
 }
 
-div > h3 {
+.final_step_container > h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: var(--color-white);
   font-family: var(--primary-font);
-  font-size: 32px;
+  font-size: 2rem;
+  margin-top: 40px;
 }
 
-.connect > p span {
-  color: var(--primary-color);
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+  margin: 350px 0;
+  padding: 0 0.4rem;
 }
 
-.connect > p {
+.subtitle > .square {
+  background-color: var(--primary-color);
+  width: 9px;
+  height: 16px;
+}
+
+.subtitle > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--color-white);
+  font-size: 0.8rem;
 }
 
-button {
-  position: absolute;
-  bottom: 0;
-  margin: 10px;
-  margin-bottom: 70px;
-  margin-left: 32%;
+.subtitle > p span {
+  color: var(--primary-color);
 }
