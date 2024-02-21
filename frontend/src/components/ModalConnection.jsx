@@ -16,19 +16,21 @@ function ModalConnection() {
 
   return (
     <>
-      <button
-        type="button"
-        className="connection_button"
-        onClick={toggleModalOnce}
-      >
-        Se connecter
-      </button>
+      <section className="connection_button_container">
+        <button
+          type="button"
+          className="connection_button"
+          onClick={toggleModalOnce}
+        >
+          Se connecter
+        </button>
+      </section>
       {modal && (
         <div className="overlay">
           <dialog className="connection_modal">
             <form className="connection_modal_content">
               <h2>SE CONNECTER</h2>
-              <label htmlFor="email">E-mail</label>
+              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 name="email"
