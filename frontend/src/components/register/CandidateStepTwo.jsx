@@ -177,25 +177,31 @@ function StepTwo() {
         ))}
       </section>
 
-      <p>
-        Je recherche <span>:</span>
-      </p>
-      {enterpriseExpectations.map(({ key, text }) => (
-        <div className="enterprise_expectation_container" key={key}>
-          <input type="checkbox" id="checkbox" />
-          <label htmlFor="checkbox">{text}</label>
+      <section className="research_and_workplace_container">
+        <div>
+          <p>
+            Je recherche <span>:</span>
+          </p>
+          {enterpriseExpectations.map(({ key, text }) => (
+            <div className="enterprise_expectation_container" key={key}>
+              <input type="checkbox" id="checkbox" />
+              <label htmlFor="checkbox">{text}</label>
+            </div>
+          ))}
         </div>
-      ))}
 
-      <p>
-        Lieu de travail <span>:</span>
-      </p>
-      {enterpriseWorkplaces.map(({ key, text }) => (
-        <div className="enterprise_workplace_container" key={key}>
-          <input type="checkbox" id="checkbox" />
-          <label htmlFor="checkbox">{text}</label>
+        <div>
+          <p>
+            Lieu de travail <span>:</span>
+          </p>
+          {enterpriseWorkplaces.map(({ key, text }) => (
+            <div className="enterprise_workplace_container" key={key}>
+              <input type="checkbox" id="checkbox" />
+              <label htmlFor="checkbox">{text}</label>
+            </div>
+          ))}
         </div>
-      ))}
+      </section>
 
       <p>
         Je suis <span>:</span>
@@ -215,7 +221,7 @@ function StepTwo() {
       </section>
       <p>
         Mes langages informatiques
-        <span>sélectionnez au moins un langage</span>
+        <span> sélectionnez au moins un langage</span>
         <span> : </span>
       </p>
       {computerLanguages.map(({ key, text }) => (
@@ -225,7 +231,11 @@ function StepTwo() {
         </div>
       ))}
 
-      <input type="submit" value="Finaliser l'inscription" />
+      <input
+        type="submit"
+        value="Finaliser l'inscription"
+        className="final_button_to_inscription"
+      />
     </form>
   );
 }

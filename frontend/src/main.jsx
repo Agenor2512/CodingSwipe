@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
-import EnterpriseStepOne from "./components/register/EnterpriseStepOne";
+import CandidateStepTwo from "./components/register/CandidateStepTwo";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
       },
       {
-        path: "/hello",
-        element: <EnterpriseStepOne />,
+        path: "/stepTwo",
+        element: <CandidateStepTwo />,
         /* to delete afterwards */
       },
     ],

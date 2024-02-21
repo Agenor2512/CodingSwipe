@@ -7,6 +7,7 @@
   height: 100vh;
   font-family: var(--primary-font);
   background-color: var(--register-background-color);
+  color: var(--secondary-color);
 }
 
 .candidate_step_two_form > .subtitle {
@@ -52,7 +53,7 @@
   width: 7.5rem;
   height: 2rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 0.15rem solid var(--third-color);
   border-radius: 2rem;
   color: var(--third-color);
@@ -71,4 +72,22 @@
   > button.focusedButton {
   border: 0.15rem solid var(--primary-color);
   color: var(--secondary-color);
+}
+
+.candidate_step_two_form span {
+  color: var(--primary-color);
+}
+
+.candidate_step_two_form > .final_button_to_inscription {
+  display: flex;
+  justify-content: center;
+  width: 12.5rem;
+  height: 2.3rem;
+  border-radius: 2rem;
+}
+
+.candidate_step_two_form > .research_and_workplace_container {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.75rem;
 }
