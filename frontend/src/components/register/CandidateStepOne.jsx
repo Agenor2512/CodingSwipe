@@ -407,71 +407,91 @@ function CandidateStepOne() {
   ];
 
   return (
-    <div className="step_one_enterprise_candidate_desktop">
+    <div className="step_one_register">
       <h1>Créer Un Compte</h1>
-      <h3>
-        <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
-        formulaire
-      </h3>
-
       <form>
-        <div className="users_input_desktop">
-          <label htmlFor="candidate-firstame">Nom</label>
-          <input
-            type="text"
-            name="candidate-firstame"
-            placeholder="Doe"
-            required
-          />
-          <label htmlFor="candidate-lastname">Prénom</label>
-          <input
-            type="text"
-            name="candidate-lastname"
-            placeholder="John"
-            required
-          />
+        <h3>
+          <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
+          formulaire
+        </h3>
+
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="candidate-firstame">Nom</label>
+            <input
+              type="text"
+              minLength={3}
+              name="candidate-firstame"
+              id="candidate-firstame"
+              placeholder="Doe"
+              required
+            />
+          </div>
+
+          <div className="register_label_input_container">
+            <label htmlFor="candidate-lastname">Prénom</label>
+            <input
+              type="text"
+              minLength={3}
+              name="candidate-lastname"
+              id="candidate-lastname"
+              placeholder="John"
+              required
+            />
+          </div>
         </div>
 
-        <div className="users_input_desktop">
-          <label htmlFor="email-candidate">Email</label>
-          <input
-            type="email"
-            name="emailCompagny"
-            placeholder="exemple@gmail.com"
-            required
-          />
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="email-candidate">Email</label>
+            <input
+              type="email"
+              name="email-candidate"
+              id="email-candidate"
+              placeholder="exemple@gmail.com"
+              required
+            />
+          </div>
+          <div className="register_label_input_container">
+            <label htmlFor="department">Département</label>
+            <select id="department" required>
+              <option value="">Veuillez choisir votre département</option>
 
-          <label htmlFor="department">Département</label>
-          <select id="department">
-            <option value="">Veuillez choisir votre département</option>
-
-            {departements.map(({ key, text }) => (
-              <option key={key} value={text}>
-                {text}
-              </option>
-            ))}
-          </select>
+              {departements.map(({ key, text }) => (
+                <option key={key} value={text}>
+                  {text}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="users_step_one_desktop">
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Saisissez un mot de passe"
-            required
-          />
-
-          <label htmlFor="passwordCheck">Vérification du mot de passe</label>
-          <input
-            type="text"
-            name="passwordCheck"
-            placeholder="Vérifiez votre mot de passe"
-            required
-          />
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              minLength={8}
+              name="password"
+              id="password"
+              placeholder="Saisissez un mot de passe"
+              required
+            />
+          </div>
+          <div className="register_label_input_container">
+            <label htmlFor="password-check">Vérification du mot de passe</label>
+            <input
+              type="password"
+              minLength={8}
+              name="password-check"
+              id="password-check"
+              placeholder="Vérifiez votre mot de passe"
+              required
+            />
+          </div>
         </div>
 
-        <input type="submit" value="Continuer" />
+        <button type="submit">Continuer</button>
       </form>
     </div>
   );
