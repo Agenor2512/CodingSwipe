@@ -409,78 +409,93 @@ function EnterpriseStepOne() {
   ];
 
   return (
-    <div className="enterprise_step_one">
+    <div className="step_one_register">
       <h1>Créer Un Compte</h1>
-      <h3>
-        <div className="square"> </div> ETAPE 1 <span>-</span> Remplisser ce
-        formulaire
-      </h3>
-
       <form>
-        <div className="enterprise_name_desktop">
-          <label htmlFor="enterpriseName">Nom de l'entreprise</label>
-          <input
-            type="text"
-            name="enterpriseName"
-            placeholder="Windy Corporation"
-            required
-          />
+        <h3>
+          <div className="square"> </div> ETAPE 1 <span> - </span> Remplisser ce
+          formulaire
+        </h3>
+
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="enterpriseName">Nom de l'entreprise</label>
+            <input
+              type="text"
+              minLength={1}
+              name="enterpriseName"
+              id="enterpriseName"
+              placeholder="Windy Corporation"
+              required
+            />
+          </div>
+
+          <div className="register_label_input_container">
+            <label htmlFor="siretNumber">Numéro Siret</label>
+            <input
+              type="number"
+              min={0}
+              name="siretNumber"
+              id="siretNumber"
+              placeholder="exemple: 12345678901234"
+              required
+            />
+          </div>
         </div>
 
-        <div className="siret_number_desktop">
-          <label htmlFor="siretNumber">Muméro Siret</label>
-          <input
-            type="number"
-            name="siretNumber"
-            placeholder="exemple: 12345678901234"
-            required
-          />
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="emailCompagny">Email</label>
+            <input
+              type="email"
+              name="emailCompagny"
+              id="emailCompagny"
+              placeholder="exemple@gmail.com"
+              required
+            />
+          </div>
+
+          <div className="register_label_input_container">
+            <label htmlFor="department">Département</label>
+            <select id="department" required>
+              <option value="">Veuillez choisir votre département</option>
+
+              {departements.map(({ key, text }) => (
+                <option key={key} value={text}>
+                  {text}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="email_company_desktop">
-          <label htmlFor="emailCompagny">Email</label>
-          <input
-            type="email"
-            name="emailCompagny"
-            placeholder="exemple@gmail.com"
-            required
-          />
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              minLength={8}
+              name="password"
+              id="password"
+              placeholder="Saisissez un mot de passe"
+              required
+            />
+          </div>
+
+          <div className="register_label_input_container">
+            <label htmlFor="passwordCheck">Vérification du mot de passe</label>
+            <input
+              type="password"
+              minLength={8}
+              name="passwordCheck"
+              id="passwordCheck"
+              placeholder="Vérifiez votre mot de passe"
+              required
+            />
+          </div>
         </div>
 
-        <div className="department_desktop">
-          <label htmlFor="department">Département</label>
-          <select id="department">
-            <option value="">Veuillez choisir votre département</option>
-
-            {departements.map(({ key, text }) => (
-              <option key={key} value={text}>
-                {text}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="password_desktop">
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Saisissez un mot de passe"
-            required
-          />
-        </div>
-
-        <div className="password_check_desktop">
-          <label htmlFor="passwordCheck">Vérification du mot de passe</label>
-          <input
-            type="text"
-            name="passwordCheck"
-            placeholder="Vérifiez votre mot de passe"
-            required
-          />
-        </div>
-
-        <input type="submit" value="Continuer" />
+        <button type="submit">Continuer</button>
       </form>
     </div>
   );
