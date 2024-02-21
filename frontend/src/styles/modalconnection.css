@@ -38,7 +38,7 @@
   justify-content: center;
   width: 100vw;
   height: 20rem;
-  background-color: #1e2228;
+  background-color: var(--register-background-color);
   border: none;
   font-family: var(--primary-font);
 }
@@ -65,15 +65,16 @@
   width: 20rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
+  outline: 0;
   border: none;
   border-radius: 10px;
   font: var(--primary-font);
   color: var(--color-white);
-  background-color: black;
+  background-color: var(--color-black);
 }
 
 .overlay > .connection_modal > .connection_modal_content > input:focus {
-  border: 1px var(--color-white);
+  border: var(--color-white) solid 2px;
 }
 
 .overlay > .connection_modal > .connection_modal_content > a {
@@ -144,7 +145,7 @@
 
   .overlay > .connection_modal > .connection_modal_content > input {
     width: 32.4rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .overlay > .connection_modal > .connection_modal_content > a > .continue {
