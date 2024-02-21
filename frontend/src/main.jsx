@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
-import CandidateStepTwo from "./components/register/CandidateStepTwo";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/stepTwo",
-        element: <CandidateStepTwo />,
-        /* to delete afterwards */
       },
     ],
     errorElement: <ErrorPage />,
