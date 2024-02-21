@@ -1,0 +1,150 @@
+.enterprise_step_one {
+  background-color: var(--register-background-color);
+  font-family: var(--primary-font);
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.enterprise_step_one > h1 {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.enterprise_step_one > form > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  margin: 2.5rem 0;
+}
+
+.enterprise_step_one > form > h3 > .square {
+  background-color: var(--primary-color);
+  margin-right: 0.5rem;
+  width: 12px;
+  height: 12px;
+}
+
+.enterprise_step_one > form > h3 > span {
+  color: var(--primary-color);
+  margin: 0 0.5rem;
+}
+
+.enterprise_step_one > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enterprise_step_one > form > .step_one_register {
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+}
+
+.enterprise_step_one > form > .step_one_register > .desktop_element {
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+}
+
+.enterprise_step_one > form > .step_one_register > div > label {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.enterprise_step_one > form > .step_one_register > div > input {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid var(--third-color);
+  color: var(--third-color);
+  background-color: var(--text-color);
+}
+
+.enterprise_step_one > form > .step_one_register > div > input:focus {
+  border-color: var(--secondary-color);
+}
+
+.enterprise_step_one > form > .step_one_register > div > select {
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--third-color);
+  color: var(--third-color);
+  background-color: var(--text-color);
+}
+
+.enterprise_step_one > form > .step_one_register > div > select:focus {
+  border-color: var(--secondary-color);
+}
+
+.enterprise_step_one > form > button {
+  width: 10.625rem;
+  padding: 0.5rem 2rem;
+  margin-top: 5rem;
+  border: 0;
+  border-radius: 2rem;
+  background-color: var(--third-color);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .enterprise_step_one > h1 {
+    font-size: 2.5rem;
+    padding: 2.5rem;
+  }
+
+  .enterprise_step_one > form > h3 {
+    justify-content: left;
+    width: 70vw;
+  }
+
+  .enterprise_step_one > form {
+    margin: 0 auto;
+    width: 70vw;
+  }
+
+  .enterprise_step_one > form > .step_one_register {
+    flex-direction: row;
+    width: 70vw;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .enterprise_step_one > form > .step_one_register > .desktop_element {
+    width: 34.5vw;
+  }
+
+  .enterprise_step_one > form > .step_one_register > input {
+    width: 32.4rem;
+  }
+
+  .enterprise_step_one
+    > form
+    > .step_one_register
+    > div
+    > select
+    > option:active {
+    width: 32.4rem;
+    height: 10rem;
+  }
+
+  .enterprise_step_one > form > button {
+    cursor: pointer;
+    margin-top: 4rem;
+  }
+
+  .enterprise_step_one > form > button:hover {
+    background-color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+}
