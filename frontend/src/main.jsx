@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
+import ThirdStepAccountCreation from "./components/ThirdStepAccountCreation";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
+      },
+      {
+        path: "/ThirdStepAccountCreation",
+        element: <ThirdStepAccountCreation />,
       },
     ],
     errorElement: <ErrorPage />,
