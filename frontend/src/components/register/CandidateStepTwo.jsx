@@ -246,7 +246,7 @@ function StepTwo() {
       </p>
       <section className="computer_language_checkbox_container">
         {computerLanguages.map(({ key, text }) => (
-          <div className="computer_language_container" key={key}>
+          <div key={key}>
             <input type="checkbox" id="checkbox" key={key} />
             <label htmlFor="checkbox">{text}</label>
           </div>
