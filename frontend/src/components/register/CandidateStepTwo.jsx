@@ -137,6 +137,22 @@ function StepTwo() {
       text: "React",
     },
     {
+      key: "angular",
+      text: "Angular",
+    },
+    {
+      key: "nodejs",
+      text: "Node.js",
+    },
+    {
+      key: "php",
+      text: "PHP",
+    },
+    {
+      key: "rust",
+      text: "Rust",
+    },
+    {
       key: ".net",
       text: ".NET Core / .NET 5",
     },
@@ -154,9 +170,9 @@ function StepTwo() {
     <form action="submit" className="candidate_step_two_form">
       <h1>Créer Un Compte</h1>
       <section className="subtitle">
-        <div className="squareSubtitle"> </div>
+        <div className="square"> </div>
         <p>
-          ÉTAPE 2<span>-</span>Répondez à ces quelques questions
+          ÉTAPE 2 <span>- </span>Répondez à ces quelques questions
         </p>
       </section>
 
@@ -219,23 +235,30 @@ function StepTwo() {
           </button>
         ))}
       </section>
+
       <p>
         Mes langages informatiques
-        <span> sélectionnez au moins un langage</span>
+        <span className="select_languages_span">
+          <span>{" { "}</span>
+          sélectionnez au moins un langage <span>{" } "}</span>
+        </span>
         <span> : </span>
       </p>
-      {computerLanguages.map(({ key, text }) => (
-        <div className="computer_language_container" key={key}>
-          <input type="checkbox" id="checkbox" key={key} />
-          <label htmlFor="checkbox">{text}</label>
-        </div>
-      ))}
-
-      <input
-        type="submit"
-        value="Finaliser l'inscription"
-        className="final_button_to_inscription"
-      />
+      <section className="computer_language_checkbox_container">
+        {computerLanguages.map(({ key, text }) => (
+          <div className="computer_language_container" key={key}>
+            <input type="checkbox" id="checkbox" key={key} />
+            <label htmlFor="checkbox">{text}</label>
+          </div>
+        ))}
+      </section>
+      <section className="final_button_to_inscription_container">
+        <input
+          type="submit"
+          value="Finaliser l'inscription"
+          className="final_button_to_inscription"
+        />
+      </section>
     </form>
   );
 }
