@@ -485,7 +485,7 @@ function EnterpriseStepOne() {
           <div className="register_label_input_container">
             <label htmlFor="passwordCheck">Vérification du mot de passe</label>
             <input
-              type="text"
+              type="password"
               minLength={8}
               name="passwordCheck"
               id="passwordCheck"

@@ -52,22 +52,55 @@
   width: 16rem;
 }
 
-.step_one_register > form > .step_one_register_container > div > label {
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > label {
   color: var(--secondary-color);
   margin-bottom: 0.5rem;
 }
 
-.step_one_register > form > .step_one_register_container > div > input {
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > input {
   padding-left: 0.5rem;
 }
 
-.step_one_register > form > .step_one_register_container > div > input:focus,
-.step_one_register > form > .step_one_register_container > div > select:focus {
-  border-color: var(--secondary-color);
+.step_one_register
+  > form
+  > .step_one_register_container
+  > div
+  > input::placeholder {
+  color: var(--third-color);
 }
 
-.step_one_register > form > .step_one_register_container > div > input,
-.step_one_register > form > .step_one_register_container > div > select {
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > input:focus,
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > select:focus {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > input,
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > select {
   border-radius: 0.5rem;
   height: 2.5rem;
   margin-bottom: 1rem;
@@ -125,7 +158,7 @@
   .step_one_register
     > form
     > .step_one_register_container
-    > div
+    > .register_label_input_container
     > select
     > option:active {
     width: 32.4rem;
@@ -134,7 +167,7 @@
   .step_one_register
     > form
     > .step_one_register_container
-    > div
+    > .register_label_input_container
     > select
     > option:active {
     height: 10rem;
