@@ -407,7 +407,7 @@ function CandidateStepOne() {
   ];
 
   return (
-    <div className="step_one_enterprise_candidate">
+    <div className="step_one_enterprise_candidate_desktop">
       <h1>Créer Un Compte</h1>
       <h3>
         <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
@@ -415,17 +415,14 @@ function CandidateStepOne() {
       </h3>
 
       <form>
-        <div className="enterprise_candidate_name">
+        <div className="users_input_desktop">
           <label htmlFor="candidate-firstame">Nom</label>
           <input
             type="text"
-            name="candidate-fristame"
+            name="candidate-firstame"
             placeholder="Doe"
             required
           />
-        </div>
-
-        <div className="enterprise_siret_candidate_firstname">
           <label htmlFor="candidate-lastname">Prénom</label>
           <input
             type="text"
@@ -435,7 +432,7 @@ function CandidateStepOne() {
           />
         </div>
 
-        <div className="enterprise_candidate_email">
+        <div className="users_input_desktop">
           <label htmlFor="email-candidate">Email</label>
           <input
             type="email"
@@ -443,9 +440,7 @@ function CandidateStepOne() {
             placeholder="exemple@gmail.com"
             required
           />
-        </div>
 
-        <div className="enterprise_candidate_department">
           <label htmlFor="department">Département</label>
           <select id="department">
             <option value="">Veuillez choisir votre département</option>
@@ -458,7 +453,7 @@ function CandidateStepOne() {
           </select>
         </div>
 
-        <div className="enterprise_candidate_password">
+        <div className="users_step_one_desktop">
           <label htmlFor="password">Mot de passe</label>
           <input
             type="password"
@@ -466,9 +461,7 @@ function CandidateStepOne() {
             placeholder="Saisissez un mot de passe"
             required
           />
-        </div>
 
-        <div className="enterprise_candidate_password_check">
           <label htmlFor="passwordCheck">Vérification du mot de passe</label>
           <input
             type="text"
