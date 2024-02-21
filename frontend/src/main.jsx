@@ -9,7 +9,6 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
-import CandidateStepOne from "./components/register/CandidateStepOne";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/hello",
-        element: <CandidateStepOne />,
       },
     ],
     errorElement: <ErrorPage />,

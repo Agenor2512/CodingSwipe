@@ -20,7 +20,9 @@ function HomePage() {
         <img src={mobileBackground} alt="woman in front of two screens" />
         <TitlesDescription />
         <RegisterButton />
-        <ModalConnection />
+        <div className="mobile_element">
+          <ModalConnection />
+        </div>
       </main>
       <div className="mobile_element">
         <Nav />

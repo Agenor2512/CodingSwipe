@@ -1,8 +1,13 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const path = require("path");
 
 const app = express();
+
+app.use("/public/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", req.originalUrl));
+});
 
 // Configure it
 
