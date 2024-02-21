@@ -409,7 +409,7 @@ function EnterpriseStepOne() {
   ];
 
   return (
-    <div className="enterprise_step_one">
+    <div className="step_one_register">
       <h1>Créer Un Compte</h1>
       <form>
         <h3>
@@ -417,43 +417,47 @@ function EnterpriseStepOne() {
           formulaire
         </h3>
 
-        <div className="step_one_register">
-          <div className="desktop_element">
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
             <label htmlFor="enterpriseName">Nom de l'entreprise</label>
             <input
               type="text"
+              minLength={1}
               name="enterpriseName"
+              id="enterpriseName"
               placeholder="Windy Corporation"
               required
             />
           </div>
 
-          <div className="desktop_element">
+          <div className="register_label_input_container">
             <label htmlFor="siretNumber">Numéro Siret</label>
-
             <input
               type="number"
+              min={0}
               name="siretNumber"
+              id="siretNumber"
               placeholder="exemple: 12345678901234"
               required
             />
           </div>
         </div>
 
-        <div className="step_one_register">
-          <div className="desktop_element">
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
             <label htmlFor="emailCompagny">Email</label>
             <input
               type="email"
               name="emailCompagny"
+              id="emailCompagny"
               placeholder="exemple@gmail.com"
               required
             />
           </div>
 
-          <div className="desktop_element">
+          <div className="register_label_input_container">
             <label htmlFor="department">Département</label>
-            <select id="department">
+            <select id="department" required>
               <option value="">Veuillez choisir votre département</option>
 
               {departements.map(({ key, text }) => (
@@ -465,22 +469,26 @@ function EnterpriseStepOne() {
           </div>
         </div>
 
-        <div className="step_one_register">
-          <div className="desktop_element">
+        <div className="step_one_register_container">
+          <div className="register_label_input_container">
             <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
+              minLength={8}
               name="password"
+              id="password"
               placeholder="Saisissez un mot de passe"
               required
             />
           </div>
 
-          <div className="desktop_element">
+          <div className="register_label_input_container">
             <label htmlFor="passwordCheck">Vérification du mot de passe</label>
             <input
               type="text"
+              minLength={8}
               name="passwordCheck"
+              id="passwordCheck"
               placeholder="Vérifiez votre mot de passe"
               required
             />
