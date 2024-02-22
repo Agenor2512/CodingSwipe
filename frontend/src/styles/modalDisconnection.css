@@ -1,0 +1,113 @@
+.disconnection_button {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  color: var(--color-white);
+  width: 13rem;
+  height: 2.5rem;
+  border: 1px solid white;
+  background-color: var(--register-background-color);
+  cursor: pointer;
+}
+
+.overlay > .disconnection_modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e2228;
+  border: none;
+  font-family: var(--primary-font);
+  width: 100vw;
+  height: 14rem;
+}
+
+.overlay > .disconnection_modal > .disconnection_modal_content {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1rem;
+}
+
+.overlay > .disconnection_modal > .disconnection_modal_content > h2 {
+  color: var(--color-white);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.overlay
+  > .disconnection_modal
+  > .disconnection_modal_content
+  > .disconnection_redirection_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.overlay
+  > .disconnection_modal
+  > .disconnection_modal_content
+  > .disconnection_redirection_buttons
+  > a
+  > button {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 0;
+  margin: 0rem;
+  cursor: pointer;
+}
+
+.overlay
+  > .disconnection_modal
+  > .disconnection_modal_content
+  > .disconnection_redirection_buttons
+  > button {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  color: var(--text-color);
+  background-color: var(--color-white);
+  border-radius: 20px;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .disconnection_button {
+    width: 15.37rem;
+    height: 2.12rem;
+  }
+
+  .overlay > .disconnection_modal {
+    inset-inline-start: auto;
+    inset-inline-end: auto;
+    width: 40rem;
+    height: 21rem;
+  }
+
+  .overlay > .disconnection_modal > .disconnection_modal_content > h2 {
+    margin-bottom: 2rem;
+  }
+
+  .overlay
+    > .disconnection_modal
+    > .disconnection_modal_content
+    > .disconnection_redirection_buttons
+    > a
+    > button:hover,
+  .overlay
+    > .disconnection_modal
+    > .disconnection_modal_content
+    > .disconnection_redirection_buttons
+    > button:hover {
+    background-color: var(--third-color);
+    color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+}
