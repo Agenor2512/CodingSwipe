@@ -128,7 +128,10 @@ function EnterpriseStepTwo({ formTools }) {
 
   return (
     <div className="enterprise_form_container">
-      <form className="step_two_enterprise_form">
+      <form
+        className="step_two_enterprise_form"
+        onSubmit={formTools.handleFormSubmit}
+      >
         <h1>Créer Un Compte</h1>
         <section className="subtitle">
           <div className="squareSubtitle"> </div>
@@ -186,6 +189,7 @@ function EnterpriseStepTwo({ formTools }) {
 EnterpriseStepTwo.propTypes = {
   formTools: PropTypes.shape({
     nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
   }).isRequired,
 };
 

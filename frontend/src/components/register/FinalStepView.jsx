@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-
+/* eslint-disable react/prop-types */
 import ModalConnection from "../ModalConnection";
 
 import "../../styles/finalStepView.css";
@@ -20,11 +19,5 @@ function FinalStepView() {
     </div>
   );
 }
-
-FinalStepView.propTypes = {
-  formTools: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default FinalStepView;

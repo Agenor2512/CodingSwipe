@@ -1,6 +1,5 @@
+/* eslint-disable react/prop-types */
 import "../../styles/registerStepOne.css";
-
-import PropTypes from "prop-types";
 
 function EnterpriseStepOne({ formTools }) {
   const departements = [
@@ -413,9 +412,9 @@ function EnterpriseStepOne({ formTools }) {
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
-      <form>
+      <form onSubmit={formTools.handleFormSubmit}>
         <h3>
-          <div className="square"> </div> ETAPE 1 <span> - </span> Remplisser ce
+          <div className="square"> </div> ETAPE 1 <span> - </span> Remplissez ce
           formulaire
         </h3>
 
@@ -504,11 +503,5 @@ function EnterpriseStepOne({ formTools }) {
     </div>
   );
 }
-
-EnterpriseStepOne.propTypes = {
-  formTools: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default EnterpriseStepOne;

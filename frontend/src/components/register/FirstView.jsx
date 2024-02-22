@@ -1,9 +1,11 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import "../../styles/firstViewRegisterForm.css";
 
-import PropTypes from "prop-types";
+import RegisterContext from "../../context/RegisterContext";
 
 function FirstView({ formTools }) {
+  const { setUserRole } = useContext(RegisterContext);
   const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
@@ -18,15 +20,12 @@ function FirstView({ formTools }) {
 
   const handleClickButton = (event) => {
     setFocusedButton(event.target.name);
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+    setUserRole(event.target.name);
   };
 
   return (
     <section className="form_container">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={formTools.handleFormSubmit}>
         <h1>Créer Un Compte</h1>
         <h3>Sélectionnez votre statut</h3>
         <div>
@@ -47,11 +46,5 @@ function FirstView({ formTools }) {
     </section>
   );
 }
-
-FirstView.propTypes = {
-  formTools: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default FirstView;
