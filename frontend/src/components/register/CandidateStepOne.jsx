@@ -1,8 +1,6 @@
 import "../../styles/registerStepOne.css";
 
-import PropTypes from "prop-types";
-
-function EnterpriseStepOne({ formTools }) {
+function CandidateStepOne() {
   const departements = [
     {
       key: "01",
@@ -415,31 +413,31 @@ function EnterpriseStepOne({ formTools }) {
       <h1>Créer Un Compte</h1>
       <form>
         <h3>
-          <div className="square"> </div> ETAPE 1 <span> - </span> Remplisser ce
+          <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
           formulaire
         </h3>
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="enterpriseName">Nom de l'entreprise</label>
+            <label htmlFor="candidate-firstame">Nom</label>
             <input
               type="text"
-              minLength={1}
-              name="enterpriseName"
-              id="enterpriseName"
-              placeholder="Windy Corporation"
+              minLength={3}
+              name="candidate-firstame"
+              id="candidate-firstame"
+              placeholder="Doe"
               required
             />
           </div>
 
           <div className="register_label_input_container">
-            <label htmlFor="siretNumber">Numéro Siret</label>
+            <label htmlFor="candidate-lastname">Prénom</label>
             <input
-              type="number"
-              min={0}
-              name="siretNumber"
-              id="siretNumber"
-              placeholder="exemple: 12345678901234"
+              type="text"
+              minLength={3}
+              name="candidate-lastname"
+              id="candidate-lastname"
+              placeholder="John"
               required
             />
           </div>
@@ -447,16 +445,15 @@ function EnterpriseStepOne({ formTools }) {
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="emailCompagny">Email</label>
+            <label htmlFor="email-candidate">Email</label>
             <input
               type="email"
-              name="emailCompagny"
-              id="emailCompagny"
+              name="email-candidate"
+              id="email-candidate"
               placeholder="exemple@gmail.com"
               required
             />
           </div>
-
           <div className="register_label_input_container">
             <label htmlFor="department">Département</label>
             <select id="department" required>
@@ -483,32 +480,23 @@ function EnterpriseStepOne({ formTools }) {
               required
             />
           </div>
-
           <div className="register_label_input_container">
-            <label htmlFor="passwordCheck">Vérification du mot de passe</label>
+            <label htmlFor="password-check">Vérification du mot de passe</label>
             <input
               type="password"
               minLength={8}
-              name="passwordCheck"
-              id="passwordCheck"
+              name="password-check"
+              id="password-check"
               placeholder="Vérifiez votre mot de passe"
               required
             />
           </div>
         </div>
 
-        <button type="submit" onClick={formTools.nextStep}>
-          Continuer
-        </button>
+        <button type="submit">Continuer</button>
       </form>
     </div>
   );
 }
 
-EnterpriseStepOne.propTypes = {
-  formTools: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-  }).isRequired,
-};
-
-export default EnterpriseStepOne;
+export default CandidateStepOne;
