@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import "../../styles/candidateStepTwo.css";
 
-function CandidateStepTwo({ formTools }) {
+function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const [specialtyButton, setSpecialtyButton] = useState("frontend");
 
   const [experienceButton, setExperienceButton] = useState("junior");
@@ -167,7 +167,7 @@ function CandidateStepTwo({ formTools }) {
     <form
       action="submit"
       className="candidate_step_two_form"
-      onSubmit={formTools.handleFormSubmit}
+      onSubmit={handleFormSubmit}
     >
       <h1>Créer Un Compte</h1>
       <section className="subtitle">
@@ -261,7 +261,7 @@ function CandidateStepTwo({ formTools }) {
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
-          onClick={formTools.nextStep}
+          onClick={nextStep}
         />
       </section>
     </form>

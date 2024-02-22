@@ -4,7 +4,7 @@ import "../../styles/firstViewRegisterForm.css";
 
 import RegisterContext from "../../context/RegisterContext";
 
-function FirstView({ formTools }) {
+function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
   const { setUserRole } = useContext(RegisterContext);
   const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
@@ -25,7 +25,7 @@ function FirstView({ formTools }) {
 
   return (
     <section className="form_container">
-      <form onSubmit={formTools.handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <h1>Créer Un Compte</h1>
         <h3>Sélectionnez votre statut</h3>
         <div>
@@ -41,7 +41,7 @@ function FirstView({ formTools }) {
             </button>
           ))}
         </div>
-        <input type="submit" value="Continuer" onClick={formTools.nextStep} />
+        <input type="submit" value="Continuer" onClick={nextStep} />
       </form>
     </section>
   );

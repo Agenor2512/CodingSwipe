@@ -3,7 +3,7 @@ import "../../styles/enterpriseSecondStep.css";
 
 import PropTypes from "prop-types";
 
-function EnterpriseStepTwo({ formTools }) {
+function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const enterpriseType = [
     {
       key: "EI",
@@ -128,10 +128,7 @@ function EnterpriseStepTwo({ formTools }) {
 
   return (
     <div className="enterprise_form_container">
-      <form
-        className="step_two_enterprise_form"
-        onSubmit={formTools.handleFormSubmit}
-      >
+      <form className="step_two_enterprise_form" onSubmit={handleFormSubmit}>
         <h1>Créer Un Compte</h1>
         <section className="subtitle">
           <div className="squareSubtitle"> </div>
@@ -178,7 +175,7 @@ function EnterpriseStepTwo({ formTools }) {
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit" onClick={formTools.nextStep}>
+        <button type="submit" onClick={nextStep}>
           Finaliser l'inscription
         </button>
       </form>

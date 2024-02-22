@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "../../styles/registerStepOne.css";
 
-function CandidateStepOne({ formTools }) {
+function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
     {
       key: "01",
@@ -412,7 +412,7 @@ function CandidateStepOne({ formTools }) {
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
-      <form onSubmit={formTools.handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <h3>
           <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
           formulaire
@@ -493,7 +493,7 @@ function CandidateStepOne({ formTools }) {
           </div>
         </div>
 
-        <button type="submit" onClick={formTools.nextStep}>
+        <button type="submit" onClick={nextStep}>
           Continuer
         </button>
       </form>
