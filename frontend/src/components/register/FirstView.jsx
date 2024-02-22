@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../../styles/firstViewRegisterForm.css";
 
-function FirstView() {
+import PropTypes from "prop-types";
+
+function FirstView({ formTools }) {
   const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
@@ -40,10 +42,16 @@ function FirstView() {
             </button>
           ))}
         </div>
-        <input type="submit" value="Continuer" />
+        <input type="submit" value="Continuer" onClick={formTools.nextStep} />
       </form>
     </section>
   );
 }
+
+FirstView.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default FirstView;

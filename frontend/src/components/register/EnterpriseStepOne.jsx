@@ -1,6 +1,8 @@
 import "../../styles/enterpriseStepOne.css";
 
-function EnterpriseStepOne() {
+import PropTypes from "prop-types";
+
+function EnterpriseStepOne({ formTools }) {
   const departements = [
     {
       key: "01",
@@ -495,10 +497,18 @@ function EnterpriseStepOne() {
           </div>
         </div>
 
-        <button type="submit">Continuer</button>
+        <button type="submit" onClick={formTools.nextStep}>
+          Continuer
+        </button>
       </form>
     </div>
   );
 }
+
+EnterpriseStepOne.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default EnterpriseStepOne;
