@@ -7,7 +7,7 @@
 .enterprise_form_container > .step_two_enterprise_form {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1rem;
 }
 
@@ -70,7 +70,7 @@
 .enterprise_form_container > .step_two_enterprise_form textarea {
   border-color: var(--third-color);
   color: var(--third-color);
-  background: var(--text-color);
+  background: var(--register-background-color);
 }
 
 .enterprise_form_container > .step_two_enterprise_form select,
@@ -81,6 +81,7 @@
 .enterprise_form_container > .step_two_enterprise_form select:focus,
 .enterprise_form_container > .step_two_enterprise_form textarea:focus {
   outline: 0;
+  color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
