@@ -12,7 +12,7 @@ class CandidateManager extends AbstractManager {
   async create(candidate) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
+      `insert into ${this.table} (lastname, firstname, email, department, password, appetence, job_type, work_rhythm, experience_level, programming_languages) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         candidate.lastname,
         candidate.firstname,
