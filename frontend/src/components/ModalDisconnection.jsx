@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import "../styles/modalDisconnection.css";
+import "../styles/components/modalDisconnection.css";
 
 function ModalDisconnection() {
   const [modal, setModal] = useState(false);

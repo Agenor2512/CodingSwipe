@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
-import "../../styles/firstViewRegisterForm.css";
+import "../../styles/register/firstViewRegisterForm.css";
 
 import RegisterContext from "../../context/RegisterContext";
 

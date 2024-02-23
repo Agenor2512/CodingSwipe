@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "../../styles/registerStepOne.css";
+import "../../styles/register/registerStepOne.css";
 
 function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
