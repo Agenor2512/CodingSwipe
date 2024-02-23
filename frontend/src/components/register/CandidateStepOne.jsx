@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import "../../styles/registerStepOne.css";
 
-function CandidateStepOne() {
+function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
     {
       key: "01",
@@ -411,7 +412,7 @@ function CandidateStepOne() {
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <h3>
           <div className="square"> </div> ETAPE 1 <span>-</span> Remplissez ce
           formulaire
@@ -458,7 +459,6 @@ function CandidateStepOne() {
             <label htmlFor="department">Département</label>
             <select id="department" required>
               <option value="">Veuillez choisir votre département</option>
-
               {departements.map(({ key, text }) => (
                 <option key={key} value={text}>
                   {text}
@@ -493,7 +493,9 @@ function CandidateStepOne() {
           </div>
         </div>
 
-        <button type="submit">Continuer</button>
+        <button type="submit" onClick={nextStep}>
+          Continuer
+        </button>
       </form>
     </div>
   );

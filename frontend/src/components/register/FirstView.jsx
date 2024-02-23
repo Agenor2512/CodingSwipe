@@ -1,7 +1,11 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import "../../styles/firstViewRegisterForm.css";
 
-function FirstView() {
+import RegisterContext from "../../context/RegisterContext";
+
+function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
+  const { setUserRole } = useContext(RegisterContext);
   const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
@@ -16,10 +20,7 @@ function FirstView() {
 
   const handleClickButton = (event) => {
     setFocusedButton(event.target.name);
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+    setUserRole(event.target.name);
   };
 
   return (
@@ -40,7 +41,7 @@ function FirstView() {
             </button>
           ))}
         </div>
-        <input type="submit" value="Continuer" />
+        <input type="submit" value="Continuer" onClick={nextStep} />
       </form>
     </section>
   );

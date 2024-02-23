@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import "../../styles/candidateStepTwo.css";
 
-function CandidateStepTwo() {
+function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const [specialtyButton, setSpecialtyButton] = useState("frontend");
 
   const [experienceButton, setExperienceButton] = useState("junior");
@@ -163,7 +164,11 @@ function CandidateStepTwo() {
   ];
 
   return (
-    <form action="submit" className="candidate_step_two_form">
+    <form
+      action="submit"
+      className="candidate_step_two_form"
+      onSubmit={handleFormSubmit}
+    >
       <h1>Créer Un Compte</h1>
       <section className="subtitle">
         <div className="square"> </div>
@@ -224,7 +229,7 @@ function CandidateStepTwo() {
           {candidateExperienceLevel.map(({ name, buttonText }) => (
             <button
               type="button"
-              key={buttonText}
+              key={name}
               name={name}
               onClick={handleClickExperienceButton}
               className={experienceButton === name ? "focusedButton" : ""}
@@ -246,7 +251,7 @@ function CandidateStepTwo() {
       <section className="computer_language_checkbox_container">
         {computerLanguages.map(({ key, text }) => (
           <div key={key}>
-            <input type="checkbox" id="checkbox" key={key} />
+            <input type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">{text}</label>
           </div>
         ))}
@@ -256,6 +261,7 @@ function CandidateStepTwo() {
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
+          onClick={nextStep}
         />
       </section>
     </form>

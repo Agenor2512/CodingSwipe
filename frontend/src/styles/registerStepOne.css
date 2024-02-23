@@ -107,7 +107,7 @@
   outline: none;
   border: 1px solid var(--third-color);
   color: var(--third-color);
-  background-color: var(--text-color);
+  background-color: var(--register-background-color);
 }
 
 .step_one_register > form > button {

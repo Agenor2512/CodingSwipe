@@ -1,7 +1,9 @@
 import React from "react";
 import "../../styles/enterpriseSecondStep.css";
 
-function EnterpriseSecondStep() {
+import PropTypes from "prop-types";
+
+function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const enterpriseType = [
     {
       key: "EI",
@@ -126,7 +128,7 @@ function EnterpriseSecondStep() {
 
   return (
     <div className="enterprise_form_container">
-      <form className="step_two_enterprise_form">
+      <form className="step_two_enterprise_form" onSubmit={handleFormSubmit}>
         <h1>Créer Un Compte</h1>
         <section className="subtitle">
           <div className="squareSubtitle"> </div>
@@ -173,10 +175,19 @@ function EnterpriseSecondStep() {
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit">Finaliser l'inscription</button>
+        <button type="submit" onClick={nextStep}>
+          Finaliser l'inscription
+        </button>
       </form>
     </div>
   );
 }
 
-export default EnterpriseSecondStep;
+EnterpriseStepTwo.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default EnterpriseStepTwo;
