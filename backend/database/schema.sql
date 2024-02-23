@@ -12,4 +12,5 @@ create table candidate (
   programming_languages  varchar(100) not null
 );
 
-insert into candidate values()
+insert into candidate (lastname, firstname, email, department, _password, appetence, job_type, work_rhythm, experience_level, programming_languages) 
+values("Poulin", "Léa", "kikou@gmail.com", "37", "kikou", "frontend", "CDI", "remote", "junior", "JS"), ("Vasseur", "Noémie", "kikou2@gmail.com", "62", "root", "backend", "CDI", "remote", "junior", "bash");
