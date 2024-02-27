@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-import "../../styles/candidateStepTwo.css";
+import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const [specialtyButton, setSpecialtyButton] = useState("frontend");

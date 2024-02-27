@@ -72,9 +72,18 @@
 .step_one_register
   > form
   > .step_one_register_container
-  > div
+  > .register_label_input_container
   > input::placeholder {
   color: var(--third-color);
+}
+
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 .step_one_register
@@ -123,7 +132,6 @@
 
 @media screen and (min-width: 600px) {
   .step_one_register > h1 {
-    font-size: 2.5rem;
     padding: 2.5rem;
   }
 

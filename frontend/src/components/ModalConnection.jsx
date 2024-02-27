@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import "../styles/modalConnection.css";
+import "../styles/components/modalConnection.css";
 
 function ModalConnection() {
   const [modal, setModal] = useState(false);
