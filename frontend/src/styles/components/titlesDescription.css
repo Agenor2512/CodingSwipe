@@ -7,7 +7,7 @@
 }
 
 .titles_description_container > h2,
-p {
+.titles_description_container > p {
   font-weight: bold;
   text-align: center;
   font-family: var(--primary-font);
