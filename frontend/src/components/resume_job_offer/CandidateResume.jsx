@@ -1,7 +1,9 @@
 import React from "react";
 
 import "../../styles/resume_job_offer/candidateResume.css";
-
+/* TODO :
+ - Mettre la div mère de Je rehcerche et Lieu de travail en row
+*/
 function CandidateResume() {
   const enterpriseExpectations = [
     {
@@ -180,8 +182,8 @@ function CandidateResume() {
   ];
 
   return (
-    <>
-      <div>
+    <div className="resume_container">
+      <div className="resume_header">
         <div>W</div>
         <h1>Développeur/Développeuse</h1>
         <select>
@@ -189,7 +191,7 @@ function CandidateResume() {
         </select>
       </div>
 
-      <div className="desktop">
+      <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
           <textarea placeholder="Dites aux entreprises qui vous êtes">
@@ -202,27 +204,29 @@ function CandidateResume() {
           <h2>Ma recherche</h2>
 
           <div>
-            <p>
-              Je recherche <span>:</span>
-            </p>
-            {enterpriseExpectations.map(({ key, text }) => (
-              <div className="enterprise_expectation_container" key={key}>
-                <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">{text}</label>
-              </div>
-            ))}
-          </div>
+            <div>
+              <p>
+                Je recherche <span>:</span>
+              </p>
+              {enterpriseExpectations.map(({ key, text }) => (
+                <div className="candidate_expectation_container" key={key}>
+                  <input type="checkbox" id="checkbox" />
+                  <label htmlFor="checkbox">{text}</label>
+                </div>
+              ))}
+            </div>
 
-          <div>
-            <p>
-              Lieu de travail <span>:</span>
-            </p>
-            {enterpriseWorkplaces.map(({ key, text }) => (
-              <div className="enterprise_workplace_container" key={key}>
-                <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">{text}</label>
-              </div>
-            ))}
+            <div>
+              <p>
+                Lieu de travail <span>:</span>
+              </p>
+              {enterpriseWorkplaces.map(({ key, text }) => (
+                <div className="candidate_workplace_container" key={key}>
+                  <input type="checkbox" id="checkbox" />
+                  <label htmlFor="checkbox">{text}</label>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
@@ -254,7 +258,7 @@ function CandidateResume() {
           <button type="button">Ajouter</button>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 
