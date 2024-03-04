@@ -10,7 +10,6 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
-import CandidateResume from "./components/resume_job_offer/CandidateResume";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +26,6 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/hello",
-        element: <CandidateResume />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 1rem;
   font-family: var(--primary-font);
+  background-color: var(--color-white);
 }
 
 .resume_container > .resume_header {
@@ -61,6 +62,7 @@
   min-height: 10vh;
   margin: 1.5rem 0;
   border: none;
+  resize: none;
 }
 
 .resume_container > .modify_display_desktop > div > textarea:focus {
@@ -203,7 +205,9 @@
     align-items: center;
     width: 70vw;
     padding: 1.5rem;
-    border: 1px solid black;
+    margin: 2rem;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
   }
 
   .resume_container > .resume_header {
@@ -251,6 +255,31 @@
     > .modify_display_desktop
     > .research_and_workplace_container
     > div {
+    width: 30vw;
+  }
+
+  .resume_container > .modify_display_desktop > div > h2,
+  .resume_container
+    > .modify_display_desktop
+    > .research_and_workplace_container
+    > h2,
+  .resume_container > div > section > h2 {
+    border-bottom: 8px solid var(--fourth-color);
+  }
+
+  .resume_container > .skills_languages_experiences_desktop {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    width: 63vw;
+    height: 71vh;
+  }
+
+  .resume_container > div > .soft_skills,
+  .resume_container > div > .computer_language_checkbox_container,
+  .resume_container > div > .significatives_experiences,
+  .resume_container > div > .significatives_experiences > div {
     width: 30vw;
   }
 }

@@ -233,7 +233,7 @@ function CandidateResume() {
         </section>
       </div>
 
-      <div>
+      <div className="skills_languages_experiences_desktop">
         <section className="soft_skills">
           <h2>Soft skills</h2>
           <div>
