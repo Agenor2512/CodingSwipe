@@ -24,6 +24,11 @@
   font-weight: bold;
 }
 
+.resume_container > .resume_header > section {
+  display: flex;
+  flex-direction: column;
+}
+
 .resume_container > div > section > h1 {
   color: var(--primary-color);
   font-size: 1.25rem;
@@ -49,12 +54,6 @@
 .resume_container > .modify_display_desktop > div {
   display: flex;
   flex-direction: column;
-}
-
-.resume_container > .modify_display_desktop > div > h2 {
-  padding: 0.5rem 0;
-  border-bottom: 5px solid var(--fourth-color);
-  font-size: 1rem;
 }
 
 .resume_container > .modify_display_desktop > div > textarea {
@@ -83,6 +82,7 @@
   border-radius: 10px;
 }
 
+.resume_container > .modify_display_desktop > div > h2,
 .resume_container
   > .modify_display_desktop
   > .research_and_workplace_container
@@ -229,7 +229,7 @@
   }
 
   .resume_container > .resume_header > section {
-    display: flex;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -254,7 +254,11 @@
   .resume_container
     > .modify_display_desktop
     > .research_and_workplace_container
-    > div {
+    > div,
+  .resume_container > div > .soft_skills,
+  .resume_container > div > .computer_language_checkbox_container,
+  .resume_container > div > .significatives_experiences,
+  .resume_container > div > .significatives_experiences > div {
     width: 30vw;
   }
 
@@ -274,12 +278,5 @@
     flex-wrap: wrap;
     width: 63vw;
     height: 71vh;
-  }
-
-  .resume_container > div > .soft_skills,
-  .resume_container > div > .computer_language_checkbox_container,
-  .resume_container > div > .significatives_experiences,
-  .resume_container > div > .significatives_experiences > div {
-    width: 30vw;
   }
 }
