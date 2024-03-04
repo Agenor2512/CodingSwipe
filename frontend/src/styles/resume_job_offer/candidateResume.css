@@ -36,21 +36,6 @@
   margin: 1rem;
 }
 
-.resume_container > .resume_header > section > select {
-  align-self: center;
-  width: 12rem;
-  height: 2.5rem;
-  padding: 0 1rem;
-  margin: 1rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.resume_container > .resume_header > select > option {
-  text-align: left;
-}
-
 .resume_container > .modify_display_desktop > div {
   display: flex;
   flex-direction: column;
@@ -236,10 +221,6 @@
   .resume_container > .resume_header > section > h1 {
     margin: 0;
     font-size: 2rem;
-  }
-
-  .resume_container > .resume_header > section > select {
-    margin-left: 2rem;
   }
 
   .resume_container > .modify_display_desktop {
