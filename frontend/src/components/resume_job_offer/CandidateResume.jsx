@@ -185,10 +185,12 @@ function CandidateResume() {
     <div className="resume_container">
       <div className="resume_header">
         <div>W</div>
-        <h1>Développeur/Développeuse</h1>
-        <select>
-          <option>Frontend</option>
-        </select>
+        <section>
+          <h1>Développeur/Développeuse</h1>
+          <select>
+            <option>Frontend</option>
+          </select>
+        </section>
       </div>
 
       <div className="modify_display_desktop">
@@ -221,7 +223,7 @@ function CandidateResume() {
                 Lieu de travail <span>:</span>
               </p>
               {enterpriseWorkplaces.map(({ key, text }) => (
-                <div className="candidate_workplace_container" key={key}>
+                <div className="candidate_expectation_container" key={key}>
                   <input type="checkbox" id="checkbox" />
                   <label htmlFor="checkbox">{text}</label>
                 </div>
@@ -234,28 +236,33 @@ function CandidateResume() {
       <div>
         <section className="soft_skills">
           <h2>Soft skills</h2>
-          {softSkills.map(({ key, text }) => (
-            <div className="soft_skills_container" key={key}>
-              <input type="checkbox" id="checkbox" />
-              <label htmlFor="checkbox">{text}</label>
-            </div>
-          ))}
+          <div>
+            {softSkills.map(({ key, text }) => (
+              <div className="soft_skills_container" key={key}>
+                <input type="checkbox" id="checkbox" />
+                <label htmlFor="checkbox">{text}</label>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="computer_language_checkbox_container">
           <h2>Langages informatiques</h2>
-
-          {computerLanguages.map(({ key, text }) => (
-            <div key={key}>
-              <input type="checkbox" id="checkbox" />
-              <label htmlFor="checkbox">{text}</label>
-            </div>
-          ))}
+          <div>
+            {computerLanguages.map(({ key, text }) => (
+              <div key={key}>
+                <input type="checkbox" id="checkbox" />
+                <label htmlFor="checkbox">{text}</label>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
-          <button type="button">Ajouter</button>
+          <div>
+            <button type="button">Ajouter</button>
+          </div>
         </section>
       </div>
     </div>
