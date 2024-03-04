@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import "../../styles/registerStepOne.css";
+import axios from "axios";
 
 function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
@@ -408,6 +411,52 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
       text: "976 - Mayotte",
     },
   ];
+
+  const [enterpriseName, setEnterpriseName] = useState("");
+  const [siretNumber, setSiretNumber] = useState("");
+  const [legalStatus, setLegalStatus] = useState("");
+  const [businessSector, setBusinessSector] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChangeEnterprisename = (event) => {
+    setEnterpriseName(event.target.value);
+  };
+
+  const handleChangeSiretNumber = (event) => {
+    setSiretNumber(event.target.value);
+  };
+
+  const handleChangeLegalStatus = (event) => {
+    setLegalStatus(event.target.value);
+  };
+
+  const handleChangeBusinessSector = (event) => {
+    setBusinessSector(event.target.value);
+  };
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3310/api/enterprises/", {
+        enterpriseName,
+        siretNumber,
+        legalStatus,
+        businessSector,
+        email,
+        password,
+      })
+      .then((response) => console.info(response))
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div className="step_one_register">

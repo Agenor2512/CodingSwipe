@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Import itemControllers module for handling item-related operations
 const itemControllers = require("./controllers/itemControllers");
-const companyControllers = require("./controllers/companyControllers");
+const enterpriseControllers = require("./controllers/enterpriseControllers");
 
 // Route to get a list of items
 router.get("/items", itemControllers.browse);
@@ -20,7 +20,7 @@ router.get("/items/:id", itemControllers.read);
 router.post("/items", itemControllers.add);
 
 /* ************************************************************************* */
-router.get("/companies", companyControllers.browse);
-router.post("/companies", companyControllers.add);
+router.get("/enterprises", enterpriseControllers.browse);
+router.post("/enterprises", enterpriseControllers.add);
 
 module.exports = router;

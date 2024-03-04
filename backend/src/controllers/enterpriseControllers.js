@@ -2,30 +2,33 @@ const tables = require("../tables");
 
 const browse = async (req, res, next) => {
   try {
-    const companies = await tables.company.readAll();
-    res.json(companies);
+    const enterprises = await tables.enterprise.readAll();
+    res.json(enterprises);
   } catch (err) {
     next(err);
   }
 };
 
 const add = async (req, res, next) => {
-  const companyInfo = {
+  const enterpriseInfo = {
     name: req.body.name,
     siret: req.body.siret,
     legal_status: req.body.legal_status,
     business_sector: req.body.business_sector,
-    description: req.body.company_description,
+    description: req.body.description,
+    email: req.body.email,
+    password: req.body.hashedPassword,
   };
 
   try {
-    const insertId = await tables.company.create(companyInfo);
+    const insertId = await tables.enterprise.create(enterpriseInfo);
 
     res.status(201).json({ insertId });
   } catch (err) {
     next(err);
   }
 };
+
 module.exports = {
   browse,
   add,
@@ -56,22 +59,4 @@ module.exports = {
 //   }
 // };
 
-// const update = async (req, res, next) => {
-//   const user = {
-//     username: req.body.username,
-//     id: req.params.id,
-//   };
-//   try {
-//     const result = await tables.user.update(user);
-//     console.info(result);
-//     if (result.affectedRows > 0) {
-//       res.json({ msg: "Utilisateur modifié avec succès" });
-//     } else {
-//       res.sendStatus(400);
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-// module.exports = { browse, update, add };
+// module.exports = { browse, add };
