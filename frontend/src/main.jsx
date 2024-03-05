@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
+import UsersNavigation from "./components/UsersNavigation";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
+      },
+      {
+        path: "/usersNavigation",
+        element: <UsersNavigation />,
       },
     ],
     errorElement: <ErrorPage />,
