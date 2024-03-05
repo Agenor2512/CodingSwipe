@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import "../../styles/registerStepOne.css";
+import React, { useContext } from "react";
+
 import axios from "axios";
+
+import RegisterContext from "../../context/RegisterContext";
+
+import "../../styles/registerStepOne.css";
 
 function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
@@ -412,27 +416,15 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const [enterpriseName, setEnterpriseName] = useState("");
-  const [siretNumber, setSiretNumber] = useState("");
-  const [legalStatus, setLegalStatus] = useState("");
-  const [businessSector, setBusinessSector] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { setName, setSiretNumber, setEmail, setPassword } =
+    useContext(RegisterContext);
 
-  const handleChangeEnterprisename = (event) => {
-    setEnterpriseName(event.target.value);
+  const handleChangeName = (event) => {
+    setName(event.target.value);
   };
 
   const handleChangeSiretNumber = (event) => {
     setSiretNumber(event.target.value);
-  };
-
-  const handleChangeLegalStatus = (event) => {
-    setLegalStatus(event.target.value);
-  };
-
-  const handleChangeBusinessSector = (event) => {
-    setBusinessSector(event.target.value);
   };
 
   const handleChangeEmail = (event) => {
@@ -445,17 +437,6 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
 
   const submitForm = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3310/api/enterprises/", {
-        enterpriseName,
-        siretNumber,
-        legalStatus,
-        businessSector,
-        email,
-        password,
-      })
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
   };
 
   return (
@@ -475,6 +456,7 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               minLength={1}
               name="enterpriseName"
               id="enterpriseName"
+              onChange={handleChangeName}
               placeholder="Windy Corporation"
               required
             />
@@ -487,6 +469,7 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               min={0}
               name="siretNumber"
               id="siretNumber"
+              onChange={handleChangeSiretNumber}
               placeholder="exemple: 12345678901234"
               required
             />
@@ -495,11 +478,12 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="emailCompagny">Email</label>
+            <label htmlFor="emailCompany">Email</label>
             <input
               type="email"
-              name="emailCompagny"
-              id="emailCompagny"
+              name="emailCompany"
+              id="emailCompany"
+              onChange={handleChangeEmail}
               placeholder="exemple@gmail.com"
               required
             />
@@ -527,6 +511,7 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               minLength={8}
               name="password"
               id="password"
+              onChange={handleChangePassword}
               placeholder="Saisissez un mot de passe"
               required
             />
@@ -539,6 +524,7 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               minLength={8}
               name="passwordCheck"
               id="passwordCheck"
+              onChange={handleChangePassword}
               placeholder="Vérifiez votre mot de passe"
               required
             />
