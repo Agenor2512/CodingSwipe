@@ -1,0 +1,25 @@
+.resume_container > .resume_header > section > select {
+  align-self: center;
+  width: 12rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.resume_container > .resume_header > section > select:focus {
+  outline: 0;
+  border-color: var(--primary-color);
+}
+
+.resume_container > .resume_header > select > option {
+  text-align: left;
+}
+
+@media screen and (min-width: 600px) {
+  .resume_container > .resume_header > section > select {
+    margin-left: 2.5rem;
+  }
+}

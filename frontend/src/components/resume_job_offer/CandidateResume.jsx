@@ -1,9 +1,8 @@
 import React from "react";
 
+import DropDownList from "./DropDownList";
 import "../../styles/resume_job_offer/candidateResume.css";
-/* TODO :
- - Mettre la div mère de Je rehcerche et Lieu de travail en row
-*/
+
 function CandidateResume() {
   const enterpriseExpectations = [
     {
@@ -187,18 +186,17 @@ function CandidateResume() {
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>
-          <select>
-            <option>Frontend</option>
-          </select>
+          <DropDownList />
         </section>
       </div>
 
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-          <textarea placeholder="Dites aux entreprises qui vous êtes">
-            {" ... "}
-          </textarea>
+          <textarea
+            type="text"
+            placeholder="Dites aux entreprises qui vous êtes"
+          />
           <button type="button">Modifier</button>
         </div>
 
