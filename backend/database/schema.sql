@@ -103,10 +103,10 @@ create table resume_has_contract_type_looked_for (
 create table resume_has_work_rhythm_looked_for (
   id int not null auto_increment,
   resume_id varchar(36) not null,
-  works_rhythms_id int not null,
+  work_rhythms_id int not null,
   primary key(id),
   foreign key(resume_id) references resume(id),
-  foreign key(works_rhythms_id) references work_rhythms(id)
+  foreign key(work_rhythms_id) references work_rhythms(id)
 );
 
 create table experiences (
@@ -142,6 +142,7 @@ create table main_missions (
   id int not null auto_increment, 
   mission text,
   job_offer_id varchar(36) not null,
+  primary key(id),
   foreign key(job_offer_id) references job_offer(id)
 );
 
