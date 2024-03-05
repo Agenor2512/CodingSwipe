@@ -1,10 +1,16 @@
 start transaction;
 
+drop database coding_swipe;
+
+create database coding_swipe;
+
+use coding_swipe;
+
 create table departments (
-  id int not null,
+  id int not null auto_increment,
   department varchar(100) not null,
   primary key(id)
-)
+);
 
 create table enterprise (
   id varchar(36) not null,
@@ -16,8 +22,8 @@ create table enterprise (
   password varchar(100) not null,
   department_id int not null,
   primary key(id),
-  foreign key(department_id) references department(id)
-)
+  foreign key(department_id) references departments(id)
+);
 
 create table candidate (
   id varchar(36) not null,
@@ -27,101 +33,101 @@ create table candidate (
   password varchar(100) not null,
   department_id int not null,
   primary key(id),
-  foreign key(department_id) references department(id)
-)
+  foreign key(department_id) references departments(id)
+);
 
 create table soft_skills (
-  id int not null,
+  id int not null auto_increment,
   soft_skill varchar(100),
   primary key(id)
-)
+);
 
 create table programming_languages (
-  id int not null,
+  id int not null auto_increment,
   programming_language varchar(100),
   primary key(id)
-)
+);
 
-create table contracts_types (
-  id int not null,
+create table contract_types (
+  id int not null auto_increment,
   contract_type varchar(100),
   primary key(id)
-)
+);
 
 create table work_rhythms (
-  id int not null,
+  id int not null auto_increment,
   work_rhythm varchar(100),
   primary key(id)
-)
+);
 
 create table resume ( 
   id varchar(36) not null,
   soft_skills varchar(100),
   programming_languages varchar(100) not null,
-  contracts_types varchar(100) not null,
+  contract_types varchar(100) not null,
   work_rhythms varchar(100) not null, 
   experiences text,
   biography text, 
   candidate_id varchar(100) not null,
   primary key(id),
   foreign key(candidate_id) references candidate(id)
-)
+);
 
 create table resume_has_soft_skills (
-  id int not null,
+  id int not null auto_increment,
   resume_id varchar(36) not null,
   soft_skills_id int not null,
   primary key(id),
   foreign key(resume_id) references resume(id),
   foreign key(soft_skills_id) references soft_skills(id)
-)
+);
 
 create table resume_has_programming_languages (
-  id int not null,
+  id int not null auto_increment,
   resume_id varchar(36) not null,
   programming_languages_id int not null,
   primary key(id),
   foreign key(resume_id) references resume(id),
   foreign key(programming_languages_id) references programming_languages(id)
-)
+);
 
 create table resume_has_contract_type_looked_for (
-  id int not null,
+  id int not null auto_increment,
   resume_id varchar(36) not null,
-  contracts_types_id int not null,
+  contract_types_id int not null,
   primary key(id),
   foreign key(resume_id) references resume(id),
-  foreign key(contracts_types_id) references contracts_types(id)
-)
+  foreign key(contract_types_id) references contract_types(id)
+);
 
 create table resume_has_work_rhythm_looked_for (
-  id int not null,
+  id int not null auto_increment,
   resume_id varchar(36) not null,
   works_rhythms_id int not null,
   primary key(id),
   foreign key(resume_id) references resume(id),
   foreign key(works_rhythms_id) references work_rhythms(id)
-)
+);
 
 create table experiences (
-  id int not null,
+  id int not null auto_increment,
   resume_id varchar(36) not null,
   primary key(id),
   foreign key(resume_id) references resume(id)
-)
+);
 
 create table job_offer (
   id varchar(36) not null,
   programming_languages varchar(100) not null,
   salary varchar(100),
-  contracts_types_id int not null,
+  contract_types_id int not null,
   works_rhythms_id int not null,
   enterprise_id varchar(36) not null,
   primary key(id),
-  foreign key(contracts_types_id) references contracts_types(id),
+  foreign key(contract_types_id) references contract_types(id),
   foreign key(works_rhythms_id) references work_rhythms(id),
-  foreign key(enterprise_id) references enterprise(id),
-)
+  foreign key(enterprise_id) references enterprise(id)
+);
 
 create table job_offer_has_programming_languages (
   id varchar(36) not null,
@@ -130,16 +136,16 @@ create table job_offer_has_programming_languages (
   primary key(id),
   foreign key(job_offer_id) references job_offer(id),
   foreign key(programming_languages_id) references programming_languages(id)
-)
+);
 
 create table main_missions (
-  id int not null, 
+  id int not null auto_increment, 
   mission text,
   job_offer_id varchar(36) not null,
   foreign key(job_offer_id) references job_offer(id)
-)
+);
 
-insert into departements (department) values
+insert into departments (department) values
 ("01 - Ain"),
 ("02 - Aisne"),
 ("03 - Allier"),
@@ -159,8 +165,8 @@ insert into departements (department) values
 ("17 - Charente-Maritime"),
 ("18 - Cher"),
 ("19 - Corrèze"),
-("21 - Côte-d""Or"),
-("22 - Côtes-d""Armor"),
+("21 - Côte-d'Or"),
+("22 - Côtes-d'Armor"),
 ("23 - Creuse"),
 ("24 - Dordogne"),
 ("25 - Doubs"),
@@ -233,7 +239,7 @@ insert into departements (department) values
 ("92 - Hauts-de-Seine"),
 ("93 - Seine-Saint-Denis"),
 ("94 - Val-de-Marne"),
-("95 - Val-d""Oise"),
+("95 - Val-d'Oise"),
 ("971 - Guadeloupe"),
 ("972 - Martinique"),
 ("973 - Guyane"),
@@ -278,7 +284,7 @@ insert into programming_languages (programming_language) values
 ("SQL"),
 ("NoSQL");
 
-insert into contracts_types (contract_type) values 
+insert into contract_types (contract_type) values 
 ("Un CDI"),
 ("Un CDD"),
 ("Un Stage / Une alternance"),
