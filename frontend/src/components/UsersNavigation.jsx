@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 import "../styles/usersNavigation.css";
@@ -8,9 +9,15 @@ function UsersNavigation() {
     lastName: "Doe",
   });
 
-  setCurrentUsers({
-    firstName: "Micka",
-  });
+  const changeUserNameDynamically = () => {
+    setCurrentUsers((actualUser) => {
+      const newUser = [...actualUser];
+
+      newUser.firstname = "Mika";
+
+      return newUser;
+    });
+  };
 
   return (
     <div className="header">
