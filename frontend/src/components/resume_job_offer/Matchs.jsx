@@ -1,22 +1,26 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import RegisterContext from "../../context/RegisterContext";
 import "../../styles/resume_job_offer/matchs.css";
 
 function getFirstLetter(name) {
   return name.charAt(0).toUpperCase();
 }
 
-function Matchs({ userType, matchesData }) {
+function Matchs({ matchesData }) {
+  const { userRole } = useContext(RegisterContext);
+
   return (
     <section className="match_container">
-      {userType === "match" &&
+      {userRole === "match" &&
         matchesData.map((match) => (
           <div key={match.id} className="match_card">
-            {userType === "candidat" ? (
+            {userRole === "candidat" ? (
               <div>
                 <div>{getFirstLetter(match.name)}</div>
                 <div>{match.category}</div>
-                <div>Région de l'employeur: {match.region}</div>
-                <div>Intitulé du poste: {match.jobName}</div>
+                <div>{match.region}</div>
+                <div>{match.jobName}</div>
               </div>
             ) : (
               <div className="match_card_content">
@@ -40,7 +44,6 @@ function Matchs({ userType, matchesData }) {
 }
 
 Matchs.propTypes = {
-  userType: PropTypes.string.isRequired,
   matchesData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

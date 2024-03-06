@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/resume_job_offer/homePageUserNav.css";
 import Matchs from "./Matchs";
+import RegisterContext from "../../context/RegisterContext";
 
 function HomePageUserNav() {
   const matchesData = [
@@ -33,7 +34,7 @@ function HomePageUserNav() {
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [userType, setUserType] = useState();
+  const { setUserRole } = useContext(RegisterContext);
 
   const openNav = () => {
     setIsNavOpen(true);
@@ -44,7 +45,7 @@ function HomePageUserNav() {
   };
 
   const handleTabClick = (type) => {
-    setUserType(type);
+    setUserRole(type);
   };
 
   return (
@@ -55,7 +56,7 @@ function HomePageUserNav() {
           <li>MESSAGES</li>
           <li>MON PROFIL</li>
         </ul>
-        <Matchs userType={userType} matchesData={matchesData} />
+        <Matchs userType={setUserRole} matchesData={matchesData} />
       </div>
 
       <nav>
@@ -73,7 +74,7 @@ function HomePageUserNav() {
             <li>MESSAGES</li>
             <li>MON PROFIL</li>
           </ul>
-          <Matchs userType={userType} matchesData={matchesData} />
+          <Matchs userType={setUserRole} matchesData={matchesData} />
         </div>
         <div className="button_container">
           <button type="button" id="openBtn" onClick={openNav}>
