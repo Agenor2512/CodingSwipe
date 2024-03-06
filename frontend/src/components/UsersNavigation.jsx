@@ -1,15 +1,16 @@
-/* import React, { useState } from "react"; */
+import React, { useState } from "react";
 
-import "../styles/UsersNavigation.css";
+import "../styles/usersNavigation.css";
 
 function UsersNavigation() {
-  /* const toggleUsers = () => {
-    setUsers(!users);
-  };
+  const [currentUsers, setCurrentUsers] = useState({
+    firstName: "John",
+    lastName: "Doe",
+  });
 
-  const toggleUsersOnce = () => {
-    setUsers(true);
-  };
+  setCurrentUsers({
+    firstName: "Micka",
+  });
 
   return (
     <div className="header">
@@ -17,8 +18,20 @@ function UsersNavigation() {
         Coding<span>Swipe</span>
       </h4>
       <div className="square"> </div>
+      {currentUsers && (
+        <div className="user-info-container">
+          <div className="user-avatar">{currentUsers.firstName[0]}</div>
+          <div className="user-details">
+            <span className="user-name">
+              {currentUsers.firstName} {currentUsers.lastName}
+            </span>
+          </div>
+        </div>
+      )}
+
       <hr className="separator" />
     </div>
-  ); */
+  );
 }
+
 export default UsersNavigation;
