@@ -1,29 +1,41 @@
 import PropTypes from "prop-types";
+import "../../styles/resume_job_offer/matchs.css";
+
+function getFirstLetter(name) {
+  return name.charAt(0).toUpperCase();
+}
 
 function Matchs({ userType, matchesData }) {
   return (
-    <div className="matches_container">
+    <section className="match_container">
       {userType === "match" &&
         matchesData.map((match) => (
           <div key={match.id} className="match_card">
             {userType === "candidat" ? (
-              <>
-                <div>Initiale id entreprise : {match.name}</div>
+              <div>
+                <div>{getFirstLetter(match.name)}</div>
                 <div>{match.category}</div>
                 <div>Région de l'employeur: {match.region}</div>
-                <div>Intitulé du poste {match.jobName}</div>
-              </>
+                <div>Intitulé du poste: {match.jobName}</div>
+              </div>
             ) : (
-              <>
-                <div>Initial du candidat : {match.name}</div>
-                <div>Intitulé de son poste: {match.category}</div>
-                <div>Date: {match.date}</div>
-                <div>Intitulé du poste qu'il a liké {match.jobName}</div>
-              </>
+              <div className="match_card_content">
+                <div className="first_content_block">
+                  {getFirstLetter(match.name)}
+                </div>
+
+                <div className="second_content_block">
+                  <div>
+                    <span style={{ fontWeight: "bold" }}>{match.category}</span>
+                    {`-${match.date}`}
+                  </div>
+                  <div className="font_content"> {match.jobName}</div>
+                </div>
+              </div>
             )}
           </div>
         ))}
-    </div>
+    </section>
   );
 }
 

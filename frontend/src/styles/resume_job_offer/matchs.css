@@ -1,0 +1,32 @@
+.match_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.match_container > .match_card {
+  border: 2px solid var(--primary-color);
+  color: var(--color-white);
+  margin: 1rem;
+}
+
+.match_container > .match_card > .match_card_content {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.match_container > .match_card > .match_card_content > .first_content_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 0.2rem;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  font-size: 36px;
+}
+
+.match_container > .match_card > .match_card_content > .second_content_block {
+  margin: 0.5rem;
+}
