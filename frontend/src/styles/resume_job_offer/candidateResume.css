@@ -41,32 +41,6 @@
   flex-direction: column;
 }
 
-.resume_container > .modify_display_desktop > div > textarea {
-  width: 90vw;
-  min-height: 10vh;
-  margin: 1.5rem 0;
-  border: none;
-  resize: none;
-}
-
-.resume_container > .modify_display_desktop > div > textarea:focus {
-  border: 1px solid var(--register-background-color);
-  border-radius: 5px;
-  outline: none;
-}
-
-.resume_container > .modify_display_desktop > div > button,
-.resume_container > div > .significatives_experiences > div > button {
-  width: 8.6rem;
-  height: 2.2rem;
-  margin: 1rem;
-  align-self: center;
-  color: var(--secondary-color);
-  background-color: var(--color-black);
-  border: none;
-  border-radius: 10px;
-}
-
 .resume_container > .modify_display_desktop > div > h2,
 .resume_container
   > .modify_display_desktop
@@ -160,6 +134,18 @@
   min-height: 20vh;
 }
 
+.resume_container > div > .significatives_experiences > div > button {
+  width: 8.6rem;
+  height: 2.2rem;
+  margin: 1rem;
+  align-self: center;
+  color: var(--secondary-color);
+  background-color: var(--color-black);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--primary-font);
+}
+
 .resume_container input#checkbox {
   display: inline-block;
   width: 1.15em;
@@ -231,7 +217,6 @@
   }
 
   .resume_container > .modify_display_desktop > div,
-  .resume_container > .modify_display_desktop > div > textarea,
   .resume_container
     > .modify_display_desktop
     > .research_and_workplace_container
