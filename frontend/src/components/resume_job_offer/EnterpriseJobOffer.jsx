@@ -2,6 +2,7 @@
 import React from "react";
 
 import DropDownList from "./DropDownList";
+import SalaryAdministrator from "./SalaryAdministrator";
 
 import "../../styles/resume_job_offer/enterpriseJobOffer.css";
 
@@ -181,8 +182,7 @@ function EnterpriseJobOffer() {
             <label htmlFor="salary">
               Salaire <span>:</span>
             </label>
-            <input type="text" id="salary" name="salary" />
-            <button type="button" />
+            <SalaryAdministrator />
           </div>
         </section>
 

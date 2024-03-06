@@ -151,33 +151,6 @@
   margin: 1.3rem 0;
 }
 
-.users_infos_container > div > .annual_salary > div > input {
-  width: 40vw;
-  margin: 0 1rem;
-  padding: 0.3rem;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-  background-color: var(--secondary-color);
-  font-family: var(--secondary-font);
-}
-
-.users_infos_container > div > .annual_salary > div > input:focus {
-  outline: none;
-  border: 1px solid var(--register-background-color);
-}
-
-.users_infos_container > div > .annual_salary > div > button {
-  display: flex;
-  align-self: center;
-  width: 2vw;
-  height: 2.5vh;
-  border: none;
-  background: none;
-  background-image: url("../../assets/unlocked.svg");
-  background-repeat: no-repeat;
-}
-
 .users_infos_container > div > .computer_language_checkbox_container > div {
   display: flex;
   flex-direction: column;
@@ -284,10 +257,6 @@
     > h2,
   .users_infos_container > div > section > h2 {
     border-bottom: 8px solid var(--fourth-color);
-  }
-
-  .users_infos_container > div > .annual_salary > div > input {
-    width: 17vw;
   }
 
   .users_infos_container > .salary_languages_missions_desktop {
