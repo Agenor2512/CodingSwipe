@@ -11,7 +11,7 @@ import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
 
-import HomePageUserNav from "./components/HomePageUserNav";
+import HomePageUserNav from "./components/resume_job_offer/HomePageUserNav";
 
 const router = createBrowserRouter([
   {
