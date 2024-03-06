@@ -27,7 +27,7 @@ function ModifyButton() {
             type="text"
             value={description}
             onChange={handleChange}
-            placeholder="Dites aux entreprises qui vous êtes"
+            placeholder="Dites-en plus sur vous"
           />
           <button type="button" onClick={handleSave}>
             Terminé
