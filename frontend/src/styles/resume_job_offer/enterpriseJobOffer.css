@@ -161,9 +161,21 @@
   background-color: var(--secondary-color);
   font-family: var(--secondary-font);
 }
+
 .users_infos_container > div > .annual_salary > div > input:focus {
   outline: none;
   border: 1px solid var(--register-background-color);
+}
+
+.users_infos_container > div > .annual_salary > div > button {
+  display: flex;
+  align-self: center;
+  width: 2vw;
+  height: 2.5vh;
+  border: none;
+  background: none;
+  background-image: url("../../assets/unlocked.svg");
+  background-repeat: no-repeat;
 }
 
 .users_infos_container > div > .computer_language_checkbox_container > div {

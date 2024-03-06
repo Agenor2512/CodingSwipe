@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 
 import DropDownList from "./DropDownList";
@@ -180,8 +181,8 @@ function EnterpriseJobOffer() {
             <label htmlFor="salary">
               Salaire <span>:</span>
             </label>
-            <input name="salary" id="salary" />
-            <button type="button">hello</button>
+            <input type="text" id="salary" name="salary" />
+            <button type="button" />
           </div>
         </section>
 
