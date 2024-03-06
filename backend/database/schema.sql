@@ -12,6 +12,18 @@ create table departments (
   primary key(id)
 );
 
+create table legal_status (
+  id int not null auto_increment,
+  legal_status varchar(100) not null,
+  primary key(id)
+);
+
+create table business_sectors (
+  id int not null auto_increment,
+  business_sector varchar(100) not null,
+  primary key(id)
+);
+
 create table enterprise (
   id varchar(36) not null,
   name varchar(100) not null,
@@ -21,8 +33,12 @@ create table enterprise (
   email varchar(320) not null,
   password varchar(100) not null,
   department_id int not null,
+  legal_status_id int not null,
+  business_sectors_id int not null,
   primary key(id),
-  foreign key(department_id) references departments(id)
+  foreign key(department_id) references departments(id),
+  foreign key(legal_status_id) references legal_status(id),
+  foreign key(business_sectors_id) references business_sectors(id)
 );
 
 create table candidate (
@@ -246,6 +262,39 @@ insert into departments (department) values
 ("973 - Guyane"),
 ("974 - La Réunion"),
 ("976 - Mayotte");
+
+insert into legal_status (legal_status) values
+('EI - Entrepreneur individuel'),
+('EURL - Entreprise unipersonnelle à responsabilité limitée'),
+('SARL - Société à responsabilité limitée'),
+('SASU - Société par actions simplifiée unipersonnelle'),
+('SAS - Société par actions simplifiée'),
+('SA - Société anonyme'),
+('SNC - Société en nom collectif'),
+('SCS - Société en commandite simple'),
+('SCA - Société en commandite par actions');
+
+insert into business_sectors (business_sector) values
+('Services financiers'),
+('Santé et sciences de la vie'),
+('Énergie'),
+('Industrie manufacturière'),
+('Commerce de détail et de gros'),
+('Alimentation et boissons'),
+('Transport et logistique'),
+('Immobilier'),
+('Éducation'),
+('Divertissement et médias'),
+('Services professionnels'),
+('Tourisme et hôtellerie'),
+('Industrie extractive'),
+('Télécommunications'),
+('Environnement et durabilité'),
+('Sport et loisirs'),
+('Mode et habillement'),
+('Biens de consommation'),
+('Services gouvernementaux et publics'),
+('Technologie de l''information et des communications (TIC)');
 
 insert into soft_skills (soft_skill) values 
 ("Communication"),
