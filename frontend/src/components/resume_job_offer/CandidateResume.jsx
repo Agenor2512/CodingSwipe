@@ -181,8 +181,8 @@ function CandidateResume() {
   ];
 
   return (
-    <div className="resume_container">
-      <div className="resume_header">
+    <div className="users_infos_container">
+      <div className="users_infos_header">
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>

@@ -123,8 +123,8 @@ function EnterpriseJobOffer() {
   ];
 
   return (
-    <div className="resume_container">
-      <div className="resume_header">
+    <div className="users_infos_container">
+      <div className="users_infos_header">
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>
@@ -176,11 +176,13 @@ function EnterpriseJobOffer() {
       <div className="salary_languages_missions_desktop">
         <section className="annual_salary">
           <h2>Salaire annuel brut</h2>
-          <label htmlFor="salary">
-            Salaire <span>:</span>
-          </label>
-          <input name="salary" id="salary" />
-          <button type="button">hello</button>
+          <div>
+            <label htmlFor="salary">
+              Salaire <span>:</span>
+            </label>
+            <input name="salary" id="salary" />
+            <button type="button">hello</button>
+          </div>
         </section>
 
         <section className="computer_language_checkbox_container">

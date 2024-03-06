@@ -1,4 +1,4 @@
-.resume_container > .resume_header > section > select {
+.users_infos_container > .users_infos_header > section > select {
   align-self: center;
   width: 12rem;
   height: 2.5rem;
@@ -9,17 +9,17 @@
   font-weight: bold;
 }
 
-.resume_container > .resume_header > section > select:focus {
+.users_infos_container > .users_infos_header > section > select:focus {
   outline: 0;
   border-color: var(--primary-color);
 }
 
-.resume_container > .resume_header > select > option {
+.users_infos_container > .users_infos_header > select > option {
   text-align: left;
 }
 
 @media screen and (min-width: 600px) {
-  .resume_container > .resume_header > section > select {
+  .users_infos_container > .users_infos_header > section > select {
     margin-left: 2.5rem;
   }
 }
