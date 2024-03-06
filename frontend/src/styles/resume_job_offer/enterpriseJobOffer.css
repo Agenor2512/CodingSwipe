@@ -58,7 +58,7 @@
 }
 
 .users_infos_container > .modify_display_desktop > div > button,
-.users_infos_container > div > .significatives_experiences > div > button {
+.users_infos_container > div > .missions > div > button {
   width: 8.6rem;
   height: 2.2rem;
   margin: 1rem;
@@ -72,7 +72,7 @@
 .users_infos_container > .modify_display_desktop > div > h2,
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > h2,
 .users_infos_container > div > section > h2 {
   padding: 0.5rem 0;
@@ -82,7 +82,7 @@
 
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > div {
   display: flex;
   width: 90vw;
@@ -92,11 +92,10 @@
 
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > div
   > div
   > div,
-.users_infos_container > div > .soft_skills > div > div,
 .users_infos_container
   > div
   > .computer_language_checkbox_container
@@ -108,46 +107,75 @@
 
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > div
   > div
   > div
   > label,
-.users_infos_container > div > .soft_skills > div > div > label,
 .users_infos_container
   > div
   > .computer_language_checkbox_container
   > div
   > div
-  > label {
+  > label,
+.users_infos_container > div > .annual_salary > div > label {
   margin: 0 0.3rem;
 }
 
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > div
   > div
-  > p {
+  > p,
+.users_infos_container > div > .annual_salary > div > label {
   font-weight: 700;
 }
 
 .users_infos_container
   > .modify_display_desktop
-  > .research_and_workplace_container
+  > .work_proposal_container
   > div
   > div
   > p
-  > span {
+  > span,
+.users_infos_container > div > .annual_salary > div > label span {
   color: var(--primary-color);
 }
 
-.users_infos_container > div > .soft_skills > div {
+.users_infos_container > div > .annual_salary > div {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 23vh;
-  margin: 1rem 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 3vh;
+  margin: 1.3rem 0;
+}
+
+.users_infos_container > div > .annual_salary > div > input {
+  width: 40vw;
+  margin: 0 1rem;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--secondary-color);
+  font-family: var(--secondary-font);
+}
+
+.users_infos_container > div > .annual_salary > div > input:focus {
+  outline: none;
+  border: 1px solid var(--register-background-color);
+}
+
+.users_infos_container > div > .annual_salary > div > button {
+  display: flex;
+  align-self: center;
+  width: 2vw;
+  height: 2.5vh;
+  border: none;
+  background: none;
+  background-image: url("../../assets/unlocked.svg");
+  background-repeat: no-repeat;
 }
 
 .users_infos_container > div > .computer_language_checkbox_container > div {
@@ -158,7 +186,7 @@
   margin: 1rem 0;
 }
 
-.users_infos_container > div > .significatives_experiences > div {
+.users_infos_container > div > .missions > div {
   display: flex;
   justify-content: center;
   align-self: center;
@@ -240,30 +268,34 @@
   .users_infos_container > .modify_display_desktop > div > textarea,
   .users_infos_container
     > .modify_display_desktop
-    > .research_and_workplace_container
+    > .work_proposal_container
     > div,
-  .users_infos_container > div > .soft_skills,
+  .users_infos_container > div > .annual_salary,
   .users_infos_container > div > .computer_language_checkbox_container,
-  .users_infos_container > div > .significatives_experiences,
-  .users_infos_container > div > .significatives_experiences > div {
+  .users_infos_container > div > .missions,
+  .users_infos_container > div > .missions > div {
     width: 30vw;
   }
 
   .users_infos_container > .modify_display_desktop > div > h2,
   .users_infos_container
     > .modify_display_desktop
-    > .research_and_workplace_container
+    > .work_proposal_container
     > h2,
   .users_infos_container > div > section > h2 {
     border-bottom: 8px solid var(--fourth-color);
   }
 
-  .users_infos_container > .skills_languages_experiences_desktop {
+  .users_infos_container > div > .annual_salary > div > input {
+    width: 17vw;
+  }
+
+  .users_infos_container > .salary_languages_missions_desktop {
     display: flex;
     flex-direction: column;
     align-content: space-between;
     flex-wrap: wrap;
     width: 63vw;
-    height: 71vh;
+    height: 55vh;
   }
 }

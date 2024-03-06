@@ -1,12 +1,12 @@
 import React from "react";
-import CandidateResume from "../components/resume_job_offer/CandidateResume";
+import EnterpriseJobOffer from "../components/resume_job_offer/EnterpriseJobOffer";
 
 import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
   return (
     <div className="users_homepage">
-      <CandidateResume />
+      <EnterpriseJobOffer />
     </div>
   );
 }
