@@ -1,11 +1,3 @@
-start transaction;
-
-drop database coding_swipe;
-
-create database coding_swipe;
-
-use coding_swipe;
-
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
@@ -344,5 +336,3 @@ insert into work_rhythms (work_rhythm) values
 ("Sur site"),
 ("Remote partiel"),
 ("Full remote");
-
-commit;
