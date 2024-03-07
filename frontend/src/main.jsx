@@ -11,7 +11,7 @@ import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
 
-import HomePageUserNav from "./components/HomePageUserNav";
+import DeleteExperienceButton from "./components/resume_job_offer/DeleteExperienceButton";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
       },
       {
-        path: "/homePageUserNav",
-        element: <HomePageUserNav />,
+        path: "/deleteExperienceButton",
+        element: <DeleteExperienceButton />,
       },
     ],
     errorElement: <ErrorPage />,

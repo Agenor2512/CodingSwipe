@@ -1,0 +1,62 @@
+.overlay {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(49, 49, 49, 0.919);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay > .modal_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 20rem;
+  margin: 1rem;
+  background-color: var(--background-color);
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  font-family: var(--primary-font);
+}
+
+.overlay > .modal_container > p {
+  color: var(--primary-color);
+}
+
+.overlay > .modal_container > .modal_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.overlay > .modal_container > .modal_buttons > .delete_button {
+  border-radius: 10rem;
+  font-weight: bold;
+  background-color: var(--color-white);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-family: var(--secondary-font);
+}
+
+.overlay > .modal_container > .modal_buttons > .return_profil {
+  border-radius: 10rem;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  font-size: 1.2rem;
+  font-family: var(--secondary-font);
+}
+
+@media only screen and (min-width: 600px) {
+  .overlay {
+    justify-content: center;
+  }
+}
