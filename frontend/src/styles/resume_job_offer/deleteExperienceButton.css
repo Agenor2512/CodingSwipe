@@ -17,12 +17,12 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 20rem;
+  height: 16rem;
   margin: 1rem;
   background-color: var(--background-color);
   border: none;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: var(--primary-font);
 }
 
@@ -38,25 +38,53 @@
 }
 
 .overlay > .modal_container > .modal_buttons > .delete_button {
+  height: 2.5rem;
+  width: 9.25rem;
   border-radius: 10rem;
   font-weight: bold;
   background-color: var(--color-white);
   color: var(--primary-color);
   font-size: 1.2rem;
   font-family: var(--secondary-font);
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
 }
 
 .overlay > .modal_container > .modal_buttons > .return_profil {
+  height: 2.5rem;
+  width: 9.25rem;
   border-radius: 10rem;
   font-weight: bold;
   background-color: var(--primary-color);
   color: var(--color-white);
   font-size: 1.2rem;
   font-family: var(--secondary-font);
+  border: none;
+  cursor: pointer;
 }
+
+/*.return_profil:hover {
+  background-color: var(--color-white);
+  color: var(--primary-color);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.delete_button:hover {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}*/
 
 @media only screen and (min-width: 600px) {
   .overlay {
     justify-content: center;
+  }
+  .overlay > .modal_container {
+    width: 50%;
+    height: 20rem;
+    font-size: 1.5rem;
   }
 }
