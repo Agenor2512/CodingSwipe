@@ -4,7 +4,6 @@ import DropDownList from "./DropDownList";
 import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/candidateResume.css";
-import SwipeSystem from "./SwipeSystem";
 
 function CandidateResume() {
   const enterpriseExpectations = [
@@ -262,7 +261,6 @@ function CandidateResume() {
           </div>
         </section>
       </div>
-      <SwipeSystem />
     </div>
   );
 }
