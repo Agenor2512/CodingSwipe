@@ -2,7 +2,7 @@ import React from "react";
 
 import DropDownList from "./DropDownList";
 import "../../styles/resume_job_offer/candidateResume.css";
-import SwipeSystem from "../usersswipingsystem/SwipeSystem";
+import SwipeSystem from "./SwipeSystem";
 
 function CandidateResume() {
   const enterpriseExpectations = [
