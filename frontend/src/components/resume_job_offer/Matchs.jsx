@@ -15,7 +15,7 @@ function Matchs({ matchesData }) {
       {userRole === "match" &&
         matchesData.map((match) => (
           <div key={match.id} className="match_card">
-            {userRole === "candidat" ? (
+            {userRole === "candidate" ? (
               <div>
                 <div>{getFirstLetter(match.name)}</div>
                 <div>{match.jobName}</div>
