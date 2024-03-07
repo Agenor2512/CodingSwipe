@@ -1,0 +1,47 @@
+.users_infos_container > .modify_display_desktop > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.users_infos_container > .modify_display_desktop > div > div > textarea {
+  width: 90vw;
+  min-height: 10vh;
+  margin: 1.5rem 0;
+  border: none;
+  resize: none;
+  color: var(--color-black);
+  font-family: var(--secondary-font);
+}
+
+.users_infos_container > .modify_display_desktop > div > div > p {
+  padding-top: 1rem;
+  word-wrap: break-word;
+}
+
+.users_infos_container > .modify_display_desktop > div > div > textarea:focus {
+  border: 1px solid var(--register-background-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.users_infos_container > .modify_display_desktop > div > div > button {
+  width: 8.6rem;
+  height: 2.2rem;
+  margin: 1rem;
+  align-self: center;
+  color: var(--secondary-color);
+  background-color: var(--color-black);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--primary-font);
+}
+
+@media screen and (min-width: 600px) {
+  .users_infos_container > .modify_display_desktop > div > div > textarea {
+    width: 30vw;
+  }
+
+  .users_infos_container > .modify_display_desktop > div > div > button {
+    cursor: pointer;
+  }
+}
