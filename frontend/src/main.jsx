@@ -11,8 +11,6 @@ import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
 
-import HomePageUserNav from "./components/resume_job_offer/HomePageUserNav";
-
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -28,10 +26,6 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/homePageUserNav",
-        element: <HomePageUserNav />,
       },
     ],
     errorElement: <ErrorPage />,

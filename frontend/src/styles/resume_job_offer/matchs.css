@@ -23,7 +23,8 @@
   margin: 0.2rem;
   background-color: var(--primary-color);
   color: var(--color-white);
-  font-size: 2.25rem;
+  font-family: var(--primary-font);
+  font-size: 2.5rem;
 }
 
 .match_container > .match_card > .match_card_content > .second_content_block {
@@ -94,4 +95,12 @@
     > .font_content {
     width: 15vw;
   }
+}
+
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .bold_font {
+  width: 20vw;
 }
