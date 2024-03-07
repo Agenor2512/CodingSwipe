@@ -263,8 +263,8 @@ function CandidateResume() {
             <button type="button">Ajouter</button>
           </div>
         </section>
-        <SwipeSystem />
       </div>
+      <SwipeSystem />
     </div>
   );
 }
