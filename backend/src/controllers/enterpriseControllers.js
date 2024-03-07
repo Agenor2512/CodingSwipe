@@ -10,15 +10,7 @@ const browse = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const enterpriseInfo = {
-    name: req.body.name,
-    siret: req.body.siret,
-    legal_status: req.body.legal_status,
-    business_sector: req.body.business_sector,
-    description: req.body.description,
-    email: req.body.email,
-    password: req.body.hashedPassword,
-  };
+  const enterpriseInfo = req.body;
 
   try {
     const insertId = await tables.enterprise.create(enterpriseInfo);

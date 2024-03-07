@@ -6,7 +6,7 @@ import RegisterContext from "../../context/RegisterContext";
 
 import { addUser } from "../../services/usersService";
 
-import "../../styles/enterpriseSecondStep.css";
+import "../../styles/register/enterpriseStepTwo.css";
 
 function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const enterpriseType = [
@@ -146,7 +146,15 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   };
 
   const registerThenRedirect = () => {
-    addUser(infos).then(() => {
+    // FIXME: Pour l'instant, on ne gère pas le département, le secteur d'activité et le statut juridique
+    // A la place, on met des ID en dur...
+    const requestBody = {
+      ...infos,
+      department: { id: 1 },
+      legalStatus: { id: 1 },
+      businessSector: { id: 1 },
+    };
+    addUser({ ...requestBody }).then(() => {
       // Si on a bien sauvegarder l'utilisateur, on passe a la page d'apres...
       nextStep();
     });

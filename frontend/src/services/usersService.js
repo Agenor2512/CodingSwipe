@@ -12,14 +12,14 @@ export const addUser = (userInformations) => {
   if (userInformations.userRole === "enterprise") {
     client
       .post("/enterprises", {
-        userInformations,
+        ...userInformations,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));
   } else {
     client
       .post("/candidates", {
-        userInformations,
+        ...userInformations,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));

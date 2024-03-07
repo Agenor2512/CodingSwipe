@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-CREATE TABLE enterprise (
-  id INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id),
-  name VARCHAR(100) NOT NULL,
-  siret INT NOT NULL,
-  legal_status VARCHAR(100) NOT NULL,
-  business_sector VARCHAR(100) NOT NULL,
-  description TEXT NOT NULL,
-  email VARCHAR(320) NOT NULL,
-  password VARCHAR(100) NOT NULL
-);
-
-INSERT INTO enterprise (name, siret, legal_status, business_sector, description, email, password)
-VALUES
-('Carrefour', 123456, 'SAS', 'grande-distribution', 'Acteur mondial de la grande distribution', "lisa@carrefour.com", "monmdpsecret"),
-('Lidl', 214654,'SAS', 'grande-distribution', 'Acteur mondial de la grande distribution', "yop@lidl.com", "lidlemotdepasse"),
-('Google', 657392,'SAS', 'Informatique', 'Vous connaissez pas Google??', "louis@google.com", "googlechutchut");
-=======
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
@@ -39,8 +20,7 @@ create table enterprise (
   id varchar(36) not null,
   name varchar(100) not null,
   siret int not null,
-  legal_status varchar(100) not null,
-  business_sector varchar(100) not null,
+  description text not null,
   email varchar(320) not null,
   password varchar(100) not null,
   department_id int not null,
@@ -355,4 +335,3 @@ insert into work_rhythms (work_rhythm) values
 ("Sur site"),
 ("Remote partiel"),
 ("Full remote");
->>>>>>> dev
