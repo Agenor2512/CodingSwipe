@@ -15,6 +15,7 @@
 
 .users_infos_container > .modify_display_desktop > div > div > p {
   padding-top: 1rem;
+  word-wrap: break-word;
 }
 
 .users_infos_container > .modify_display_desktop > div > div > textarea:focus {
