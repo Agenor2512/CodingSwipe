@@ -30,7 +30,7 @@ function Matchs({ matchesData }) {
 
                 <div className="second_content_block">
                   <div>
-                    <span style={{ fontWeight: "bold" }}>{match.category}</span>
+                    <span>{match.category}</span>
                     {`-${match.date}`}
                   </div>
                   <div className="font_content"> {match.jobName}</div>

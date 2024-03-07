@@ -24,7 +24,7 @@
   margin: 0.2rem;
   background-color: var(--primary-color);
   color: var(--color-white);
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 .match_container > .match_card > .match_card_content > .second_content_block {
