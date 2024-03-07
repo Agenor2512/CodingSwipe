@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 import "../styles/usersNavigation.css";
+import Logo from "./Logo";
 
 function UsersNavigation() {
   const [currentUsers, setCurrentUsers] = useState({
@@ -21,10 +22,7 @@ function UsersNavigation() {
 
   return (
     <div className="header">
-      <h4>
-        Coding<span>Swipe</span>
-      </h4>
-      <div className="square"> </div>
+      <Logo />
       {currentUsers && (
         <div className="user-info-container">
           <div className="user-avatar">{currentUsers.firstName[0]}</div>
@@ -35,8 +33,6 @@ function UsersNavigation() {
           </div>
         </div>
       )}
-
-      <hr className="separator" />
     </div>
   );
 }
