@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import notFoundIcon from "../assets/404_error.png";
 import homeIcon from "../assets/home_icon.png";
 
-import "../styles/errorPage.css";
+import "../styles/pages/errorPage.css";
 
 function ErrorPage() {
   return (

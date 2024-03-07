@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/enterpriseSecondStep.css";
+import "../../styles/register/enterpriseStepTwo.css";
 
 import PropTypes from "prop-types";
 

@@ -7,12 +7,14 @@
   --primary-color: #2a85ff;
   --secondary-color: #f0f2f4;
   --third-color: #666a70;
+  --fourth-color: #cce2ff;
   --blank-button-hover-color: #6da0e2;
   --website-background-color: #3d3d3d;
   --register-background-color: #1e2228;
   --background-color: #f7f7f7;
   --color-white: #ffffff;
   --color-black: #000000;
+  --background-users-homepage: #f0f5fa;
 }
 
 * {
