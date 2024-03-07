@@ -1,20 +1,12 @@
-create table candidate (
-  id int unsigned primary key auto_increment not null,
-  lastname varchar(100) not null,
-  firstname varchar(100) not null,
-  email varchar(100) not null,
-  department varchar(100) not null,
-  password varchar(100) not null,
-  appetence  varchar(100) not null,
-  job_type  varchar(100) not null,
-  work_rhythm  varchar(100) not null,
-  experience_level  varchar(100) not null,
-  programming_languages  varchar(100) not null
-);
-
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
+  primary key(id)
+);
+
+create table appetences (
+  id int not null auto_increment,
+  appetence varchar(100) not null,
   primary key(id)
 );
 
@@ -90,8 +82,10 @@ create table resume (
   work_rhythms varchar(100) not null, 
   experiences text,
   biography text, 
-  candidate_id varchar(100) not null,
+  appetences_id int not null,
+  candidate_id varchar(36) not null,
   primary key(id),
+  foreign key(appetences_id) references appetences(id),
   foreign key(candidate_id) references candidate(id)
 );
 
@@ -144,10 +138,12 @@ create table job_offer (
   salary varchar(100),
   contract_types_id int not null,
   works_rhythms_id int not null,
+  appetences_id int not null,
   enterprise_id varchar(36) not null,
   primary key(id),
   foreign key(contract_types_id) references contract_types(id),
   foreign key(works_rhythms_id) references work_rhythms(id),
+  foreign key(appetences_id) references appetences(id),
   foreign key(enterprise_id) references enterprise(id)
 );
 
@@ -302,6 +298,11 @@ insert into business_sectors (business_sector) values
 ('Services gouvernementaux et publics'),
 ('Technologie de l''information et des communications (TIC)');
 
+insert into appetences (appetence) values 
+("Frontend"),
+("Backend"),
+("Full stack");
+
 insert into soft_skills (soft_skill) values 
 ("Communication"),
 ("Résolution de problème"),
@@ -350,4 +351,3 @@ insert into work_rhythms (work_rhythm) values
 ("Sur site"),
 ("Remote partiel"),
 ("Full remote");
->>>>>>> dev

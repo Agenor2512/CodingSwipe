@@ -16,10 +16,10 @@ const browse = async (req, res, next) => {
 };
 
 // The R of BREAD - Read operation
-const read = async (req, res, next) => {
+const readById = async (req, res, next) => {
   try {
     // Fetch a specific item from the database based on the provided ID
-    const candidate = await tables.candidate.read(req.params.id);
+    const candidate = await tables.candidate.readById(req.params.id);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
@@ -35,19 +35,21 @@ const read = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  // Extract the item data from the request body
-  const candidate = req.body;
+  const candidateInfo = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: req.body.hashedPassword,
+    department_id: req.body.department_id,
+  };
 
   try {
-    // Insert the item into the database
-    const insertId = await tables.candidate.create(candidate);
+    const insertId = await tables.candidate.create(candidateInfo);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
-module.exports = { browse, read, add };
+module.exports = { browse, readById, add };
