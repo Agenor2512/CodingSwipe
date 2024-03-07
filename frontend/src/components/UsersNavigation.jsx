@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
-import "../styles/usersNavigation.css";
+import "../styles/UsersNavigation.css";
 import Logo from "./Logo";
 
 function UsersNavigation() {
@@ -24,10 +24,10 @@ function UsersNavigation() {
     <div className="header">
       <Logo />
       {currentUsers && (
-        <div className="user-info-container">
-          <div className="user-avatar">{currentUsers.firstName[0]}</div>
-          <div className="user-details">
-            <span className="user-name">
+        <div className="user_info_container">
+          <div className="user_avatar">{currentUsers.firstName[0]}</div>
+          <div className="user_details">
+            <span className="user_name">
               {currentUsers.firstName} {currentUsers.lastName}
             </span>
           </div>

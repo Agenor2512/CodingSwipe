@@ -2,49 +2,55 @@
   display: flex;
   flex-direction: column;
   font-family: var(--primary-font);
+  background-color: var(--register-background-color);
 }
 
 .header > .logo_container {
-  padding: 1rem;
   justify-content: flex-start;
+  padding: 1rem;
 }
 
 .header > .logo_container > h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
-.header > .user-info-container {
-  color: var(--color-white);
+.header .logo_container > .square {
+  min-width: 12px;
+  min-height: 12px;
+  margin-left: 0.1rem;
+}
+
+.header > .user_info_container {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
   margin: 0 0 1.25rem 1.25rem;
+  font-size: 1.1rem;
+  color: var(--color-white);
 }
 
-.header > .user-info-container > .user-avatar {
-  width: 12vw;
-  height: 5.5vh;
-  border-radius: 30rem;
-  background-color: var(--primary-color);
-  color: var(--color-white);
-  font-weight: bold;
+.header > .user_info_container > .user_avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  width: 12vw;
+  height: 5.5vh;
   margin-right: 0.6rem;
+  border-radius: 30rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--color-white);
 }
 
 @media screen and (min-width: 600px) {
-  .header > h4 > .square {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 1rem 0rem;
+  .header .logo_container > .square {
+    width: 12px;
+    height: 12px;
+    margin-left: 0.1rem;
   }
 
-  .header > .user-info-container > .user-avatar {
+  .header > .user_info_container > .user_avatar {
     width: 3.5vw;
-    height: 7vh;
+    height: 5vh;
   }
 }
