@@ -12,7 +12,6 @@
 .match_container > .match_card > .match_card_content {
   display: flex;
   justify-content: flex-start;
-  gap: 0.5rem;
 }
 
 .match_container > .match_card > .match_card_content > .first_content_block {
@@ -28,5 +27,71 @@
 }
 
 .match_container > .match_card > .match_card_content > .second_content_block {
-  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem;
+  font-family: var(--primary-font);
+  width: 70vw;
+}
+
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .bold_font {
+  display: flex;
+  flex-direction: row;
+  margin: 0.3rem 0;
+  width: 70vw;
+}
+
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .bold_font {
+  display: flex;
+  align-items: center;
+}
+
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .bold_font
+  > span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  padding: 0.3rem;
+}
+
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .bold_font
+  > p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+.match_container
+  > .match_card
+  > .match_card_content
+  > .second_content_block
+  > .font_content {
+  width: 70vw;
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 600px) {
+  .match_container > .match_card > .match_card_content > .second_content_block {
+    width: 15vw;
+  }
+  .match_container
+    > .match_card
+    > .match_card_content
+    > .second_content_block
+    > .font_content {
+    width: 15vw;
+  }
 }

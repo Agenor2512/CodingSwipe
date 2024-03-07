@@ -101,7 +101,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    width: 40vw;
+    width: 30vw;
     height: 100vh;
     background-color: var(--register-background-color);
     color: var(--third-color);

@@ -18,9 +18,9 @@ function Matchs({ matchesData }) {
             {userRole === "candidat" ? (
               <div>
                 <div>{getFirstLetter(match.name)}</div>
-                <div>{match.category}</div>
-                <div>{match.region}</div>
                 <div>{match.jobName}</div>
+                <div>{match.date}</div>
+                <div>{match.jobPosting}</div>
               </div>
             ) : (
               <div className="match_card_content">
@@ -29,9 +29,9 @@ function Matchs({ matchesData }) {
                 </div>
 
                 <div className="second_content_block">
-                  <div>
-                    <span>{match.category}</span>
-                    {`-${match.date}`}
+                  <div className="bold_font">
+                    <span>{match.category} </span>
+                    <p>{`- ${match.date}`}</p>
                   </div>
                   <div className="font_content"> {match.jobName}</div>
                 </div>
