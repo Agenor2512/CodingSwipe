@@ -1,6 +1,11 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 
 import DropDownList from "./DropDownList";
+import SalaryAdministrator from "./SalaryAdministrator";
+import ModifyButton from "./ModifyButton";
+
+import "../../styles/resume_job_offer/enterpriseJobOffer.css";
 
 function EnterpriseJobOffer() {
   const enterpriseExpectations = [
@@ -121,8 +126,8 @@ function EnterpriseJobOffer() {
   ];
 
   return (
-    <div className="resume_container">
-      <div className="resume_header">
+    <div className="users_infos_container">
+      <div className="users_infos_header">
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>
@@ -133,11 +138,7 @@ function EnterpriseJobOffer() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui sommes-nous ?</h2>
-          <textarea
-            type="text"
-            placeholder="Dites-en un peu plus aux candidats sur l'entreprise"
-          />
-          <button type="button">Modifier</button>
+          <ModifyButton />
         </div>
 
         <section className="work_proposal_container">
@@ -174,12 +175,12 @@ function EnterpriseJobOffer() {
       <div className="salary_languages_missions_desktop">
         <section className="annual_salary">
           <h2>Salaire annuel brut</h2>
-          <label htmlFor="salaire">
-            Salaire <span>:</span>
-          </label>
-          <input type="text" id="salaire" name="salaire" />
-          <input />
-          <button type="button">hello</button>
+          <div>
+            <label htmlFor="salary">
+              Salaire <span>:</span>
+            </label>
+            <SalaryAdministrator />
+          </div>
         </section>
 
         <section className="computer_language_checkbox_container">

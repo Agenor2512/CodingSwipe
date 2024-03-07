@@ -1,6 +1,8 @@
 import React from "react";
 
 import DropDownList from "./DropDownList";
+import ModifyButton from "./ModifyButton";
+
 import "../../styles/resume_job_offer/candidateResume.css";
 import SwipeSystem from "./SwipeSystem";
 
@@ -182,8 +184,8 @@ function CandidateResume() {
   ];
 
   return (
-    <div className="resume_container">
-      <div className="resume_header">
+    <div className="users_infos_container">
+      <div className="users_infos_header">
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>
@@ -194,11 +196,7 @@ function CandidateResume() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-          <textarea
-            type="text"
-            placeholder="Dites aux entreprises qui vous êtes"
-          />
-          <button type="button">Modifier</button>
+          <ModifyButton />
         </div>
 
         <section className="research_and_workplace_container">
