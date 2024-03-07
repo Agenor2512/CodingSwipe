@@ -1,0 +1,270 @@
+.users_infos_container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  background-color: var(--color-white);
+}
+
+.users_infos_container > .users_infos_header {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.users_infos_container > .users_infos_header > div {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  width: 10vw;
+  padding: 0.2rem;
+  border: 5px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.users_infos_container > .users_infos_header > section {
+  display: flex;
+  flex-direction: column;
+}
+
+.users_infos_container > div > section > h1 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.users_infos_container > .modify_display_desktop > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.users_infos_container > .modify_display_desktop > div > textarea {
+  width: 90vw;
+  min-height: 10vh;
+  margin: 1.5rem 0;
+  padding: 0 0.3rem;
+  border: none;
+  resize: none;
+  font-family: var(--secondary-font);
+}
+
+.users_infos_container > .modify_display_desktop > div > textarea:focus {
+  border: 1px solid var(--register-background-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.users_infos_container > .modify_display_desktop > div > button,
+.users_infos_container > div > .missions > div > button {
+  width: 8.6rem;
+  height: 2.2rem;
+  margin: 1rem;
+  align-self: center;
+  color: var(--secondary-color);
+  background-color: var(--color-black);
+  border: none;
+  border-radius: 10px;
+}
+
+.users_infos_container > .modify_display_desktop > div > h2,
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > h2,
+.users_infos_container > div > section > h2 {
+  padding: 0.5rem 0;
+  border-bottom: 5px solid var(--fourth-color);
+  font-size: 1rem;
+}
+
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > div {
+  display: flex;
+  width: 90vw;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > div
+  > div
+  > div,
+.users_infos_container
+  > div
+  > .computer_language_checkbox_container
+  > div
+  > div {
+  display: flex;
+  margin: 0.3rem 0;
+}
+
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > div
+  > div
+  > div
+  > label,
+.users_infos_container
+  > div
+  > .computer_language_checkbox_container
+  > div
+  > div
+  > label,
+.users_infos_container > div > .annual_salary > div > label {
+  margin: 0 0.3rem;
+}
+
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > div
+  > div
+  > p,
+.users_infos_container > div > .annual_salary > div > label {
+  font-weight: 700;
+}
+
+.users_infos_container
+  > .modify_display_desktop
+  > .work_proposal_container
+  > div
+  > div
+  > p
+  > span,
+.users_infos_container > div > .annual_salary > div > label span {
+  color: var(--primary-color);
+}
+
+.users_infos_container > div > .annual_salary > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3vh;
+  margin: 1.3rem 0;
+}
+
+.users_infos_container > div > .computer_language_checkbox_container > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 33vh;
+  margin: 1rem 0;
+}
+
+.users_infos_container > div > .missions > div {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 90vw;
+  min-height: 20vh;
+}
+
+.users_infos_container input#checkbox {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  appearance: none;
+  border-radius: 0.1rem;
+  border: 0;
+  background: var(--third-color);
+}
+
+.users_infos_container input#checkbox:checked {
+  background-color: var(--primary-color);
+  border: 0;
+}
+
+.users_infos_container input#checkbox:checked:after {
+  position: relative;
+  padding: 0.1rem;
+  content: "\2714";
+  color: var(--secondary-color);
+}
+
+@media screen and (min-width: 600px) {
+  .users_infos_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    padding: 1.5rem;
+    margin: 2rem;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+
+  .users_infos_container > .users_infos_header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 63vw;
+    margin: 1rem 0;
+  }
+
+  .users_infos_container > .users_infos_header > div {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    width: 8vw;
+    font-size: 4rem;
+    border: 10px solid var(--primary-color);
+    border-radius: 20px;
+  }
+
+  .users_infos_container > .users_infos_header > section {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .users_infos_container > .users_infos_header > section > h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .users_infos_container > .modify_display_desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 63vw;
+  }
+
+  .users_infos_container > .modify_display_desktop > div,
+  .users_infos_container > .modify_display_desktop > div > textarea,
+  .users_infos_container
+    > .modify_display_desktop
+    > .work_proposal_container
+    > div,
+  .users_infos_container > div > .annual_salary,
+  .users_infos_container > div > .computer_language_checkbox_container,
+  .users_infos_container > div > .missions,
+  .users_infos_container > div > .missions > div {
+    width: 30vw;
+  }
+
+  .users_infos_container > .modify_display_desktop > div > h2,
+  .users_infos_container
+    > .modify_display_desktop
+    > .work_proposal_container
+    > h2,
+  .users_infos_container > div > section > h2 {
+    border-bottom: 8px solid var(--fourth-color);
+  }
+
+  .users_infos_container > .salary_languages_missions_desktop {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    width: 63vw;
+    height: 55vh;
+  }
+}

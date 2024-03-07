@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import React, { useContext } from "react";
 
 import RegisterContext from "../../context/RegisterContext";
 
-import "../../styles/registerStepOne.css";
+import "../../styles/register/registerStepOne.css";
 
 function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
