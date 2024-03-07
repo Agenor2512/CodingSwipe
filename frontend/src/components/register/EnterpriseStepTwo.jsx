@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import RegisterContext from "../../context/RegisterContext";
 
+import { addUser } from "../../services/usersService";
+
 import "../../styles/enterpriseSecondStep.css";
 
 function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
@@ -129,19 +131,26 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const { setDescription, setLegalStatus, setBusinessSector } =
-    useContext(RegisterContext);
+  const { infos, setInfos } = useContext(RegisterContext);
 
   const handleChangeDescription = (event) => {
-    setDescription(event.target.value);
+    setInfos({ ...infos, description: event.target.value });
   };
 
   const handleChangeLegalStatus = (event) => {
-    setLegalStatus(event.target.value);
+    setInfos({ ...infos, legalStatus: event.target.value });
   };
 
   const handleChangeBusinessSector = (event) => {
-    setBusinessSector(event.target.value);
+    setInfos({ ...infos, businessSector: event.target.value });
+  };
+
+  const registerThenRedirect = () => {
+    addUser(infos).then(() => {
+      // Si on a bien sauvegarder l'utilisateur, on passe a la page d'apres...
+      nextStep();
+    });
+    // TODO Catch l'erreur... Dans ce cas, on ne switch pas de page
   };
 
   return (
@@ -202,7 +211,7 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit" onClick={nextStep}>
+        <button type="submit" onClick={registerThenRedirect}>
           Finaliser l'inscription
         </button>
       </form>

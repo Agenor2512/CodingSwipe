@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable import/prefer-default-export */
 import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
@@ -8,7 +8,7 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const add = (userInformations) => {
+export const addUser = (userInformations) => {
   if (userInformations.userRole === "enterprise") {
     client
       .post("/enterprises", {

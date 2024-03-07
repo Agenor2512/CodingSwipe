@@ -2,8 +2,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 
-import axios from "axios";
-
 import RegisterContext from "../../context/RegisterContext";
 
 import "../../styles/registerStepOne.css";
@@ -416,23 +414,22 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const { setName, setSiretNumber, setEmail, setPassword } =
-    useContext(RegisterContext);
+  const { infos, setInfos } = useContext(RegisterContext);
 
   const handleChangeName = (event) => {
-    setName(event.target.value);
+    setInfos({ ...infos, name: event.target.value });
   };
 
   const handleChangeSiretNumber = (event) => {
-    setSiretNumber(event.target.value);
+    setInfos({ ...infos, siretNumber: event.target.value });
   };
 
   const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
+    setInfos({ ...infos, email: event.target.value });
   };
 
   const handleChangePassword = (event) => {
-    setPassword(event.target.value);
+    setInfos({ ...infos, password: event.target.value });
   };
 
   const submitForm = (event) => {

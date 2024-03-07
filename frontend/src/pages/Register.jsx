@@ -10,7 +10,9 @@ import FinalStepView from "../components/register/FinalStepView";
 import RegisterContext from "../context/RegisterContext";
 
 function Register() {
-  const user = useContext(RegisterContext);
+  const {
+    infos: { userRole },
+  } = useContext(RegisterContext);
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -26,13 +28,13 @@ function Register() {
       case 1:
         return <FirstView formTools={{ nextStep, handleFormSubmit }} />;
       case 2:
-        return user.userRole === "enterprise" ? (
+        return userRole === "enterprise" ? (
           <EnterpriseStepOne formTools={{ nextStep, handleFormSubmit }} />
         ) : (
           <CandidateStepOne formTools={{ nextStep, handleFormSubmit }} />
         );
       case 3:
-        return user.userRole === "enterprise" ? (
+        return userRole === "enterprise" ? (
           <EnterpriseStepTwo formTools={{ nextStep, handleFormSubmit }} />
         ) : (
           <CandidateStepTwo formTools={{ nextStep, handleFormSubmit }} />
