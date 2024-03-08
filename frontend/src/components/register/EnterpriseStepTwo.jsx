@@ -1,7 +1,12 @@
-import React from "react";
-import "../../styles/register/enterpriseStepTwo.css";
+import React, { useContext } from "react";
 
 import PropTypes from "prop-types";
+
+import RegisterContext from "../../context/RegisterContext";
+
+import { addUser } from "../../services/usersService";
+
+import "../../styles/register/enterpriseStepTwo.css";
 
 function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const enterpriseType = [
@@ -126,6 +131,33 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
+  const { infos, setInfos } = useContext(RegisterContext);
+
+  const handleChangeDescription = (event) => {
+    setInfos({ ...infos, description: event.target.value });
+  };
+
+  const handleChangeLegalStatus = (event) => {
+    setInfos({ ...infos, legalStatus: event.target.value });
+  };
+
+  const handleChangeBusinessSector = (event) => {
+    setInfos({ ...infos, businessSector: event.target.value });
+  };
+
+  const registerThenRedirect = () => {
+    // FIXME: Pour l'instant, on ne gère pas le département, le secteur d'activité et le statut juridique
+    // A la place, on met des ID en dur...
+    const requestBody = {
+      ...infos,
+      department: { id: 1 },
+      legalStatus: { id: 1 },
+      businessSector: { id: 1 },
+    };
+    addUser({ ...requestBody });
+    nextStep();
+  };
+
   return (
     <div className="enterprise_form_container">
       <form className="step_two_enterprise_form" onSubmit={handleFormSubmit}>
@@ -141,7 +173,11 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <label htmlFor="enterprise-type-select">
           Type d'entreprise <span>:</span>
         </label>
-        <select name="enterprise-type" id="enterprise-type-select">
+        <select
+          name="enterprise-type"
+          id="enterprise-type-select"
+          onChange={handleChangeLegalStatus}
+        >
           <option value="choose-enterprise-type">
             Veuillez choisir la forme juridique de votre entreprise
           </option>
@@ -154,7 +190,11 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <label htmlFor="industries-select">
           Secteur d'activité <span>:</span>
         </label>
-        <select name="industries" id="industries-select">
+        <select
+          name="industries"
+          id="industries-select"
+          onChange={handleChangeBusinessSector}
+        >
           <option value="choose-industries">
             Veuillez choisir votre secteur d'activité
           </option>
@@ -172,10 +212,11 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           required
           type="text"
           id="description-area"
+          onChange={handleChangeDescription}
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit" onClick={nextStep}>
+        <button type="submit" onClick={registerThenRedirect}>
           Finaliser l'inscription
         </button>
       </form>
