@@ -1,3 +1,25 @@
+.experience_container > .experience_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  width: 90vw;
+  margin: 0 1rem;
+}
+.experience_container > .experience_content > .square {
+  min-width: 10px;
+  min-height: 10px;
+  background-color: var(--primary-color);
+  margin-right: 1rem;
+}
+.experience_container > .experience_content > .text_button {
+  margin-top: 1rem;
+}
+.experience_container > .experience_content > .text_button > .crash_button {
+  border: none;
+}
+
 .overlay {
   display: flex;
   align-items: center;
@@ -62,21 +84,6 @@
   border: none;
   cursor: pointer;
 }
-
-/*.return_profil:hover {
-  background-color: var(--color-white);
-  color: var(--primary-color);
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-.delete_button:hover {
-  background-color: var(--primary-color);
-  color: var(--color-white);
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}*/
 
 @media only screen and (min-width: 600px) {
   .overlay {
