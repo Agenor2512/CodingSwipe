@@ -1,4 +1,4 @@
-import "../styles/titlesDescription.css";
+import "../styles/components/titlesDescription.css";
 
 function TitlesDescription() {
   return (

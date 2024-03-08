@@ -7,7 +7,7 @@ import ModalConnection from "../components/ModalConnection";
 
 import mobileBackground from "../assets/mobile_background.png";
 
-import "../styles/homePage.css";
+import "../styles/pages/homePage.css";
 
 function HomePage() {
   return (

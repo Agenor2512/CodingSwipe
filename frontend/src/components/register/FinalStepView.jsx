@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import ModalConnection from "../ModalConnection";
 
-import "../../styles/finalStepView.css";
+import "../../styles/register/finalStepView.css";
 
 function FinalStepView() {
   return (
