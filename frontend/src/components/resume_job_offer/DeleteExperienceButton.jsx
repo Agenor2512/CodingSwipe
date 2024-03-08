@@ -36,13 +36,9 @@ function DeleteExperienceButton() {
         {experienceUser.map((experience) => (
           <div className="experience_content" key={experience.id}>
             <div className="square"> </div>
-            <p className="text_button">
+            <p>
               {experience.post}
-              <button
-                type="button"
-                className="crash_button"
-                onClick={() => toggleModal(experience.id)}
-              >
+              <button type="button" onClick={() => toggleModal(experience.id)}>
                 <img src={deleteIcon} alt="delete-icon" />
               </button>
             </p>

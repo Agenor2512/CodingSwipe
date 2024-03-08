@@ -1,9 +1,7 @@
 .experience_container > .experience_content {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-
   width: 90vw;
   margin: 0 1rem;
 }
@@ -13,10 +11,10 @@
   background-color: var(--primary-color);
   margin-right: 1rem;
 }
-.experience_container > .experience_content > .text_button {
+.experience_container > .experience_content > p {
   margin-top: 1rem;
 }
-.experience_container > .experience_content > .text_button > .crash_button {
+.experience_container > .experience_content > p > button {
   border: none;
 }
 
@@ -38,7 +36,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 16rem;
   margin: 1rem;
   background-color: var(--background-color);
@@ -69,7 +67,6 @@
   font-size: 1.2rem;
   font-family: var(--secondary-font);
   border: 2px solid var(--primary-color);
-  cursor: pointer;
 }
 
 .overlay > .modal_container > .modal_buttons > .return_profil {
@@ -82,16 +79,21 @@
   font-size: 1.2rem;
   font-family: var(--secondary-font);
   border: none;
-  cursor: pointer;
 }
 
 @media only screen and (min-width: 600px) {
   .overlay {
     justify-content: center;
   }
+
   .overlay > .modal_container {
     width: 50%;
     height: 20rem;
     font-size: 1.5rem;
+  }
+
+  .overlay > .modal_container > .modal_buttons > .return_profil,
+  .overlay > .modal_container > .modal_buttons > .delete_button {
+    cursor: pointer;
   }
 }
