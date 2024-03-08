@@ -3,6 +3,7 @@ import React from "react";
 
 import DropDownList from "./DropDownList";
 import SalaryAdministrator from "./SalaryAdministrator";
+import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/enterpriseJobOffer.css";
 
@@ -137,11 +138,7 @@ function EnterpriseJobOffer() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui sommes-nous ?</h2>
-          <textarea
-            type="text"
-            placeholder="Dites-en un peu plus aux candidats sur l'entreprise"
-          />
-          <button type="button">Modifier</button>
+          <ModifyButton />
         </div>
 
         <section className="work_proposal_container">
