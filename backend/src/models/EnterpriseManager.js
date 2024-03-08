@@ -13,6 +13,15 @@ class EnterpriseManager extends AbstractManager {
     return rows;
   }
 
+  async readById(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return rows[0];
+  }
+
   async create(enterpriseInfo) {
     const id = generateRandomUUID();
     const [rows] = await this.database.query(
@@ -23,7 +32,7 @@ class EnterpriseManager extends AbstractManager {
         enterpriseInfo.siretNumber,
         enterpriseInfo.description,
         enterpriseInfo.email,
-        enterpriseInfo.password,
+        enterpriseInfo.hashedPassword,
         enterpriseInfo.department.id,
         enterpriseInfo.legalStatus.id,
         enterpriseInfo.businessSector.id,

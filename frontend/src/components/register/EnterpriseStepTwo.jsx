@@ -154,11 +154,8 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
       legalStatus: { id: 1 },
       businessSector: { id: 1 },
     };
-    addUser({ ...requestBody }).then(() => {
-      // Si on a bien sauvegarder l'utilisateur, on passe a la page d'apres...
-      nextStep();
-    });
-    // TODO Catch l'erreur... Dans ce cas, on ne switch pas de page
+    addUser({ ...requestBody });
+    nextStep();
   };
 
   return (

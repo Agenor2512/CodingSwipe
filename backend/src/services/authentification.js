@@ -7,7 +7,7 @@ const hashingOptions = {
   parallelism: 1,
 };
 
-const hashPassword = async (req, res, next) => {
+const hashPassword = async (req, _, next) => {
   try {
     const { password } = req.body;
     const hashedPassword = await argon2.hash(password, hashingOptions);

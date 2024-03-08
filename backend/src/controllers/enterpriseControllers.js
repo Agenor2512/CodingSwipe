@@ -1,9 +1,23 @@
 const tables = require("../tables");
 
-const browse = async (req, res, next) => {
+const browse = async (_, res, next) => {
   try {
     const enterprises = await tables.enterprise.readAll();
     res.json(enterprises);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const readById = async (req, res, next) => {
+  try {
+    const enterprise = await tables.enterprise.readById(req.params.id);
+
+    if (enterprise == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(enterprise);
+    }
   } catch (err) {
     next(err);
   }
@@ -23,32 +37,6 @@ const add = async (req, res, next) => {
 
 module.exports = {
   browse,
+  readById,
   add,
 };
-
-// const browse = async (req, res, next) => {
-//   try {
-//     const result = await tables.user.readAll();
-//     res.json(result);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-// const add = async (req, res, next) => {
-//   const userInfos = {
-//     email: req.body.email,
-//     password: req.body.hashedPassword,
-//     username: req.body.username,
-//   };
-
-//   try {
-//     const result = await tables.user.create(userInfos);
-//     console.info(result);
-//     res.json({ msg: "Utilisateur enregistré avec succès" });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// module.exports = { browse, add };
