@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
+import UserHomePageAddButton from "./components/resume_job_offer/UserHomePageAddButton";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/usersHomePage",
         element: <UsersHomePage />,
+      },
+      {
+        path: "/userHomePageAddButton",
+        element: <UserHomePageAddButton />,
       },
     ],
     errorElement: <ErrorPage />,
