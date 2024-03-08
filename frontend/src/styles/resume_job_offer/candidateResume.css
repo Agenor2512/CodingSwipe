@@ -166,6 +166,18 @@
   min-height: 20vh;
 }
 
+.users_infos_container > div > .significatives_experiences > div > button {
+  width: 8.6rem;
+  height: 2.2rem;
+  margin: 1rem;
+  align-self: center;
+  color: var(--secondary-color);
+  background-color: var(--color-black);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--primary-font);
+}
+
 .users_infos_container input#checkbox {
   display: inline-block;
   width: 1.15em;
