@@ -1,0 +1,55 @@
+.swipe_system_container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 20vh;
+  background-image: url("src/assets/background_swipe_mobile.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.swipe_system_container > div {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+  position: absolute;
+  margin-top: 4vh;
+}
+
+.swipe_system_container > div > button {
+  width: 4.2rem;
+  height: 4.2rem;
+  outline: 0.3rem solid var(--primary-color);
+  border: none;
+}
+
+.swipe_system_container > div > button > .like_icon {
+  width: 3.25rem;
+  height: 2.9rem;
+  padding-top: 0.5rem;
+}
+
+.swipe_system_container > div > button > .dislike_icon {
+  width: 4rem;
+  height: 4rem;
+  padding-top: 0.3rem;
+}
+
+.swipe_system_container > div > button,
+.swipe_system_container > div > button > .dislike_icon,
+.swipe_system_container > div > button > .like_icon {
+  background-color: var(--color-white);
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 600px) {
+  .swipe_system_container {
+    width: 100vw;
+    background-image: url("src/assets/background_swipe_desktop.png");
+  }
+
+  .swipe_system_container > div {
+    width: 25vw;
+    margin-top: 6vh;
+  }
+}

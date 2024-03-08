@@ -1,11 +1,13 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 
 import DropDownList from "./DropDownList";
+import SalaryAdministrator from "./SalaryAdministrator";
 import ModifyButton from "./ModifyButton";
 
-import "../../styles/resume_job_offer/candidateResume.css";
+import "../../styles/resume_job_offer/enterpriseJobOffer.css";
 
-function CandidateResume() {
+function EnterpriseJobOffer() {
   const enterpriseExpectations = [
     {
       key: "full-time",
@@ -123,65 +125,6 @@ function CandidateResume() {
     },
   ];
 
-  const softSkills = [
-    {
-      key: "communication",
-      text: "Communication",
-    },
-    {
-      key: "problem-resolution",
-      text: "Résolution de problème",
-    },
-    {
-      key: "critical-thinking",
-      text: "Pensée critique",
-    },
-    {
-      key: "teamwork",
-      text: "Travail d'équipe",
-    },
-    {
-      key: "adaptability",
-      text: "Adaptabilité",
-    },
-    {
-      key: "time-management",
-      text: "Gestion du temps",
-    },
-    {
-      key: "creativity",
-      text: "Créativité",
-    },
-    {
-      key: "emphathy",
-      text: "Empathie",
-    },
-    {
-      key: "stress-management",
-      text: "Gestion du stress",
-    },
-    {
-      key: "curiosity",
-      text: "Curiosité",
-    },
-    {
-      key: "autonomy",
-      text: "Autonomie",
-    },
-    {
-      key: "leadership",
-      text: "Leadership",
-    },
-    {
-      key: "listening-skill",
-      text: "Capacité d'écoute",
-    },
-    {
-      key: "perseverance",
-      text: "Persévérance",
-    },
-  ];
-
   return (
     <div className="users_infos_container">
       <div className="users_infos_header">
@@ -194,20 +137,20 @@ function CandidateResume() {
 
       <div className="modify_display_desktop">
         <div>
-          <h2>Qui suis-je ?</h2>
+          <h2>Qui sommes-nous ?</h2>
           <ModifyButton />
         </div>
 
-        <section className="research_and_workplace_container">
-          <h2>Ma recherche</h2>
+        <section className="work_proposal_container">
+          <h2>Profil recherché</h2>
 
           <div>
             <div>
               <p>
-                Je recherche <span>:</span>
+                Je propose <span>:</span>
               </p>
               {enterpriseExpectations.map(({ key, text }) => (
-                <div className="candidate_expectation_container" key={key}>
+                <div className="enterprise_expectation_container" key={key}>
                   <input type="checkbox" id="checkbox" />
                   <label htmlFor="checkbox">{text}</label>
                 </div>
@@ -219,7 +162,7 @@ function CandidateResume() {
                 Lieu de travail <span>:</span>
               </p>
               {enterpriseWorkplaces.map(({ key, text }) => (
-                <div className="candidate_expectation_container" key={key}>
+                <div className="enterprise_expectation_container" key={key}>
                   <input type="checkbox" id="checkbox" />
                   <label htmlFor="checkbox">{text}</label>
                 </div>
@@ -229,16 +172,14 @@ function CandidateResume() {
         </section>
       </div>
 
-      <div className="skills_languages_experiences_desktop">
-        <section className="soft_skills">
-          <h2>Soft skills</h2>
+      <div className="salary_languages_missions_desktop">
+        <section className="annual_salary">
+          <h2>Salaire annuel brut</h2>
           <div>
-            {softSkills.map(({ key, text }) => (
-              <div className="soft_skills_container" key={key}>
-                <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">{text}</label>
-              </div>
-            ))}
+            <label htmlFor="salary">
+              Salaire <span>:</span>
+            </label>
+            <SalaryAdministrator />
           </div>
         </section>
 
@@ -254,8 +195,8 @@ function CandidateResume() {
           </div>
         </section>
 
-        <section className="significatives_experiences">
-          <h2>Expériences significatives</h2>
+        <section className="missions">
+          <h2>Missions principales</h2>
           <div>
             <button type="button">Ajouter</button>
           </div>
@@ -265,4 +206,4 @@ function CandidateResume() {
   );
 }
 
-export default CandidateResume;
+export default EnterpriseJobOffer;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/homePageUserNav.css";
+import "../../styles/resume_job_offer/homePageUserNav.css";
 
 function HomePageUserNav() {
   const [isNavOpen, setIsNavOpen] = useState(false);
