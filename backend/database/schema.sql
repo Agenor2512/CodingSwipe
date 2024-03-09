@@ -26,8 +26,6 @@ create table enterprise (
   id varchar(36) not null,
   name varchar(100) not null,
   siret int not null,
-  legal_status varchar(100) not null,
-  business_sector varchar(100) not null,
   email varchar(320) not null,
   password varchar(100) not null,
   department_id int not null,
