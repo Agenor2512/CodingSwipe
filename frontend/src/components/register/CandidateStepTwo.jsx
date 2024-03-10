@@ -1,31 +1,24 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import RegisterContext from "../../context/RegisterContext";
 
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
-  const [specialtyButton, setSpecialtyButton] = useState("frontend");
-
-  const [experienceButton, setExperienceButton] = useState("junior");
-
-  const handleClickSpecialtyButton = (event) => {
-    setSpecialtyButton(event.target.name);
-  };
-
-  const handleClickExperienceButton = (event) => {
-    setExperienceButton(event.target.name);
-  };
-
   const mainCourses = [
     {
+      id: 0,
       name: "frontend",
       buttonText: "Frontend",
     },
     {
+      id: 1,
       name: "backend",
       buttonText: "Backend",
     },
     {
+      id: 2,
       name: "fullstack",
       buttonText: "Full Stack",
     },
@@ -163,6 +156,29 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
+  const [specialtyButton, setSpecialtyButton] = useState(mainCourses[0]);
+
+  const [experienceButton, setExperienceButton] = useState("junior");
+
+  const { infos, setInfos } = useContext(RegisterContext);
+
+  const handleChangeForm = (key, value) => {
+    setInfos({
+      ...infos,
+      [key]: value,
+    });
+  };
+
+  const handleClickSpecialtyButton = (event) => {
+    setSpecialtyButton(event.target.value);
+    handleChangeForm(event.target.value);
+  };
+
+  const handleClickExperienceButton = (event) => {
+    setExperienceButton(event.target.name);
+    handleChangeForm(event.target.name);
+  };
+
   return (
     <form
       action="submit"
@@ -182,13 +198,16 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Appétences <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {mainCourses.map(({ name, buttonText }) => (
+          {mainCourses.map(({ specialty, buttonText }) => (
             <button
               type="button"
-              key={name}
-              name={name}
+              key={specialty.id}
+              name={specialty.name}
+              value={specialty}
               onClick={handleClickSpecialtyButton}
-              className={specialtyButton === name ? "focusedButton" : ""}
+              className={
+                specialtyButton.name === specialty.name ? "focusedButton" : ""
+              }
             >
               {buttonText}
             </button>
@@ -203,7 +222,11 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           </p>
           {enterpriseExpectations.map(({ key, text }) => (
             <div className="enterprise_expectation_container" key={key}>
-              <input type="checkbox" id="checkbox" />
+              <input
+                type="checkbox"
+                id="checkbox"
+                onChange={handleChangeForm}
+              />
               <label htmlFor="checkbox">{text}</label>
             </div>
           ))}
@@ -215,7 +238,11 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           </p>
           {enterpriseWorkplaces.map(({ key, text }) => (
             <div className="enterprise_workplace_container" key={key}>
-              <input type="checkbox" id="checkbox" />
+              <input
+                type="checkbox"
+                id="checkbox"
+                onChange={handleChangeForm}
+              />
               <label htmlFor="checkbox">{text}</label>
             </div>
           ))}
@@ -251,7 +278,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
       <section className="computer_language_checkbox_container">
         {computerLanguages.map(({ key, text }) => (
           <div key={key}>
-            <input type="checkbox" id="checkbox" />
+            <input type="checkbox" id="checkbox" onChange={handleChangeForm} />
             <label htmlFor="checkbox">{text}</label>
           </div>
         ))}

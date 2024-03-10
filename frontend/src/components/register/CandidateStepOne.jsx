@@ -1,4 +1,8 @@
 /* eslint-disable react/prop-types */
+import React, { useContext } from "react";
+
+import RegisterContext from "../../context/RegisterContext";
+
 import "../../styles/register/registerStepOne.css";
 
 function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
@@ -409,6 +413,15 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
+  const { infos, setInfos } = useContext(RegisterContext);
+
+  const handleChangeForm = (key, { target: { value } }) => {
+    setInfos({
+      ...infos,
+      [key]: value,
+    });
+  };
+
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
@@ -428,6 +441,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-firstame"
               placeholder="Doe"
               required
+              onChange={handleChangeForm}
             />
           </div>
 
@@ -440,6 +454,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-lastname"
               placeholder="John"
               required
+              onChange={handleChangeForm}
             />
           </div>
         </div>
@@ -453,6 +468,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="email-candidate"
               placeholder="exemple@gmail.com"
               required
+              onChange={handleChangeForm}
             />
           </div>
           <div className="register_label_input_container">
@@ -478,6 +494,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="password"
               placeholder="Saisissez un mot de passe"
               required
+              onChange={handleChangeForm}
             />
           </div>
           <div className="register_label_input_container">

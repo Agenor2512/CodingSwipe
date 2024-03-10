@@ -5,7 +5,7 @@ import "../../styles/register/firstViewRegisterForm.css";
 import RegisterContext from "../../context/RegisterContext";
 
 function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
-  const { setUserRole } = useContext(RegisterContext);
+  const { infos, setInfos } = useContext(RegisterContext);
   const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
@@ -20,7 +20,7 @@ function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
 
   const handleClickButton = (event) => {
     setFocusedButton(event.target.name);
-    setUserRole(event.target.name);
+    setInfos({ ...infos, userRole: event.target.name });
   };
 
   return (
