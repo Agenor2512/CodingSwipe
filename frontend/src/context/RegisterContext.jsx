@@ -13,10 +13,10 @@ export function RegisterProvider({ children }) {
     businessSector: "",
     description: "",
     appetence: "",
-    contractType: {},
-    workRhythm: {},
+    contractType: [],
+    workRhythm: [],
     level: "",
-    programmingLanguages: {},
+    programmingLanguages: [],
     email: "",
     password: "",
   });

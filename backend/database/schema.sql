@@ -75,11 +75,6 @@ create table work_rhythms (
 
 create table resume ( 
   id varchar(36) not null,
-  soft_skills varchar(100),
-  programming_languages varchar(100) not null,
-  contract_types varchar(100) not null,
-  work_rhythms varchar(100) not null, 
-  experiences text,
   biography text, 
   appetences_id int not null,
   candidate_id varchar(36) not null,
@@ -127,13 +122,13 @@ create table resume_has_work_rhythm_looked_for (
 create table experiences (
   id int not null auto_increment,
   resume_id varchar(36) not null,
+  experiences text,
   primary key(id),
   foreign key(resume_id) references resume(id)
 );
 
 create table job_offer (
   id varchar(36) not null,
-  programming_languages varchar(100) not null,
   salary varchar(100),
   contract_types_id int not null,
   works_rhythms_id int not null,

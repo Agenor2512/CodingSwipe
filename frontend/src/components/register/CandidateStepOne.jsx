@@ -441,7 +441,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-firstame"
               placeholder="Doe"
               required
-              onChange={handleChangeForm}
+              onChange={(event) => handleChangeForm("username", event)}
             />
           </div>
 
@@ -454,7 +454,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-lastname"
               placeholder="John"
               required
-              onChange={handleChangeForm}
+              onChange={(event) => handleChangeForm("lastname", event)}
             />
           </div>
         </div>
@@ -468,7 +468,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="email-candidate"
               placeholder="exemple@gmail.com"
               required
-              onChange={handleChangeForm}
+              onChange={(event) => handleChangeForm("email", event)}
             />
           </div>
           <div className="register_label_input_container">
@@ -494,7 +494,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="password"
               placeholder="Saisissez un mot de passe"
               required
-              onChange={handleChangeForm}
+              onChange={(event) => handleChangeForm("password", event)}
             />
           </div>
           <div className="register_label_input_container">
