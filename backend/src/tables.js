@@ -3,9 +3,13 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
+const ItemManager = require("./models/ItemManager");
+const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
 
 const managers = [
+  ItemManager,
+  EnterpriseManager,
   CandidateManager,
   // Add other managers here
 ];

@@ -1,21 +1,23 @@
 /* eslint-disable react/prop-types */
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState } from "react";
 
 const RegisterContext = createContext();
 
 export function RegisterProvider({ children }) {
-  const [userRole, setUserRole] = useState("enterprise");
-
-  const useMemoValue = useMemo(
-    () => ({
-      userRole,
-      setUserRole,
-    }),
-    [userRole]
-  );
+  const [infos, setInfos] = useState({
+    userRole: "enterprise",
+    name: "",
+    siretNumber: "",
+    legalStatus: "",
+    businessSector: "",
+    description: "",
+    email: "",
+    password: "",
+  });
 
   return (
-    <RegisterContext.Provider value={useMemoValue}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <RegisterContext.Provider value={{ infos, setInfos }}>
       {children}
     </RegisterContext.Provider>
   );
