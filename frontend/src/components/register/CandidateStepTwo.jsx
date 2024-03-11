@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import RegisterContext from "../../context/RegisterContext";
 
@@ -190,14 +190,14 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     setInfos({
       ...infos,
       appetence: mainCourses[0].id,
+      level: candidateExperienceLevel[0].id,
     });
   }, []);
 
   const selectedAppentenceId = infos.appetence;
+  const selectedLevelId = infos.level;
 
-  const [experienceButton, setExperienceButton] = useState("junior");
-
-  const handleChangeForm = (key, { target: { value } }) => {
+  const handleFormChange = (key, { target: { value } }) => {
     setInfos({
       ...infos,
       [key]: value,
@@ -217,15 +217,6 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
       ...infos,
       [key]: values,
     });
-  };
-
-  const handleClickSpecialtyButton = (event) => {
-    handleChangeForm("appetence", event);
-  };
-
-  const handleClickExperienceButton = (event) => {
-    setExperienceButton(event.target.name);
-    handleChangeForm("level", event);
   };
 
   return (
@@ -252,7 +243,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
               type="button"
               key={id}
               value={id}
-              onClick={handleClickSpecialtyButton}
+              onClick={(event) => handleFormChange("appetence", event)}
               className={
                 id === parseInt(selectedAppentenceId, 10) ? "focusedButton" : ""
               }
@@ -313,8 +304,10 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
               key={id}
               name={name}
               value={id}
-              onClick={handleClickExperienceButton}
-              className={experienceButton === name ? "focusedButton" : ""}
+              onClick={(event) => handleFormChange("level", event)}
+              className={
+                id === parseInt(selectedLevelId, 10) ? "focusedButton" : ""
+              }
             >
               {buttonText}
             </button>
