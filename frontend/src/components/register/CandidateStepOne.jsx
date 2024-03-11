@@ -433,12 +433,12 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="candidate-firstame">Nom</label>
+            <label htmlFor="candidate-lastname">Nom</label>
             <input
               type="text"
               minLength={3}
-              name="candidate-firstame"
-              id="candidate-firstame"
+              name="candidate-lastname"
+              id="candidate-lastname"
               placeholder="Doe"
               required
               onChange={(event) => handleChangeForm("lastname", event)}
@@ -446,12 +446,12 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
           </div>
 
           <div className="register_label_input_container">
-            <label htmlFor="candidate-lastname">Prénom</label>
+            <label htmlFor="candidate-firstame">Prénom</label>
             <input
               type="text"
               minLength={3}
-              name="candidate-lastname"
-              id="candidate-lastname"
+              name="candidate-firstame"
+              id="candidate-firstame"
               placeholder="John"
               required
               onChange={(event) => handleChangeForm("username", event)}

@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react";
 
 import RegisterContext from "../../context/RegisterContext";
+import { addUser } from "../../services/usersService";
 
 import "../../styles/register/candidateStepTwo.css";
 
@@ -192,6 +193,14 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     });
   };
 
+  const registerThenRedirect = () => {
+    const requestBody = {
+      ...infos,
+    };
+    addUser({ ...requestBody });
+    nextStep();
+  };
+
   return (
     <form
       action="submit"
@@ -316,7 +325,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
-          onClick={nextStep}
+          onClick={registerThenRedirect}
         />
       </section>
     </form>

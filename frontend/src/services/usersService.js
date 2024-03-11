@@ -20,6 +20,8 @@ export const addUser = (userInformations) => {
     client
       .post("/candidates", {
         ...userInformations,
+        firstname: userInformations.username,
+        department_id: userInformations.department,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));

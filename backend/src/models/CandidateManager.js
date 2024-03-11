@@ -11,11 +11,11 @@ class CandidateManager extends AbstractManager {
     const id = generateRandomUUID();
 
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, lastname, firstname, email, password, department_id) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (id, firstname, lastname, email, password, department_id) values (?, ?, ?, ?, ?, ?)`,
       [
         id,
-        candidate.lastname,
         candidate.firstname,
+        candidate.lastname,
         candidate.email,
         candidate.password,
         candidate.department_id,
