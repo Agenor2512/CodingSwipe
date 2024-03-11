@@ -6,7 +6,7 @@ import RegisterContext from "../../context/RegisterContext";
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
-  const mainCourses = [
+  const appetences = [
     {
       id: 0,
       buttonText: "Frontend",
@@ -21,7 +21,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const candidateExperienceLevel = [
+  const level = [
     {
       id: 0,
       name: "junior",
@@ -39,7 +39,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const enterpriseExpectations = [
+  const contractType = [
     {
       id: 0,
       key: "full-time",
@@ -62,7 +62,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const enterpriseWorkplaces = [
+  const workRhythm = [
     {
       id: 0,
       key: "on-site",
@@ -80,7 +80,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const computerLanguages = [
+  const programmingLanguages = [
     {
       id: 0,
       key: "html-css",
@@ -189,8 +189,8 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
     // Initialisation des valeurs par défaut des champs
     setInfos({
       ...infos,
-      appetence: mainCourses[0].id,
-      level: candidateExperienceLevel[0].id,
+      appetence: appetences[0].id,
+      level: level[0].id,
     });
   }, []);
 
@@ -238,7 +238,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Appétences <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {mainCourses.map(({ id, buttonText }) => (
+          {appetences.map(({ id, buttonText }) => (
             <button
               type="button"
               key={id}
@@ -259,7 +259,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Je recherche <span>:</span>
           </p>
-          {enterpriseExpectations.map(({ id, key, text }) => (
+          {contractType.map(({ id, key, text }) => (
             <div className="enterprise_expectation_container" key={key}>
               <input
                 type="checkbox"
@@ -278,7 +278,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Lieu de travail <span>:</span>
           </p>
-          {enterpriseWorkplaces.map(({ id, key, text }) => (
+          {workRhythm.map(({ id, key, text }) => (
             <div className="enterprise_workplace_container" key={key}>
               <input
                 type="checkbox"
@@ -298,7 +298,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Je suis <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {candidateExperienceLevel.map(({ id, name, buttonText }) => (
+          {level.map(({ id, name, buttonText }) => (
             <button
               type="button"
               key={id}
@@ -324,7 +324,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <span> : </span>
       </p>
       <section className="computer_language_checkbox_container">
-        {computerLanguages.map(({ id, key, text }) => (
+        {programmingLanguages.map(({ id, key, text }) => (
           <div key={key}>
             <input
               type="checkbox"
