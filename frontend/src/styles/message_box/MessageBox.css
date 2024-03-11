@@ -31,3 +31,15 @@
   height: 3vh;
   margin: 50px;
 }
+
+.write_text {
+  width: 100vw;
+}
+
+.write_text > div > .texte_area {
+  background-color: var(--secondary-color);
+  width: 70vw;
+  height: 4vh;
+  border: none;
+  border-radius: 50px;
+}
