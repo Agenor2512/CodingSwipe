@@ -1,22 +1,33 @@
-.message_box {
-  width: 100%;
-  height: 100vh;
-}
-
-.footer_message {
-  width: 100%;
-}
-
-.message_box > .footer_message > .background {
+.check_advert {
   display: flex;
   justify-content: center;
   position: relative;
-  height: 100vh;
+  height: 20vh;
   background-image: url("src/assets/background_swipe_mobile.png");
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
-.footer_message > .check_advert {
+.check_advert > div {
   display: flex;
+  justify-content: space-between;
+  width: 70vw;
+  position: absolute;
+  margin-top: 6vh;
+}
+
+.check_advert > div > button {
+  width: 4.2rem;
+  height: 4.2rem;
+  outline: 0.3rem solid var(--color-white);
+  border: none;
+}
+
+.check_advert > div > button {
+  background-color: var(--primary-colo);
+  color: var(--color-white);
+  border-radius: 50px;
+  width: 50vw;
+  height: 3vh;
+  margin: 50px;
 }
