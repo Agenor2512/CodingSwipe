@@ -3,7 +3,7 @@ import "../../styles/message_box/MessageBox.css";
 
 function MessagesBox() {
   return (
-    <>
+    <section className="text_with_each_other">
       <section className="write_text">
         <div>
           <input className="texte_area" type="text" id="text" />
@@ -17,7 +17,7 @@ function MessagesBox() {
           <button type="button">Voir l'annonce</button>
         </div>
       </section>
-    </>
+    </section>
   );
 }
 

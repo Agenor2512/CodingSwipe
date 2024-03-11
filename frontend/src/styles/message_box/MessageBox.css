@@ -33,7 +33,9 @@
 }
 
 .write_text {
-  width: 100vw;
+  display: flex;
+  width: 96vw;
+  align-items: center;
 }
 
 .write_text > div > .texte_area {
@@ -42,4 +44,13 @@
   height: 4vh;
   border: none;
   border-radius: 50px;
+}
+
+.send > button {
+  background-color: var(--third-color);
+  color: var(--secondary-color);
+  width: 20vw;
+  height: 2.5vh;
+  border-radius: 50px;
+  border: none;
 }
