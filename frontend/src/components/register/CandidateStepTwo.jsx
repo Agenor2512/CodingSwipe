@@ -42,22 +42,18 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const contractType = [
     {
       id: 0,
-      key: "full-time",
       text: "Un CDI",
     },
     {
       id: 1,
-      key: "contract",
       text: "Un CDD",
     },
     {
       id: 2,
-      key: "internship",
       text: "Un Stage / Une Alternance",
     },
     {
       id: 3,
-      key: "freelance",
       text: "Du freelance",
     },
   ];
@@ -65,17 +61,14 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const workRhythm = [
     {
       id: 0,
-      key: "on-site",
       text: "Sur site",
     },
     {
       id: 1,
-      key: "half-remote",
       text: "Remote partiel",
     },
     {
       id: 2,
-      key: "full-remote",
       text: "Full remote",
     },
   ];
@@ -83,102 +76,82 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const programmingLanguages = [
     {
       id: 0,
-      key: "html-css",
       text: "HTML/CSS",
     },
     {
       id: 1,
-      key: "javascript",
       text: "JavaScript",
     },
     {
       id: 2,
-      key: "python",
       text: "Python",
     },
     {
       id: 3,
-      key: "java",
       text: "Java",
     },
     {
       id: 4,
-      key: "ruby",
       text: "Ruby On Rails",
     },
     {
       id: 5,
-      key: "vue",
       text: "Vue.js",
     },
     {
       id: 6,
-      key: "swift",
       text: "Swift",
     },
     {
       id: 7,
-      key: "kotlin",
       text: "Kotlin",
     },
     {
       id: 8,
-      key: "flutter",
       text: "Flutter",
     },
     {
       id: 9,
-      key: "go",
       text: "Go",
     },
     {
       id: 10,
-      key: "c#",
       text: "C#",
     },
     {
       id: 11,
-      key: "c++",
       text: "C++",
     },
     {
       id: 12,
-      key: "react",
       text: "React",
     },
     {
       id: 13,
-      key: "angular",
       text: "Angular",
     },
     {
       id: 14,
-      key: "nodejs",
       text: "Node.js",
     },
     {
       id: 15,
-      key: "php",
       text: "PHP",
     },
     {
       id: 16,
-      key: "rust",
       text: "Rust",
     },
     {
       id: 17,
-      key: ".net",
       text: ".NET Core / .NET 5",
     },
     {
       id: 18,
-      key: "sql",
       text: "SQL",
     },
     {
       id: 19,
-      key: "nosql",
       text: "NoSQL",
     },
   ];
@@ -259,8 +232,8 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Je recherche <span>:</span>
           </p>
-          {contractType.map(({ id, key, text }) => (
-            <div className="enterprise_expectation_container" key={key}>
+          {contractType.map(({ id, text }) => (
+            <div className="enterprise_expectation_container" key={id}>
               <input
                 type="checkbox"
                 id="checkbox"
@@ -278,8 +251,8 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Lieu de travail <span>:</span>
           </p>
-          {workRhythm.map(({ id, key, text }) => (
-            <div className="enterprise_workplace_container" key={key}>
+          {workRhythm.map(({ id, text }) => (
+            <div className="enterprise_workplace_container" key={id}>
               <input
                 type="checkbox"
                 id="checkbox"
@@ -324,8 +297,8 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <span> : </span>
       </p>
       <section className="computer_language_checkbox_container">
-        {programmingLanguages.map(({ id, key, text }) => (
-          <div key={key}>
+        {programmingLanguages.map(({ id, text }) => (
+          <div key={id}>
             <input
               type="checkbox"
               id="checkbox"

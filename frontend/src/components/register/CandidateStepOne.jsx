@@ -8,407 +8,407 @@ import "../../styles/register/registerStepOne.css";
 function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
   const departements = [
     {
-      key: "01",
+      id: 1,
       text: "01 - Ain",
     },
     {
-      key: "02",
+      id: 2,
       text: "02 - Aisne",
     },
     {
-      key: "03",
+      id: 3,
       text: "03 - Allier",
     },
     {
-      key: "04",
+      id: 4,
       text: "04 - Alpes-de-Haute-Provence",
     },
     {
-      key: "05",
+      id: 5,
       text: "05 - Hautes-Alpes",
     },
     {
-      name: "06",
+      id: 6,
       text: "06 - Alpes-Maritimes",
     },
     {
-      key: "07",
+      id: 7,
       text: "07 - Ardèche",
     },
     {
-      key: "08",
+      id: 8,
       text: "08 - Ardennes",
     },
     {
-      key: "09",
+      id: 9,
       text: "09 - Ariège",
     },
     {
-      key: "10",
+      id: 10,
       text: "10 - Aube",
     },
     {
-      key: "11",
+      id: 11,
       text: "11 - Aude",
     },
     {
-      key: "12",
+      id: 12,
       text: "12 - Aveyron",
     },
     {
-      key: "13",
+      id: 13,
       text: "13 - Bouches-du-Rhône",
     },
     {
-      key: "14",
+      id: 14,
       text: "14 - Calvados",
     },
     {
-      key: "15",
+      id: 15,
       text: "15 - Cantal",
     },
     {
-      key: "16",
+      id: 16,
       text: "16 - Charente",
     },
     {
-      key: "17",
+      id: 17,
       text: "17 - Charente-Maritime",
     },
     {
-      key: "18",
+      id: 18,
       text: "18 - Cher",
     },
     {
-      key: "19",
+      id: 19,
       text: "19 - Corrèze",
     },
     {
-      key: "2A",
+      id: 20,
       text: "2A - Corse-du-Sud",
     },
     {
-      key: "2B",
+      id: 21,
       text: "2B - Haute-Corse",
     },
     {
-      key: "21",
-      text: "21 - Côte-d&apos;Or",
+      id: 22,
+      text: "21 - Côte-d'Or",
     },
     {
-      key: "22",
-      text: "22 - Côtes-d&apos;Armor",
+      id: 23,
+      text: "22 - Côtes-d'Armor",
     },
     {
-      key: "23",
-      text: "23 - Côte-d&apos;Or",
+      id: 24,
+      text: "23 - Côte-d'Or",
     },
     {
-      key: "24",
+      id: 25,
       text: "24 - Dordogne",
     },
     {
-      key: "25",
+      id: 26,
       text: "25 - Doubs",
     },
     {
-      key: "26",
+      id: 27,
       text: "26 - Drôme",
     },
     {
-      key: "27",
+      id: 28,
       text: "27 - Eure",
     },
     {
-      key: "28",
+      id: 29,
       text: "28 - Eure-et-Loir",
     },
     {
-      key: "29",
+      id: 30,
       text: "29 - Finistère",
     },
     {
-      key: "30",
+      id: 31,
       text: "30 - Gard",
     },
     {
-      key: "31",
-      text: "31 -  Haute-Garonne",
+      id: 32,
+      text: "31 - Haute-Garonne",
     },
     {
-      key: "32",
+      id: 33,
       text: "32 - Gers",
     },
     {
-      key: "33",
+      id: 34,
       text: "33 - Gironde",
     },
     {
-      key: "34",
+      id: 35,
       text: "34 - Hérault",
     },
     {
-      key: "35",
+      id: 36,
       text: "35 - Ille-et-Vilaine",
     },
     {
-      key: "36",
+      id: 37,
       text: "36 - Indre",
     },
     {
-      key: "37",
-      text: "37 -  Indre-et-Loire",
+      id: 38,
+      text: "37 - Indre-et-Loire",
     },
     {
-      key: "38",
+      id: 39,
       text: "38 - Isère",
     },
     {
-      key: "39",
+      id: 40,
       text: "39 - Jura",
     },
     {
-      key: "40",
+      id: 41,
       text: "40 - Landes",
     },
     {
-      key: "41",
+      id: 42,
       text: "41 - Loir-et-Cher",
     },
     {
-      key: "42",
+      id: 43,
       text: "42 - Loire",
     },
     {
-      key: "43",
+      id: 44,
       text: "43 - Haute-Loire",
     },
     {
-      key: "44",
+      id: 45,
       text: "44 - Loire-Atlantique",
     },
     {
-      key: "45",
+      id: 46,
       text: "45 - Loiret",
     },
     {
-      key: "46",
+      id: 47,
       text: "46 - Lot",
     },
     {
-      key: "47",
+      id: 48,
       text: "47 - Lot-et-Garonne",
     },
     {
-      key: "48",
+      id: 49,
       text: "48 - Lozère",
     },
     {
-      key: "49",
+      id: 50,
       text: "49 - Maine-et-Loire",
     },
     {
-      key: "50",
+      id: 51,
       text: "50 - Manche",
     },
     {
-      key: "51",
+      id: 52,
       text: "51 - Marne",
     },
     {
-      key: "52",
+      id: 53,
       text: "52 - Haute-Marne",
     },
     {
-      key: "53",
+      id: 54,
       text: "53 - Mayenne",
     },
     {
-      key: "54",
+      id: 55,
       text: "54 - Meurthe-et-Moselle",
     },
     {
-      key: "55",
+      id: 56,
       text: "55 - Meuse",
     },
     {
-      key: "56",
+      id: 57,
       text: "56 - Morbihan",
     },
     {
-      key: "57",
+      id: 58,
       text: "57 - Moselle",
     },
     {
-      key: "58",
+      id: 59,
       text: "58 - Nièvre",
     },
     {
-      key: "59",
+      id: 60,
       text: "59 - Nord",
     },
     {
-      key: "60",
+      id: 61,
       text: "60 - Oise",
     },
     {
-      key: "61",
+      id: 62,
       text: "61 - Orne",
     },
     {
-      key: "62",
+      id: 63,
       text: "62 - Pas-de-Calais",
     },
     {
-      key: "63",
+      id: 64,
       text: "63 - Puy-de-Dôme",
     },
     {
-      key: "64",
+      id: 65,
       text: "64 - Pyrénées-Atlantiques",
     },
     {
-      key: "65",
+      id: 66,
       text: "65 - Hautes-Pyrénées",
     },
     {
-      key: "66",
+      id: 67,
       text: "66 - Pyrénées-Orientales",
     },
     {
-      key: "67",
+      id: 68,
       text: "67 - Bas-Rhin",
     },
     {
-      key: "68",
+      id: 69,
       text: "68 - Haut-Rhin",
     },
     {
-      key: "69",
+      id: 70,
       text: "69 - Rhône",
     },
     {
-      key: "70",
+      id: 71,
       text: "70 - Haute-Saône",
     },
     {
-      key: "71",
-      text: "71 - Saône-et-Loire,",
+      id: 72,
+      text: "71 - Saône-et-Loire",
     },
     {
-      key: "72",
+      id: 73,
       text: "72 - Sarthe",
     },
     {
-      key: "73",
+      id: 74,
       text: "73 - Savoie",
     },
     {
-      key: "74",
+      id: 75,
       text: "74 - Haute-Savoie",
     },
     {
-      key: "75",
+      id: 76,
       text: "75 - Paris",
     },
     {
-      key: "76",
+      id: 77,
       text: "76 - Seine-Maritime",
     },
     {
-      key: "77",
+      id: 78,
       text: "77 - Seine-et-Marne",
     },
     {
-      key: "78",
+      id: 79,
       text: "78 - Yvelines",
     },
     {
-      key: "79",
+      id: 80,
       text: "79 - Deux-Sèvres",
     },
     {
-      key: "80",
+      id: 81,
       text: "80 - Somme",
     },
     {
-      key: "81",
+      id: 82,
       text: "81 - Tarn",
     },
     {
-      key: "82",
+      id: 83,
       text: "82 - Tarn-et-Garonne",
     },
     {
-      key: "83",
+      id: 84,
       text: "83 - Var",
     },
     {
-      key: "84",
+      id: 85,
       text: "84 - Vaucluse",
     },
     {
-      key: "85",
+      id: 86,
       text: "85 - Vendée",
     },
     {
-      key: "86",
+      id: 87,
       text: "86 - Vienne",
     },
     {
-      key: "87",
+      id: 88,
       text: "87 - Haute-Vienne",
     },
     {
-      key: "88",
+      id: 89,
       text: "88 - Vosges",
     },
     {
-      key: "89",
+      id: 90,
       text: "89 - Yonne",
     },
     {
-      key: "90",
+      id: 91,
       text: "90 - Territoire de Belfort",
     },
     {
-      key: "91",
+      id: 92,
       text: "91 - Essonne",
     },
     {
-      key: "92",
+      id: 93,
       text: "92 - Hauts-de-Seine",
     },
     {
-      key: "93",
+      id: 94,
       text: "93 - Seine-Saint-Denis",
     },
     {
-      key: "94",
+      id: 95,
       text: "94 - Val-de-Marne",
     },
     {
-      key: "95",
+      id: 96,
       text: "95 - Val-d'Oise",
     },
     {
-      key: "971",
+      id: 97,
       text: "971 - Guadeloupe",
     },
     {
-      key: "972",
+      id: 98,
       text: "972 - Martinique",
     },
     {
-      key: "973",
+      id: 99,
       text: "973 - Guyane",
     },
     {
-      key: "974",
+      id: 100,
       text: "974 - La Réunion",
     },
     {
-      key: "976",
+      id: 101,
       text: "976 - Mayotte",
     },
   ];
@@ -441,7 +441,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-firstame"
               placeholder="Doe"
               required
-              onChange={(event) => handleChangeForm("username", event)}
+              onChange={(event) => handleChangeForm("lastname", event)}
             />
           </div>
 
@@ -454,7 +454,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="candidate-lastname"
               placeholder="John"
               required
-              onChange={(event) => handleChangeForm("lastname", event)}
+              onChange={(event) => handleChangeForm("username", event)}
             />
           </div>
         </div>
@@ -473,10 +473,14 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
           </div>
           <div className="register_label_input_container">
             <label htmlFor="department">Département</label>
-            <select id="department" required>
+            <select
+              id="department"
+              required
+              onChange={(event) => handleChangeForm("department", event)}
+            >
               <option value="">Veuillez choisir votre département</option>
-              {departements.map(({ key, text }) => (
-                <option key={key} value={text}>
+              {departements.map(({ id, text }) => (
+                <option key={id} value={id}>
                   {text}
                 </option>
               ))}

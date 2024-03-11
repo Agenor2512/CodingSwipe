@@ -17,6 +17,7 @@ export function RegisterProvider({ children }) {
     workRhythm: [],
     level: "",
     programmingLanguages: [],
+    department: "",
     email: "",
     password: "",
   });
