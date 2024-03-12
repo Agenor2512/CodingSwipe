@@ -14,6 +14,10 @@ export const addUser = (userInformations) => {
     client
       .post("/enterprises", {
         ...userInformations,
+        name: userInformations.username,
+        department_id: userInformations.department,
+        legal_status_id: userInformations.legalStatus,
+        business_sectors_id: userInformations.businessSector,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));

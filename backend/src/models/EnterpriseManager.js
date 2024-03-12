@@ -29,13 +29,13 @@ class EnterpriseManager extends AbstractManager {
       [
         id,
         enterpriseInfo.name,
-        enterpriseInfo.siretNumber,
+        enterpriseInfo.siret,
         enterpriseInfo.description,
         enterpriseInfo.email,
         enterpriseInfo.hashedPassword,
-        enterpriseInfo.department.id,
-        enterpriseInfo.legalStatus.id,
-        enterpriseInfo.businessSector.id,
+        enterpriseInfo.department_id,
+        enterpriseInfo.legal_status_id,
+        enterpriseInfo.business_sectors_id,
       ]
     );
     return rows;
