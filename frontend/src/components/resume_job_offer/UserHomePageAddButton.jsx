@@ -1,96 +1,72 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
 import "../../styles/resume_job_offer/userHomePageAddButton.css";
 
-function UserHomePageAddButton() {
-  const [experiences, setExperiences] = useState([]);
-  const [posteOccupe, setPosteOccupe] = useState("");
+function ExperienceModal() {
+  const [modal, setModal] = useState(false);
+  const [poste, setPoste] = useState("");
   const [entreprise, setEntreprise] = useState("");
   const [description, setDescription] = useState("");
-  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = () => setModal(true);
+  const handleClose = () => setModal(false);
 
   const handleAddExperience = () => {
-    if (!posteOccupe || !entreprise || !description) {
-      // eslint-disable-next-line no-alert
-      alert("Veuillez remplir tous les champs.");
-      return;
-    }
-
-    const newExperience = {
-      posteOccupe,
-      entreprise,
-      description,
-    };
-    setExperiences([...experiences, newExperience]);
-
-    setPosteOccupe("");
+    setPoste("");
     setEntreprise("");
     setDescription("");
-
-    setShowModal(false);
+    handleClose();
   };
 
   return (
-    <div>
-      <button type="button" onClick={() => setShowModal(true)}>
+    <section className="add_buton">
+      <button type="button" onClick={handleModal}>
         Ajouter
       </button>
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h1>AJOUTER UNE EXPÉRIENCE PROFESSIONNELLE</h1>
-            <div className="form-group">
-              <label htmlFor="posteOccupe">Poste occupé:</label>
-              <input
-                type="text"
-                id="posteOccupe"
-                value={posteOccupe}
-                onChange={(e) => setPosteOccupe(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="entreprise">Entreprise:</label>
-              <input
-                type="text"
-                id="entreprise"
-                value={entreprise}
-                onChange={(e) => setEntreprise(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Description des activités:</label>
-              <input
-                type="text"
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            <button type="button" onClick={handleAddExperience}>
-              Ajouter
+
+      {modal && (
+        <div className="overlay">
+          <div className="modal_container">
+            <button type="button" className="close-btn" onClick={handleClose}>
+              &times;
             </button>
-            <button
-              className="close-btn"
-              type="button"
-              onClick={() => setShowModal(false)}
-            >
-              ✖
-            </button>
+            <h2>Ajouter une expérience professionnelle</h2>
+            <form>
+              <div className="form-group">
+                <label htmlFor="poste">Poste occupé</label>
+                <input
+                  type="text"
+                  id="poste"
+                  value={poste}
+                  onChange={(e) => setPoste(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="entreprise">Entreprise</label>
+                <input
+                  type="text"
+                  id="entreprise"
+                  value={entreprise}
+                  onChange={(e) => setEntreprise(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description des activités</label>
+                <textarea
+                  id="description"
+                  rows="3"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              <button type="button" onClick={handleAddExperience}>
+                Ajouter
+              </button>
+            </form>
           </div>
         </div>
       )}
-
-      <ul>
-        {experiences.map((experience) => (
-          <li key={experience.id}>
-            <h2>{experience.posteOccupe}</h2>
-            <p>Entreprise: {experience.entreprise}</p>
-            <p>Description: {experience.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    </section>
   );
 }
 
-export default UserHomePageAddButton;
+export default ExperienceModal;
