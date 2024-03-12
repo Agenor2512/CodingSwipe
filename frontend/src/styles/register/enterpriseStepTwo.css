@@ -69,8 +69,12 @@
 .enterprise_form_container > .step_two_enterprise_form select,
 .enterprise_form_container > .step_two_enterprise_form textarea {
   border-color: var(--third-color);
-  color: var(--third-color);
+  color: var(--secondary-color);
   background: var(--register-background-color);
+}
+
+.enterprise_form_container > .step_two_enterprise_form textarea::placeholder {
+  color: var(--third-color);
 }
 
 .enterprise_form_container > .step_two_enterprise_form select,
