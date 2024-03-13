@@ -3,7 +3,7 @@ import "../../styles/message_box/MessageBox.css";
 
 function MessagesBox() {
   return (
-    <section className="swipe_system_container">
+    <section className="user_message">
       <div className="send_text_Button">
         <button type="button" className="send_button">
           Envoyer

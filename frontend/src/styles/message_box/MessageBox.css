@@ -1,4 +1,4 @@
-.swipe_system_container {
+.user_message {
   display: flex;
   justify-content: center;
   position: relative;
@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
 }
 
-.swipe_system_container > .button_see_advert {
+.user_message > .button_see_advert {
   display: flex;
   justify-content: space-between;
   width: 60vw;
@@ -17,14 +17,14 @@
   margin-left: 3rem;
 }
 
-.swipe_system_container > .button_see_advert > button {
+.user_message > .button_see_advert > button {
   width: 13.2rem;
   height: 2rem;
   outline: 0.3rem solid var(--color-white);
   border: none;
 }
 
-.swipe_system_container > .button_see_advert > button {
+.user_message > .button_see_advert > button {
   background-color: var(--primary-color);
   color: var(--color-white);
   border-radius: 150px;
@@ -44,14 +44,14 @@
   border: 1px solid var(--register-background-color);
 }
 
-.swipe_system_container > .send_text_Button {
+.user_message > .send_text_Button {
   display: flex;
   margin-bottom: 10rem;
   flex-direction: row;
   align-items: center;
 }
 
-.swipe_system_container > .send_text_Button > .send_button {
+.user_message > .send_text_Button > .send_button {
   background-color: var(--website-background-color);
   color: var(--color-white);
   width: 5rem;
@@ -63,7 +63,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .swipe_system_container {
+  .user_message {
     width: 100vw;
     background-image: url("src/assets/background_swipe_desktop.png");
   }
@@ -72,11 +72,11 @@
     width: 57rem;
   }
 
-  .swipe_system_container > .send_text_Button > .send_button {
+  .user_message > .send_text_Button > .send_button {
     width: 10rem;
     margin-left: 52%;
   }
-  .swipe_system_container > .button_see_advert {
+  .user_message > .button_see_advert {
     width: 25vw;
     margin: 8rem 0rem 0rem 10rem;
   }
