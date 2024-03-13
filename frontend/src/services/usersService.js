@@ -10,6 +10,7 @@ const client = axios.create({
 
 export const addUser = (userInformations) => {
   if (userInformations.userRole === "enterprise") {
+    /* TODO : Préciser que le champ username sera relié au nom de l'entreprise */
     client
       .post("/enterprises", {
         ...userInformations,
@@ -20,6 +21,8 @@ export const addUser = (userInformations) => {
     client
       .post("/candidates", {
         ...userInformations,
+        firstname: userInformations.username,
+        department_id: userInformations.department,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));

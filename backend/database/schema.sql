@@ -4,6 +4,12 @@ create table departments (
   primary key(id)
 );
 
+create table appetences (
+  id int not null auto_increment,
+  appetence varchar(100) not null,
+  primary key(id)
+);
+
 create table legal_status (
   id int not null auto_increment,
   legal_status varchar(100) not null,
@@ -69,14 +75,11 @@ create table work_rhythms (
 
 create table resume ( 
   id varchar(36) not null,
-  soft_skills varchar(100),
-  programming_languages varchar(100) not null,
-  contract_types varchar(100) not null,
-  work_rhythms varchar(100) not null, 
-  experiences text,
   biography text, 
-  candidate_id varchar(100) not null,
+  appetences_id int not null,
+  candidate_id varchar(36) not null,
   primary key(id),
+  foreign key(appetences_id) references appetences(id),
   foreign key(candidate_id) references candidate(id)
 );
 
@@ -119,20 +122,22 @@ create table resume_has_work_rhythm_looked_for (
 create table experiences (
   id int not null auto_increment,
   resume_id varchar(36) not null,
+  experiences text,
   primary key(id),
   foreign key(resume_id) references resume(id)
 );
 
 create table job_offer (
   id varchar(36) not null,
-  programming_languages varchar(100) not null,
   salary varchar(100),
   contract_types_id int not null,
   works_rhythms_id int not null,
+  appetences_id int not null,
   enterprise_id varchar(36) not null,
   primary key(id),
   foreign key(contract_types_id) references contract_types(id),
   foreign key(works_rhythms_id) references work_rhythms(id),
+  foreign key(appetences_id) references appetences(id),
   foreign key(enterprise_id) references enterprise(id)
 );
 
@@ -286,6 +291,11 @@ insert into business_sectors (business_sector) values
 ('Biens de consommation'),
 ('Services gouvernementaux et publics'),
 ('Technologie de l''information et des communications (TIC)');
+
+insert into appetences (appetence) values 
+("Frontend"),
+("Backend"),
+("Full stack");
 
 insert into soft_skills (soft_skill) values 
 ("Communication"),
