@@ -1,5 +1,3 @@
-const { v4: generateRandomUUID } = require("uuid");
-
 const AbstractManager = require("./AbstractManager");
 
 class CandidateManager extends AbstractManager {
@@ -8,12 +6,10 @@ class CandidateManager extends AbstractManager {
   }
 
   async create(candidate) {
-    const id = generateRandomUUID();
-
     const [result] = await this.database.query(
       `insert into ${this.table} (id, firstname, lastname, email, password, department_id) values (?, ?, ?, ?, ?, ?)`,
       [
-        id,
+        candidate.id,
         candidate.firstname,
         candidate.lastname,
         candidate.email,

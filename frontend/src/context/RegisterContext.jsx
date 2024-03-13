@@ -8,7 +8,7 @@ export function RegisterProvider({ children }) {
     userRole: "enterprise",
     username: "",
     lastname: "",
-    siretNumber: "",
+    siret: "",
     legalStatus: "",
     businessSector: "",
     description: "",

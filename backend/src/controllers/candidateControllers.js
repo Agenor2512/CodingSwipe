@@ -1,4 +1,4 @@
-// Import access to database tables
+const { v4: generateRandomUUID } = require("uuid");
 const tables = require("../tables");
 
 const browse = async (_, res, next) => {
@@ -26,7 +26,10 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
+  const id = generateRandomUUID();
+
   const candidateInfo = {
+    id,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,

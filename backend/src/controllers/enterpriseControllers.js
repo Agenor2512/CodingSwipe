@@ -1,3 +1,4 @@
+const { v4: generateRandomUUID } = require("uuid");
 const tables = require("../tables");
 
 const browse = async (_, res, next) => {
@@ -24,7 +25,19 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const enterpriseInfo = req.body;
+  const id = generateRandomUUID();
+
+  const enterpriseInfo = {
+    id,
+    name: req.body.name,
+    siret: req.body.siret,
+    email: req.body.email,
+    department_id: req.body.department_id,
+    password: req.body.hashedPassword,
+    legal_status_id: req.body.legal_status_id,
+    business_sectors_id: req.body.business_sectors_id,
+    description: req.body.description,
+  };
 
   try {
     const insertId = await tables.enterprise.create(enterpriseInfo);
