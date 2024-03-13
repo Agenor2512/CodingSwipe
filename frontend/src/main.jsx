@@ -11,6 +11,7 @@ import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
 import UserHomePageAddButton from "./components/resume_job_offer/UserHomePageAddButton";
+import AddEnterpriseMissionButton from "./components/resume_job_offer/AddEnterpriseMissionButton";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/userHomePageAddButton",
         element: <UserHomePageAddButton />,
+      },
+      {
+        path: "/enterpriseHomePageAddButton",
+        element: <AddEnterpriseMissionButton />,
       },
     ],
     errorElement: <ErrorPage />,
