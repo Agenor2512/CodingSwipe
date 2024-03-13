@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
-function CandidateResume() {
+function CandidateCandidacy() {
   const candidateDescription =
     "Passionné par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
 
@@ -23,6 +23,7 @@ function CandidateResume() {
 
         <section className="candidate_expectations_container">
           <h2>Ma recherche</h2>
+          <div />
         </section>
       </div>
 
@@ -32,17 +33,18 @@ function CandidateResume() {
           <div />
         </section>
 
-        <section className="computer_language_checkbox_container">
+        <section className="computer_languages_container">
           <h2>Langages informatiques</h2>
           <div />
         </section>
 
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
+          <div />
         </section>
       </div>
     </div>
   );
 }
 
-export default CandidateResume;
+export default CandidateCandidacy;
