@@ -95,7 +95,7 @@ input[type="number"]::-webkit-outer-spin-button {
   > form
   > .step_one_register_container
   > .register_label_input_container
-  > select:focus-within {
+  > select:focus {
   border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
@@ -131,7 +131,7 @@ input[type="number"]::-webkit-outer-spin-button {
   > .step_one_register_container
   > .register_label_input_container
   > select {
-  color: var(--third-color);
+  color: var(--secondary-color);
 }
 
 .step_one_register > form > button {
@@ -147,6 +147,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media screen and (min-width: 600px) {
   .step_one_register > h1 {
+    font-size: 2.5rem;
     padding: 2.5rem;
   }
 
