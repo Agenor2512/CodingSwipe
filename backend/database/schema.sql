@@ -360,11 +360,11 @@ insert into enterprise (id, name, siret, description, email, password, departmen
 ("2df1feec-a19a-4f16-9226-af676acdab42", "Orange", 9441917212219, "Entreprise de téléphonie", "recrutement@orange.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 69, 1, 5);
 
 insert into resume (id, biography, appetences_id, candidate_id) values
-("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage" , 1 , "2de1feec-a19a-4f16-9226-af782acdab42"),
+("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42"),
 ("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab42"),
-("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peux de code", 2,"2de1feec-a12a-4f16-9226-af752acdab42"),
-("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001" , 3 , "2de2feec-a12a-4f16-9226-af752acdab42"),
-("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures" , 1 , "2de1feec-a12a-4f26-9226-af752acdab42");
+("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab42"),
+("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab42"),
+("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab42");
 
 insert into job_offer (id, salary, contract_types_id, appetences_id, work_rhythms_id, enterprise_id) values 
 ("2de1feec-a19a-4f16-9226-ag681acdab42", 2000, 2, 1, 2, "2de1feec-a19a-4f16-9226-af682acdab42" ),
