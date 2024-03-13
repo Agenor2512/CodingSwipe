@@ -5,6 +5,9 @@ function MessagesBox() {
   return (
     <section className="swipe_system_container">
       <div className="send_text_Button">
+        <button type="button" className="send_button">
+          Envoyer
+        </button>
         <input className="texte_area" type="text" id="text" />
       </div>
 

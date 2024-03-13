@@ -37,6 +37,11 @@
   border: none;
   border-radius: 150px;
   padding-left: 1rem;
+  border: 1px solid var(--register-background-color);
+}
+
+.texte_area:focus {
+  outline: none;
 }
 
 .swipe_system_container > .send_text_Button {
@@ -53,6 +58,8 @@
   height: 2rem;
   border-radius: 150px;
   border: none;
+  position: absolute;
+  margin-left: 33%;
 }
 
 @media screen and (min-width: 600px) {
