@@ -37,11 +37,11 @@
   border: none;
   border-radius: 150px;
   padding-left: 1rem;
-  border: 1px solid var(--register-background-color);
 }
 
 .texte_area:focus {
   outline: none;
+  border: 1px solid var(--register-background-color);
 }
 
 .swipe_system_container > .send_text_Button {
@@ -68,8 +68,16 @@
     background-image: url("src/assets/background_swipe_desktop.png");
   }
 
+  .texte_area {
+    width: 57rem;
+  }
+
+  .swipe_system_container > .send_text_Button > .send_button {
+    width: 10rem;
+    margin-left: 52%;
+  }
   .swipe_system_container > .button_see_advert {
     width: 25vw;
-    margin-top: 6vh;
+    margin: 8rem 0rem 0rem 10rem;
   }
 }
