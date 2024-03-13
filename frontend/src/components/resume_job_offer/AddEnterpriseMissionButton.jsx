@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/resume_job_offer/addEnterpriseMissionButton.css";
 
 function AddEnterpriseMissionButton() {
   const [modal, setModal] = useState(false);
@@ -22,18 +23,22 @@ function AddEnterpriseMissionButton() {
       {experiences.map((experience) => (
         <div className="experience">{experience.enterpriseMission}</div>
       ))}
-      <button type="button" className="add_button" onClick={handleModal}>
+      <button
+        type="button"
+        className="add_enterprise_button"
+        onClick={handleModal}
+      >
         Ajouter
       </button>
       {modal && (
         <div className="overlay">
-          <div className="modal_container">
+          <div className="modal_container_enterprise">
             <button type="button" className="close_btn" onClick={handleClose}>
               &times;
             </button>
             <h2>AJOUTER LA MISSION</h2>
             <form>
-              <div className="form_group">
+              <div className="form_group_enterprise">
                 <label htmlFor="description">Description de la mission</label>
                 <textarea
                   id="description"
@@ -42,7 +47,11 @@ function AddEnterpriseMissionButton() {
                   onChange={(event) => setEnterpriseMission(event.target.value)}
                 />
               </div>
-              <button type="button" onClick={handleAddEnterpriseExperience}>
+              <button
+                className="add_enterprise_button"
+                type="button"
+                onClick={handleAddEnterpriseExperience}
+              >
                 Ajouter
               </button>
             </form>

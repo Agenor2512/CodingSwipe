@@ -1,12 +1,12 @@
 import { useState } from "react";
-import "../../styles/resume_job_offer/userHomePageAddButton.css";
+import "../../styles/resume_job_offer/userAddButton.css";
 
-function ExperienceModal() {
+function UserAddButton() {
   const [modal, setModal] = useState(false);
   const [poste, setPoste] = useState("");
   const [entreprise, setEntreprise] = useState("");
   const [userDescription, setUserDescription] = useState("");
-  const [enterpriseMission, setEnterpriseMission] = useState("");
+
   const [experiences, setExperiences] = useState([]);
 
   const handleModal = () => setModal(true);
@@ -25,15 +25,6 @@ function ExperienceModal() {
     handleClose();
   };
 
-  const handleAddEnterpriseExperience = () => {
-    const newExperience = {
-      enterpriseMission,
-    };
-    setExperiences([...experiences, newExperience]);
-    setEnterpriseMission("");
-    handleClose();
-  };
-
   return (
     <section>
       {experiences.map((experience) => (
@@ -41,7 +32,6 @@ function ExperienceModal() {
           {experience.poste}
           {experience.entreprise}
           {experience.userDescription}
-          {experience.enterpriseMission}
         </div>
       ))}
       <button type="button" className="add_button" onClick={handleModal}>
@@ -54,38 +44,12 @@ function ExperienceModal() {
             <button type="button" className="close_btn" onClick={handleClose}>
               &times;
             </button>
-            <h2>AJOUTER LA MISSION</h2>
-            <form>
-              <div className="form_group">
-                <label htmlFor="description">Description de la mission</label>
-                <textarea
-                  id="description"
-                  rows="3"
-                  value={enterpriseMission}
-                  onChange={(event) => setEnterpriseMission(event.target.value)}
-                />
-              </div>
-              <button type="button" onClick={handleAddEnterpriseExperience}>
-                Ajouter
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {modal && (
-        <div className="overlay">
-          <div className="modal_container">
-            <button type="button" className="close_btn" onClick={handleClose}>
-              &times;
-            </button>
-            <h2>AJOUTER UNE EXPERIENCE PROFESSIONNELLE</h2>
+            <h2>AJOUTER UNE EXPÉRIENCE PROFESSIONNELLE</h2>
             <form>
               <div className="form_group">
                 <label htmlFor="poste">Poste occupé</label>
                 <input
                   type="text"
-                  id="poste"
                   value={poste}
                   onChange={(event) => setPoste(event.target.value)}
                 />
@@ -117,4 +81,4 @@ function ExperienceModal() {
   );
 }
 
-export default ExperienceModal;
+export default UserAddButton;

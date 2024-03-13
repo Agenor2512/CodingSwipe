@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
-import UserHomePageAddButton from "./components/resume_job_offer/UserHomePageAddButton";
+import UserHomePageAddButton from "./components/resume_job_offer/UserAddButton";
 import AddEnterpriseMissionButton from "./components/resume_job_offer/AddEnterpriseMissionButton";
 
 const router = createBrowserRouter([
