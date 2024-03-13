@@ -48,10 +48,10 @@ section > .overlay > .modal_container > .close_btn {
 section > .overlay > .modal_container > h2 {
   text-align: center;
   color: var(--primary-color);
-  font-family: var(--secondary-font);
   font-size: 1.4rem;
   padding-bottom: 2rem;
   padding-top: 2rem;
+  font-weight: 900;
 }
 
 section > .overlay > .modal_container > form {
@@ -62,23 +62,22 @@ section > .overlay > .modal_container > form {
 
 section > .overlay > .modal_container > form > .form_group {
   margin-bottom: 1rem;
-  font-family: var(--secondary-font);
-  font-weight: bold;
 }
 
 section > .overlay > .modal_container > form > .form_group > label {
   display: flex;
 }
-
+section > .overlay > .modal_container > form > .form_group input {
+  height: 5vh;
+}
 section > .overlay > .modal_container > form > .form_group input,
 .form_group textarea {
   display: block;
   width: 85vw;
-  height: 4vh;
   margin-bottom: 1rem;
   background-color: var(--background-color);
   font-family: var(--primary-font);
-  border-radius: 0.3rem;
+  border-radius: 0.6rem;
   padding: 0.6rem;
   margin-top: 0.5rem;
   border: none;
@@ -95,7 +94,7 @@ section > .overlay > .modal_container > form > button {
   color: var(--secondary-color);
   background-color: var(--primary-color);
   border: none;
-  border-radius: 10px;
+  border-radius: 2.5rem;
   font-family: var(--primary-font);
   font-size: large;
   font-weight: bold;
