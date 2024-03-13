@@ -1,5 +1,3 @@
-const { v4: generateRandomUUID } = require("uuid");
-
 const AbstractManager = require("./AbstractManager");
 
 class EnterpriseManager extends AbstractManager {
@@ -23,16 +21,15 @@ class EnterpriseManager extends AbstractManager {
   }
 
   async create(enterpriseInfo) {
-    const id = generateRandomUUID();
     const [rows] = await this.database.query(
       `INSERT INTO ${this.table} (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        id,
+        enterpriseInfo.id,
         enterpriseInfo.name,
         enterpriseInfo.siret,
         enterpriseInfo.description,
         enterpriseInfo.email,
-        enterpriseInfo.hashedPassword,
+        enterpriseInfo.password,
         enterpriseInfo.department_id,
         enterpriseInfo.legal_status_id,
         enterpriseInfo.business_sectors_id,
