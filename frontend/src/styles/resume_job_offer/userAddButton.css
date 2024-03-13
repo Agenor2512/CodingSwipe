@@ -76,7 +76,7 @@ section > .overlay > .modal_container > form > .form_group input,
   width: 85vw;
   height: 4vh;
   margin-bottom: 1rem;
-  background-color: var(--background-users-homepage);
+  background-color: var(--background-color);
   font-family: var(--primary-font);
   border-radius: 0.3rem;
   padding: 0.6rem;

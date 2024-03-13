@@ -19,7 +19,7 @@ function AddEnterpriseMissionButton() {
   };
 
   return (
-    <section>
+    <section className="enterprise_modal">
       {experiences.map((experience) => (
         <div className="experience">{experience.enterpriseMission}</div>
       ))}
@@ -33,7 +33,7 @@ function AddEnterpriseMissionButton() {
       {modal && (
         <div className="overlay">
           <div className="modal_container_enterprise">
-            <button type="button" className="close_btn" onClick={handleClose}>
+            <button type="button" onClick={handleClose}>
               &times;
             </button>
             <h2>AJOUTER LA MISSION</h2>

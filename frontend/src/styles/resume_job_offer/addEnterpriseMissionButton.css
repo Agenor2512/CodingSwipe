@@ -1,4 +1,4 @@
-section > .add_enterprise_button {
+.enterprise_modal > .add_enterprise_button {
   width: 8.2rem;
   height: 2.1rem;
   color: var(--color-white);
@@ -8,7 +8,7 @@ section > .add_enterprise_button {
   font-size: 14px;
 }
 
-section > .overlay {
+.enterprise_modal > .overlay {
   display: flex;
   align-items: center;
   width: 100vw;
@@ -21,58 +21,58 @@ section > .overlay {
   right: 0;
 }
 
-section > .overlay > .modal_container_enterprise {
+.enterprise_modal > .overlay > .modal_container_enterprise {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   width: 100vw;
-  height: 50vh;
+  height: 40vh;
   background-color: var(--color-white);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;
 }
 
-section > .overlay > .modal_container_enterprise > h2 {
+.enterprise_modal > .overlay > .modal_container_enterprise > h2 {
   text-align: center;
   color: var(--primary-color);
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
   font-size: 1.4rem;
   padding: 1rem;
+  font-weight: 900;
+  margin: 1rem 0;
 }
 
-section > .overlay > .modal_container_enterprise > .close_btn {
+.enterprise_modal > .overlay > .modal_container_enterprise > button {
   position: absolute;
   height: 1rem;
-  top: 14.2rem;
-  right: 19px;
+  top: 18rem;
+  right: 27px;
   border: none;
   background: none;
   font-size: xx-large;
   color: var(--primary-color);
 }
 
-section
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
   > .form_group_enterprise {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-family: var(--secondary-font);
   font-weight: bold;
 }
-
-section
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
-  > .form_group_enterpise
+  > .form_group_enterprise
   > label {
   display: flex;
 }
-
-section
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
@@ -83,14 +83,14 @@ section
   width: 85vw;
   height: 4vh;
   margin-bottom: 1rem;
-  background-color: var(--background-users-homepage);
-  border-radius: 0.3rem;
+  background-color: var(--background-color);
+  border-radius: 0.6rem;
   padding: 0.6rem;
   margin-top: 0.5rem;
   border: none;
 }
 
-section
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
@@ -99,7 +99,7 @@ section
   height: 15vh;
 }
 
-section
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
@@ -110,21 +110,21 @@ section
   color: var(--secondary-color);
   background-color: var(--primary-color);
   border: none;
-  border-radius: 10px;
+  border-radius: 2.5rem;
   font-family: var(--primary-font);
 }
-section > .overlay > .modal_container_enterprise > form {
+.enterprise_modal > .overlay > .modal_container_enterprise > form {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
 @media screen and (min-width: 600px) {
-  section > .overlay > .modal_container_enterprise {
+  .enterprise_modal > .overlay > .modal_container_enterprise {
     width: 50vw;
   }
 
-  section
+  .enterprise_modal
     > .overlay
     > .modal_container_enterprise
     > form
@@ -133,8 +133,19 @@ section > .overlay > .modal_container_enterprise > form {
   .form_group_enterprise textarea {
     width: 45vw;
   }
-  section > .overlay > .modal_container_enterprise > .close_btn {
-    top: 16rem;
-    right: 23rem;
+  .enterprise_modal > .overlay > .modal_container_enterprise > button {
+    top: 20rem;
+    right: 24rem;
+  }
+  .enterprise_modal
+    > .overlay
+    > .modal_container_enterprise
+    > form
+    > .add_enterprise_button {
+    margin-top: 2rem;
+  }
+
+  .enterprise_modal > .overlay > .modal_container_enterprise > h2 {
+    margin: 1.5rem 0 1rem 0;
   }
 }
