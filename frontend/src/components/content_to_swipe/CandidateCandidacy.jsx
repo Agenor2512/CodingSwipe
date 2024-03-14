@@ -10,9 +10,7 @@ function CandidateCandidacy() {
     <div className="candidate_infos_container">
       <div className="candidate_infos_header">
         <div>W</div>
-        <section>
-          <h1>Développeur/Développeuse</h1>
-        </section>
+        <h1>Développeur/Développeuse</h1>
       </div>
 
       <div className="modify_display_in_desktop">
