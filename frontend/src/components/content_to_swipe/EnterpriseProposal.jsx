@@ -1,3 +1,5 @@
+import "../../styles/content_to_swipe/enterpriseProposal.css";
+
 function EnterpriseProposal() {
   return (
     <div className="enterprise_infos_container">
@@ -6,14 +8,15 @@ function EnterpriseProposal() {
         <h1>Développeur/Développeuse</h1>
       </div>
 
-      <div className="modify_display_desktop">
+      <div className="modify_display_in_desktop">
         <div>
           <h2>Qui sommes-nous ?</h2>
+          <p>Description de l'entreprise</p>
         </div>
 
         <section className="work_proposal_container">
           <h2>Profil recherché</h2>
-          <p>Description de l'entreprise</p>
+
           <div>
             <div>
               <p>
@@ -36,13 +39,13 @@ function EnterpriseProposal() {
         <section className="annual_salary">
           <h2>Salaire annuel brut</h2>
           <div>
-            <label htmlFor="salary">
+            <p>
               Salaire <span>:</span>
-            </label>
+            </p>
           </div>
         </section>
 
-        <section className="computer_language_checkbox_container">
+        <section className="computer_languages_container">
           <h2>Langages informatiques</h2>
           <div />
         </section>
