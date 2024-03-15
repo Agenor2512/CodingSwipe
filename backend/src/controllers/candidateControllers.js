@@ -26,27 +26,46 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const id = generateRandomUUID();
-
-  const candidateInfo = {
-    id,
+  const randomId = generateRandomUUID();
+  const candidatesInfo = {
+    randomId,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
     password: req.body.hashedPassword,
-    department_id: req.body.department_id,
+    departmentId: req.body.departmentId,
   };
 
-  // const languagesId = [1, 3, 4];
+  const resumeInfos = {
+    randomId,
+    biography: req.body.biography,
+    appetencesId: req.body.appetencesId,
+    candidateId: randomId,
+    contractTypesId: req.body.contractTypesId,
+    workRhythmsId: req.body.workRhythmsId,
+    levelId: req.body.levelId,
+  };
 
   try {
-    const insertId = await tables.candidate.create(candidateInfo);
-    const resume = await tables.resume.create();
-    // const result = await tables.resume_has_programming_languages.create(1);
-    console.info(resume);
-    // languagesId.map((id) => tables.language.create(id));
+    const resultCandidate = await tables.candidate.createCandidate(
+      candidatesInfo
+    );
+    const resultResume = await tables.candidate.createResume(resumeInfos);
 
-    res.status(201).json({ insertId });
+    const { languages } = req.body;
+    console.info(languages);
+
+    await Promise.all(
+      languages.map((language) =>
+        tables.candidate.createProgrammingLanguages(randomId, language)
+      )
+    );
+
+    res.status(200).json({
+      msg: "candidat enregistré avec succès",
+      candidate: resultCandidate,
+      resume: resultResume,
+    });
   } catch (err) {
     next(err);
   }
