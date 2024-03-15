@@ -6,11 +6,18 @@ const RegisterContext = createContext();
 export function RegisterProvider({ children }) {
   const [infos, setInfos] = useState({
     userRole: "enterprise",
-    name: "",
-    siretNumber: "",
+    username: "",
+    lastname: "",
+    siret: "",
     legalStatus: "",
     businessSector: "",
     description: "",
+    appetence: "",
+    contractType: [],
+    workRhythm: [],
+    level: "",
+    programmingLanguages: [],
+    department: "",
     email: "",
     password: "",
   });

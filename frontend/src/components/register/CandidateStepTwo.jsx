@@ -1,167 +1,205 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+
+import RegisterContext from "../../context/RegisterContext";
+import { addUser } from "../../services/usersService";
 
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
-  const [specialtyButton, setSpecialtyButton] = useState("frontend");
-
-  const [experienceButton, setExperienceButton] = useState("junior");
-
-  const handleClickSpecialtyButton = (event) => {
-    setSpecialtyButton(event.target.name);
-  };
-
-  const handleClickExperienceButton = (event) => {
-    setExperienceButton(event.target.name);
-  };
-
-  const mainCourses = [
+  const appetences = [
     {
-      name: "frontend",
+      id: 0,
       buttonText: "Frontend",
     },
     {
-      name: "backend",
+      id: 1,
       buttonText: "Backend",
     },
     {
-      name: "fullstack",
+      id: 2,
       buttonText: "Full Stack",
     },
   ];
 
-  const candidateExperienceLevel = [
+  const level = [
     {
+      id: 0,
       name: "junior",
       buttonText: "Junior",
     },
     {
+      id: 1,
       name: "mid-Level",
       buttonText: "Mid-level",
     },
     {
+      id: 2,
       name: "senior",
       buttonText: "Senior",
     },
   ];
 
-  const enterpriseExpectations = [
+  const contractType = [
     {
-      key: "full-time",
+      id: 0,
       text: "Un CDI",
     },
     {
-      key: "contract",
+      id: 1,
       text: "Un CDD",
     },
     {
-      key: "internship",
+      id: 2,
       text: "Un Stage / Une Alternance",
     },
     {
-      key: "freelance",
+      id: 3,
       text: "Du freelance",
     },
   ];
 
-  const enterpriseWorkplaces = [
+  const workRhythm = [
     {
-      key: "on-site",
+      id: 0,
       text: "Sur site",
     },
     {
-      key: "half-remote",
+      id: 1,
       text: "Remote partiel",
     },
     {
-      key: "full-remote",
+      id: 2,
       text: "Full remote",
     },
   ];
 
-  const computerLanguages = [
+  const programmingLanguages = [
     {
-      key: "html-css",
+      id: 0,
       text: "HTML/CSS",
     },
     {
-      key: "javascript",
+      id: 1,
       text: "JavaScript",
     },
     {
-      key: "python",
+      id: 2,
       text: "Python",
     },
     {
-      key: "java",
+      id: 3,
       text: "Java",
     },
     {
-      key: "ruby",
+      id: 4,
       text: "Ruby On Rails",
     },
     {
-      key: "vue",
+      id: 5,
       text: "Vue.js",
     },
     {
-      key: "swift",
+      id: 6,
       text: "Swift",
     },
     {
-      key: "kotlin",
+      id: 7,
       text: "Kotlin",
     },
     {
-      key: "flutter",
+      id: 8,
       text: "Flutter",
     },
     {
-      key: "go",
+      id: 9,
       text: "Go",
     },
     {
-      key: "c#",
+      id: 10,
       text: "C#",
     },
     {
-      key: "c++",
+      id: 11,
       text: "C++",
     },
     {
-      key: "react",
+      id: 12,
       text: "React",
     },
     {
-      key: "angular",
+      id: 13,
       text: "Angular",
     },
     {
-      key: "nodejs",
+      id: 14,
       text: "Node.js",
     },
     {
-      key: "php",
+      id: 15,
       text: "PHP",
     },
     {
-      key: "rust",
+      id: 16,
       text: "Rust",
     },
     {
-      key: ".net",
+      id: 17,
       text: ".NET Core / .NET 5",
     },
     {
-      key: "sql",
+      id: 18,
       text: "SQL",
     },
     {
-      key: "nosql",
+      id: 19,
       text: "NoSQL",
     },
   ];
+
+  const { infos, setInfos } = useContext(RegisterContext);
+
+  useEffect(() => {
+    // Initialisation des valeurs par défaut des champs
+    setInfos({
+      ...infos,
+      appetence: appetences[0].id,
+      level: level[0].id,
+    });
+  }, []);
+
+  const selectedAppentenceId = infos.appetence;
+  const selectedLevelId = infos.level;
+
+  const handleFormChange = (key, { target: { value } }) => {
+    setInfos({
+      ...infos,
+      [key]: value,
+    });
+  };
+
+  const handleFormChangeForList = (key, { target: { value } }) => {
+    const values = [...infos[key]];
+
+    if (values.includes(value)) {
+      values.splice(values.indexOf(value), 1);
+    } else {
+      values.push(value);
+    }
+
+    setInfos({
+      ...infos,
+      [key]: values,
+    });
+  };
+
+  const registerThenRedirect = () => {
+    const requestBody = {
+      ...infos,
+    };
+    addUser({ ...requestBody });
+    nextStep();
+  };
 
   return (
     <form
@@ -182,13 +220,15 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Appétences <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {mainCourses.map(({ name, buttonText }) => (
+          {appetences.map(({ id, buttonText }) => (
             <button
               type="button"
-              key={name}
-              name={name}
-              onClick={handleClickSpecialtyButton}
-              className={specialtyButton === name ? "focusedButton" : ""}
+              key={id}
+              value={id}
+              onClick={(event) => handleFormChange("appetence", event)}
+              className={
+                id === parseInt(selectedAppentenceId, 10) ? "focusedButton" : ""
+              }
             >
               {buttonText}
             </button>
@@ -201,9 +241,16 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Je recherche <span>:</span>
           </p>
-          {enterpriseExpectations.map(({ key, text }) => (
-            <div className="enterprise_expectation_container" key={key}>
-              <input type="checkbox" id="checkbox" />
+          {contractType.map(({ id, text }) => (
+            <div className="enterprise_expectation_container" key={id}>
+              <input
+                type="checkbox"
+                id="checkbox"
+                value={id}
+                onChange={(event) =>
+                  handleFormChangeForList("contractType", event)
+                }
+              />
               <label htmlFor="checkbox">{text}</label>
             </div>
           ))}
@@ -213,9 +260,16 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           <p>
             Lieu de travail <span>:</span>
           </p>
-          {enterpriseWorkplaces.map(({ key, text }) => (
-            <div className="enterprise_workplace_container" key={key}>
-              <input type="checkbox" id="checkbox" />
+          {workRhythm.map(({ id, text }) => (
+            <div className="enterprise_workplace_container" key={id}>
+              <input
+                type="checkbox"
+                id="checkbox"
+                value={id}
+                onChange={(event) =>
+                  handleFormChangeForList("workRhythm", event)
+                }
+              />
               <label htmlFor="checkbox">{text}</label>
             </div>
           ))}
@@ -226,13 +280,16 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Je suis <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {candidateExperienceLevel.map(({ name, buttonText }) => (
+          {level.map(({ id, name, buttonText }) => (
             <button
               type="button"
-              key={name}
+              key={id}
               name={name}
-              onClick={handleClickExperienceButton}
-              className={experienceButton === name ? "focusedButton" : ""}
+              value={id}
+              onClick={(event) => handleFormChange("level", event)}
+              className={
+                id === parseInt(selectedLevelId, 10) ? "focusedButton" : ""
+              }
             >
               {buttonText}
             </button>
@@ -249,9 +306,16 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <span> : </span>
       </p>
       <section className="computer_language_checkbox_container">
-        {computerLanguages.map(({ key, text }) => (
-          <div key={key}>
-            <input type="checkbox" id="checkbox" />
+        {programmingLanguages.map(({ id, text }) => (
+          <div key={id}>
+            <input
+              type="checkbox"
+              id="checkbox"
+              value={id}
+              onChange={(event) =>
+                handleFormChangeForList("programmingLanguages", event)
+              }
+            />
             <label htmlFor="checkbox">{text}</label>
           </div>
         ))}
@@ -261,7 +325,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
-          onClick={nextStep}
+          onClick={registerThenRedirect}
         />
       </section>
     </form>
