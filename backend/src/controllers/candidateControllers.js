@@ -37,8 +37,14 @@ const add = async (req, res, next) => {
     department_id: req.body.department_id,
   };
 
+  // const languagesId = [1, 3, 4];
+
   try {
     const insertId = await tables.candidate.create(candidateInfo);
+    const resume = await tables.resume.create();
+    // const result = await tables.resume_has_programming_languages.create(1);
+    console.info(resume);
+    // languagesId.map((id) => tables.language.create(id));
 
     res.status(201).json({ insertId });
   } catch (err) {

@@ -93,10 +93,9 @@ create table resume_has_soft_skills (
 );
 
 create table resume_has_programming_languages (
-  id int not null auto_increment,
   resume_id varchar(36) not null,
   programming_languages_id int not null,
-  primary key(id),
+  primary key(resume_id, programming_languages_id),
   foreign key(resume_id) references resume(id),
   foreign key(programming_languages_id) references programming_languages(id)
 );
