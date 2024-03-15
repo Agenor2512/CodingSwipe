@@ -11,6 +11,7 @@ import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
 import EnterpriseProposal from "./components/content_to_swipe/EnterpriseProposal";
+import CandidateCandidacy from "./components/content_to_swipe/CandidateCandidacy";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/enterpriseProposal",
         element: <EnterpriseProposal />,
+      },
+      {
+        path: "candidateCandidacy",
+        element: <CandidateCandidacy />,
       },
     ],
     errorElement: <ErrorPage />,

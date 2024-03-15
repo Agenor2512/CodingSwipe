@@ -120,3 +120,83 @@
   > div {
   min-height: 10vh;
 }
+
+@media screen and (min-width: 600px) {
+  .enterprise_infos_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    padding: 1.5rem;
+    margin: 2rem;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+
+  .enterprise_infos_container > .enterprise_infos_header {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 63vw;
+  }
+
+  .enterprise_infos_container > .enterprise_infos_header > h1 {
+    font-size: 2rem;
+  }
+
+  .enterprise_infos_container > .enterprise_infos_header > div {
+    width: 7vw;
+    border: 10px solid var(--primary-color);
+    font-size: 4rem;
+  }
+
+  .enterprise_infos_container > .modify_display_in_desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 63vw;
+  }
+
+  .enterprise_infos_container > .modify_display_in_desktop > div,
+  .enterprise_infos_container
+    > .modify_display_in_desktop
+    > .work_proposal_container,
+  .enterprise_infos_container
+    > .salary_languages_missions_desktop
+    > .annual_salary,
+  .enterprise_infos_container
+    > .salary_languages_missions_desktop
+    > .computer_languages_container,
+  .enterprise_infos_container > .salary_languages_missions_desktop > .missions {
+    width: 30vw;
+  }
+
+  .enterprise_infos_container > .salary_languages_missions_desktop {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    width: 63vw;
+    height: 71vh;
+  }
+
+  .enterprise_infos_container
+    > .modify_display_in_desktop
+    > .work_proposal_container
+    > div,
+  .enterprise_infos_container
+    > .salary_languages_missions_desktop
+    > .annual_salary
+    > div,
+  .enterprise_infos_container
+    > .salary_languages_missions_desktop
+    > .computer_languages_container
+    > div,
+  .enterprise_infos_container
+    > .salary_languages_missions_desktop
+    > .missions
+    > div {
+    min-height: 20vh;
+  }
+}
