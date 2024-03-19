@@ -34,11 +34,15 @@ export const addUser = (userInformations) => {
 
 export const logUser = (userLogInformations) => {
   client
-    .post("/login", {
-      ...userLogInformations,
-      email: userLogInformations.email,
-      password: userLogInformations.password,
-    })
+    .post(
+      "/login",
+      {
+        ...userLogInformations,
+        email: userLogInformations.email,
+        password: userLogInformations.password,
+      },
+      { withCredentials: true }
+    )
     .then((response) => console.info(response))
     .catch((error) => console.error(error));
 };
