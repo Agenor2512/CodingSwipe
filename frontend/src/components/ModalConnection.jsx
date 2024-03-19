@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import { logUser } from "../services/usersService";
 
-import RegisterContext from "../context/RegisterContext";
+import LoginUserContext from "../context/LoginUserContext";
 
 import "../styles/components/modalConnection.css";
 
 function ModalConnection() {
   const [modal, setModal] = useState(false);
-  const { infos, setInfos } = useContext(RegisterContext);
+  const { loginUser, setLoginUser } = useContext(LoginUserContext);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -20,15 +20,15 @@ function ModalConnection() {
   };
 
   const handleFormChange = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
+    setLoginUser({
+      ...loginUser,
       [key]: value,
     });
   };
 
   const logThenRedirect = () => {
     const requestBody = {
-      ...infos,
+      ...loginUser,
     };
 
     logUser({ ...requestBody });
