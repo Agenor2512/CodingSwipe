@@ -5,6 +5,21 @@ class CandidateManager extends AbstractManager {
     super({ table: "candidate" });
   }
 
+  async readById(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return rows[0];
+  }
+
+  async readAll() {
+    const [rows] = await this.database.query(`select * from ${this.table}`);
+
+    return rows;
+  }
+
   async createCandidate(candidate) {
     const [result] = await this.database.query(
       `insert into ${this.table} (id, firstname, lastname, email, password, department_id) values (?,?, ?, ?, ?, ?)`,
@@ -45,21 +60,6 @@ class CandidateManager extends AbstractManager {
     );
 
     return result;
-  }
-
-  async readById(id) {
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [id]
-    );
-
-    return rows[0];
-  }
-
-  async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
-
-    return rows;
   }
 }
 

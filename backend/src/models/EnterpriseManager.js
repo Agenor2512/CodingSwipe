@@ -20,22 +20,37 @@ class EnterpriseManager extends AbstractManager {
     return rows[0];
   }
 
-  async create(enterpriseInfo) {
+  async createEnterprise(enterprise) {
     const [rows] = await this.database.query(
       `INSERT INTO ${this.table} (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        enterpriseInfo.id,
-        enterpriseInfo.name,
-        enterpriseInfo.siret,
-        enterpriseInfo.description,
-        enterpriseInfo.email,
-        enterpriseInfo.password,
-        enterpriseInfo.department_id,
-        enterpriseInfo.legal_status_id,
-        enterpriseInfo.business_sectors_id,
+        enterprise.randomId,
+        enterprise.name,
+        enterprise.siret,
+        enterprise.description,
+        enterprise.email,
+        enterprise.password,
+        enterprise.departmentId,
+        enterprise.legalStatusId,
+        enterprise.businessSectorsId,
       ]
     );
     return rows;
+  }
+
+  async createJobOffer(jobOffer) {
+    const [result] = await this.database.query(
+      `INSERT INTO job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id) VALUE (?, ?, ?, ?, ?, ?)`,
+      [
+        jobOffer.randomId,
+        jobOffer.salary,
+        jobOffer.contractTypesId,
+        jobOffer.workRhythmsId,
+        jobOffer.appetencesId,
+        jobOffer.enterpriseId,
+      ]
+    );
+    return result;
   }
 }
 
