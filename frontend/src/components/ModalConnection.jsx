@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { logUser } from "../services/usersService";
+
+import RegisterContext from "../context/RegisterContext";
 
 import "../styles/components/modalConnection.css";
 
 function ModalConnection() {
   const [modal, setModal] = useState(false);
+  const { infos, setInfos } = useContext(RegisterContext);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -12,6 +17,21 @@ function ModalConnection() {
 
   const toggleModalOnce = () => {
     setModal(true);
+  };
+
+  const handleFormChange = (key, { target: { value } }) => {
+    setInfos({
+      ...infos,
+      [key]: value,
+    });
+  };
+
+  const logThenRedirect = () => {
+    const requestBody = {
+      ...infos,
+    };
+
+    logUser({ ...requestBody });
   };
 
   return (
@@ -38,6 +58,7 @@ function ModalConnection() {
                 required
                 placeholder="exemple@gmail.com"
                 pattern="[chiffres/lettres/tiret]@[lettres].[lettres]"
+                onChange={(event) => handleFormChange("email", event)}
               />
               <label htmlFor="password">Mot de passe</label>
               <input
@@ -47,9 +68,15 @@ function ModalConnection() {
                 required
                 placeholder="Saisissez votre mot de passe"
                 minLength="8"
+                onChange={(event) => handleFormChange("password", event)}
               />
-              <Link to="/">
-                <input type="submit" className="continue" value="Continuer" />
+              <Link to="/UsersHomePage">
+                <input
+                  type="submit"
+                  className="continue"
+                  value="Continuer"
+                  onClick={logThenRedirect}
+                />
               </Link>
             </form>
             <button type="button" onClick={toggleModal}>
