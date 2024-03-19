@@ -5,10 +5,14 @@ const LoginUserContext = createContext();
 
 export function LoginUserProvider({ children }) {
   const [loginUser, setLoginUser] = useState({
+    id: localStorage.getItem("id"),
+    role: localStorage.getItem("role"),
     email: localStorage.getItem("email"),
   });
 
   useEffect(() => {
+    localStorage.setItem("id", loginUser.id);
+    localStorage.setItem("role", loginUser.role);
     localStorage.setItem("email", loginUser.email);
   }, [loginUser]);
 

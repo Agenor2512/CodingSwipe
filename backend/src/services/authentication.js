@@ -47,7 +47,6 @@ const checkIfEmailExist = async (req, res, next) => {
         email: loginEnterprise[0].email,
         password: loginEnterprise[0].password,
       };
-
       next();
     } else {
       res.sendStatus(422);
