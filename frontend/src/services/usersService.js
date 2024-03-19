@@ -31,3 +31,18 @@ export const addUser = (userInformations) => {
       .catch((error) => console.error(error));
   }
 };
+
+export const logUser = (userLogInformations) => {
+  client
+    .post(
+      "/login",
+      {
+        ...userLogInformations,
+        email: userLogInformations.email,
+        password: userLogInformations.password,
+      },
+      { withCredentials: true }
+    )
+    .then((response) => console.info(response))
+    .catch((error) => console.error(error));
+};
