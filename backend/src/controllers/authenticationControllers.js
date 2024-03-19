@@ -1,27 +1,19 @@
-const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
-const tables = require("../tables");
+const argon2 = require("argon2");
 
 const login = async (req, res, next) => {
   try {
-    const loginCandidate = await tables.candidate.readByEmailWithPassword(
-      req.body.email
-    );
-
     const verifiedPassword = await argon2.verify(
-      loginCandidate[0].password,
+      req.user.password,
       req.body.password
     );
-
-    if (loginCandidate.length === 0) {
-      res.sendStatus(422);
-    }
 
     if (verifiedPassword === true) {
       const token = await jwt.sign(
         {
-          submitted: loginCandidate[0].id,
-          email: loginCandidate[0].email,
+          id: req.user.id,
+          role: req.user.role,
+          email: req.user.email,
         },
         process.env.APP_SECRET
       );
@@ -33,10 +25,9 @@ const login = async (req, res, next) => {
         })
         .json({
           message: "Authentication succeded !",
-          firstname: loginCandidate[0].firstname,
-          lastname: loginCandidate[0].lastname,
-          id: loginCandidate[0].id,
-          email: loginCandidate[0].email,
+          id: req.user.id,
+          role: req.user.role,
+          email: req.user.email,
         });
     } else {
       res.sendStatus(422);
