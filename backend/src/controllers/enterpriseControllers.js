@@ -25,24 +25,41 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const id = generateRandomUUID();
-
+  const randomId = generateRandomUUID();
   const enterpriseInfo = {
-    id,
+    randomId,
     name: req.body.name,
     siret: req.body.siret,
-    email: req.body.email,
-    department_id: req.body.department_id,
-    password: req.body.hashedPassword,
-    legal_status_id: req.body.legal_status_id,
-    business_sectors_id: req.body.business_sectors_id,
     description: req.body.description,
+    email: req.body.email,
+    password: req.body.hashedPassword,
+    departmentId: req.body.departmentId,
+    legalStatusId: req.body.legalStatusId,
+    businessSectorsId: req.body.businessSectorsId,
+  };
+
+  const jobOfferInfos = {
+    randomId,
+    salary: req.body.salary,
+    contractTypesId: req.body.contractTypesId,
+    workRhythmsId: req.body.workRhythmsId,
+    appetencesId: req.body.appetencesId,
+    enterpriseId: randomId,
   };
 
   try {
-    const insertId = await tables.enterprise.create(enterpriseInfo);
+    const resultEnterprise = await tables.enterprise.createEnterprise(
+      enterpriseInfo
+    );
+    const resultJobOffer = await tables.enterprise.createJobOffer(
+      jobOfferInfos
+    );
 
-    res.status(201).json({ insertId });
+    res.status(201).json({
+      msg: "entreprise enregistré avec succés",
+      enterprise: resultEnterprise,
+      jobOffer: resultJobOffer,
+    });
   } catch (err) {
     next(err);
   }
