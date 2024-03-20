@@ -36,6 +36,13 @@ function Register() {
     });
   };
 
+  // const handleChangeForm = (event) => {
+  //   setEnterpriseInfos({
+  //     ...enterpriseInfos,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
+
   const nextStep = () => {
     setStep((currentStep) => currentStep + 1);
   };
@@ -67,7 +74,13 @@ function Register() {
         );
       case 3:
         return role === "enterprise" ? (
-          <EnterpriseStepTwo formTools={{ nextStep, handleFormSubmit }} />
+          <EnterpriseStepTwo
+            formTools={{
+              nextStep,
+              handleFormSubmit,
+              handleChangeForm,
+            }}
+          />
         ) : (
           <CandidateStepTwo
             formTools={{

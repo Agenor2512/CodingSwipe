@@ -352,7 +352,7 @@ function EnterpriseStepTwo({
 
         <section className="levels_experience_part_container">
           <p>
-            Appétences <span>:</span>
+            Je recherche un.e développeur·euse <span>:</span>
           </p>
           <section className="levels_and_experience_button_container">
             {appetences.map(({ id, buttonText }) => (
