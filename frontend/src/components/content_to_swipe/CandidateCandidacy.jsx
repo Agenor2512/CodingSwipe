@@ -1,5 +1,8 @@
 import React from "react";
 
+import SwipeSystem from "./SwipeSystem";
+import WorkingConditionsCard from "./WorkingConditionsCard";
+
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
@@ -21,7 +24,7 @@ function CandidateCandidacy() {
 
         <section className="candidate_expectations_container">
           <h2>Ma recherche</h2>
-          <div />
+          <WorkingConditionsCard />
         </section>
       </div>
 
@@ -41,6 +44,7 @@ function CandidateCandidacy() {
           <div />
         </section>
       </div>
+      <SwipeSystem />
     </div>
   );
 }

@@ -1,0 +1,49 @@
+.candidate_infos_container
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 1rem 0;
+}
+
+.candidate_infos_container
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div
+  > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 5vh;
+  padding: 0.5rem;
+  background-color: var(--background-color);
+  border: 2px solid var(--primary-color);
+  margin: 0.5rem;
+}
+
+.candidate_infos_container
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div
+  > div
+  > img {
+  height: 3vh;
+}
+
+.candidate_infos_container
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div
+  > div
+  > img,
+.candidate_infos_container
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div
+  > div
+  > p {
+  padding: 0 0.3rem;
+}

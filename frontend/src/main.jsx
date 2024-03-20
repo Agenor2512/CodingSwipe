@@ -9,11 +9,8 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePageSwipe from "./pages/HomePageSwipe";
 import { RegisterProvider } from "./context/RegisterContext";
-
-import EnterpriseProposal from "./components/content_to_swipe/EnterpriseProposal";
-import CandidateCandidacy from "./components/content_to_swipe/CandidateCandidacy";
-
 import { LoginUserProvider } from "./context/LoginUserContext";
 
 const router = createBrowserRouter([
@@ -33,12 +30,8 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
       },
       {
-        path: "/enterpriseProposal",
-        element: <EnterpriseProposal />,
-      },
-      {
-        path: "candidateCandidacy",
-        element: <CandidateCandidacy />,
+        path: "/homePageSwipe",
+        element: <HomePageSwipe />,
       },
     ],
     errorElement: <ErrorPage />,
