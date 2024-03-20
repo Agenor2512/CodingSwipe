@@ -1,20 +1,23 @@
-.match_container {
+.messages_container {
   display: flex;
   flex-direction: column;
 }
 
-.match_container > .match_card {
+.messages_container > .messages_card {
   border: 2px solid var(--primary-color);
   color: var(--color-white);
   margin: 1rem;
 }
 
-.match_container > .match_card > .match_card_content {
+.messages_container > .messages_card > .messages_card_content {
   display: flex;
   justify-content: flex-start;
 }
 
-.match_container > .match_card > .match_card_content > .first_content_block {
+.messages_container
+  > .messages_card
+  > .messages_card_content
+  > .first_content_block {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +30,10 @@
   font-size: 2.5rem;
 }
 
-.match_container > .match_card > .match_card_content > .second_content_block {
+.messages_container
+  > .messages_card
+  > .messages_card_content
+  > .second_content_block {
   display: flex;
   flex-direction: column;
   margin: 0.3rem;
@@ -35,9 +41,9 @@
   width: 70vw;
 }
 
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .bold_font {
   display: flex;
@@ -46,18 +52,18 @@
   width: 70vw;
 }
 
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .bold_font {
   display: flex;
   align-items: center;
 }
 
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .bold_font
   > span {
@@ -66,18 +72,18 @@
   padding: 0.3rem;
 }
 
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .bold_font
   > p {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
 }
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .font_content {
   width: 70vw;
@@ -85,21 +91,24 @@
 }
 
 @media screen and (min-width: 600px) {
-  .match_container > .match_card > .match_card_content > .second_content_block {
+  .messages_container
+    > .messages_card
+    > .messages_card_content
+    > .second_content_block {
     width: 15vw;
   }
-  .match_container
-    > .match_card
-    > .match_card_content
+  .messages_container
+    > .messages_card
+    > .messages_card_content
     > .second_content_block
     > .font_content {
     width: 15vw;
   }
 }
 
-.match_container
-  > .match_card
-  > .match_card_content
+.messages_container
+  > .messages_card
+  > .messages_card_content
   > .second_content_block
   > .bold_font {
   width: 20vw;

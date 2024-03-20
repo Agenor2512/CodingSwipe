@@ -8,14 +8,14 @@ function getFirstLetter(name) {
 }
 
 function Messages({ messagesData }) {
-  const { userRole } = useContext(RegisterContext);
+  const { infos } = useContext(RegisterContext);
 
   return (
     <section className="messages_container">
-      {userRole === "match" &&
+      {infos === "messages" &&
         messagesData.map((messages) => (
           <div key={messages.id} className="messages_card">
-            {userRole === "candidat" ? (
+            {infos === "candidat" ? (
               <div>
                 <div>{getFirstLetter(messages.name)}</div>
                 <div>{messages.jobName}</div>

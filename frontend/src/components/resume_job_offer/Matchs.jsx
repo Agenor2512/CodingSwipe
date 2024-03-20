@@ -2,20 +2,21 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import RegisterContext from "../../context/RegisterContext";
 import "../../styles/resume_job_offer/matchs.css";
+import "../../styles/resume_job_offer/messages.css";
 
 function getFirstLetter(name) {
   return name.charAt(0).toUpperCase();
 }
 
 function Matchs({ matchesData }) {
-  const { userRole } = useContext(RegisterContext);
+  const { infos } = useContext(RegisterContext);
 
   return (
     <section className="match_container">
-      {userRole === "match" &&
+      {infos === "match" &&
         matchesData.map((match) => (
           <div key={match.id} className="match_card">
-            {userRole === "candidat" ? (
+            {infos === "candidat" ? (
               <div>
                 <div>{getFirstLetter(match.name)}</div>
                 <div>{match.jobName}</div>
