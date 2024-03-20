@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
+import { LoginUserProvider } from "./context/LoginUserContext";
 import UserHomePageAddButton from "./components/resume_job_offer/UserHomePageAddButton";
 
 const router = createBrowserRouter([
@@ -42,7 +43,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RegisterProvider>
-      <RouterProvider router={router} />
+      <LoginUserProvider>
+        <RouterProvider router={router} />
+      </LoginUserProvider>
     </RegisterProvider>
   </React.StrictMode>
 );

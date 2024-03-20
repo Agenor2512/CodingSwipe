@@ -47,7 +47,6 @@ const checkIfEmailExist = async (req, res, next) => {
         email: loginEnterprise[0].email,
         password: loginEnterprise[0].password,
       };
-
       next();
     } else {
       res.sendStatus(422);
@@ -55,14 +54,6 @@ const checkIfEmailExist = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-  // Vérifier si c'est dans candidate
-  // Si oui --> Récupérer email + password (req.user)
-  // next()
-  // Si non --> checker enterprise (en attendant renvoyer une erreur)
-  // Si oui --> Récupérer email + password (req.user)
-  // next()
-  // associer le authControllers
-  // Renvoyer une erreur
 };
 
 module.exports = { hashPassword, checkIfEmailExist };

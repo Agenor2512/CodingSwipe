@@ -1,15 +1,25 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { logUser } from "../services/usersService";
+import axios from "axios";
 
-import RegisterContext from "../context/RegisterContext";
+import LoginUserContext from "../context/LoginUserContext";
 
 import "../styles/components/modalConnection.css";
 
 function ModalConnection() {
+  const baseURL = import.meta.env.VITE_BACKEND_URL;
+
+  const client = axios.create({
+    baseURL,
+    timeout: 60_000,
+  });
+
   const [modal, setModal] = useState(false);
-  const { infos, setInfos } = useContext(RegisterContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setLoginUser } = useContext(LoginUserContext);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -19,19 +29,39 @@ function ModalConnection() {
     setModal(true);
   };
 
-  const handleFormChange = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
-      [key]: value,
-    });
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
   };
 
-  const logThenRedirect = () => {
-    const requestBody = {
-      ...infos,
-    };
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
-    logUser({ ...requestBody });
+  const navigate = useNavigate();
+
+  const submitForm = (event) => {
+    event.preventDefault();
+
+    client
+      .post(
+        "/login",
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        setLoginUser({
+          id: response.data.id,
+          role: response.data.role,
+          email: response.data.email,
+        });
+        navigate("/usershomepage");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -48,7 +78,7 @@ function ModalConnection() {
       {modal && (
         <div className="overlay">
           <dialog className="connection_modal">
-            <form className="connection_modal_content">
+            <form className="connection_modal_content" onSubmit={submitForm}>
               <h2>SE CONNECTER</h2>
               <label htmlFor="email">Email</label>
               <input
@@ -58,7 +88,7 @@ function ModalConnection() {
                 required
                 placeholder="exemple@gmail.com"
                 pattern="[chiffres/lettres/tiret]@[lettres].[lettres]"
-                onChange={(event) => handleFormChange("email", event)}
+                onChange={handleChangeEmail}
               />
               <label htmlFor="password">Mot de passe</label>
               <input
@@ -68,16 +98,9 @@ function ModalConnection() {
                 required
                 placeholder="Saisissez votre mot de passe"
                 minLength="8"
-                onChange={(event) => handleFormChange("password", event)}
+                onChange={handleChangePassword}
               />
-              <Link to="/UsersHomePage">
-                <input
-                  type="submit"
-                  className="continue"
-                  value="Continuer"
-                  onClick={logThenRedirect}
-                />
-              </Link>
+              <input type="submit" className="continue" value="Continuer" />
             </form>
             <button type="button" onClick={toggleModal}>
               &times;

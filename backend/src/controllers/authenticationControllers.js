@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
           email: req.user.email,
         });
     } else {
-      res.sendStatus(422);
+      res.status(401).send("Wrong Credentials.");
     }
   } catch (error) {
     next(error);
