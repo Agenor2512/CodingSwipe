@@ -6,6 +6,13 @@ const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
 
 const authenticationService = require("./services/authentication");
+const authenticationControllers = require("./controllers/authenticationControllers");
+
+router.post(
+  "/login",
+  authenticationService.checkIfEmailExist,
+  authenticationControllers.login
+);
 
 router.get("/enterprises", enterpriseControllers.browse);
 

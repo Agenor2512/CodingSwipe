@@ -37,6 +37,14 @@ class EnterpriseManager extends AbstractManager {
     );
     return rows;
   }
+
+  async readByEmailWithPassword(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email=?`,
+      [email]
+    );
+    return rows;
+  }
 }
 
 module.exports = EnterpriseManager;

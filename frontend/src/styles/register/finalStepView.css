@@ -7,6 +7,7 @@
   height: 100vh;
   padding: 3rem 0 5rem 0;
   background-color: var(--register-background-color);
+  font-family: var(--primary-font);
 }
 
 .final_step_container > h3 {
@@ -14,29 +15,27 @@
   flex-direction: column;
   align-items: center;
   color: var(--color-white);
-  font-family: var(--primary-font);
   font-size: 2rem;
 }
 
 .final_step_container > .subtitle {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  margin: 0 1rem;
+  width: 90vw;
 }
 
 .final_step_container > .subtitle > .square {
   background-color: var(--primary-color);
-  width: 12px;
-  height: 12px;
-  margin-right: 0.2rem;
+  min-width: 12px;
+  min-height: 12px;
+  margin-top: 0.2rem;
 }
 
 .final_step_container > .subtitle > p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: var(--color-white);
-  font-size: 0.8rem;
+  font-size: 1rem;
+  text-align: center;
 }
 
 .final_step_container > .subtitle > p span {
@@ -44,12 +43,12 @@
 }
 
 @media screen and (min-width: 600px) {
-  .final_step_container {
-    justify-content: space-around;
-    padding: 0;
+  .final_step_container > .subtitle {
+    justify-content: center;
+    align-items: center;
   }
 
-  .final_step_container > .subtitle > p {
-    font-size: 1rem;
+  .final_step_container > .subtitle > .square {
+    margin: 0 1rem 0 0;
   }
 }

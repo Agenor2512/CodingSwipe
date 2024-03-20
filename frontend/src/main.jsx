@@ -10,8 +10,11 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { RegisterProvider } from "./context/RegisterContext";
+
 import EnterpriseProposal from "./components/content_to_swipe/EnterpriseProposal";
 import CandidateCandidacy from "./components/content_to_swipe/CandidateCandidacy";
+
+import { LoginUserProvider } from "./context/LoginUserContext";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +50,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RegisterProvider>
-      <RouterProvider router={router} />
+      <LoginUserProvider>
+        <RouterProvider router={router} />
+      </LoginUserProvider>
     </RegisterProvider>
   </React.StrictMode>
 );
