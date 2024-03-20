@@ -11,38 +11,40 @@ function CandidateCandidacy() {
 
   return (
     <div className="candidate_infos_container">
-      <div className="candidate_infos_header">
-        <div>W</div>
-        <h1>Développeur/Développeuse</h1>
-      </div>
-
-      <div className="modify_display_in_desktop">
-        <div>
-          <h2>Qui suis-je ?</h2>
-          <p>{candidateDescription}</p>
+      <div>
+        <div className="candidate_infos_header">
+          <div>W</div>
+          <h1>Développeur/Développeuse</h1>
         </div>
 
-        <section className="candidate_expectations_container">
-          <h2>Ma recherche</h2>
-          <WorkingConditionsCard />
-        </section>
-      </div>
+        <div className="modify_display_in_desktop">
+          <div>
+            <h2>Qui suis-je ?</h2>
+            <p>{candidateDescription}</p>
+          </div>
 
-      <div className="skills_languages_experiences_desktop">
-        <section className="soft_skills">
-          <h2>Soft skills</h2>
-          <div />
-        </section>
+          <section className="candidate_expectations_container">
+            <h2>Ma recherche</h2>
+            <WorkingConditionsCard />
+          </section>
+        </div>
 
-        <section className="computer_languages_container">
-          <h2>Langages informatiques</h2>
-          <div />
-        </section>
+        <div className="skills_languages_experiences_desktop">
+          <section className="soft_skills">
+            <h2>Soft skills</h2>
+            <div />
+          </section>
 
-        <section className="significatives_experiences">
-          <h2>Expériences significatives</h2>
-          <div />
-        </section>
+          <section className="computer_languages_container">
+            <h2>Langages informatiques</h2>
+            <div />
+          </section>
+
+          <section className="significatives_experiences">
+            <h2>Expériences significatives</h2>
+            <div />
+          </section>
+        </div>
       </div>
       <SwipeSystem />
     </div>
