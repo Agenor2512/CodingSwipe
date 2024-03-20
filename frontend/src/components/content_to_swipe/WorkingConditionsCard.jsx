@@ -11,8 +11,8 @@ function WorkingConditionsCard() {
   const conditions = [
     { id: 0, icon: contract, text: "Stage/Alternance" },
     { id: 1, icon: mobility, text: "Alpes de Haute Provence" },
-    { id: 2, icon: salary, text: "Full remote" },
-    { id: 3, icon: work, text: "Non précisé" },
+    { id: 2, icon: work, text: "Full remote" },
+    { id: 3, icon: salary, text: "Salaire : Non précisé" },
   ];
   return (
     <div>

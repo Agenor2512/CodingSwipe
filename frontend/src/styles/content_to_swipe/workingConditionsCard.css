@@ -47,3 +47,12 @@
   > p {
   padding: 0 0.3rem;
 }
+
+@media screen and (min-width: 600px) {
+  .candidate_infos_container
+    > .modify_display_in_desktop
+    > .candidate_expectations_container
+    > div {
+    width: 30vw;
+  }
+}
