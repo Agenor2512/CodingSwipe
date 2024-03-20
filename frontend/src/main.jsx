@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePageSwipe from "./pages/HomePageSwipe";
 import { RegisterProvider } from "./context/RegisterContext";
 import { LoginUserProvider } from "./context/LoginUserContext";
+import ModalDisconnection from "./components/ModalDisconnection";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/homePageSwipe",
         element: <HomePageSwipe />,
+      },
+      {
+        path: "/modalDisconnection",
+        element: <ModalDisconnection />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -31,7 +31,7 @@ function ModalDisconnection() {
     event.preventDefault();
 
     client
-      .delete("/login", {
+      .delete("/logout", {
         withCredentials: true,
       })
       .then(() => {
@@ -40,6 +40,7 @@ function ModalDisconnection() {
           role: null,
           email: null,
         });
+        useNavigate("/");
       })
       .catch((error) => console.error(error));
   };
@@ -59,12 +60,11 @@ function ModalDisconnection() {
             <section className="disconnection_modal_content">
               <h2>Êtes-vous sûr de vouloir vous déconnecter ?</h2>
               <div className="disconnection_redirection_buttons">
-                <Link to="/">
-                  <button type="button" onClick={logout}>
-                    Se déconnecter
-                  </button>
-                </Link>
-                <button type="button" onClick={toggleModal}>
+                <button className="disconnected" type="button" onClick={logout}>
+                  Se déconnecter
+                </button>
+
+                <button className="cancel" type="button" onClick={toggleModal}>
                   Annuler
                 </button>
               </div>

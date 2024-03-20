@@ -47,8 +47,7 @@
   > .disconnection_modal
   > .disconnection_modal_content
   > .disconnection_redirection_buttons
-  > a
-  > button {
+  > .disconnected {
   font-family: var(--primary-font);
   font-weight: bold;
   padding: 0.5rem 2rem;
@@ -64,7 +63,7 @@
   > .disconnection_modal
   > .disconnection_modal_content
   > .disconnection_redirection_buttons
-  > button {
+  > .cancel {
   font-family: var(--primary-font);
   font-weight: bold;
   padding: 0.5rem 2rem;
@@ -93,12 +92,6 @@
     margin-bottom: 2rem;
   }
 
-  .overlay
-    > .disconnection_modal
-    > .disconnection_modal_content
-    > .disconnection_redirection_buttons
-    > a
-    > button:hover,
   .overlay
     > .disconnection_modal
     > .disconnection_modal_content
