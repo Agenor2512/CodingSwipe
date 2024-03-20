@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from "react";
-
-import RegisterContext from "../../context/RegisterContext";
 
 import "../../styles/register/registerStepOne.css";
 
-function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
+function CandidateStepOne({
+  formTools: { nextStep, handleFormSubmit, handleChangeForm },
+}) {
   const departements = [
     {
       id: 1,
@@ -413,15 +412,6 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const { infos, setInfos } = useContext(RegisterContext);
-
-  const handleChangeForm = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
-      [key]: value,
-    });
-  };
-
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
@@ -437,11 +427,11 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <input
               type="text"
               minLength={3}
-              name="candidate-lastname"
+              name="lastname"
               id="candidate-lastname"
               placeholder="Doe"
               required
-              onChange={(event) => handleChangeForm("lastname", event)}
+              onChange={handleChangeForm}
             />
           </div>
 
@@ -450,11 +440,11 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <input
               type="text"
               minLength={3}
-              name="candidate-firstame"
+              name="firstname"
               id="candidate-firstame"
               placeholder="John"
               required
-              onChange={(event) => handleChangeForm("username", event)}
+              onChange={handleChangeForm}
             />
           </div>
         </div>
@@ -464,19 +454,20 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <label htmlFor="email-candidate">Email</label>
             <input
               type="email"
-              name="email-candidate"
+              name="email"
               id="email-candidate"
               placeholder="exemple@gmail.com"
               required
-              onChange={(event) => handleChangeForm("email", event)}
+              onChange={handleChangeForm}
             />
           </div>
           <div className="register_label_input_container">
             <label htmlFor="department">Département</label>
             <select
               id="department"
+              name="departmentId"
+              onChange={handleChangeForm}
               required
-              onChange={(event) => handleChangeForm("department", event)}
             >
               <option value="">Veuillez choisir votre département</option>
               {departements.map(({ id, text }) => (
@@ -498,7 +489,7 @@ function CandidateStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               id="password"
               placeholder="Saisissez un mot de passe"
               required
-              onChange={(event) => handleChangeForm("password", event)}
+              onChange={handleChangeForm}
             />
           </div>
           <div className="register_label_input_container">
