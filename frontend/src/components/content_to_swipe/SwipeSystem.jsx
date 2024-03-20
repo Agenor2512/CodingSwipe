@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/resume_job_offer/swipeSystem.css";
+import "../../styles/content_to_swipe/swipeSystem.css";
 
 function SwipeSystem() {
   return (

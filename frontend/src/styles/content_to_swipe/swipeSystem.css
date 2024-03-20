@@ -44,12 +44,13 @@
 
 @media screen and (min-width: 600px) {
   .swipe_system_container {
-    width: 100vw;
+    width: 70vw;
     background-image: url("src/assets/background_swipe_desktop.png");
+    background-size: 70vw;
   }
 
   .swipe_system_container > div {
     width: 25vw;
-    margin-top: 6vh;
+    margin-top: 4vh;
   }
 }
