@@ -74,7 +74,8 @@
 .enterprise_infos_container
   > div
   > .languages_missions_desktop
-  > .computer_languages_container,
+  > .computer_languages_container
+  > div,
 .enterprise_infos_container
   > div
   > .languages_missions_desktop
@@ -161,11 +162,11 @@
 
   .enterprise_infos_container > div > .languages_missions_desktop {
     display: flex;
-    flex-direction: column;
-    align-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 63vw;
-    height: 71vh;
+    height: 40vh;
   }
 
   .enterprise_infos_container
