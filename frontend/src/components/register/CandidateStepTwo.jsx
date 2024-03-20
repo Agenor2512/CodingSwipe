@@ -1,40 +1,42 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useEffect } from "react";
-
-import RegisterContext from "../../context/RegisterContext";
-import { addUser } from "../../services/usersService";
-
 import "../../styles/register/candidateStepTwo.css";
 
-function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
+function CandidateStepTwo({
+  formTools: {
+    handleFormSubmit,
+    registerCandidate,
+    handleChangeForm,
+    setCandidateInfos,
+  },
+}) {
   const appetences = [
     {
-      id: 0,
+      id: 1,
       buttonText: "Frontend",
     },
     {
-      id: 1,
+      id: 2,
       buttonText: "Backend",
     },
     {
-      id: 2,
+      id: 3,
       buttonText: "Full Stack",
     },
   ];
 
   const level = [
     {
-      id: 0,
+      id: 1,
       name: "junior",
       buttonText: "Junior",
     },
     {
-      id: 1,
+      id: 2,
       name: "mid-Level",
       buttonText: "Mid-level",
     },
     {
-      id: 2,
+      id: 3,
       name: "senior",
       buttonText: "Senior",
     },
@@ -42,163 +44,133 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
 
   const contractType = [
     {
-      id: 0,
+      id: 1,
       text: "Un CDI",
     },
     {
-      id: 1,
+      id: 2,
       text: "Un CDD",
     },
     {
-      id: 2,
+      id: 3,
       text: "Un Stage / Une Alternance",
     },
     {
-      id: 3,
+      id: 4,
       text: "Du freelance",
     },
   ];
 
   const workRhythm = [
     {
-      id: 0,
+      id: 1,
       text: "Sur site",
     },
     {
-      id: 1,
+      id: 2,
       text: "Remote partiel",
     },
     {
-      id: 2,
+      id: 3,
       text: "Full remote",
     },
   ];
 
   const programmingLanguages = [
     {
-      id: 0,
+      id: 1,
       text: "HTML/CSS",
     },
     {
-      id: 1,
+      id: 2,
       text: "JavaScript",
     },
     {
-      id: 2,
+      id: 3,
       text: "Python",
     },
     {
-      id: 3,
+      id: 4,
       text: "Java",
     },
     {
-      id: 4,
+      id: 5,
       text: "Ruby On Rails",
     },
     {
-      id: 5,
+      id: 6,
       text: "Vue.js",
     },
     {
-      id: 6,
+      id: 7,
       text: "Swift",
     },
     {
-      id: 7,
+      id: 8,
       text: "Kotlin",
     },
     {
-      id: 8,
+      id: 9,
       text: "Flutter",
     },
     {
-      id: 9,
+      id: 10,
       text: "Go",
     },
     {
-      id: 10,
+      id: 11,
       text: "C#",
     },
     {
-      id: 11,
+      id: 12,
       text: "C++",
     },
     {
-      id: 12,
+      id: 13,
       text: "React",
     },
     {
-      id: 13,
+      id: 14,
       text: "Angular",
     },
     {
-      id: 14,
+      id: 15,
       text: "Node.js",
     },
     {
-      id: 15,
+      id: 16,
       text: "PHP",
     },
     {
-      id: 16,
+      id: 17,
       text: "Rust",
     },
     {
-      id: 17,
+      id: 18,
       text: ".NET Core / .NET 5",
     },
     {
-      id: 18,
+      id: 19,
       text: "SQL",
     },
     {
-      id: 19,
+      id: 20,
       text: "NoSQL",
     },
   ];
 
-  const { infos, setInfos } = useContext(RegisterContext);
-
-  useEffect(() => {
-    // Initialisation des valeurs par défaut des champs
-    setInfos({
-      ...infos,
-      appetence: appetences[0].id,
-      level: level[0].id,
+  const fillLanguagesArray = (event) => {
+    const { value, checked } = event.target;
+    setCandidateInfos((prevInfos) => {
+      if (checked) {
+        const updatedLanguages = [...prevInfos.languages, value];
+        return { ...prevInfos, languages: updatedLanguages };
+      }
+      const filteredLanguages = prevInfos.languages.filter(
+        (language) => language !== value
+      );
+      return { ...prevInfos, languages: filteredLanguages };
     });
-  }, []);
-
-  const selectedAppentenceId = infos.appetence;
-  const selectedLevelId = infos.level;
-
-  const handleFormChange = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
-      [key]: value,
-    });
-  };
-
-  const handleFormChangeForList = (key, { target: { value } }) => {
-    const values = [...infos[key]];
-
-    if (values.includes(value)) {
-      values.splice(values.indexOf(value), 1);
-    } else {
-      values.push(value);
-    }
-
-    setInfos({
-      ...infos,
-      [key]: values,
-    });
-  };
-
-  const registerThenRedirect = () => {
-    const requestBody = {
-      ...infos,
-    };
-    addUser({ ...requestBody });
-    nextStep();
   };
 
   return (
@@ -224,11 +196,9 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
             <button
               type="button"
               key={id}
+              name="appetencesId"
               value={id}
-              onClick={(event) => handleFormChange("appetence", event)}
-              className={
-                id === parseInt(selectedAppentenceId, 10) ? "focusedButton" : ""
-              }
+              onClick={handleChangeForm}
             >
               {buttonText}
             </button>
@@ -244,14 +214,13 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           {contractType.map(({ id, text }) => (
             <div className="enterprise_expectation_container" key={id}>
               <input
-                type="checkbox"
-                id="checkbox"
+                type="radio"
+                name="contractTypesId"
+                id={`contractType-${id}`}
                 value={id}
-                onChange={(event) =>
-                  handleFormChangeForList("contractType", event)
-                }
+                onChange={handleChangeForm}
               />
-              <label htmlFor="checkbox">{text}</label>
+              <label htmlFor={`contractType-${id}`}>{text}</label>
             </div>
           ))}
         </div>
@@ -263,14 +232,13 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           {workRhythm.map(({ id, text }) => (
             <div className="enterprise_workplace_container" key={id}>
               <input
-                type="checkbox"
-                id="checkbox"
+                type="radio"
+                name="workRhythmsId"
+                id={`workRhythm-${id}`}
                 value={id}
-                onChange={(event) =>
-                  handleFormChangeForList("workRhythm", event)
-                }
+                onChange={handleChangeForm}
               />
-              <label htmlFor="checkbox">{text}</label>
+              <label htmlFor={`workRhythm-${id}`}>{text}</label>
             </div>
           ))}
         </div>
@@ -280,16 +248,13 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Je suis <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {level.map(({ id, name, buttonText }) => (
+          {level.map(({ id, buttonText }) => (
             <button
               type="button"
               key={id}
-              name={name}
+              name="levelId"
               value={id}
-              onClick={(event) => handleFormChange("level", event)}
-              className={
-                id === parseInt(selectedLevelId, 10) ? "focusedButton" : ""
-              }
+              onClick={handleChangeForm}
             >
               {buttonText}
             </button>
@@ -312,9 +277,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
               type="checkbox"
               id="checkbox"
               value={id}
-              onChange={(event) =>
-                handleFormChangeForList("programmingLanguages", event)
-              }
+              onChange={fillLanguagesArray}
             />
             <label htmlFor="checkbox">{text}</label>
           </div>
@@ -325,7 +288,7 @@ function CandidateStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
-          onClick={registerThenRedirect}
+          onClick={registerCandidate}
         />
       </section>
     </form>

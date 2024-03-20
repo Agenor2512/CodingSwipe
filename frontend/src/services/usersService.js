@@ -25,7 +25,7 @@ export const addUser = (userInformations) => {
       .post("/candidates", {
         ...userInformations,
         firstname: userInformations.username,
-        department_id: userInformations.department,
+        departmentId: userInformations.department,
       })
       .then((response) => console.info(response))
       .catch((error) => console.error(error));
