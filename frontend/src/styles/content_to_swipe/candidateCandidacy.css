@@ -1,0 +1,214 @@
+.candidate_infos_container {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font);
+  background-color: var(--color-white);
+}
+
+.candidate_infos_container > div {
+  margin: 1rem;
+}
+
+.candidate_infos_container > div > .candidate_infos_header,
+.candidate_infos_container > div > .modify_display_in_desktop,
+.candidate_infos_container > div > .skills_languages_experiences_desktop {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.candidate_infos_container > div > .candidate_infos_header > div {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  width: 10vw;
+  padding: 0.2rem;
+  border: 5px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.candidate_infos_container > div > div > h1 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.candidate_infos_container > div > .modify_display_in_desktop > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate_infos_container > div > .modify_display_in_desktop > div > h2,
+.candidate_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > h2,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .soft_skills
+  > h2,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .computer_languages_container
+  > h2,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .significatives_experiences
+  > h2 {
+  padding: 0.5rem 0;
+  border-bottom: 5px solid var(--fourth-color);
+  font-size: 1rem;
+}
+
+.candidate_infos_container > div > .modify_display_in_desktop > div > p {
+  margin: 1rem 0;
+}
+
+.candidate_infos_container > div > .modify_display_in_desktop > div,
+.candidate_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .candidate_expectations_container,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .soft_skills,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .computer_languages_container,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .significatives_experiences
+  > div {
+  margin: 1rem 0;
+}
+
+.candidate_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .candidate_expectations_container
+  > div,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .soft_skills
+  > div,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .computer_languages_container
+  > div,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .significatives_experiences
+  > div {
+  min-height: 10vh;
+}
+
+@media screen and (min-width: 600px) {
+  .candidate_infos_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: 2rem;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+
+  .candidate_infos_container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    padding: 1.5rem;
+  }
+
+  .candidate_infos_container > div > .candidate_infos_header {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 63vw;
+  }
+
+  .candidate_infos_container > div > div > h1 {
+    font-size: 2rem;
+  }
+
+  .candidate_infos_container > div > .candidate_infos_header > div {
+    width: 7vw;
+    border: 10px solid var(--primary-color);
+    font-size: 4rem;
+  }
+
+  .candidate_infos_container > div > .modify_display_in_desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 63vw;
+  }
+
+  .candidate_infos_container > div > .modify_display_in_desktop > div,
+  .candidate_infos_container
+    > div
+    > .modify_display_in_desktop
+    > .candidate_expectations_container,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .soft_skills,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .computer_languages_container,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .significatives_experiences {
+    width: 30vw;
+  }
+
+  .candidate_infos_container > div > .skills_languages_experiences_desktop {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
+    width: 63vw;
+    height: 71vh;
+  }
+
+  .candidate_infos_container
+    > div
+    > .modify_display_in_desktop
+    > .candidate_expectations_container
+    > div,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .soft_skills
+    > div,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .computer_languages_container
+    > div,
+  .candidate_infos_container
+    > div
+    > .skills_languages_experiences_desktop
+    > .significatives_experiences
+    > div {
+    min-height: 20vh;
+  }
+}

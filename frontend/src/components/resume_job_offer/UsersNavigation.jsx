@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-import "../styles/UsersNavigation.css";
-import Logo from "./Logo";
+import "../../styles/resume_job_offer/UsersNavigation.css";
+import Logo from "../Logo";
 
 function UsersNavigation() {
   /*  const [currentUsers, setCurrentUsers] = useState({

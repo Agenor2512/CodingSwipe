@@ -9,9 +9,9 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePageSwipe from "./pages/HomePageSwipe";
 import { RegisterProvider } from "./context/RegisterContext";
 import { LoginUserProvider } from "./context/LoginUserContext";
-import UserHomePageAddButton from "./components/resume_job_offer/UserHomePageAddButton";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
       },
       {
-        path: "/userHomePageAddButton",
-        element: <UserHomePageAddButton />,
+        path: "/homePageSwipe",
+        element: <HomePageSwipe />,
       },
     ],
     errorElement: <ErrorPage />,
