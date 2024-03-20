@@ -2,6 +2,11 @@
   > div
   > .modify_display_in_desktop
   > .candidate_expectations_container
+  > div,
+.enterprise_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .enterprise_proposal_container
   > div {
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +18,12 @@
   > div
   > .modify_display_in_desktop
   > .candidate_expectations_container
+  > div
+  > div,
+.enterprise_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .enterprise_proposal_container
   > div
   > div {
   display: flex;
@@ -26,26 +37,46 @@
   margin: 0.5rem;
 }
 
-.candidate_infos_container
+.enterprise_infos_container
   > div
   > .modify_display_in_desktop
-  > .candidate_expectations_container
+  > .enterprise_proposal_container
+  > div
+  > div
+  > img,
+.enterprise_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .enterprise_proposal_container
   > div
   > div
   > img {
   height: 3vh;
 }
 
-.candidate_infos_container
+.enterprise_infos_container
   > div
   > .modify_display_in_desktop
-  > .candidate_expectations_container
+  > .enterprise_proposal_container
   > div
   > div
   > img,
-.candidate_infos_container
+.enterprise_infos_container
   > .modify_display_in_desktop
-  > .candidate_expectations_container
+  > .enterprise_proposal_container
+  > div
+  > div
+  > p,
+.enterprise_infos_container
+  > div
+  > .modify_display_in_desktop
+  > .enterprise_proposal_container
+  > div
+  > div
+  > img,
+.enterprise_infos_container
+  > .modify_display_in_desktop
+  > .enterprise_proposal_container
   > div
   > div
   > p {
@@ -57,6 +88,11 @@
     > div
     > .modify_display_in_desktop
     > .candidate_expectations_container
+    > div,
+  .enterprise_infos_container
+    > div
+    > .modify_display_in_desktop
+    > .enterprise_proposal_container
     > div {
     width: 30vw;
   }

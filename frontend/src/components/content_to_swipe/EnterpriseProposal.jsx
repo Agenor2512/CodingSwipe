@@ -1,60 +1,47 @@
+import React from "react";
+
+import SwipeSystem from "./SwipeSystem";
+import WorkingConditionsCard from "./WorkingConditionsCard";
+
 import "../../styles/content_to_swipe/enterpriseProposal.css";
 
 function EnterpriseProposal() {
+  const enterpriseDescription =
+    "Passionné par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
+
   return (
     <div className="enterprise_infos_container">
-      <div className="enterprise_infos_header">
-        <div>W</div>
-        <h1>Développeur/Développeuse</h1>
-      </div>
-
-      <div className="modify_display_in_desktop">
-        <div>
-          <h2>Qui sommes-nous ?</h2>
-          <p>Description de l'entreprise</p>
+      <div>
+        <div className="enterprise_infos_header">
+          <div>W</div>
+          <h1>Développeur/Développeuse</h1>
         </div>
 
-        <section className="work_proposal_container">
-          <h2>Profil recherché</h2>
-
+        <div className="modify_display_in_desktop">
           <div>
-            <div>
-              <p>
-                Je propose <span>:</span>
-              </p>
-              <div />
-            </div>
-
-            <div>
-              <p>
-                Lieu de travail <span>:</span>
-              </p>
-              <div />
-            </div>
+            <h2>Qui sommes-nous ?</h2>
+            <p>{enterpriseDescription}</p>
           </div>
-        </section>
+
+          <section className="enterprise_proposal_container">
+            <h2>Conditions de travail</h2>
+            <WorkingConditionsCard />
+          </section>
+        </div>
+
+        <div className="languages_missions_desktop">
+          <section className="computer_languages_container">
+            <h2>Langages informatiques</h2>
+            <div />
+          </section>
+
+          <section className="missions">
+            <h2>Missions Principales</h2>
+            <div />
+          </section>
+        </div>
       </div>
-
-      <div className="salary_languages_missions_desktop">
-        <section className="annual_salary">
-          <h2>Salaire annuel brut</h2>
-          <div>
-            <p>
-              Salaire <span>:</span>
-            </p>
-          </div>
-        </section>
-
-        <section className="computer_languages_container">
-          <h2>Langages informatiques</h2>
-          <div />
-        </section>
-
-        <section className="missions">
-          <h2>Missions principales</h2>
-          <div />
-        </section>
-      </div>
+      <SwipeSystem />
     </div>
   );
 }
