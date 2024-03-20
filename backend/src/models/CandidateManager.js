@@ -58,8 +58,15 @@ class CandidateManager extends AbstractManager {
       `insert into resume_has_programming_languages (resume_id, programming_languages_id) values (?,?)`,
       [resumeId, programmingLanguagesId]
     );
-
     return result;
+  }
+
+  async readByEmailWithPassword(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email=?`,
+      [email]
+    );
+    return rows;
   }
 }
 

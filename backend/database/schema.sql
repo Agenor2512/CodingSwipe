@@ -1,3 +1,4 @@
+-- SQLBook: Code
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
