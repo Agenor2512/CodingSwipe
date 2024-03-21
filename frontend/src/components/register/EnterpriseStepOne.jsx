@@ -4,7 +4,7 @@
 import "../../styles/register/registerStepOne.css";
 
 function EnterpriseStepOne({
-  formTools: { nextStep, handleFormSubmit, handleChangeForm },
+  formTools: { nextStep, handleFormSubmit, handleChangeFormEnterprise },
 }) {
   const departements = [
     {
@@ -428,9 +428,9 @@ function EnterpriseStepOne({
             <input
               type="text"
               minLength={1}
-              name="enterpriseName"
-              id="enterpriseName"
-              onChange={handleChangeForm}
+              name="name"
+              id="name"
+              onChange={handleChangeFormEnterprise}
               placeholder="Windy Corporation"
               required
             />
@@ -441,9 +441,9 @@ function EnterpriseStepOne({
             <input
               type="number"
               min={0}
-              name="siretNumber"
-              id="siretNumber"
-              onChange={handleChangeForm}
+              name="siret"
+              id="siret"
+              onChange={handleChangeFormEnterprise}
               placeholder="exemple: 12345678901234"
               required
             />
@@ -455,9 +455,9 @@ function EnterpriseStepOne({
             <label htmlFor="emailCompany">Email</label>
             <input
               type="email"
-              name="emailCompany"
+              name="email"
               id="emailCompany"
-              onChange={handleChangeForm}
+              onChange={handleChangeFormEnterprise}
               placeholder="exemple@gmail.com"
               required
             />
@@ -465,7 +465,12 @@ function EnterpriseStepOne({
 
           <div className="register_label_input_container">
             <label htmlFor="department">Département</label>
-            <select id="department" required onChange={handleChangeForm}>
+            <select
+              id="department"
+              name="departmentId"
+              required
+              onChange={handleChangeFormEnterprise}
+            >
               <option value="">Veuillez choisir votre département</option>
 
               {departements.map(({ id, text }) => (
@@ -485,7 +490,7 @@ function EnterpriseStepOne({
               minLength={8}
               name="password"
               id="password"
-              onChange={handleChangeForm}
+              onChange={handleChangeFormEnterprise}
               placeholder="Saisissez un mot de passe"
               required
             />

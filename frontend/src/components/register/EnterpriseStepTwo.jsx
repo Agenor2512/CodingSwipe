@@ -5,7 +5,7 @@ function EnterpriseStepTwo({
   formTools: {
     handleFormSubmit,
     registerEnterprise,
-    handleChangeForm,
+    handleChangeFormEnterprise,
     setEnterpriseInfos,
   },
 }) {
@@ -264,31 +264,12 @@ function EnterpriseStepTwo({
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
     setEnterpriseInfos((prevInfos) => {
-      if (checked) {
-        const updatedLanguages = [...prevInfos.languages, value];
-        return { ...prevInfos, languages: updatedLanguages };
-      }
-      const filteredLanguages = prevInfos.languages.filter(
-        (language) => language !== value
-      );
-      return { ...prevInfos, languages: filteredLanguages };
+      const updatedLanguages = checked
+        ? [...(prevInfos.languages || []), value] // If prevInfos.languages is not defined, initialize it as an empty array
+        : prevInfos.languages.filter((language) => language !== value);
+      return { ...prevInfos, languages: updatedLanguages };
     });
   };
-
-  // const handleFormChange = (key, { target: { value } }) => {
-  //   setInfos({
-  //     ...infos,
-  //     [key]: value,
-  //   });
-  // };
-
-  // const registerThenRedirect = () => {
-  //   // FIXME: Pour l'instant, on ne gère pas le département, le secteur d'activité et le statut juridique
-  //   // A la place, on met des ID en dur...
-  //   const requestBody = { ...infos };
-  //   addUser({ ...requestBody });
-  //   nextStep();
-  // };
 
   return (
     <div className="enterprise_form_container">
@@ -306,9 +287,9 @@ function EnterpriseStepTwo({
           Type d'entreprise <span>:</span>
         </label>
         <select
-          name="enterprise-type"
+          name="legalStatusId"
           id="enterprise-type-select"
-          onChange={handleChangeForm}
+          onChange={handleChangeFormEnterprise}
         >
           <option value="choose-enterprise-type">
             Veuillez choisir la forme juridique de votre entreprise
@@ -324,9 +305,9 @@ function EnterpriseStepTwo({
           Secteur d'activité <span>:</span>
         </label>
         <select
-          name="industries"
+          name="businessSectorsId"
           id="industries-select"
-          onChange={handleChangeForm}
+          onChange={handleChangeFormEnterprise}
         >
           <option value="choose-industries">
             Veuillez choisir votre secteur d'activité
@@ -343,9 +324,10 @@ function EnterpriseStepTwo({
         </label>
         <textarea
           required
+          name="description"
           type="text"
           id="description-area"
-          onChange={handleChangeForm}
+          onChange={handleChangeFormEnterprise}
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
@@ -361,7 +343,7 @@ function EnterpriseStepTwo({
                 key={id}
                 name="appetencesId"
                 value={id}
-                onClick={handleChangeForm}
+                onClick={handleChangeFormEnterprise}
               >
                 {buttonText}
               </button>
@@ -381,7 +363,7 @@ function EnterpriseStepTwo({
                   name="contractTypesId"
                   id={`contractType-${id}`}
                   value={id}
-                  onChange={handleChangeForm}
+                  onChange={handleChangeFormEnterprise}
                 />
                 <label htmlFor={`contractType-${id}`}>{text}</label>
               </div>
@@ -399,7 +381,7 @@ function EnterpriseStepTwo({
                   name="workRhythmsId"
                   id={`workRhythm-${id}`}
                   value={id}
-                  onChange={handleChangeForm}
+                  onChange={handleChangeFormEnterprise}
                 />
                 <label htmlFor={`workRhythm-${id}`}>{text}</label>
               </div>
@@ -436,7 +418,11 @@ function EnterpriseStepTwo({
               <label htmlFor="salary">
                 Salaire <span>:</span>
               </label>
-              {/* Placeholder pour SalaryAdministrator */}
+              <input
+                type="number"
+                name="salary"
+                onChange={handleChangeFormEnterprise}
+              />
             </div>
           </section>
 
@@ -448,12 +434,5 @@ function EnterpriseStepTwo({
     </div>
   );
 }
-
-/* // EnterpriseStepTwo.propTypes = {
-//   formTools: PropTypes.shape({
-//     nextStep: PropTypes.func.isRequired,
-//     handleFormSubmit: PropTypes.func.isRequired,
-//   }).isRequired,
-// }; */
 
 export default EnterpriseStepTwo;

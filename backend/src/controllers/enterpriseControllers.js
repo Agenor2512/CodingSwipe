@@ -55,6 +55,15 @@ const add = async (req, res, next) => {
       jobOfferInfos
     );
 
+    const { languages } = req.body;
+    console.info(languages);
+
+    await Promise.all(
+      languages.map((language) =>
+        tables.enterprise.createProgrammingLanguages(randomId, language)
+      )
+    );
+
     res.status(201).json({
       msg: "entreprise enregistré avec succés",
       enterprise: resultEnterprise,

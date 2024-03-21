@@ -53,6 +53,14 @@ class EnterpriseManager extends AbstractManager {
     return result;
   }
 
+  async createProgrammingLanguages(jobOfferId, programmingLanguagesId) {
+    const [result] = await this.database.query(
+      `insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values (?,?)`,
+      [jobOfferId, programmingLanguagesId]
+    );
+    return result;
+  }
+
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
       `SELECT * FROM ${this.table} WHERE email=?`,

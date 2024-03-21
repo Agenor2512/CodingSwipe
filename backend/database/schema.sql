@@ -325,8 +325,18 @@ create table job_offer (
   foreign key(enterprise_id) references enterprise(id)
 );
 
+create table job_offer_has_programming_languages (
+  job_offer_id varchar(36) not null,
+  programming_languages_id int not null,
+  primary key(job_offer_id, programming_languages_id),
+  foreign key(job_offer_id) references job_offer(id),
+  foreign key(programming_languages_id) references programming_languages(id)
+);
+
 insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id)
 values ("123","1234", 2, 3, 1, 3);
+
+insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values ("123", 1), ("123", 2);
 
 -- create table resume_has_soft_skills (
 --   id int not null auto_increment,
@@ -361,15 +371,6 @@ values ("123","1234", 2, 3, 1, 3);
 --   experiences text,
 --   primary key(id),
 --   foreign key(resume_id) references resume(id)
--- );
-
--- create table job_offer_has_programming_languages (
---   id varchar(36) not null,
---   job_offer_id varchar(36) not null,
---   programming_languages_id int not null,
---   primary key(id),
---   foreign key(job_offer_id) references job_offer(id),
---   foreign key(programming_languages_id) references programming_languages(id)
 -- );
 
 -- create table main_missions (
