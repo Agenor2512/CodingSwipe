@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
+
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({
@@ -7,8 +9,30 @@ function CandidateStepTwo({
     registerCandidate,
     handleChangeForm,
     setCandidateInfos,
+    candidateInfos,
+    isError,
   },
 }) {
+  console.info("CONSOLE INFO DE LA STEP TWO :", candidateInfos);
+
+  const [formISFil, setFormIsFil] = useState(false);
+
+  useEffect(() => {
+    if (
+      candidateInfos.appetences &&
+      candidateInfos.level &&
+      candidateInfos.contractType &&
+      candidateInfos.workRhythm &&
+      candidateInfos.programmingLanguages
+    ) {
+      setFormIsFil(true);
+    } else {
+      setFormIsFil(false);
+    }
+  }, [candidateInfos]);
+
+  console.info("LE FORMULAIRE EST REMPLI ?", formISFil);
+
   const appetences = [
     {
       id: 1,
@@ -283,6 +307,7 @@ function CandidateStepTwo({
           </div>
         ))}
       </section>
+      <p>{isError ? "Remplissez tous les champs" : ""}</p>
       <section className="final_button_to_inscription_container">
         <input
           type="submit"

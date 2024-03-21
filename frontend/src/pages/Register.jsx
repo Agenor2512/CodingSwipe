@@ -15,6 +15,8 @@ function Register() {
 
   const [role, setRole] = useState("enterprise");
 
+  const [isError, setIsError] = useState(false);
+
   const [candidateInfos, setCandidateInfos] = useState({
     firstname: "",
     lastname: "",
@@ -47,8 +49,8 @@ function Register() {
   const registerCandidate = () => {
     axios
       .post("http://localhost:3310/api/candidates", candidateInfos)
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
+      .then(() => setIsError(false))
+      .catch(() => setIsError(true));
   };
 
   const displayRegisterStep = () => {
@@ -62,7 +64,12 @@ function Register() {
           <EnterpriseStepOne formTools={{ nextStep, handleFormSubmit }} />
         ) : (
           <CandidateStepOne
-            formTools={{ nextStep, handleFormSubmit, handleChangeForm }}
+            formTools={{
+              nextStep,
+              handleFormSubmit,
+              handleChangeForm,
+              candidateInfos,
+            }}
           />
         );
       case 3:
@@ -76,6 +83,8 @@ function Register() {
               registerCandidate,
               handleChangeForm,
               setCandidateInfos,
+              candidateInfos,
+              isError,
             }}
           />
         );
