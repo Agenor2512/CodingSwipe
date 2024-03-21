@@ -1,10 +1,31 @@
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 
 import "../../styles/register/registerStepOne.css";
 
 function CandidateStepOne({
-  formTools: { nextStep, handleFormSubmit, handleChangeForm },
+  formTools: { nextStep, handleFormSubmit, handleChangeForm, candidateInfos },
 }) {
+  console.info("CONSOLE INFO DE LA STEP ONE :", candidateInfos);
+
+  const [formIsFill, setFormIsFill] = useState(false);
+
+  useEffect(() => {
+    if (
+      candidateInfos.firstname &&
+      candidateInfos.lastname &&
+      candidateInfos.password &&
+      candidateInfos.email &&
+      candidateInfos.departmentId
+    ) {
+      setFormIsFill(true);
+    } else {
+      setFormIsFill(false);
+    }
+  }, [candidateInfos]);
+
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
+
   const departements = [
     {
       id: 1,
@@ -505,7 +526,7 @@ function CandidateStepOne({
           </div>
         </div>
 
-        <button type="submit" onClick={nextStep}>
+        <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
           Continuer
         </button>
       </form>
