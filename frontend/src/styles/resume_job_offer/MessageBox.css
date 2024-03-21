@@ -1,0 +1,159 @@
+.user_message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--primary-font);
+}
+
+.user_message > div {
+  margin: 1rem;
+}
+
+.user_message > div > .candidate_infos_header {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.user_message > div > .candidate_infos_header > div {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  width: 10vw;
+  padding: 0.2rem;
+  border: 5px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.user_message > div > .candidate_infos_header > h1 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.user_message > div > .messages {
+  min-height: 63.5vh;
+}
+
+.user_message > div > .send_text_button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 26rem;
+  height: 3.1rem;
+  background-color: var(--secondary-color);
+  border-radius: 150px;
+  border: 2px solid var(--third-color);
+}
+
+.user_message > div > .send_text_button > input {
+  width: 15rem;
+  height: 2rem;
+  border: none;
+  padding: 0 1rem;
+  outline: none;
+  background-color: var(--secondary-color);
+  border-radius: 150px;
+}
+
+.user_message > div > .send_text_button > button {
+  width: 8.4rem;
+  height: 2.5rem;
+  margin: 0 0.3rem;
+  border-radius: 150px;
+  border: none;
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  background-color: var(--website-background-color);
+  color: var(--color-white);
+}
+
+.user_message > .see_content {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 15vh;
+  background-image: url("src/assets/background_swipe_mobile.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  margin-top: 1rem;
+}
+
+.user_message > .see_content > button {
+  width: 13.2rem;
+  height: 2rem;
+  margin: 0 0.3rem;
+  outline: 0.3rem solid var(--color-white);
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  border-radius: 150px;
+  font-family: var(--primary-font);
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .user_message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: 2rem;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+
+  .user_message > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    padding: 1.5rem;
+  }
+
+  .user_message > div > .candidate_infos_header {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 63vw;
+  }
+
+  .user_message > div > .candidate_infos_header > h1 {
+    font-size: 2rem;
+  }
+
+  .user_message > div > .candidate_infos_header > div {
+    width: 7vw;
+    border: 10px solid var(--primary-color);
+    font-size: 4rem;
+  }
+
+  .user_message > .see_content {
+    width: 70vw;
+    background-size: 70vw;
+    background-image: url("src/assets/background_swipe_desktop.png");
+  }
+
+  .user_message > div > .send_text_button {
+    width: 53.1rem;
+  }
+
+  .user_message > div > .send_text_button > input {
+    width: 40rem;
+    height: 2rem;
+  }
+
+  .user_message > div > .send_text_button > button {
+    width: 13.2rem;
+    border-radius: 121px;
+  }
+
+  .user_message > .see_content > button {
+    font-size: 1.2rem;
+  }
+}
