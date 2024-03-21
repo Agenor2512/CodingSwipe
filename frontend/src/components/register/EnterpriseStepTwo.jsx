@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-
-import PropTypes from "prop-types";
-
-import RegisterContext from "../../context/RegisterContext";
-
-import { addUser } from "../../services/usersService";
-
+/* eslint-disable react/prop-types */
 import "../../styles/register/enterpriseStepTwo.css";
 
-function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
+function EnterpriseStepTwo({
+  formTools: {
+    handleFormSubmit,
+    registerEnterprise,
+    handleChangeFormEnterprise,
+    setEnterpriseInfos,
+  },
+}) {
   const enterpriseType = [
     {
       id: 0,
@@ -130,22 +130,145 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
       text: "Technologie de l'information et des communications (TIC)",
     },
   ];
+  const appetences = [
+    {
+      id: 1,
+      buttonText: "Frontend",
+    },
+    {
+      id: 2,
+      buttonText: "Backend",
+    },
+    {
+      id: 3,
+      buttonText: "Full Stack",
+    },
+  ];
+  const contractType = [
+    {
+      id: 1,
+      text: "Un CDI",
+    },
+    {
+      id: 2,
+      text: "Un CDD",
+    },
+    {
+      id: 3,
+      text: "Un Stage / Une Alternance",
+    },
+    {
+      id: 4,
+      text: "Du freelance",
+    },
+  ];
 
-  const { infos, setInfos } = useContext(RegisterContext);
+  const workRhythm = [
+    {
+      id: 1,
+      text: "Sur site",
+    },
+    {
+      id: 2,
+      text: "Remote partiel",
+    },
+    {
+      id: 3,
+      text: "Full remote",
+    },
+  ];
 
-  const handleFormChange = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
-      [key]: value,
+  const programmingLanguages = [
+    {
+      id: 1,
+      text: "HTML/CSS",
+    },
+    {
+      id: 2,
+      text: "JavaScript",
+    },
+    {
+      id: 3,
+      text: "Python",
+    },
+    {
+      id: 4,
+      text: "Java",
+    },
+    {
+      id: 5,
+      text: "Ruby On Rails",
+    },
+    {
+      id: 6,
+      text: "Vue.js",
+    },
+    {
+      id: 7,
+      text: "Swift",
+    },
+    {
+      id: 8,
+      text: "Kotlin",
+    },
+    {
+      id: 9,
+      text: "Flutter",
+    },
+    {
+      id: 10,
+      text: "Go",
+    },
+    {
+      id: 11,
+      text: "C#",
+    },
+    {
+      id: 12,
+      text: "C++",
+    },
+    {
+      id: 13,
+      text: "React",
+    },
+    {
+      id: 14,
+      text: "Angular",
+    },
+    {
+      id: 15,
+      text: "Node.js",
+    },
+    {
+      id: 16,
+      text: "PHP",
+    },
+    {
+      id: 17,
+      text: "Rust",
+    },
+    {
+      id: 18,
+      text: ".NET Core / .NET 5",
+    },
+    {
+      id: 19,
+      text: "SQL",
+    },
+    {
+      id: 20,
+      text: "NoSQL",
+    },
+  ];
+
+  const fillLanguagesArray = (event) => {
+    const { value, checked } = event.target;
+    setEnterpriseInfos((prevInfos) => {
+      const updatedLanguages = checked
+        ? [...(prevInfos.languages || []), value] // If prevInfos.languages is not defined, initialize it as an empty array
+        : prevInfos.languages.filter((language) => language !== value);
+      return { ...prevInfos, languages: updatedLanguages };
     });
-  };
-
-  const registerThenRedirect = () => {
-    // FIXME: Pour l'instant, on ne gère pas le département, le secteur d'activité et le statut juridique
-    // A la place, on met des ID en dur...
-    const requestBody = { ...infos };
-    addUser({ ...requestBody });
-    nextStep();
   };
 
   return (
@@ -164,9 +287,9 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           Type d'entreprise <span>:</span>
         </label>
         <select
-          name="enterprise-type"
+          name="legalStatusId"
           id="enterprise-type-select"
-          onChange={(event) => handleFormChange("legalStatus", event)}
+          onChange={handleChangeFormEnterprise}
         >
           <option value="choose-enterprise-type">
             Veuillez choisir la forme juridique de votre entreprise
@@ -177,13 +300,14 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
             </option>
           ))}
         </select>
+
         <label htmlFor="industries-select">
           Secteur d'activité <span>:</span>
         </label>
         <select
-          name="industries"
+          name="businessSectorsId"
           id="industries-select"
-          onChange={(event) => handleFormChange("businessSector", event)}
+          onChange={handleChangeFormEnterprise}
         >
           <option value="choose-industries">
             Veuillez choisir votre secteur d'activité
@@ -200,25 +324,115 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         </label>
         <textarea
           required
+          name="description"
           type="text"
           id="description-area"
-          onChange={(event) => handleFormChange("description", event)}
+          onChange={handleChangeFormEnterprise}
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit" onClick={registerThenRedirect}>
-          Finaliser l'inscription
-        </button>
+
+        <section className="levels_experience_part_container">
+          <p>
+            Je recherche un.e développeur·euse <span>:</span>
+          </p>
+          <section className="levels_and_experience_button_container">
+            {appetences.map(({ id, buttonText }) => (
+              <button
+                type="button"
+                key={id}
+                name="appetencesId"
+                value={id}
+                onClick={handleChangeFormEnterprise}
+              >
+                {buttonText}
+              </button>
+            ))}
+          </section>
+        </section>
+
+        <section className="research_and_workplace_container">
+          <div>
+            <p>
+              Je recherche <span>:</span>
+            </p>
+            {contractType.map(({ id, text }) => (
+              <div className="enterprise_expectation_container" key={id}>
+                <input
+                  type="radio"
+                  name="contractTypesId"
+                  id={`contractType-${id}`}
+                  value={id}
+                  onChange={handleChangeFormEnterprise}
+                />
+                <label htmlFor={`contractType-${id}`}>{text}</label>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <p>
+              Lieu de travail <span>:</span>
+            </p>
+            {workRhythm.map(({ id, text }) => (
+              <div className="enterprise_workplace_container" key={id}>
+                <input
+                  type="radio"
+                  name="workRhythmsId"
+                  id={`workRhythm-${id}`}
+                  value={id}
+                  onChange={handleChangeFormEnterprise}
+                />
+                <label htmlFor={`workRhythm-${id}`}>{text}</label>
+              </div>
+            ))}
+          </div>
+
+          <p>
+            Mes langages informatiques
+            <span className="select_languages_span">
+              <span>{" { "}</span>
+              sélectionnez au moins un langage <span>{" } "}</span>
+            </span>
+            <span> : </span>
+          </p>
+          <section className="computer_language_checkbox_container">
+            {programmingLanguages.map(({ id, text }) => (
+              <div key={id}>
+                <input
+                  type="checkbox"
+                  id={`checkbox-${id}`}
+                  value={id}
+                  onChange={fillLanguagesArray}
+                />
+                <label htmlFor={`checkbox-${id}`}>{text}</label>
+              </div>
+            ))}
+          </section>
+        </section>
+
+        <div className="salary_languages_missions_desktop">
+          <section className="annual_salary">
+            <h2>Salaire annuel brut</h2>
+            <div>
+              <label htmlFor="salary">
+                Salaire <span>:</span>
+              </label>
+              <input
+                type="number"
+                name="salary"
+                onChange={handleChangeFormEnterprise}
+              />
+            </div>
+          </section>
+
+          <button type="submit" onClick={registerEnterprise}>
+            Finaliser l'inscription
+          </button>
+        </div>
       </form>
     </div>
   );
 }
-
-EnterpriseStepTwo.propTypes = {
-  formTools: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-    handleFormSubmit: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default EnterpriseStepTwo;

@@ -31,9 +31,33 @@ function Register() {
     languages: [],
   });
 
+  const [enterpriseInfos, setEnterpriseInfos] = useState({
+    name: "",
+    siret: [],
+    description: "",
+    email: "",
+    password: "",
+    departmentId: [],
+    legalStatusId: [],
+    businessSectorsId: [],
+    salary: "",
+    contractTypesId: [],
+    workRhythmsId: [],
+    appetencesId: [],
+  });
+
+  console.info("ENTREPRISE INFOS: ", enterpriseInfos);
+
   const handleChangeForm = (event) => {
     setCandidateInfos({
       ...candidateInfos,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleChangeFormEnterprise = (event) => {
+    setEnterpriseInfos({
+      ...enterpriseInfos,
       [event.target.name]: event.target.value,
     });
   };
@@ -53,6 +77,13 @@ function Register() {
       .catch(() => setIsError(true));
   };
 
+  const registerEnterprise = () => {
+    axios
+      .post("http://localhost:3310/api/enterprises", enterpriseInfos)
+      .then((response) => console.info(response))
+      .catch((error) => console.error(error));
+  };
+
   const displayRegisterStep = () => {
     switch (step) {
       case 1:
@@ -61,7 +92,13 @@ function Register() {
         );
       case 2:
         return role === "enterprise" ? (
-          <EnterpriseStepOne formTools={{ nextStep, handleFormSubmit }} />
+          <EnterpriseStepOne
+            formTools={{
+              nextStep,
+              handleFormSubmit,
+              handleChangeFormEnterprise,
+            }}
+          />
         ) : (
           <CandidateStepOne
             formTools={{
@@ -74,7 +111,15 @@ function Register() {
         );
       case 3:
         return role === "enterprise" ? (
-          <EnterpriseStepTwo formTools={{ nextStep, handleFormSubmit }} />
+          <EnterpriseStepTwo
+            formTools={{
+              nextStep,
+              handleFormSubmit,
+              handleChangeFormEnterprise,
+              registerEnterprise,
+              setEnterpriseInfos,
+            }}
+          />
         ) : (
           <CandidateStepTwo
             formTools={{

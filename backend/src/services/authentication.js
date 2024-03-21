@@ -11,6 +11,9 @@ const hashingOptions = {
 const hashPassword = async (req, _, next) => {
   try {
     const { password } = req.body;
+
+    console.info("PASSWORD DU BODY", password);
+
     const hashedPassword = await argon2.hash(password, hashingOptions);
 
     req.body.hashedPassword = hashedPassword;

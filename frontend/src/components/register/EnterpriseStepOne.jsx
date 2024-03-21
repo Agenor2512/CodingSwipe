@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import React, { useContext } from "react";
-
-import RegisterContext from "../../context/RegisterContext";
-
 import "../../styles/register/registerStepOne.css";
 
-function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
+function EnterpriseStepOne({
+  formTools: { nextStep, handleFormSubmit, handleChangeFormEnterprise },
+}) {
   const departements = [
     {
       id: 1,
@@ -415,15 +413,6 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const { infos, setInfos } = useContext(RegisterContext);
-
-  const handleChangeForm = (key, { target: { value } }) => {
-    setInfos({
-      ...infos,
-      [key]: value,
-    });
-  };
-
   return (
     <div className="step_one_register">
       <h1>Créer Un Compte</h1>
@@ -439,9 +428,9 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <input
               type="text"
               minLength={1}
-              name="enterpriseName"
-              id="enterpriseName"
-              onChange={(event) => handleChangeForm("username", event)}
+              name="name"
+              id="name"
+              onChange={handleChangeFormEnterprise}
               placeholder="Windy Corporation"
               required
             />
@@ -452,9 +441,9 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <input
               type="number"
               min={0}
-              name="siretNumber"
-              id="siretNumber"
-              onChange={(event) => handleChangeForm("siret", event)}
+              name="siret"
+              id="siret"
+              onChange={handleChangeFormEnterprise}
               placeholder="exemple: 12345678901234"
               required
             />
@@ -466,9 +455,9 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <label htmlFor="emailCompany">Email</label>
             <input
               type="email"
-              name="emailCompany"
+              name="email"
               id="emailCompany"
-              onChange={(event) => handleChangeForm("email", event)}
+              onChange={handleChangeFormEnterprise}
               placeholder="exemple@gmail.com"
               required
             />
@@ -478,8 +467,9 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
             <label htmlFor="department">Département</label>
             <select
               id="department"
+              name="departmentId"
               required
-              onChange={(event) => handleChangeForm("department", event)}
+              onChange={handleChangeFormEnterprise}
             >
               <option value="">Veuillez choisir votre département</option>
 
@@ -500,7 +490,7 @@ function EnterpriseStepOne({ formTools: { nextStep, handleFormSubmit } }) {
               minLength={8}
               name="password"
               id="password"
-              onChange={(event) => handleChangeForm("password", event)}
+              onChange={handleChangeFormEnterprise}
               placeholder="Saisissez un mot de passe"
               required
             />
