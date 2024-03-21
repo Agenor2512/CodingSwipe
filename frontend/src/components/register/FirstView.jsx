@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+// import { useContext, useState } from "react";
 import "../../styles/register/firstViewRegisterForm.css";
 
-import RegisterContext from "../../context/RegisterContext";
+// import RegisterContext from "../../context/RegisterContext";
 
-function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
-  const { setUserRole } = useContext(RegisterContext);
-  const [focusedButton, setFocusedButton] = useState("enterprise");
+function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
+  // const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
       name: "enterprise",
@@ -18,10 +17,10 @@ function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
     },
   ];
 
-  const handleClickButton = (event) => {
-    setFocusedButton(event.target.name);
-    setUserRole(event.target.name);
-  };
+  // const handleClickButton = (event) => {
+  //   setFocusedButton(event.target.name);
+  //   setInfos({ ...infos, userRole: event.target.name });
+  // };
 
   return (
     <section className="form_container">
@@ -34,8 +33,8 @@ function FirstView({ formTools: { nextStep, handleFormSubmit } }) {
               key={name}
               name={name}
               type="button"
-              className={focusedButton === name ? "focusedButton" : ""}
-              onClick={handleClickButton}
+              // className={focusedButton === name ? "focusedButton" : ""}
+              onClick={() => setRole(name)}
             >
               {buttonText}
             </button>

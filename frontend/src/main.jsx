@@ -9,7 +9,10 @@ import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePageSwipe from "./pages/HomePageSwipe";
 import { RegisterProvider } from "./context/RegisterContext";
+import { LoginUserProvider } from "./context/LoginUserContext";
+import ModalDisconnection from "./components/ModalDisconnection";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
         path: "/usersHomePage",
         element: <UsersHomePage />,
       },
+      {
+        path: "/homePageSwipe",
+        element: <HomePageSwipe />,
+      },
+      {
+        path: "/modalDisconnection",
+        element: <ModalDisconnection />,
+      },
     ],
     errorElement: <ErrorPage />,
   },
@@ -37,7 +48,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RegisterProvider>
-      <RouterProvider router={router} />
+      <LoginUserProvider>
+        <RouterProvider router={router} />
+      </LoginUserProvider>
     </RegisterProvider>
   </React.StrictMode>
 );

@@ -115,8 +115,23 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   outline: none;
   border: 1px solid var(--third-color);
-  color: var(--third-color);
   background-color: var(--register-background-color);
+}
+
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > input {
+  color: var(--secondary-color);
+}
+
+.step_one_register
+  > form
+  > .step_one_register_container
+  > .register_label_input_container
+  > select {
+  color: var(--secondary-color);
 }
 
 .step_one_register > form > button {
@@ -132,6 +147,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media screen and (min-width: 600px) {
   .step_one_register > h1 {
+    font-size: 2.5rem;
     padding: 2.5rem;
   }
 

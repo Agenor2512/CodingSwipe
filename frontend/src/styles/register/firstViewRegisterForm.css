@@ -74,6 +74,10 @@ h3 {
 }
 
 @media screen and (min-width: 600px) {
+  .form_container > form > h1 {
+    font-size: 2.5rem;
+  }
+
   .form_container > form > h3 {
     font-size: 2rem;
   }

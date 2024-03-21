@@ -1,130 +1,152 @@
-import React from "react";
-import "../../styles/register/enterpriseStepTwo.css";
+import React, { useContext } from "react";
 
 import PropTypes from "prop-types";
+
+import RegisterContext from "../../context/RegisterContext";
+
+import { addUser } from "../../services/usersService";
+
+import "../../styles/register/enterpriseStepTwo.css";
 
 function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
   const enterpriseType = [
     {
-      key: "EI",
+      id: 0,
       text: "EI - Entrepreneur individuel",
     },
     {
-      key: "EURL",
+      id: 1,
       text: "EURL - Entreprise unipersonnelle à responsabilité limitée",
     },
     {
-      key: "SARL",
+      id: 2,
       text: "SARL - Société à responsabilité limitée",
     },
     {
-      key: "SASU",
+      id: 3,
       text: "SASU - Société par actions simplifiée unipersonnelle",
     },
     {
-      key: "SAS",
+      id: 4,
       text: "SAS - Société par actions simplifiée",
     },
     {
-      key: "SA",
+      id: 5,
       text: "SA - Société anonyme",
     },
     {
-      key: "SNC",
+      id: 6,
       text: "SNC - Société en nom collectif",
     },
     {
-      key: "SCS",
+      id: 7,
       text: "SCS - Société en commandite simple",
     },
     {
-      key: "SCA",
+      id: 8,
       text: "SCA - Société en commandite par actions",
     },
   ];
 
   const industries = [
     {
-      key: "financial-services",
+      id: 0,
       text: "Services financiers",
     },
     {
-      key: "health",
+      id: 1,
       text: "Santé et sciences de la vie",
     },
     {
-      key: "energy",
+      id: 2,
       text: "Énergie",
     },
     {
-      key: "manufacturing-industry",
+      id: 3,
       text: "Industrie manufacturière",
     },
     {
-      key: "retail",
+      id: 4,
       text: "Commerce de détail et de gros",
     },
     {
-      key: "food",
+      id: 5,
       text: "Alimentation et boissons",
     },
     {
-      key: "transport-logistics",
+      id: 6,
       text: "Transport et logistique",
     },
     {
-      key: "real-estate",
+      id: 7,
       text: "Immobilier",
     },
     {
-      key: "education",
+      id: 8,
       text: "Éducation",
     },
     {
-      key: "entertainment",
+      id: 9,
       text: "Divertissement et médias",
     },
     {
-      key: "professional-services",
+      id: 10,
       text: "Services professionnels",
     },
     {
-      key: "tourism",
+      id: 11,
       text: "Tourisme et hôtellerie",
     },
     {
-      key: "extractive-industry",
+      id: 12,
       text: "Industrie extractive",
     },
     {
-      key: "telecommunications",
+      id: 13,
       text: "Télécommunications",
     },
     {
-      key: "environment",
+      id: 14,
       text: "Environnement et durabilité",
     },
     {
-      key: "sport",
+      id: 15,
       text: "Sport et loisirs",
     },
     {
-      key: "fashion",
+      id: 16,
       text: "Mode et habillement",
     },
     {
-      key: "consumer-goods",
+      id: 17,
       text: "Biens de consommation",
     },
     {
-      key: "government-services",
+      id: 18,
       text: "Services gouvernementaux et publics",
     },
     {
-      key: "information-technology",
+      id: 19,
       text: "Technologie de l'information et des communications (TIC)",
     },
   ];
+
+  const { infos, setInfos } = useContext(RegisterContext);
+
+  const handleFormChange = (key, { target: { value } }) => {
+    setInfos({
+      ...infos,
+      [key]: value,
+    });
+  };
+
+  const registerThenRedirect = () => {
+    // FIXME: Pour l'instant, on ne gère pas le département, le secteur d'activité et le statut juridique
+    // A la place, on met des ID en dur...
+    const requestBody = { ...infos };
+    addUser({ ...requestBody });
+    nextStep();
+  };
 
   return (
     <div className="enterprise_form_container">
@@ -141,12 +163,16 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <label htmlFor="enterprise-type-select">
           Type d'entreprise <span>:</span>
         </label>
-        <select name="enterprise-type" id="enterprise-type-select">
+        <select
+          name="enterprise-type"
+          id="enterprise-type-select"
+          onChange={(event) => handleFormChange("legalStatus", event)}
+        >
           <option value="choose-enterprise-type">
             Veuillez choisir la forme juridique de votre entreprise
           </option>
-          {enterpriseType.map(({ key, text }) => (
-            <option key={key} value={text}>
+          {enterpriseType.map(({ id, text }) => (
+            <option key={id} value={id}>
               {text}
             </option>
           ))}
@@ -154,12 +180,16 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
         <label htmlFor="industries-select">
           Secteur d'activité <span>:</span>
         </label>
-        <select name="industries" id="industries-select">
+        <select
+          name="industries"
+          id="industries-select"
+          onChange={(event) => handleFormChange("businessSector", event)}
+        >
           <option value="choose-industries">
             Veuillez choisir votre secteur d'activité
           </option>
-          {industries.map(({ key, text }) => (
-            <option key={key} value={text}>
+          {industries.map(({ id, text }) => (
+            <option key={id} value={id}>
               {text}
             </option>
           ))}
@@ -172,10 +202,11 @@ function EnterpriseStepTwo({ formTools: { nextStep, handleFormSubmit } }) {
           required
           type="text"
           id="description-area"
+          onChange={(event) => handleFormChange("description", event)}
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
         />
-        <button type="submit" onClick={nextStep}>
+        <button type="submit" onClick={registerThenRedirect}>
           Finaliser l'inscription
         </button>
       </form>

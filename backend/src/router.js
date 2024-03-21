@@ -2,22 +2,36 @@ const express = require("express");
 
 const router = express.Router();
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
+const enterpriseControllers = require("./controllers/enterpriseControllers");
+const candidateControllers = require("./controllers/candidateControllers");
 
-// Import itemControllers module for handling item-related operations
-const itemControllers = require("./controllers/itemControllers");
+const authenticationService = require("./services/authentication");
+const authenticationControllers = require("./controllers/authenticationControllers");
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
+// Login part
+router.post(
+  "/login",
+  authenticationService.checkIfEmailExist,
+  authenticationControllers.login
+);
+router.delete("/logout", authenticationControllers.logout);
 
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
+// Enterprise part
+router.get("/enterprises", enterpriseControllers.browse);
+router.get("/enterprises/:id", enterpriseControllers.readById);
+router.post(
+  "/enterprises",
+  authenticationService.hashPassword,
+  enterpriseControllers.add
+);
 
-// Route to add a new item
-router.post("/items", itemControllers.add);
-
-/* ************************************************************************* */
+// Candidate part
+router.get("/candidates", candidateControllers.browse);
+router.get("/candidates/:id", candidateControllers.readById);
+router.post(
+  "/candidates",
+  authenticationService.hashPassword,
+  candidateControllers.add
+);
 
 module.exports = router;

@@ -1,40 +1,39 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import RegisterContext from "../../context/RegisterContext";
-import "../../styles/resume_job_offer/matchs.css";
 import "../../styles/resume_job_offer/messages.css";
 
 function getFirstLetter(name) {
   return name.charAt(0).toUpperCase();
 }
 
-function Matchs({ matchesData }) {
+function Messages({ messagesData }) {
   const { infos } = useContext(RegisterContext);
 
   return (
-    <section className="match_container">
-      {infos === "match" &&
-        matchesData.map((match) => (
-          <div key={match.id} className="match_card">
+    <section className="messages_container">
+      {infos === "messages" &&
+        messagesData.map((messages) => (
+          <div key={messages.id} className="messages_card">
             {infos === "candidat" ? (
               <div>
-                <div>{getFirstLetter(match.name)}</div>
-                <div>{match.jobName}</div>
-                <div>{match.date}</div>
-                <div>{match.jobPosting}</div>
+                <div>{getFirstLetter(messages.name)}</div>
+                <div>{messages.jobName}</div>
+                <div>{messages.date}</div>
+                <div>{messages.jobPosting}</div>
               </div>
             ) : (
-              <div className="match_card_content">
+              <div className="messages_card_content">
                 <div className="first_content_block">
-                  {getFirstLetter(match.name)}
+                  {getFirstLetter(messages.name)}
                 </div>
 
                 <div className="second_content_block">
                   <div className="bold_font">
-                    <span>{match.category} </span>
-                    <p>{`- ${match.date}`}</p>
+                    <span>{messages.category} </span>
+                    <p>{`- ${messages.date}`}</p>
                   </div>
-                  <div className="font_content"> {match.jobName}</div>
+                  <div className="font_content"> {messages.jobName}</div>
                 </div>
               </div>
             )}
@@ -44,8 +43,8 @@ function Matchs({ matchesData }) {
   );
 }
 
-Matchs.propTypes = {
-  matchesData: PropTypes.arrayOf(
+Messages.propTypes = {
+  messagesData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
@@ -57,4 +56,4 @@ Matchs.propTypes = {
   ).isRequired,
 };
 
-export default Matchs;
+export default Messages;
