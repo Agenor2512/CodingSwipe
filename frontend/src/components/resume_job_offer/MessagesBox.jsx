@@ -10,16 +10,15 @@ function MessagesBox() {
           <div>W</div>
           <h1>Développeur/Développeuse</h1>
         </div>
+        <div className="messages" />
 
-        <div className="send_text_Button">
-          <button type="button" className="send_button">
-            Envoyer
-          </button>
-          <input className="texte_area" type="text" id="text" />
+        <div className="send_text_button">
+          <input type="text" id="text" />
+          <button type="button">Envoyer</button>
         </div>
       </div>
 
-      <section className="button_see_advert">
+      <section className="see_content">
         <button type="button">Voir l'annonce</button>
       </section>
     </section>
