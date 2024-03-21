@@ -1,11 +1,41 @@
 .user_message {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  position: relative;
-  height: 20vh;
-  background-image: url("src/assets/background_swipe_mobile.png");
+  align-items: center;
+  font-family: var(--primary-font);
+  /* background-image: url("src/assets/background_swipe_mobile.png");
   background-position: center bottom;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+}
+
+.candidate_infos_container > div {
+  margin: 1rem;
+}
+
+.user_message > div > .candidate_infos_header {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.user_message > div > .candidate_infos_header > div {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  width: 10vw;
+  padding: 0.2rem;
+  border: 5px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.user_message > div > .candidate_infos_header > h1 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
 }
 
 .user_message > .button_see_advert {

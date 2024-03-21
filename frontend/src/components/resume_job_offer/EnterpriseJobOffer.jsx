@@ -4,7 +4,6 @@ import React from "react";
 import DropDownList from "./DropDownList";
 import SalaryAdministrator from "./SalaryAdministrator";
 import ModifyButton from "./ModifyButton";
-import MessagesBox from "../messages/MessagesBox";
 
 import "../../styles/resume_job_offer/enterpriseJobOffer.css";
 
@@ -203,7 +202,6 @@ function EnterpriseJobOffer() {
           </div>
         </section>
       </div>
-      <MessagesBox />
     </div>
   );
 }
