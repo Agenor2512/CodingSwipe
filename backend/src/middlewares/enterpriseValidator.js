@@ -10,7 +10,7 @@ const validateEnterprise = () => {
       .required(),
 
     name: Joi.string()
-      .pattern(/^[a-zA-Z0-9\s]+$/)
+      .pattern(/^[a-zA-Z0-9À-ÖØ-öø-ÿ\s]+$/)
       .min(3)
       .max(50)
       .messages({
@@ -25,7 +25,7 @@ const validateEnterprise = () => {
       .pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/)
       .required(),
 
-    password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9*#]{8,15}$/),
+    password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
     repeat_password: Joi.ref("password"),
   });
 
