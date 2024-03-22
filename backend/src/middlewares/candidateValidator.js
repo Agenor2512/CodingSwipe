@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const validateCandidate = () => {
+const validateCandidate = async (req, res, next) => {
   const candidateSchema = Joi.object({
     id: Joi.string()
       .guid({ version: "uuidv4" })
@@ -54,12 +54,11 @@ const validateCandidate = () => {
   const { error, value } = candidateSchema.validate(candidateData);
 
   if (error) {
-    console.error("Validation failed:", error.message);
+    next(error).send("Validation failed:", error.message);
   } else {
     console.info("Validation succeeded:", value);
+    next();
   }
 };
-
-validateCandidate();
 
 module.exports = { validateCandidate };

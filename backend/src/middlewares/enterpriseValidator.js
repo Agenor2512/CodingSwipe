@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const validateEnterprise = () => {
+const validateEnterprise = async (req, res, next) => {
   const enterpriseSchema = Joi.object({
     id: Joi.string()
       .guid({ version: "uuidv4" })
@@ -40,9 +40,10 @@ const validateEnterprise = () => {
   const { error, value } = enterpriseSchema.validate(enterpriseData);
 
   if (error) {
-    console.error("Validation failed:", error.message);
+    next(error).send("Validation failed:", error.message);
   } else {
     console.info("Validation succeeded:", value);
+    next();
   }
 };
 
