@@ -104,332 +104,332 @@ function CandidateStepOne({
       text: "19 - Corrèze",
     },
     {
-      id: 20,
-      text: "2A - Corse-du-Sud",
-    },
-    {
       id: 21,
-      text: "2B - Haute-Corse",
-    },
-    {
-      id: 22,
       text: "21 - Côte-d'Or",
     },
     {
-      id: 23,
+      id: 22,
       text: "22 - Côtes-d'Armor",
     },
     {
-      id: 24,
+      id: 23,
       text: "23 - Côte-d'Or",
     },
     {
-      id: 25,
+      id: 24,
       text: "24 - Dordogne",
     },
     {
-      id: 26,
+      id: 25,
       text: "25 - Doubs",
     },
     {
-      id: 27,
+      id: 26,
       text: "26 - Drôme",
     },
     {
-      id: 28,
+      id: 27,
       text: "27 - Eure",
     },
     {
-      id: 29,
+      id: 28,
       text: "28 - Eure-et-Loir",
     },
     {
-      id: 30,
+      id: 29,
       text: "29 - Finistère",
     },
     {
-      id: 31,
+      id: 30,
       text: "30 - Gard",
     },
     {
-      id: 32,
+      id: 31,
       text: "31 - Haute-Garonne",
     },
     {
-      id: 33,
+      id: 32,
       text: "32 - Gers",
     },
     {
-      id: 34,
+      id: 33,
       text: "33 - Gironde",
     },
     {
-      id: 35,
+      id: 34,
       text: "34 - Hérault",
     },
     {
-      id: 36,
+      id: 35,
       text: "35 - Ille-et-Vilaine",
     },
     {
-      id: 37,
+      id: 36,
       text: "36 - Indre",
     },
     {
-      id: 38,
+      id: 37,
       text: "37 - Indre-et-Loire",
     },
     {
-      id: 39,
+      id: 38,
       text: "38 - Isère",
     },
     {
-      id: 40,
+      id: 39,
       text: "39 - Jura",
     },
     {
-      id: 41,
+      id: 40,
       text: "40 - Landes",
     },
     {
-      id: 42,
+      id: 41,
       text: "41 - Loir-et-Cher",
     },
     {
-      id: 43,
+      id: 42,
       text: "42 - Loire",
     },
     {
-      id: 44,
+      id: 43,
       text: "43 - Haute-Loire",
     },
     {
-      id: 45,
+      id: 44,
       text: "44 - Loire-Atlantique",
     },
     {
-      id: 46,
+      id: 45,
       text: "45 - Loiret",
     },
     {
-      id: 47,
+      id: 46,
       text: "46 - Lot",
     },
     {
-      id: 48,
+      id: 47,
       text: "47 - Lot-et-Garonne",
     },
     {
-      id: 49,
+      id: 48,
       text: "48 - Lozère",
     },
     {
-      id: 50,
+      id: 49,
       text: "49 - Maine-et-Loire",
     },
     {
-      id: 51,
+      id: 50,
       text: "50 - Manche",
     },
     {
-      id: 52,
+      id: 51,
       text: "51 - Marne",
     },
     {
-      id: 53,
+      id: 52,
       text: "52 - Haute-Marne",
     },
     {
-      id: 54,
+      id: 53,
       text: "53 - Mayenne",
     },
     {
-      id: 55,
+      id: 54,
       text: "54 - Meurthe-et-Moselle",
     },
     {
-      id: 56,
+      id: 55,
       text: "55 - Meuse",
     },
     {
-      id: 57,
+      id: 56,
       text: "56 - Morbihan",
     },
     {
-      id: 58,
+      id: 57,
       text: "57 - Moselle",
     },
     {
-      id: 59,
+      id: 58,
       text: "58 - Nièvre",
     },
     {
-      id: 60,
+      id: 59,
       text: "59 - Nord",
     },
     {
-      id: 61,
+      id: 60,
       text: "60 - Oise",
     },
     {
-      id: 62,
+      id: 61,
       text: "61 - Orne",
     },
     {
-      id: 63,
+      id: 62,
       text: "62 - Pas-de-Calais",
     },
     {
-      id: 64,
+      id: 63,
       text: "63 - Puy-de-Dôme",
     },
     {
-      id: 65,
+      id: 64,
       text: "64 - Pyrénées-Atlantiques",
     },
     {
-      id: 66,
+      id: 65,
       text: "65 - Hautes-Pyrénées",
     },
     {
-      id: 67,
+      id: 66,
       text: "66 - Pyrénées-Orientales",
     },
     {
-      id: 68,
+      id: 67,
       text: "67 - Bas-Rhin",
     },
     {
-      id: 69,
+      id: 68,
       text: "68 - Haut-Rhin",
     },
     {
-      id: 70,
+      id: 69,
       text: "69 - Rhône",
     },
     {
-      id: 71,
+      id: 70,
       text: "70 - Haute-Saône",
     },
     {
-      id: 72,
+      id: 71,
       text: "71 - Saône-et-Loire",
     },
     {
-      id: 73,
+      id: 72,
       text: "72 - Sarthe",
     },
     {
-      id: 74,
+      id: 73,
       text: "73 - Savoie",
     },
     {
-      id: 75,
+      id: 74,
       text: "74 - Haute-Savoie",
     },
     {
-      id: 76,
+      id: 75,
       text: "75 - Paris",
     },
     {
-      id: 77,
+      id: 76,
       text: "76 - Seine-Maritime",
     },
     {
-      id: 78,
+      id: 77,
       text: "77 - Seine-et-Marne",
     },
     {
-      id: 79,
+      id: 78,
       text: "78 - Yvelines",
     },
     {
-      id: 80,
+      id: 79,
       text: "79 - Deux-Sèvres",
     },
     {
-      id: 81,
+      id: 80,
       text: "80 - Somme",
     },
     {
-      id: 82,
+      id: 81,
       text: "81 - Tarn",
     },
     {
-      id: 83,
+      id: 82,
       text: "82 - Tarn-et-Garonne",
     },
     {
-      id: 84,
+      id: 83,
       text: "83 - Var",
     },
     {
-      id: 85,
+      id: 84,
       text: "84 - Vaucluse",
     },
     {
-      id: 86,
+      id: 85,
       text: "85 - Vendée",
     },
     {
-      id: 87,
+      id: 86,
       text: "86 - Vienne",
     },
     {
-      id: 88,
+      id: 87,
       text: "87 - Haute-Vienne",
     },
     {
-      id: 89,
+      id: 88,
       text: "88 - Vosges",
     },
     {
-      id: 90,
+      id: 89,
       text: "89 - Yonne",
     },
     {
-      id: 91,
+      id: 90,
       text: "90 - Territoire de Belfort",
     },
     {
-      id: 92,
+      id: 91,
       text: "91 - Essonne",
     },
     {
-      id: 93,
+      id: 92,
       text: "92 - Hauts-de-Seine",
     },
     {
-      id: 94,
+      id: 93,
       text: "93 - Seine-Saint-Denis",
     },
     {
-      id: 95,
+      id: 94,
       text: "94 - Val-de-Marne",
     },
     {
-      id: 96,
+      id: 95,
       text: "95 - Val-d'Oise",
     },
     {
-      id: 97,
+      id: 96,
       text: "971 - Guadeloupe",
     },
     {
-      id: 98,
+      id: 97,
       text: "972 - Martinique",
     },
     {
-      id: 99,
+      id: 98,
       text: "973 - Guyane",
     },
     {
-      id: 100,
+      id: 99,
       text: "974 - La Réunion",
     },
     {
-      id: 101,
+      id: 100,
       text: "976 - Mayotte",
+    },
+    {
+      id: 101,
+      text: "2A - Corse-du-Sud",
+    },
+    {
+      id: 102,
+      text: "2B - Haute-Corse",
     },
   ];
 
