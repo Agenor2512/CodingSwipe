@@ -27,26 +27,27 @@ const validateEnterprise = async (req, res, next) => {
 
     password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
     repeat_password: Joi.ref("password"),
+
+    siret: Joi.string().length(14).required(),
+    description: Joi.string().required(),
+    departmentId: Joi.number().required(),
+    legalStatusId: Joi.number().required(),
+    businessSectorsId: Joi.number().required(),
+    salary: Joi.number().required(),
+    contractTypesId: Joi.number().required(),
+    workRythmsId: Joi.number().required(),
+    appetencesId: Joi.number().required(),
+    languages: Joi.array().min(1).required(),
   });
 
-  const enterpriseData = {
-    id: "2de1feec-a19a-4f16-9226-af782acdab42",
-    name: "Java Corp",
-    email: "javacorp@gmail.com",
-    password: "codingsw*ipe25*",
-    repeat_password: "codingsw*ipe25*",
-  };
-
-  const { error, value } = enterpriseSchema.validate(enterpriseData);
+  const { error } = enterpriseSchema.validate(req.body);
 
   if (error) {
-    next(error).send("Validation failed:", error.message);
+    next(error).send("Validation failed");
   } else {
-    console.info("Validation succeeded:", value);
+    console.info("Validation succeded");
     next();
   }
 };
-
-validateEnterprise();
 
 module.exports = { validateEnterprise };

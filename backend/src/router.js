@@ -24,8 +24,8 @@ router.get("/enterprises", enterpriseControllers.browse);
 router.get("/enterprises/:id", enterpriseControllers.readById);
 router.post(
   "/enterprises",
-  authenticationService.hashPassword,
   enterpriseValidator.validateEnterprise,
+  authenticationService.hashPassword,
   enterpriseControllers.add
 );
 
@@ -34,8 +34,8 @@ router.get("/candidates", candidateControllers.browse);
 router.get("/candidates/:id", candidateControllers.readById);
 router.post(
   "/candidates",
-  authenticationService.hashPassword,
   candidateValidator.validateCandidate,
+  authenticationService.hashPassword,
   candidateControllers.add
 );
 
