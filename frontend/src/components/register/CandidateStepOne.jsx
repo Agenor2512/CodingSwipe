@@ -518,8 +518,8 @@ function CandidateStepOne({
             <input
               type="password"
               minLength={8}
-              name="password-check"
-              id="password-check"
+              name="passwordCheck"
+              id="passwordCheck"
               placeholder="Vérifiez votre mot de passe"
               required
             />

@@ -2,13 +2,6 @@ const Joi = require("joi");
 
 const validateCandidate = async (req, res, next) => {
   const candidateSchema = Joi.object({
-    id: Joi.string()
-      .guid({ version: "uuidv4" })
-      .messages({
-        "string.guid": "Erreur lors de l'ajout de l'id",
-      })
-      .required(),
-
     firstname: Joi.string()
       .pattern(/^[a-zA-Z0-9À-ÖØ-öø-ÿ-?\s]+$/)
       .min(3)
@@ -39,22 +32,22 @@ const validateCandidate = async (req, res, next) => {
       .required(),
 
     password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
-    repeat_password: Joi.ref("password"),
+    passwordCheck: Joi.ref("password"),
+
+    biography: Joi.string().allow(""),
+    departmentId: Joi.number().required(),
+    contractTypesId: Joi.number().required(),
+    workRhythmsId: Joi.number().required(),
+    appetencesId: Joi.number().required(),
+    levelId: Joi.number().required(),
+    languages: Joi.array().required(),
   });
 
-  const candidateData = {
-    id: "2de1feec-a19a-4f16-9226-af782acdab42",
-    firstname: "Jean-Michel",
-    lastname: "A peu près",
-    email: "javacorp@gmail.com",
-    password: "codîngsw*ipe25*",
-    repeat_password: "codîngsw*ipe25*",
-  };
-
-  const { error, value } = candidateSchema.validate(candidateData);
+  const { error, value } = candidateSchema.validate(req.body);
 
   if (error) {
-    next(error).send("Validation failed:", error.message);
+    console.error(error);
+    res.sendStatus(401);
   } else {
     console.info("Validation succeeded:", value);
     next();
