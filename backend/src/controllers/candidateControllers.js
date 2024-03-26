@@ -73,8 +73,9 @@ const add = async (req, res, next) => {
 
 const readResume = async (req, res, next) => {
   try {
-    const resume = await tables.candidate.readResumeById();
-    const languages = await tables.candidate.readLanguagesById();
+    const candidate = await tables.candidate.randomCandidate();
+    const resume = await tables.candidate.readResumeById(candidate[0].id);
+    const languages = await tables.candidate.readLanguagesById(candidate[0].id);
     res.json([
       {
         infos: resume,

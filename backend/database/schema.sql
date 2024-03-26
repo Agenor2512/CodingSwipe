@@ -381,16 +381,12 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 --   foreign key(job_offer_id) references job_offer(id)
 -- );
 
-
-
-
-
--- insert into candidate (id, firstname, lastname, email, password, department_id) values 
--- ("2de1feec-a19a-4f16-9226-af782acdab42", "Bernard", "Martin", "bernard.martin@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 32),
--- ("2de1feec-a19a-4f16-9226-af752acdab42", "Pauline", "Mbappé", "paulinembappe@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 13),
--- ("2de1feec-a12a-4f16-9226-af752acdab42", "Yves", "Rocher", "yvesrocher@wanadoo.fr", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 45),
--- ("2de2feec-a12a-4f16-9226-af752acdab42", "Sarah", "Croche", "sarah_croche@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 4),
--- ("2de1feec-a12a-4f26-9226-af752acdab42", "Guy", "Tare", "guy_tare@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 75);
+insert into candidate (id, firstname, lastname, email, password, department_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab42", "Bernard", "Martin", "candidate@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 32),
+("2de1feec-a19a-4f16-9226-af752acdab43", "Pauline", "Mbappé", "paulinembappe@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 13),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Yves", "Rocher", "yvesrocher@wanadoo.fr", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 45),
+("2de2feec-a12a-4f16-9226-af752acdab45", "Sarah", "Croche", "sarah_croche@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 4),
+("2de1feec-a12a-4f26-9226-af752acdab46", "Guy", "Tare", "guy_tare@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 75);
 
 -- insert into enterprise (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) values ("2de1feec-a19a-4f16-9226-af682acdab42", "Le Bon Coin", 94879165200019, "Plateforme de vente d'objets d'occasion", "recrutement@leboncoin.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 92, 1, 5), 
 -- ("2de1feec-a19a-4f11-9226-af682acdab42", "CDiscount", 9487916210019, "Plateforme de vente d'objets neufs", "recrutement@cdiscount.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 40, 1, 5), 
@@ -398,12 +394,12 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 -- ("2de1feec-a19a-4f16-9226-af676acdab42", "BlaBlaCar", 9441916212219, "Plateforme de covoiturage", "recrutement@blablacar.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 12, 1, 5), 
 -- ("2df1feec-a19a-4f16-9226-af676acdab42", "Orange", 9441917212219, "Entreprise de téléphonie", "recrutement@orange.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 69, 1, 5);
 
--- insert into resume (id, biography, appetences_id, candidate_id) values
--- ("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42"),
--- ("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab42"),
--- ("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab42"),
--- ("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab42"),
--- ("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab42");
+insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42", 1, 1, 2),
+("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab43", 2, 2, 3),
+("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab44", 1, 3, 1),
+("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab45", 3, 2, 1),
+("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab46", 2, 1, 2);
 
 -- insert into job_offer (id, salary, contract_types_id, appetences_id, work_rhythms_id, enterprise_id) values 
 -- ("2de1feec-a19a-4f16-9226-ag681acdab42", 2000, 2, 1, 2, "2de1feec-a19a-4f16-9226-af682acdab42" ),
@@ -411,3 +407,10 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 -- ("2de1feec-a19a-4f16-9226-af686acdab52", 1200, 3, 1, 2, "2de1feec-a19a-4f16-9226-af686acdab42"),
 -- ("2de1feec-a19a-4f16-9258-af676acdab42", 5000, 4, 3, 3, "2de1feec-a19a-4f16-9226-af676acdab42"),
 -- ("2df1feec-a19a-4f16-9226-af547acdab42", 3000, 1, 1, 2, "2df1feec-a19a-4f16-9226-af676acdab42"); 
+
+insert into resume_has_programming_languages (resume_id, programming_languages_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab47", 5), ("2de1feec-a19a-4f16-9226-af782acdab47", 7), ("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 1), ("2de1feec-a19a-4f16-9226-af752acdab46", 10), ("2de1feec-a19a-4f16-9226-af752acdab46", 17),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6), ("2de1feec-a12a-4f16-9226-af752acdab45", 17), ("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 9), ("2de2feec-a12a-4f16-9226-af752acdab43", 10), ("2de2feec-a12a-4f16-9226-af752acdab43", 11),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8), ("2de1feec-a12a-4f26-9226-af752acdab44", 6), ("2de1feec-a12a-4f26-9226-af752acdab44", 19);

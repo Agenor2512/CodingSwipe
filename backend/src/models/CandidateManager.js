@@ -69,7 +69,7 @@ class CandidateManager extends AbstractManager {
     return rows;
   }
 
-  async readResumeById() {
+  async readResumeById(id) {
     const [rows] = await this.database.query(
       `select candidate.firstname, candidate.lastname, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, level from candidate
       join resume on candidate.id = resume.candidate_id
@@ -78,18 +78,27 @@ class CandidateManager extends AbstractManager {
       join work_rhythms on work_rhythms.id = resume.work_rhythms_id
       join departments on departments.id = candidate.department_id
       join levels on levels.id = RESUME.level_id
-      WHERE candidate.id = "59daa4ab-ca42-421a-be44-502c0111c15e";`
+      WHERE candidate.id = ?;`,
+      [id]
     );
     return rows;
   }
 
-  async readLanguagesById() {
+  async readLanguagesById(id) {
     const [rows] = await this.database.query(
       `select programming_language as languages from candidate
       join resume on candidate.id = resume.candidate_id
       join resume_has_programming_languages on resume_has_programming_languages.resume_id = resume.id
       join programming_languages on programming_languages.id = resume_has_programming_languages.programming_languages_id
-      WHERE candidate.id = "59daa4ab-ca42-421a-be44-502c0111c15e";`
+      WHERE candidate.id = ?;`,
+      [id]
+    );
+    return rows;
+  }
+
+  async randomCandidate() {
+    const [rows] = await this.database.query(
+      `select candidate.id from ${this.table} order by rand() limit 1`
     );
     return rows;
   }

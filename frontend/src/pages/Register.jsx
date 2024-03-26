@@ -23,7 +23,7 @@ function Register() {
     email: "",
     password: "",
     departmentId: "",
-    biography: "",
+    // biography: "",
     appetencesId: "",
     contractTypesId: "",
     workRhythmsId: "",
@@ -74,7 +74,10 @@ function Register() {
   const registerCandidate = () => {
     axios
       .post("http://localhost:3310/api/candidates", candidateInfos)
-      .then(() => setIsError(false))
+      .then((response) => {
+        setIsError(false);
+        console.info(response);
+      })
       .catch(() => setIsError(true));
   };
 

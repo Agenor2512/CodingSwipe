@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,11 +8,11 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
-  const [resume, setResume] = useState([
-    {
-      langues: [],
-    },
-  ]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [resume, setResume] = useState([]);
+
+  console.info("RESUME : ", resume);
 
   const fetchResume = () => {
     axios
@@ -19,6 +20,7 @@ function CandidateCandidacy() {
       .then((response) => {
         console.info("RESPONSE : ", response);
         setResume(response.data);
+        setIsLoading(false);
       })
       .catch((error) => console.error(error));
   };
@@ -27,56 +29,66 @@ function CandidateCandidacy() {
     fetchResume();
   }, []);
 
-  console.info("coucou", resume[0].infos);
-
   const candidateDescription =
-    "Passionnéééé par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
+    "Passionnée par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
 
-  return (
-    <div className="candidate_infos_container">
-      <div>
-        <div className="candidate_infos_header">
-          <div>W</div>
-          <h1>Développeur/Développeuse</h1>
-        </div>
+  const getFirstLetter = () => {
+    if (isLoading === false) {
+      const { firstname } = resume[0].infos[0];
+      return firstname.charAt(0);
+    }
+    return "";
+  };
 
-        <div className="modify_display_in_desktop">
-          <div>
-            <h2>Qui suis-je ?</h2>
-            <p>{candidateDescription}</p>
+  const displayResume = () => {
+    return (
+      <div className="candidate_infos_container">
+        <div>
+          <div className="candidate_infos_header">
+            <div>{getFirstLetter()}</div>
+            <h1>Développeur/Développeuse</h1>
           </div>
 
-          <section className="candidate_expectations_container">
-            <h2>Ma recherche</h2>
-            <WorkingConditionsCard />
-          </section>
+          <div className="modify_display_in_desktop">
+            <div>
+              <h2>Qui suis-je ?</h2>
+              <p>{candidateDescription}</p>
+            </div>
+
+            <section className="candidate_expectations_container">
+              <h2>Ma recherche</h2>
+              <WorkingConditionsCard data={resume[0]} />
+            </section>
+          </div>
+
+          <div className="skills_languages_experiences_desktop">
+            <section className="soft_skills">
+              <h2>Soft skills</h2>
+              <div />
+            </section>
+
+            <section className="computer_languages_container">
+              <h2>Langages informatiques</h2>
+              <ul>
+                {resume[0].langues.map((langue) => (
+                  <li>{langue.languages}</li>
+                ))}
+              </ul>
+              <div />
+            </section>
+
+            <section className="significatives_experiences">
+              <h2>Expériences significatives</h2>
+              <div />
+            </section>
+          </div>
         </div>
-
-        <div className="skills_languages_experiences_desktop">
-          <section className="soft_skills">
-            <h2>Soft skills</h2>
-            <div />
-          </section>
-
-          <section className="computer_languages_container">
-            <h2>Langages informatiques</h2>
-            <ul>
-              {resume[0].langues.map((langue) => (
-                <li>{langue.languages}</li>
-              ))}
-            </ul>
-            <div />
-          </section>
-
-          <section className="significatives_experiences">
-            <h2>Expériences significatives</h2>
-            <div />
-          </section>
-        </div>
+        <SwipeSystem />
       </div>
-      <SwipeSystem />
-    </div>
-  );
+    );
+  };
+
+  return isLoading ? "" : displayResume();
 }
 
 export default CandidateCandidacy;
