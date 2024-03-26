@@ -1,4 +1,5 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 import SwipeSystem from "./SwipeSystem";
 import WorkingConditionsCard from "./WorkingConditionsCard";
@@ -6,8 +7,30 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
+  const [resume, setResume] = useState([
+    {
+      langues: [],
+    },
+  ]);
+
+  const fetchResume = () => {
+    axios
+      .get("http://localhost:3310/api/resume")
+      .then((response) => {
+        console.info("RESPONSE : ", response);
+        setResume(response.data);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    fetchResume();
+  }, []);
+
+  console.info("coucou", resume[0].infos);
+
   const candidateDescription =
-    "Passionné par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
+    "Passionnéééé par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
 
   return (
     <div className="candidate_infos_container">
@@ -37,6 +60,11 @@ function CandidateCandidacy() {
 
           <section className="computer_languages_container">
             <h2>Langages informatiques</h2>
+            <ul>
+              {resume[0].langues.map((langue) => (
+                <li>{langue.languages}</li>
+              ))}
+            </ul>
             <div />
           </section>
 

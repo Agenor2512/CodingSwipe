@@ -34,4 +34,6 @@ router.post(
   candidateControllers.add
 );
 
+router.get("/resume", candidateControllers.readResume);
+
 module.exports = router;

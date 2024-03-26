@@ -33,17 +33,18 @@ function Register() {
 
   const [enterpriseInfos, setEnterpriseInfos] = useState({
     name: "",
-    siret: [],
+    siret: "",
     description: "",
     email: "",
     password: "",
-    departmentId: [],
-    legalStatusId: [],
-    businessSectorsId: [],
+    departmentId: "",
+    legalStatusId: "",
+    businessSectorsId: "",
     salary: "",
-    contractTypesId: [],
-    workRhythmsId: [],
-    appetencesId: [],
+    contractTypesId: "",
+    workRhythmsId: "",
+    appetencesId: "",
+    languages: [],
   });
 
   console.info("ENTREPRISE INFOS: ", enterpriseInfos);

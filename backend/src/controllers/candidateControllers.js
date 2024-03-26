@@ -71,4 +71,19 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, readById, add };
+const readResume = async (req, res, next) => {
+  try {
+    const resume = await tables.candidate.readResumeById();
+    const languages = await tables.candidate.readLanguagesById();
+    res.json([
+      {
+        infos: resume,
+        langues: languages,
+      },
+    ]);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { browse, readById, add, readResume };
