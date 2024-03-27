@@ -1,16 +1,41 @@
 import { useState } from "react";
+import axios from "axios";
 import "../../styles/content_to_swipe/swipeSystem.css";
 
-function SwipeSystem() {
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
+// eslint-disable-next-line react/prop-types
+function SwipeSystem({ userId }) {
+  const [setLikes] = useState(false);
+  const [setDislikes] = useState(false);
+
+  const baseURL = import.meta.env.VITE_URL_BACKEND;
+
+  const client = axios.create({
+    baseURL,
+    timeout: 60_000,
+  });
+
+  const sendLike = () => {
+    client
+      .post("/likes", { userId })
+      .then((response) => console.info(response.data))
+      .catch((error) => console.error(error));
+  };
+
+  const sendDislike = () => {
+    client
+      .post("/dislikes", { userId })
+      .then((response) => console.info(response.data))
+      .catch((error) => console.error(error));
+  };
 
   const handleLikeClick = () => {
-    setLikes(likes + 1);
+    setLikes(true);
+    sendLike();
   };
 
   const handleDislikeClick = () => {
-    setDislikes(dislikes + 1);
+    setDislikes(true);
+    sendDislike();
   };
 
   return (
@@ -23,7 +48,6 @@ function SwipeSystem() {
             alt="green heart"
           />
         </button>
-        <span>{likes}</span>
 
         <button type="button" onClick={handleDislikeClick}>
           <img
@@ -32,7 +56,6 @@ function SwipeSystem() {
             alt="red cross"
           />
         </button>
-        <span>{dislikes}</span>
       </div>
     </section>
   );

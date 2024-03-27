@@ -4,6 +4,7 @@ const router = express.Router();
 
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
+const likeControllers = require("./controllers/likeControllers");
 
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
@@ -38,5 +39,7 @@ router.post(
   authenticationService.hashPassword,
   candidateControllers.add
 );
+
+router.post("/likes", likeControllers.add);
 
 module.exports = router;

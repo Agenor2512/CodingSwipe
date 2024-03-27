@@ -338,6 +338,12 @@ values ("123","1234", 2, 3, 1, 3);
 
 insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values ("123", 1), ("123", 2);
 
+create table like (
+  id int not null,
+  foreign key(enterprise_id) references enterprise(id),
+  foreign key(candidate_id) references enterprise(id)
+)
+
 -- create table resume_has_soft_skills (
 --   id int not null auto_increment,
 --   resume_id varchar(36) not null,

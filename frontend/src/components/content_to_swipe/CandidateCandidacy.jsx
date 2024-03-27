@@ -6,6 +6,9 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
+  // Temp id
+  const candidateId = 2;
+
   const candidateDescription =
     "Passionné par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
 
@@ -46,7 +49,7 @@ function CandidateCandidacy() {
           </section>
         </div>
       </div>
-      <SwipeSystem />
+      <SwipeSystem userId={candidateId} />
     </div>
   );
 }
