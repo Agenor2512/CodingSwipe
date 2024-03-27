@@ -6,7 +6,7 @@
 const ItemManager = require("./models/ItemManager");
 const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
-const LikeManager = require("./models/LikeManager");
+const LikeManager = require("./models/CandidateLikeManager");
 
 const managers = [
   ItemManager,

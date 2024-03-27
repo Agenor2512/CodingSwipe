@@ -1,6 +1,6 @@
 const tables = require("../tables");
 
-const add = async (req, res, next) => {
+const add = async (req, _, next) => {
   const likeInfo = {
     likedId: req.body.randomId,
   };

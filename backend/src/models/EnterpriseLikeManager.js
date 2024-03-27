@@ -1,8 +1,8 @@
 const AbstractManager = require("./AbstractManager");
 
-class LikeManager extends AbstractManager {
+class EnterpriseLikeManager extends AbstractManager {
   constructor() {
-    super({ table: "like" });
+    super({ table: "enterprise_like" });
   }
 
   async create(like) {
@@ -16,4 +16,4 @@ class LikeManager extends AbstractManager {
   }
 }
 
-module.exports = LikeManager;
+module.exports = EnterpriseLikeManager;
