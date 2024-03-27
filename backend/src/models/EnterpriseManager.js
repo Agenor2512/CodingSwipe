@@ -68,6 +68,39 @@ class EnterpriseManager extends AbstractManager {
     );
     return rows;
   }
+
+  async readJobOfferById(id) {
+    const [rows] = await this.database.query(
+      `select enterprise.name, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, description from ${this.table}
+      join job_offer on enterprise.id = job_offer.enterprise_id
+      join appetences on job_offer.appetences_id = appetences.id
+      join contract_types on contract_types.id = job_offer.contract_types_id
+      join work_rhythms on work_rhythms.id = job_offer.work_rhythms_id
+      join departments on departments.id = enterprise.department_id
+      WHERE enterprise.id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async readLanguagesById(id) {
+    const [rows] = await this.database.query(
+      `select programming_language as programming_languages from enterprise
+      join job_offer on enterprise.id = job_offer.enterprise_id
+      join job_offer_has_programming_languages on job_offer_has_programming_languages.job_offer_id = job_offer.id
+      join programming_languages on programming_languages.id = job_offer_has_programming_languages.programming_languages_id
+      WHERE enterprise.id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async randomEnterprise() {
+    const [rows] = await this.database.query(
+      `select enterprise.id from ${this.table} order by rand() limit 1`
+    );
+    return rows;
+  }
 }
 
 module.exports = EnterpriseManager;
