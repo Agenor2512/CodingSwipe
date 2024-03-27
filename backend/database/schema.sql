@@ -1,4 +1,5 @@
 -- SQLBook: Code
+-- SQLBook: Code
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
@@ -236,17 +237,6 @@ create table resume_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
-insert into candidate(id, firstname, lastname, email, password, department_id) values
-(6, "toto", "tata", "toto@gmail.com", "secret", "35"); 
-
-insert into resume(id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values 
-(8, "coucou c'est toto", 2, 6, 2, 1, 1);
-
-insert into resume_has_programming_languages(resume_id, programming_languages_id) values
-(8, 3);
-insert into resume_has_programming_languages(resume_id, programming_languages_id) values
-(8, 4);
-
 create table business_sectors (
   id int not null auto_increment,
   business_sector varchar(100) not null,
@@ -308,9 +298,6 @@ create table enterprise (
   foreign key(business_sectors_id) references business_sectors(id)
 );
 
-insert into enterprise (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) 
-values("3", "Google", 123456789, "Moteur de recherche", "recrutement@google.com", "secret", 75, 3, 2);
-
 create table job_offer (
   id varchar(36) not null,
   salary varchar(100),
@@ -333,87 +320,79 @@ create table job_offer_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
-insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id)
-values ("123","1234", 2, 3, 1, 3);
+create table entreprise_like (
+  id int not null auto_increment primary key,
+  entreprise_id varchar(36) not null,
+  candidate_id varchar(36) not null,
+  foreign key (entreprise_id) references entreprise(id),
+  foreign key (candidate_id) references candidate(id)
+);
 
-insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values ("123", 1), ("123", 2);
+create table candidate_like (
+  id int not null auto_increment primary key,
+  candidate_id varchar(36) not null,
+  entreprise_id varchar(36) not null,
+  foreign key (candidate_id) references candidate(id),
+  foreign key (entreprise_id) references entreprise(id)
+);
+-- CREATION CANDIDATS
 
-create table like (
-  id int not null,
-  foreign key(enterprise_id) references enterprise(id),
-  foreign key(candidate_id) references enterprise(id)
-)
+insert into candidate (id, firstname, lastname, email, password, department_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab42", "Bernard", "Martin", "candidate@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 32),
+("2de1feec-a19a-4f16-9226-af752acdab43", "Pauline", "Mbappé", "paulinembappe@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 13),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Yves", "Rocher", "yvesrocher@wanadoo.fr", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 45),
+("2de2feec-a12a-4f16-9226-af752acdab45", "Sarah", "Croche", "sarah_croche@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 4),
+("2de1feec-a12a-4f26-9226-af752acdab46", "Guy", "Tare", "guy_tare@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 75);
 
--- create table resume_has_soft_skills (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   soft_skills_id int not null,
---   primary key(id),
---   foreign key(resume_id) references resume(id),
---   foreign key(soft_skills_id) references soft_skills(id)
+insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42", 1, 1, 2),
+("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab43", 2, 2, 3),
+("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab44", 1, 3, 1),
+("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab45", 3, 2, 1),
+("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab46", 2, 1, 2);
+
+ 
+
+insert into resume_has_programming_languages (resume_id, programming_languages_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab47", 5), ("2de1feec-a19a-4f16-9226-af782acdab47", 7), ("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 1), ("2de1feec-a19a-4f16-9226-af752acdab46", 10), ("2de1feec-a19a-4f16-9226-af752acdab46", 17),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6), ("2de1feec-a12a-4f16-9226-af752acdab45", 17), ("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 9), ("2de2feec-a12a-4f16-9226-af752acdab43", 10), ("2de2feec-a12a-4f16-9226-af752acdab43", 11),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8), ("2de1feec-a12a-4f26-9226-af752acdab44", 6), ("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+
+-- CREATION ENTREPRISES
+
+insert into enterprise (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) values 
+("2de1feec-a19a-4f16-9226-af682acdab42", "Le Bon Coin", 94879165200019, "Plateforme de vente d'objets d'occasion", "entreprise@gmail.com","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 92, 1, 5), 
+("2de1feec-a19a-4f11-9226-af682acdab43", "CDiscount", 9487916210019, "Plateforme de vente d'objets neufs", "cdiscount@gmail.com","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 40, 1, 5), 
+("2de1feec-a19a-4f16-9226-af686acdab44", "Google", 9441916210019, "Moteur de recherche", "recrutement@google.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 71, 1, 5), 
+("2de1feec-a19a-4f16-9226-af676acdab45", "BlaBlaCar", 9441916212219, "Plateforme de covoiturage", "recrutement@blablacar.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 12, 1, 5), 
+("2df1feec-a19a-4f16-9226-af676acdab46", "Orange", 9441917212219, "Entreprise de téléphonie", "recrutement@orange.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 69, 1, 5);
+
+INSERT INTO job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id) VALUE 
+("3de1feec-a19a-4f16-9226-af682acdab42", 2000, 1, 3, 2, "2de1feec-a19a-4f16-9226-af682acdab42"),
+("3de1feec-a19a-4f11-9226-af682acdab43", 3000, 2, 2, 3, "2de1feec-a19a-4f11-9226-af682acdab43"),
+("3de1feec-a19a-4f16-9226-af686acdab44", 1400, 3, 1, 1, "2de1feec-a19a-4f16-9226-af686acdab44"),
+("3de1feec-a19a-4f16-9226-af676acdab45", 1700, 2, 2, 2, "2de1feec-a19a-4f16-9226-af676acdab45"),
+("3df1feec-a19a-4f16-9226-af676acdab46", 2100, 1, 3, 2, "2df1feec-a19a-4f16-9226-af676acdab46");
+
+insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values 
+("3de1feec-a19a-4f16-9226-af682acdab42",12),
+("3de1feec-a19a-4f11-9226-af682acdab43",1),
+("3de1feec-a19a-4f11-9226-af682acdab43",17),
+("3de1feec-a19a-4f16-9226-af686acdab44",6),
+("3de1feec-a19a-4f16-9226-af686acdab44",9),
+("3de1feec-a19a-4f16-9226-af686acdab44",14),
+("3de1feec-a19a-4f16-9226-af676acdab45",2),
+("3de1feec-a19a-4f16-9226-af676acdab45",1),
+("3de1feec-a19a-4f16-9226-af676acdab45",8),
+("3df1feec-a19a-4f16-9226-af676acdab46",6),
+("3df1feec-a19a-4f16-9226-af676acdab46",4);
+
+-- create table profilLike (
+ --  id int not null auto_increment,
+ --  enterprise_id varchar(36) not null,
+--   candidate_id varchar(36) not null,
+--   foreign key(enterprise_id) references enterprise(id),
+--   foreign key(candidate_id) references enterprise(id)
 -- );
-
--- create table resume_has_contract_type_looked_for (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   contract_types_id int not null,
---   primary key(id),
---   foreign key(resume_id) references resume(id),
---   foreign key(contract_types_id) references contract_types(id)
--- );
-
--- create table resume_has_work_rhythm_looked_for (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   work_rhythms_id int not null,
---   primary key(id),
---   foreign key(resume_id) references resume(id),
---   foreign key(work_rhythms_id) references work_rhythms(id)
--- );
-
--- create table experiences (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   experiences text,
---   primary key(id),
---   foreign key(resume_id) references resume(id)
--- );
-
--- create table main_missions (
---   id int not null auto_increment, 
---   mission text,
---   job_offer_id varchar(36) not null,
---   primary key(id),
---   foreign key(job_offer_id) references job_offer(id)
--- );
-
-
-
-
-
--- insert into candidate (id, firstname, lastname, email, password, department_id) values 
--- ("2de1feec-a19a-4f16-9226-af782acdab42", "Bernard", "Martin", "bernard.martin@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 32),
--- ("2de1feec-a19a-4f16-9226-af752acdab42", "Pauline", "Mbappé", "paulinembappe@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 13),
--- ("2de1feec-a12a-4f16-9226-af752acdab42", "Yves", "Rocher", "yvesrocher@wanadoo.fr", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 45),
--- ("2de2feec-a12a-4f16-9226-af752acdab42", "Sarah", "Croche", "sarah_croche@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 4),
--- ("2de1feec-a12a-4f26-9226-af752acdab42", "Guy", "Tare", "guy_tare@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 75);
-
--- insert into enterprise (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) values ("2de1feec-a19a-4f16-9226-af682acdab42", "Le Bon Coin", 94879165200019, "Plateforme de vente d'objets d'occasion", "recrutement@leboncoin.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 92, 1, 5), 
--- ("2de1feec-a19a-4f11-9226-af682acdab42", "CDiscount", 9487916210019, "Plateforme de vente d'objets neufs", "recrutement@cdiscount.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 40, 1, 5), 
--- ("2de1feec-a19a-4f16-9226-af686acdab42", "Google", 9441916210019, "Moteur de recherche", "recrutement@google.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 71, 1, 5), 
--- ("2de1feec-a19a-4f16-9226-af676acdab42", "BlaBlaCar", 9441916212219, "Plateforme de covoiturage", "recrutement@blablacar.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 12, 1, 5), 
--- ("2df1feec-a19a-4f16-9226-af676acdab42", "Orange", 9441917212219, "Entreprise de téléphonie", "recrutement@orange.fr","$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 69, 1, 5);
-
--- insert into resume (id, biography, appetences_id, candidate_id) values
--- ("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42"),
--- ("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab42"),
--- ("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab42"),
--- ("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab42"),
--- ("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab42");
-
--- insert into job_offer (id, salary, contract_types_id, appetences_id, work_rhythms_id, enterprise_id) values 
--- ("2de1feec-a19a-4f16-9226-ag681acdab42", 2000, 2, 1, 2, "2de1feec-a19a-4f16-9226-af682acdab42" ),
--- ("2de1reec-a19a-4f11-9226-af682acdab42", 1800, 1, 2, 1,"2de1feec-a19a-4f11-9226-af682acdab42"),
--- ("2de1feec-a19a-4f16-9226-af686acdab52", 1200, 3, 1, 2, "2de1feec-a19a-4f16-9226-af686acdab42"),
--- ("2de1feec-a19a-4f16-9258-af676acdab42", 5000, 4, 3, 3, "2de1feec-a19a-4f16-9226-af676acdab42"),
--- ("2df1feec-a19a-4f16-9226-af547acdab42", 3000, 1, 1, 2, "2df1feec-a19a-4f16-9226-af676acdab42"); 
