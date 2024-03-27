@@ -2,11 +2,12 @@ const tables = require("../tables");
 
 const add = async (req, _, next) => {
   const likeInfo = {
-    likedId: req.body.randomId,
+    candidateId: req.body.candidate_id,
+    enterpriseId: req.body.enterprise_id,
   };
 
   try {
-    await tables.like.create(likeInfo);
+    await tables.enterprise_like.create(likeInfo);
   } catch (error) {
     next(error);
   }
