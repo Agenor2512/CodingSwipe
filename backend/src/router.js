@@ -39,4 +39,7 @@ router.post(
   candidateControllers.add
 );
 
+router.get("/resume", candidateControllers.readResume);
+router.get("/joboffer", enterpriseControllers.readJobOffer);
+
 module.exports = router;

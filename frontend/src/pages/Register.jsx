@@ -23,7 +23,7 @@ function Register() {
     email: "",
     password: "",
     departmentId: "",
-    biography: "",
+    // biography: "",
     appetencesId: "",
     contractTypesId: "",
     workRhythmsId: "",
@@ -33,17 +33,18 @@ function Register() {
 
   const [enterpriseInfos, setEnterpriseInfos] = useState({
     name: "",
-    siret: [],
+    siret: "",
     description: "",
     email: "",
     password: "",
-    departmentId: [],
-    legalStatusId: [],
-    businessSectorsId: [],
+    departmentId: "",
+    legalStatusId: "",
+    businessSectorsId: "",
     salary: "",
-    contractTypesId: [],
-    workRhythmsId: [],
-    appetencesId: [],
+    contractTypesId: "",
+    workRhythmsId: "",
+    appetencesId: "",
+    languages: [],
   });
 
   console.info("ENTREPRISE INFOS: ", enterpriseInfos);
@@ -73,7 +74,10 @@ function Register() {
   const registerCandidate = () => {
     axios
       .post("http://localhost:3310/api/candidates", candidateInfos)
-      .then(() => setIsError(false))
+      .then((response) => {
+        setIsError(false);
+        console.info(response);
+      })
       .catch(() => setIsError(true));
   };
 

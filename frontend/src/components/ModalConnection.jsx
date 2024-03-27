@@ -97,7 +97,6 @@ function ModalConnection() {
                 type="password"
                 required
                 placeholder="Saisissez votre mot de passe"
-                minLength="8"
                 onChange={handleChangePassword}
               />
               <input type="submit" className="continue" value="Continuer" />
