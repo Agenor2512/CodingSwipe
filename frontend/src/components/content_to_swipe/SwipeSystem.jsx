@@ -5,7 +5,7 @@ import LoginUserContext from "../../context/LoginUserContext";
 import "../../styles/content_to_swipe/swipeSystem.css";
 
 // eslint-disable-next-line react/prop-types
-function SwipeSystem({ userId }) {
+function SwipeSystem({ candidateId, enterpriseId }) {
   // const [setLikes] = useState(false);
   // const [setDislikes] = useState(false);
   const { loginUser } = useContext(LoginUserContext);
@@ -20,12 +20,12 @@ function SwipeSystem({ userId }) {
   const sendLike = () => {
     if (loginUser.role === "enterprise") {
       client
-        .post("/candidates/likes", { userId })
+        .post("/candidates/likes", { candidateId, enterpriseId })
         .then((response) => console.info(response.data))
         .catch((error) => console.error(error));
     } else {
       client
-        .post("/enterprises/likes", { userId })
+        .post("/enterprises/likes", { candidateId, enterpriseId })
         .then((response) => console.info(response.data))
         .catch((error) => console.error(error));
     }
