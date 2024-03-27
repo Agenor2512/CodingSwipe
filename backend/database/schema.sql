@@ -320,20 +320,20 @@ create table job_offer_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
-create table entreprise_like (
+create table enterprise_like (
   id int not null auto_increment primary key,
-  entreprise_id varchar(36) not null,
+  enterprise_id varchar(36) not null,
   candidate_id varchar(36) not null,
-  foreign key (entreprise_id) references entreprise(id),
+  foreign key (enterprise_id) references enterprise(id),
   foreign key (candidate_id) references candidate(id)
 );
 
 create table candidate_like (
   id int not null auto_increment primary key,
   candidate_id varchar(36) not null,
-  entreprise_id varchar(36) not null,
+  enterprise_id varchar(36) not null,
   foreign key (candidate_id) references candidate(id),
-  foreign key (entreprise_id) references entreprise(id)
+  foreign key (enterprise_id) references enterprise(id)
 );
 -- CREATION CANDIDATS
 
