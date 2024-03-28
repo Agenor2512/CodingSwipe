@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import SwipeSystem from "./SwipeSystem";
 import WorkingConditionsCard from "./WorkingConditionsCard";
@@ -7,6 +9,8 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/enterpriseProposal.css";
 
 function EnterpriseProposal() {
+  const candidateId = "2de1feec-a12a-4f16-9226-af752acdab45";
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [jobOffer, setJobOffer] = useState([]);
@@ -35,6 +39,7 @@ function EnterpriseProposal() {
   };
 
   const displayJobOffer = () => {
+    const { loginUser } = useContext(LoginUserContext);
     return (
       <div className="enterprise_infos_container">
         <div>
@@ -72,7 +77,7 @@ function EnterpriseProposal() {
             </section>
           </div>
         </div>
-        <SwipeSystem />
+        <SwipeSystem enterpriseId={loginUser.id} candidateId={candidateId} />
       </div>
     );
   };
