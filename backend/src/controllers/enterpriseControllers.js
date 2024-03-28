@@ -74,8 +74,28 @@ const add = async (req, res, next) => {
   }
 };
 
+const readJobOffer = async (req, res, next) => {
+  try {
+    const enterprise = await tables.enterprise.randomEnterprise();
+    const joboffer = await tables.enterprise.readJobOfferById(enterprise[0].id);
+    const languages = await tables.enterprise.readLanguagesById(
+      enterprise[0].id
+    );
+    console.info(enterprise[0].id);
+    res.json([
+      {
+        infos: joboffer,
+        langues: languages,
+      },
+    ]);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   browse,
   readById,
   add,
+  readJobOffer,
 };

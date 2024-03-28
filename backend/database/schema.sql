@@ -319,6 +319,7 @@ create table job_offer_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
+
 create table enterprise_like (
   id int not null auto_increment primary key,
   enterprise_id varchar(36) not null,
@@ -334,6 +335,49 @@ create table candidate_like (
   foreign key (candidate_id) references candidate(id),
   foreign key (enterprise_id) references enterprise(id)
 );
+-- CREATION CANDIDATS
+
+insert into candidate (id, firstname, lastname, email, password, department_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab42", "Bernard", "Martin", "candidate@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 32),
+("2de1feec-a19a-4f16-9226-af752acdab43", "Pauline", "Mbappé", "paulinembappe@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 13),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Yves", "Rocher", "yvesrocher@wanadoo.fr", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 45),
+("2de2feec-a12a-4f16-9226-af752acdab45", "Sarah", "Croche", "sarah_croche@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 4),
+("2de1feec-a12a-4f26-9226-af752acdab46", "Guy", "Tare", "guy_tare@hotmail.com", "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ", 75);
+
+-- create table resume_has_soft_skills (
+--   id int not null auto_increment,
+--   resume_id varchar(36) not null,
+--   soft_skills_id int not null,
+--   primary key(id),
+--   foreign key(resume_id) references resume(id),
+--   foreign key(soft_skills_id) references soft_skills(id)
+-- );
+
+insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage", 1, "2de1feec-a19a-4f16-9226-af782acdab42", 1, 1, 2),
+("2de1feec-a19a-4f16-9226-af752acdab46", "He coucou je ne suis pas de la famille à Kiki", 3,"2de1feec-a19a-4f16-9226-af752acdab43", 2, 2, 3),
+("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab44", 1, 3, 1),
+("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab45", 3, 2, 1),
+("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab46", 2, 1, 2);
+ 
+
+insert into resume_has_programming_languages (resume_id, programming_languages_id) values 
+("2de1feec-a19a-4f16-9226-af782acdab47", 5), ("2de1feec-a19a-4f16-9226-af782acdab47", 7), ("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 1), ("2de1feec-a19a-4f16-9226-af752acdab46", 10), ("2de1feec-a19a-4f16-9226-af752acdab46", 17),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6), ("2de1feec-a12a-4f16-9226-af752acdab45", 17), ("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 9), ("2de2feec-a12a-4f16-9226-af752acdab43", 10), ("2de2feec-a12a-4f16-9226-af752acdab43", 11),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8), ("2de1feec-a12a-4f26-9226-af752acdab44", 6), ("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+
+-- CREATION ENTREPRISES
+
+-- create table profilLike (
+ --  id int not null auto_increment,
+ --  enterprise_id varchar(36) not null,
+--   candidate_id varchar(36) not null,
+--   foreign key(enterprise_id) references enterprise(id),
+--   foreign key(candidate_id) references enterprise(id)
+-- );
+
 -- CREATION CANDIDATS
 
 insert into candidate (id, firstname, lastname, email, password, department_id) values 
@@ -388,10 +432,3 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 ("3df1feec-a19a-4f16-9226-af676acdab46",6),
 ("3df1feec-a19a-4f16-9226-af676acdab46",4);
 
--- create table profilLike (
- --  id int not null auto_increment,
- --  enterprise_id varchar(36) not null,
---   candidate_id varchar(36) not null,
---   foreign key(enterprise_id) references enterprise(id),
---   foreign key(candidate_id) references enterprise(id)
--- );
