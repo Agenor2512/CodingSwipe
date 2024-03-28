@@ -12,20 +12,48 @@ function SwipeSystem({ candidateId, enterpriseId }) {
 
   const baseURL = import.meta.env.VITE_URL_BACKEND;
 
-  const client = axios.create({
-    baseURL,
-    timeout: 60_000,
-  });
+  // const client = axios.create({
+  //   baseURL,
+  //   timeout: 60_000,
+  // });
+
+  // const sendLike = () => {
+  //   console.info("CANDIDATE ID:", candidateId);
+  //   console.info("ENTERPRISE ID:", enterpriseId);
+  //   console.info("ROLE :", loginUser.role);
+
+  //   if (loginUser.role === "enterprise") {
+  //     client
+  //       .post("/candidates/likes", { candidateId, enterpriseId })
+  //       .then((response) => console.info(response.data))
+  //       .catch((error) => console.error(error));
+  //   } else {
+  //     client
+  //       .post("/enterprises/likes", { candidateId, enterpriseId })
+  //       .then((response) => console.info(response.data))
+  //       .catch((error) => console.error(error));
+  //   }
+  // };
 
   const sendLike = () => {
+    console.info("CANDIDATE ID:", candidateId);
+    console.info("ENTERPRISE ID:", enterpriseId);
+    console.info("ROLE :", loginUser.role);
+
+    const info = { candidateId, enterpriseId };
+
     if (loginUser.role === "enterprise") {
-      client
-        .post("/candidates/likes", { candidateId, enterpriseId })
+      console.info("INFOS : ", info);
+
+      axios
+        .post(`${baseURL}/enterprises/likes`, info)
         .then((response) => console.info(response.data))
         .catch((error) => console.error(error));
     } else {
-      client
-        .post("/enterprises/likes", { candidateId, enterpriseId })
+      console.info("INFOS : ", info);
+
+      axios
+        .post(`${baseURL}/candidates/likes`, info)
         .then((response) => console.info(response.data))
         .catch((error) => console.error(error));
     }

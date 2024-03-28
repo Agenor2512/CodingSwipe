@@ -2,8 +2,8 @@ const tables = require("../tables");
 
 const add = async (req, res, next) => {
   const likeInfo = {
-    candidateId: req.body.candidate_id,
-    enterpriseId: req.body.enterprise_id,
+    candidateId: req.body.candidateId,
+    enterpriseId: req.body.enterpriseId,
   };
 
   try {

@@ -9,8 +9,6 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/enterpriseProposal.css";
 
 function EnterpriseProposal() {
-  const candidateId = "2de1feec-a12a-4f16-9226-af752acdab45";
-
   const [isLoading, setIsLoading] = useState(true);
 
   const [jobOffer, setJobOffer] = useState([]);
@@ -77,7 +75,10 @@ function EnterpriseProposal() {
             </section>
           </div>
         </div>
-        <SwipeSystem enterpriseId={loginUser.id} candidateId={candidateId} />
+        <SwipeSystem
+          enterpriseId={jobOffer[0].infos[0].id}
+          candidateId={loginUser.id}
+        />
       </div>
     );
   };

@@ -71,7 +71,7 @@ class EnterpriseManager extends AbstractManager {
 
   async readJobOfferById(id) {
     const [rows] = await this.database.query(
-      `select enterprise.name, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, description from ${this.table}
+      `select enterprise.name, enterprise.id, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, description from ${this.table}
       join job_offer on enterprise.id = job_offer.enterprise_id
       join appetences on job_offer.appetences_id = appetences.id
       join contract_types on contract_types.id = job_offer.contract_types_id

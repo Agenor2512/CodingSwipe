@@ -10,7 +10,7 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
-  const enterpriseId = "2de1feec-a19a-4f11-9226-af682acdab43";
+  const { loginUser } = useContext(LoginUserContext);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,7 +45,7 @@ function CandidateCandidacy() {
   };
 
   const displayResume = () => {
-    const { loginUser } = useContext(LoginUserContext);
+    console.info("ID CANDIDATE: ", resume[0].infos[0].id);
 
     return (
       <div className="candidate_infos_container">
@@ -89,7 +89,10 @@ function CandidateCandidacy() {
             </section>
           </div>
         </div>
-        <SwipeSystem candidateId={loginUser.id} enterpriseId={enterpriseId} />
+        <SwipeSystem
+          candidateId={resume[0].infos[0].id}
+          enterpriseId={loginUser.id}
+        />
       </div>
     );
   };
