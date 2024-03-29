@@ -319,6 +319,24 @@ create table job_offer_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
+
+create table enterprise_like (
+  id int not null auto_increment primary key,
+  enterprise_id varchar(36) not null,
+  candidate_id varchar(36) not null,
+  foreign key (enterprise_id) references enterprise(id),
+  foreign key (candidate_id) references candidate(id)
+);
+
+create table candidate_like (
+  id int not null auto_increment primary key,
+  candidate_id varchar(36) not null,
+  enterprise_id varchar(36) not null,
+  foreign key (candidate_id) references candidate(id),
+  foreign key (enterprise_id) references enterprise(id)
+);
+-- CREATION CANDIDATS
+
 -- create table resume_has_soft_skills (
 --   id int not null auto_increment,
 --   resume_id varchar(36) not null,
@@ -328,38 +346,14 @@ create table job_offer_has_programming_languages (
 --   foreign key(soft_skills_id) references soft_skills(id)
 -- );
 
--- create table resume_has_contract_type_looked_for (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   contract_types_id int not null,
---   primary key(id),
---   foreign key(resume_id) references resume(id),
---   foreign key(contract_types_id) references contract_types(id)
--- );
+-- CREATION ENTREPRISES
 
--- create table resume_has_work_rhythm_looked_for (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   work_rhythms_id int not null,
---   primary key(id),
---   foreign key(resume_id) references resume(id),
---   foreign key(work_rhythms_id) references work_rhythms(id)
--- );
-
--- create table experiences (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   experiences text,
---   primary key(id),
---   foreign key(resume_id) references resume(id)
--- );
-
--- create table main_missions (
---   id int not null auto_increment, 
---   mission text,
---   job_offer_id varchar(36) not null,
---   primary key(id),
---   foreign key(job_offer_id) references job_offer(id)
+-- create table profilLike (
+ --  id int not null auto_increment,
+ --  enterprise_id varchar(36) not null,
+--   candidate_id varchar(36) not null,
+--   foreign key(enterprise_id) references enterprise(id),
+--   foreign key(candidate_id) references enterprise(id)
 -- );
 
 -- CREATION CANDIDATS
@@ -377,8 +371,6 @@ insert into resume (id, biography, appetences_id, candidate_id, contract_types_i
 ("2de1feec-a12a-4f16-9226-af752acdab45", "La vie par les plantes et un peu de code", 2,"2de1feec-a12a-4f16-9226-af752acdab44", 1, 3, 1),
 ("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab45", 3, 2, 1),
 ("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab46", 2, 1, 2);
-
- 
 
 insert into resume_has_programming_languages (resume_id, programming_languages_id) values 
 ("2de1feec-a19a-4f16-9226-af782acdab47", 5), ("2de1feec-a19a-4f16-9226-af782acdab47", 7), ("2de1feec-a19a-4f16-9226-af782acdab47", 4),
@@ -415,3 +407,4 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 ("3de1feec-a19a-4f16-9226-af676acdab45",8),
 ("3df1feec-a19a-4f16-9226-af676acdab46",6),
 ("3df1feec-a19a-4f16-9226-af676acdab46",4);
+

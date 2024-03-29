@@ -4,6 +4,8 @@ const router = express.Router();
 
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
+const candidateLikeControllers = require("./controllers/candidateLikeControllers");
+const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
@@ -28,6 +30,7 @@ router.post(
   authenticationService.hashPassword,
   enterpriseControllers.add
 );
+router.post("/enterprises/likes", enterpriseLikeControllers.add);
 
 // Candidate part
 router.get("/candidates", candidateControllers.browse);
@@ -38,6 +41,7 @@ router.post(
   authenticationService.hashPassword,
   candidateControllers.add
 );
+router.post("/candidates/likes", candidateLikeControllers.add);
 
 router.get("/resume", candidateControllers.readResume);
 router.get("/joboffer", enterpriseControllers.readJobOffer);

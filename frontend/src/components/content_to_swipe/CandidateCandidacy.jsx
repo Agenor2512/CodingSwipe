@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import SwipeSystem from "./SwipeSystem";
 import WorkingConditionsCard from "./WorkingConditionsCard";
@@ -8,6 +10,8 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
 function CandidateCandidacy() {
+  const { loginUser } = useContext(LoginUserContext);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [resume, setResume] = useState([]);
@@ -41,6 +45,8 @@ function CandidateCandidacy() {
   };
 
   const displayResume = () => {
+    console.info("ID CANDIDATE: ", resume[0].infos[0].id);
+
     return (
       <div className="candidate_infos_container">
         <div>
@@ -83,11 +89,13 @@ function CandidateCandidacy() {
             </section>
           </div>
         </div>
-        <SwipeSystem />
+        <SwipeSystem
+          candidateId={resume[0].infos[0].id}
+          enterpriseId={loginUser.id}
+        />
       </div>
     );
   };
-
   return isLoading ? "" : displayResume();
 }
 
