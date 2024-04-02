@@ -76,10 +76,15 @@ const readResume = async (req, res, next) => {
     const candidate = await tables.candidate.randomCandidate();
     const resume = await tables.candidate.readResumeById(candidate[0].id);
     const languages = await tables.candidate.readLanguagesById(candidate[0].id);
+    const experience = await tables.experiences.readExperienceById(
+      candidate[0].id
+    );
+
     res.json([
       {
         infos: resume,
         langues: languages,
+        experience,
       },
     ]);
   } catch (error) {
@@ -94,13 +99,15 @@ const readResumeById = async (req, res, next) => {
     const resume = await tables.candidate.readResumeById(id);
     const languages = await tables.candidate.readLanguagesById(id);
     const biography = await tables.candidate.readBiographyById(id);
+    const experience = await tables.experiences.readExperienceById(id);
 
-    console.info("BIO", biography[0]);
+    console.info("BIO", biography);
     res.json([
       {
         infos: resume,
         langues: languages,
         biography: biography[0].biography,
+        experience,
       },
     ]);
   } catch (error) {

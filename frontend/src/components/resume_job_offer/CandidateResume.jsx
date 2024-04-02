@@ -9,6 +9,7 @@ import DropDownList from "./DropDownList";
 import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/candidateResume.css";
+import UserAddButton from "./UserAddButton";
 
 function CandidateResume({ tools }) {
   const { loginUser } = useContext(LoginUserContext);
@@ -282,7 +283,14 @@ function CandidateResume({ tools }) {
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
           <div>
-            <button type="button">Ajouter</button>
+            {candidate.length ? (
+              <UserAddButton
+                candidate={candidate[0]}
+                readInfosAboutCandidate={readInfosAboutCandidate}
+              />
+            ) : (
+              ""
+            )}
           </div>
         </section>
       </div>

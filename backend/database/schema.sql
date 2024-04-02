@@ -319,6 +319,16 @@ create table job_offer_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
+create table experiences (
+  id int not null auto_increment,
+  candidate_id varchar(36) not null,
+  job_title varchar(255) not null, 
+  company varchar(100) not null,
+  experiences text not null,
+  primary key(id),
+  foreign key(candidate_id) references candidate(id)
+);
+
 -- create table resume_has_soft_skills (
 --   id int not null auto_increment,
 --   resume_id varchar(36) not null,
@@ -346,13 +356,7 @@ create table job_offer_has_programming_languages (
 --   foreign key(work_rhythms_id) references work_rhythms(id)
 -- );
 
--- create table experiences (
---   id int not null auto_increment,
---   resume_id varchar(36) not null,
---   experiences text,
---   primary key(id),
---   foreign key(resume_id) references resume(id)
--- );
+
 
 -- create table main_missions (
 --   id int not null auto_increment, 
@@ -378,7 +382,6 @@ insert into resume (id, biography, appetences_id, candidate_id, contract_types_i
 ("2de2feec-a12a-4f16-9226-af752acdab43", "Hallo hallo Ozon 2001", 3, "2de2feec-a12a-4f16-9226-af752acdab45", 3, 2, 1),
 ("2de1feec-a12a-4f26-9226-af752acdab44", "Merci pour les chaussures", 1, "2de1feec-a12a-4f26-9226-af752acdab46", 2, 1, 2);
 
- 
 
 insert into resume_has_programming_languages (resume_id, programming_languages_id) values 
 ("2de1feec-a19a-4f16-9226-af782acdab47", 5), ("2de1feec-a19a-4f16-9226-af782acdab47", 7), ("2de1feec-a19a-4f16-9226-af782acdab47", 4),
@@ -386,6 +389,18 @@ insert into resume_has_programming_languages (resume_id, programming_languages_i
 ("2de1feec-a12a-4f16-9226-af752acdab45", 6), ("2de1feec-a12a-4f16-9226-af752acdab45", 17), ("2de1feec-a12a-4f16-9226-af752acdab45", 12),
 ("2de2feec-a12a-4f16-9226-af752acdab43", 9), ("2de2feec-a12a-4f16-9226-af752acdab43", 10), ("2de2feec-a12a-4f16-9226-af752acdab43", 11),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 8), ("2de1feec-a12a-4f26-9226-af752acdab44", 6), ("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+
+insert into experiences (candidate_id, job_title, company, experiences) values 
+("2de1feec-a19a-4f16-9226-af782acdab42", "Développeur back-end", "Amazon", "Missions : j'ai tout fait"),
+("2de1feec-a19a-4f16-9226-af782acdab42", "Développeur fullstack", "Ebay", "Missions : la aussi j'ai tout fait"),
+("2de1feec-a19a-4f16-9226-af752acdab43", "Développeur back-end", "Google", "Missions : j'ai tout fait"),
+("2de1feec-a19a-4f16-9226-af752acdab43", "Développeur fullstack", "Leclerc", "Missions : la aussi j'ai tout fait"),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Développeur back-end", "Lycos", "Missions : j'ai tout fait"),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Développeur fullstack", "Tinder", "Missions : la aussi j'ai tout fait"),
+("2de1feec-a12a-4f16-9226-af752acdab44", "Développeur back-end", "AOL", "Missions : j'ai tout fait"),
+("2de2feec-a12a-4f16-9226-af752acdab45", "Développeur fullstack", "Free", "Missions : la aussi j'ai tout fait"),
+("2de1feec-a12a-4f26-9226-af752acdab46", "Développeur back-end", "Orange", "Missions : j'ai tout fait"),
+("2de1feec-a12a-4f26-9226-af752acdab46", "Développeur fullstack", "Peugeot", "Missions : la aussi j'ai tout fait");
 
 -- CREATION ENTREPRISES
 

@@ -6,11 +6,13 @@
 const ItemManager = require("./models/ItemManager");
 const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
+const ExperienceManager = require("./models/ExperienceManager");
 
 const managers = [
   ItemManager,
   EnterpriseManager,
   CandidateManager,
+  ExperienceManager,
   // Add other managers here
 ];
 

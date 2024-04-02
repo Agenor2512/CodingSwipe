@@ -4,6 +4,7 @@ const router = express.Router();
 
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
+const experienceControllers = require("./controllers/experienceControllers");
 
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
@@ -38,6 +39,8 @@ router.post(
   authenticationService.hashPassword,
   candidateControllers.add
 );
+router.post("/experience", experienceControllers.add);
+router.delete("/experience/:id", experienceControllers.remove);
 
 router.get("/resume", candidateControllers.readResume);
 router.get("/resume/:id", candidateControllers.readResumeById);
