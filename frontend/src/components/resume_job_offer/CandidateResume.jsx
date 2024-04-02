@@ -1,11 +1,19 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useContext, useEffect, useState } from "react";
+
+import axios from "axios";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import DropDownList from "./DropDownList";
 import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/candidateResume.css";
 
-function CandidateResume() {
+function CandidateResume({ tools }) {
+  const { loginUser } = useContext(LoginUserContext);
+  const [candidate, setCandidate] = useState([]);
+
   const enterpriseExpectations = [
     {
       key: "full-time",
@@ -182,8 +190,24 @@ function CandidateResume() {
     },
   ];
 
+  const readInfosAboutCandidate = () => {
+    axios
+      .get(`http://localhost:3310/api/resume/${loginUser.id}`)
+      .then((response) => setCandidate(response.data))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    readInfosAboutCandidate();
+  }, []);
+
+  console.info("CANDIDATE", candidate);
+
   return (
     <div className="users_infos_container">
+      <button type="button" onClick={() => tools.setPageToDisplay("home")}>
+        Voir les annonces
+      </button>
       <div className="users_infos_header">
         <div>W</div>
         <section>
@@ -195,7 +219,8 @@ function CandidateResume() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-          <ModifyButton />
+
+          {candidate.length ? <ModifyButton candidate={candidate[0]} /> : ""}
         </div>
 
         <section className="research_and_workplace_container">

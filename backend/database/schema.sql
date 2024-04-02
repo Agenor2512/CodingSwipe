@@ -214,7 +214,7 @@ create table candidate (
 
 create table resume ( 
   id varchar(36) not null,
-  biography text, 
+  biography TEXT DEFAULT ("Pas encore de description..."), 
   appetences_id int not null,
   candidate_id varchar(36) not null,
   contract_types_id int not null,

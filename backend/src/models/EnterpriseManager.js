@@ -7,7 +7,6 @@ class EnterpriseManager extends AbstractManager {
 
   async readAll() {
     const [rows] = await this.database.query(`select * from ${this.table}`);
-
     return rows;
   }
 
@@ -16,7 +15,6 @@ class EnterpriseManager extends AbstractManager {
       `select * from ${this.table} where id = ?`,
       [id]
     );
-
     return rows[0];
   }
 
@@ -98,6 +96,22 @@ class EnterpriseManager extends AbstractManager {
   async randomEnterprise() {
     const [rows] = await this.database.query(
       `select enterprise.id from ${this.table} order by rand() limit 1`
+    );
+    return rows;
+  }
+
+  async readDescriptionById(id) {
+    const [rows] = await this.database.query(
+      `select description from enterprise where id=?;`,
+      [id]
+    );
+    return rows;
+  }
+
+  async updateDescriptionById(enterprise) {
+    const [rows] = await this.database.query(
+      `UPDATE enterprise SET description=? WHERE id=?;`,
+      [enterprise.description, enterprise.id]
     );
     return rows;
   }

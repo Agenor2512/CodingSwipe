@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState, useContext } from "react";
@@ -7,7 +8,9 @@ import Matchs from "./Matchs";
 import Messages from "./Messages";
 import RegisterContext from "../../context/RegisterContext";
 
-function HomePageUserNav() {
+function HomePageUserNav({ tools }) {
+  console.info(tools);
+
   const matchesData = [
     {
       id: 1,
@@ -82,7 +85,7 @@ function HomePageUserNav() {
         <ul>
           <li onClick={() => handleTabClick("match")}>MATCHS</li>
           <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
-          <li>MON PROFIL</li>
+          <li onClick={() => tools.setPageToDisplay("settings")}>MON PROFIL</li>
         </ul>
         <Matchs userType={setInfos} matchesData={matchesData} />
         <Messages userType={setInfos} messagesData={messagesData} />

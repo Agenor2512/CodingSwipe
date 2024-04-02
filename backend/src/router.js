@@ -40,6 +40,11 @@ router.post(
 );
 
 router.get("/resume", candidateControllers.readResume);
+router.get("/resume/:id", candidateControllers.readResumeById);
 router.get("/joboffer", enterpriseControllers.readJobOffer);
+router.get("/biography/:id", candidateControllers.readBiography);
+router.put("/biography/:id", candidateControllers.updateBiography);
+router.get("/description/:id", enterpriseControllers.readDescriptionById);
+router.put("/description/:id", enterpriseControllers.updateDescription);
 
 module.exports = router;
