@@ -1,0 +1,166 @@
+.overlay {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(49, 49, 49, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.connection_button_container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.connection_button {
+  width: 13rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  border: 0;
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--website-background-color);
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.overlay > .connection_modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 20rem;
+  background-color: var(--register-background-color);
+  border: none;
+  font-family: var(--primary-font);
+}
+
+.overlay > .connection_modal > .connection_modal_content {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1rem;
+}
+
+.overlay > .connection_modal > .connection_modal_content > h2 {
+  color: var(--color-white);
+  margin: 0.5rem;
+}
+
+.overlay > .connection_modal > .connection_modal_content > label {
+  color: var(--color-white);
+  width: 20rem;
+}
+
+.overlay > .connection_modal > .connection_modal_content > input {
+  width: 20rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  outline: 0;
+  border: none;
+  border-radius: 10px;
+  font: var(--primary-font);
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.overlay > .connection_modal > .connection_modal_content > input:focus {
+  border: var(--color-white) solid 2px;
+}
+
+.overlay > .connection_modal > .connection_modal_content > a {
+  text-decoration: none;
+}
+
+.overlay > .connection_modal > .connection_modal_content > a > .continue {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 0;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.overlay > .connection_modal > button {
+  position: absolute;
+  height: 1rem;
+  top: 0.2rem;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: xx-large;
+  color: var(--primary-color);
+}
+
+@media only screen and (min-width: 600px) {
+  .overlay {
+    justify-content: center;
+  }
+
+  .overlay > .connection_modal {
+    inset-inline-start: auto;
+    inset-inline-end: auto;
+    width: 40rem;
+    height: 29rem;
+  }
+
+  .connection_button_container {
+    display: flex;
+    align-items: center;
+    width: 30rem;
+  }
+
+  .connection_button_container > .connection_button {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .connection_button:hover {
+    background-color: var(--third-color);
+    color: var(--color-white);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > label {
+    width: 32.4rem;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > input {
+    width: 32.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > a > .continue {
+    display: flex;
+    margin-top: 3rem;
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0;
+    width: 10.7rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .overlay > .connection_modal > button {
+    cursor: pointer;
+  }
+}

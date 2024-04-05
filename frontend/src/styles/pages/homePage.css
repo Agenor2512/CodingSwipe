@@ -1,0 +1,33 @@
+.home_page {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--register-background-color);
+}
+
+.home_page > main > img {
+  width: 100%;
+}
+
+.home_page > .mobile_element {
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+}
+
+@media screen and (min-width: 600px) {
+  .home_page {
+    background-image: url("../../assets/desktop_background.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .home_page > main > img {
+    display: none;
+  }
+
+  .home_page > main > .mobile_element,
+  .home_page > .mobile_element {
+    display: none;
+  }
+}

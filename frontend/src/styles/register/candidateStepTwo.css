@@ -1,0 +1,254 @@
+.candidate_step_two_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  font-family: var(--primary-font);
+  background-color: var(--register-background-color);
+  color: var(--secondary-color);
+}
+
+.candidate_step_two_form span {
+  color: var(--primary-color);
+}
+
+.candidate_step_two_form > .subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80vw;
+}
+
+.candidate_step_two_form > .subtitle > .square {
+  display: inline-block;
+  margin-right: 0.5rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: var(--primary-color);
+}
+
+.candidate_step_two_form > h1 {
+  text-align: center;
+}
+
+.candidate_step_two_form > div > label,
+.candidate_step_two_form > h1 {
+  color: var(--secondary-color);
+}
+
+.candidate_step_two_form > .subtitle > p {
+  margin-bottom: 0;
+}
+
+.candidate_step_two_form p,
+.candidate_step_two_form label {
+  font-size: 0.75rem;
+}
+
+.candidate_step_two_form
+  > .levels_experience_part_container
+  > .levels_and_experience_button_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.candidate_step_two_form
+  > .levels_experience_part_container
+  > .levels_and_experience_button_container
+  > button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 7.5rem;
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: 0.15rem solid var(--third-color);
+  border-radius: 2rem;
+  color: var(--third-color);
+  background-color: rgba(0, 0, 0, 0);
+  transition:
+    border 0.2s,
+    color 0.2s;
+
+  font-family: var(--primary-font);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.candidate_step_two_form
+  > .levels_experience_part_container
+  > .levels_and_experience_button_container
+  > button.focusedButton {
+  border: 0.15rem solid var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.candidate_step_two_form > .research_and_workplace_container > div > label,
+.candidate_step_two_form > input#checkbox {
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.candidate_step_two_form input#checkbox {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  appearance: none;
+  border-radius: 0.1rem;
+  border: 0;
+  background: var(--third-color);
+}
+
+.candidate_step_two_form input#checkbox:checked {
+  background-color: var(--primary-color);
+  border: 0;
+}
+
+.candidate_step_two_form input#checkbox:checked:after {
+  position: relative;
+  padding: 0.1rem;
+  content: "\2714";
+  color: var(--secondary-color);
+}
+
+.enterprise_expectation_container,
+.enterprise_workplace_container {
+  display: flex;
+  align-items: center;
+}
+
+.candidate_step_two_form > .research_and_workplace_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.candidate_step_two_form > .research_and_workplace_container > div > p {
+  margin-bottom: 0.5rem;
+}
+
+.candidate_step_two_form p,
+.candidate_step_two_form > .research_and_workplace_container > div > p {
+  text-align: left;
+}
+
+.candidate_step_two_form > p > .select_languages_span {
+  color: var(--third-color);
+}
+
+.candidate_step_two_form > .computer_language_checkbox_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-around;
+  height: 28vh;
+}
+
+.candidate_step_two_form
+  > .research_and_workplace_container
+  .enterprise_expectation_container,
+.candidate_step_two_form
+  > .research_and_workplace_container
+  .enterprise_workplace_container,
+.candidate_step_two_form > .computer_language_checkbox_container > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.candidate_step_two_form > .final_button_to_inscription_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95vw;
+}
+
+.candidate_step_two_form
+  > .final_button_to_inscription_container
+  > .final_button_to_inscription {
+  display: flex;
+  justify-content: center;
+  width: 12.5rem;
+  height: 2.3rem;
+  border: 0;
+  border-radius: 2rem;
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  .candidate_step_two_form {
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 10rem;
+    font-size: 1rem;
+  }
+
+  .candidate_step_two_form > h1 {
+    font-size: 2.5rem;
+  }
+
+  .candidate_step_two_form > .computer_language_checkbox_container {
+    align-content: space-between;
+    height: 10vh;
+    width: 50vw;
+  }
+
+  .candidate_step_two_form > .research_and_workplace_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .candidate_step_two_form > .research_and_workplace_container > div > p {
+    padding-top: 1rem;
+  }
+
+  .candidate_step_two_form > .levels_and_experience_button_container {
+    gap: 2rem;
+  }
+
+  .candidate_step_two_form > .levels_and_experience_button_container > button {
+    margin-bottom: 0;
+  }
+
+  .candidate_step_two_form
+    > .levels_and_experience_button_container
+    > button.focusedButton {
+    margin-bottom: 0;
+  }
+
+  .candidate_step_two_form > h1,
+  .candidate_step_two_form > .final_button_to_inscription_container {
+    width: 80vw;
+  }
+
+  .candidate_step_two_form > .final_button_to_inscription_container {
+    font-size: 1rem;
+  }
+
+  .candidate_step_two_form
+    > .final_button_to_inscription_container
+    > .final_button_to_inscription {
+    width: 17rem;
+  }
+
+  .candidate_step_two_form
+    > .final_button_to_inscription_container
+    > input:hover {
+    background-color: var(--third-color);
+    color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,50 @@
+.users_infos_container > div > .annual_salary > div > input {
+  width: 40vw;
+  margin: 0 1rem;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--secondary-color);
+  font-family: var(--secondary-font);
+}
+
+.users_infos_container > div > .annual_salary > div > .disabled {
+  pointer-events: none;
+}
+
+.users_infos_container > div > .annual_salary > div > input:focus {
+  outline: none;
+  border: 1px solid var(--register-background-color);
+}
+
+.users_infos_container > div > .annual_salary > div > .unlocked,
+.users_infos_container > div > .annual_salary > div > .locked {
+  display: flex;
+  align-self: center;
+  width: 5vw;
+  height: 3vh;
+  border: none;
+  background: none;
+  background-repeat: no-repeat;
+}
+
+.users_infos_container > div > .annual_salary > div > .unlocked {
+  background-image: url("../../assets/unlocked.svg");
+}
+
+.users_infos_container > div > .annual_salary > div > .locked {
+  background-image: url("../../assets/locked.svg");
+}
+
+@media screen and (min-width: 600px) {
+  .users_infos_container > div > .annual_salary > div > input {
+    width: 17vw;
+  }
+
+  .users_infos_container > div > .annual_salary > div > .unlocked,
+  .users_infos_container > div > .annual_salary > div > .locked {
+    width: 2vw;
+    height: 2.5vh;
+  }
+}
