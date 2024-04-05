@@ -54,4 +54,12 @@ router.put("/biography/:id", candidateControllers.updateBiography);
 router.get("/description/:id", enterpriseControllers.readDescriptionById);
 router.put("/description/:id", enterpriseControllers.updateDescription);
 
+// router.get("/isConnected", middleware, controller.userChecked)
+
+// middleware :
+// si le token est invalide => 401 /// Next()
+
+// userChecked :
+// res.sendStatus(200)
+
 module.exports = router;
