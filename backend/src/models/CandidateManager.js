@@ -70,7 +70,7 @@ class CandidateManager extends AbstractManager {
 
   async readResumeById(id) {
     const [rows] = await this.database.query(
-      `select candidate.firstname, candidate.lastname, candidate.id, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, level from candidate
+      `select candidate.firstname, candidate.lastname, candidate.id, resume.biography, appetences.appetence as appetence, contract_type as contract, work_rhythm as rhythm, department, level from candidate
       join resume on candidate.id = resume.candidate_id
       join appetences on resume.appetences_id = appetences.id
       join contract_types on contract_types.id = resume.contract_types_id
