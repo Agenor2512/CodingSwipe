@@ -29,6 +29,10 @@ function CandidateCandidacy() {
       .catch((error) => console.error(error));
   };
 
+  const toolsCandidate = {
+    fetchResume: () => fetchResume(),
+  };
+
   useEffect(() => {
     fetchResume();
   }, []);
@@ -92,6 +96,10 @@ function CandidateCandidacy() {
         <SwipeSystem
           candidateId={resume[0].infos[0].id}
           enterpriseId={loginUser.id}
+          fetchResume={() => fetchResume()}
+          toolsCandidate={{ toolsCandidate }}
+          setIsLoading={setIsLoading}
+          setResume={setResume}
         />
       </div>
     );

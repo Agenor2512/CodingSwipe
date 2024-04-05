@@ -36,6 +36,10 @@ function EnterpriseProposal() {
     return "";
   };
 
+  const toolsEnterprise = {
+    fetchJobOffer: () => fetchJobOffer(),
+  };
+
   const displayJobOffer = () => {
     const { loginUser } = useContext(LoginUserContext);
     return (
@@ -78,6 +82,9 @@ function EnterpriseProposal() {
         <SwipeSystem
           enterpriseId={jobOffer[0].infos[0].id}
           candidateId={loginUser.id}
+          fetchJobOffer={() => fetchJobOffer()}
+          toolsEnterprise={{ toolsEnterprise }}
+          setJobOffer={setJobOffer}
         />
       </div>
     );

@@ -1,39 +1,45 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import axios from "axios";
 import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/content_to_swipe/swipeSystem.css";
 
-// eslint-disable-next-line react/prop-types
-function SwipeSystem({ candidateId, enterpriseId }) {
-  // const [setLikes] = useState(false);
-  // const [setDislikes] = useState(false);
+function SwipeSystem({
+  candidateId,
+  enterpriseId,
+  setIsLoading,
+  setJobOffer,
+  setResume,
+}) {
   const { loginUser } = useContext(LoginUserContext);
 
-  const baseURL = import.meta.env.VITE_URL_BACKEND;
+  const baseURL = import.meta.env.VITE_BACKEND_URL;
 
-  // const client = axios.create({
-  //   baseURL,
-  //   timeout: 60_000,
-  // });
+  console.info("SETRESUME", setResume);
+  console.info("SETJOBOFFER", setJobOffer);
 
-  // const sendLike = () => {
-  //   console.info("CANDIDATE ID:", candidateId);
-  //   console.info("ENTERPRISE ID:", enterpriseId);
-  //   console.info("ROLE :", loginUser.role);
+  const fetchResume = () => {
+    axios
+      .get("http://localhost:3310/api/resume")
+      .then((response) => {
+        console.info("RESPONSE : ", response);
+        setResume(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error(error));
+  };
 
-  //   if (loginUser.role === "enterprise") {
-  //     client
-  //       .post("/candidates/likes", { candidateId, enterpriseId })
-  //       .then((response) => console.info(response.data))
-  //       .catch((error) => console.error(error));
-  //   } else {
-  //     client
-  //       .post("/enterprises/likes", { candidateId, enterpriseId })
-  //       .then((response) => console.info(response.data))
-  //       .catch((error) => console.error(error));
-  //   }
-  // };
+  const fetchJobOffer = () => {
+    axios
+      .get("http://localhost:3310/api/joboffer")
+      .then((response) => {
+        console.info("RESPONSE : ", response);
+        setJobOffer(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const sendLike = () => {
     console.info("CANDIDATE ID:", candidateId);
@@ -59,12 +65,15 @@ function SwipeSystem({ candidateId, enterpriseId }) {
     }
   };
 
-  // const sendDislike = () => {
-  //   client
-  //     .post("/dislikes", { userId })
-  //     .then((response) => console.info(response.data))
-  //     .catch((error) => console.error(error));
-  // };
+  console.info("LOGIN USER", loginUser.role);
+
+  const sendDislike = () => {
+    if (loginUser.role === "candidate") {
+      fetchJobOffer();
+    } else {
+      fetchResume();
+    }
+  };
 
   // const handleLikeClick = () => {
   //   setLikes(true);
@@ -87,7 +96,7 @@ function SwipeSystem({ candidateId, enterpriseId }) {
           />
         </button>
 
-        <button type="button">
+        <button type="button" onClick={() => sendDislike()}>
           <img
             className="dislike_icon"
             src="/src/assets/cross_swipe.svg"
