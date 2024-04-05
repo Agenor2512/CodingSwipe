@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import SwipeSystem from "./SwipeSystem";
 import WorkingConditionsCard from "./WorkingConditionsCard";
@@ -35,6 +37,7 @@ function EnterpriseProposal() {
   };
 
   const displayJobOffer = () => {
+    const { loginUser } = useContext(LoginUserContext);
     return (
       <div className="enterprise_infos_container">
         <div>
@@ -72,7 +75,10 @@ function EnterpriseProposal() {
             </section>
           </div>
         </div>
-        <SwipeSystem />
+        <SwipeSystem
+          enterpriseId={jobOffer[0].infos[0].id}
+          candidateId={loginUser.id}
+        />
       </div>
     );
   };

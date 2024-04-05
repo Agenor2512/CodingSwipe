@@ -5,7 +5,8 @@ const router = express.Router();
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
 const experienceControllers = require("./controllers/experienceControllers");
-
+const candidateLikeControllers = require("./controllers/candidateLikeControllers");
+const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
 const candidateValidator = require("./middlewares/candidateValidator");
@@ -29,6 +30,7 @@ router.post(
   authenticationService.hashPassword,
   enterpriseControllers.add
 );
+router.post("/enterprises/likes", enterpriseLikeControllers.add);
 
 // Candidate part
 router.get("/candidates", candidateControllers.browse);
@@ -39,8 +41,10 @@ router.post(
   authenticationService.hashPassword,
   candidateControllers.add
 );
+
 router.post("/experience", experienceControllers.add);
 router.delete("/experience/:id", experienceControllers.remove);
+router.post("/candidates/likes", candidateLikeControllers.add);
 
 router.get("/resume", candidateControllers.readResume);
 router.get("/resume/:id", candidateControllers.readResumeById);
