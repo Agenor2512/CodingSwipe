@@ -53,14 +53,20 @@ function SwipeSystem({
 
       axios
         .post(`${baseURL}/enterprises/likes`, info)
-        .then((response) => console.info(response.data))
+        .then((response) => {
+          console.info(response.data);
+          fetchResume();
+        })
         .catch((error) => console.error(error));
     } else {
       console.info("INFOS : ", info);
 
       axios
         .post(`${baseURL}/candidates/likes`, info)
-        .then((response) => console.info(response.data))
+        .then((response) => {
+          console.info(response.data);
+          fetchJobOffer();
+        })
         .catch((error) => console.error(error));
     }
   };
@@ -74,16 +80,6 @@ function SwipeSystem({
       fetchResume();
     }
   };
-
-  // const handleLikeClick = () => {
-  //   setLikes(true);
-  //   sendLike();
-  // };
-
-  // const handleDislikeClick = () => {
-  //   setDislikes(true);
-  //   sendDislike();
-  // };
 
   return (
     <section className="swipe_system_container">
