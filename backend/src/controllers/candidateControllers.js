@@ -76,10 +76,15 @@ const readResume = async (req, res, next) => {
     const candidate = await tables.candidate.randomCandidate();
     const resume = await tables.candidate.readResumeById(candidate[0].id);
     const languages = await tables.candidate.readLanguagesById(candidate[0].id);
+    const experience = await tables.experiences.readExperienceById(
+      candidate[0].id
+    );
+
     res.json([
       {
         infos: resume,
         langues: languages,
+        experience,
       },
     ]);
   } catch (error) {
@@ -87,4 +92,70 @@ const readResume = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, readById, add, readResume };
+const readResumeById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.info("ID", id);
+    const resume = await tables.candidate.readResumeById(id);
+    const languages = await tables.candidate.readLanguagesById(id);
+    const biography = await tables.candidate.readBiographyById(id);
+    const experience = await tables.experiences.readExperienceById(id);
+
+    console.info("BIO", biography);
+    res.json([
+      {
+        infos: resume,
+        langues: languages,
+        biography: biography[0].biography,
+        experience,
+      },
+    ]);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const readBiography = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const biography = await tables.candidate.readBiographyById(id);
+
+    console.info("BIOGRAPHY", biography);
+    res.json([
+      {
+        biography: biography[0].biography,
+      },
+    ]);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateBiography = async (req, res, next) => {
+  const resumeInfos = {
+    biography: req.body.biography,
+    id: req.params.id,
+  };
+
+  try {
+    const result = await tables.candidate.updateBiographyById(resumeInfos);
+    if (result.affectedRows === 0) {
+      res.status(404).json({ msg: "CV introuvable" });
+    } else {
+      res.json({ msg: "CV modifié avec succès" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  browse,
+  readById,
+  add,
+  readResume,
+  readResumeById,
+  readBiography,
+  updateBiography,
+};

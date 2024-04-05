@@ -1,10 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/modifyButton.css";
 
-function ModifyButton() {
-  const [description, setDescription] = useState("Récupérer description");
+function ModifyButton({ candidate }) {
+  const { loginUser } = useContext(LoginUserContext);
+
+  console.info(candidate);
+  const [description, setDescription] = useState(candidate.biography);
   const [isEditing, setIsEditing] = useState(false);
+
+  console.info("CANDIDATE DEPUIS COMPONENT", candidate.biography);
+
+  const updateInfosAboutCandidate = () => {
+    axios
+      .put(`http://localhost:3310/api/biography/${loginUser.id}`, {
+        biography: description,
+      })
+      .then((response) => console.info(response))
+      .catch((error) => console.error(error));
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -13,6 +31,7 @@ function ModifyButton() {
 
   const handleSave = () => {
     setIsEditing(false);
+    updateInfosAboutCandidate();
   };
 
   const handleChange = (event) => {
@@ -46,3 +65,9 @@ function ModifyButton() {
 }
 
 export default ModifyButton;
+
+ModifyButton.propTypes = {
+  candidate: PropTypes.shape({
+    biography: PropTypes.string.isRequired,
+  }).isRequired,
+};

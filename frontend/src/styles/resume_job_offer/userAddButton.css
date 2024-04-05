@@ -8,6 +8,27 @@ section > .add_button {
   font-size: 14px;
 }
 
+section > ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+section > ul > .job_title {
+  font-weight: bold;
+}
+
+section > ul > li {
+  margin: 0.1rem;
+}
+
+section > ul > button {
+  color: red;
+  background: none;
+  border: none;
+  font-size: larger;
+}
+
 section > .overlay {
   display: flex;
   align-items: center;

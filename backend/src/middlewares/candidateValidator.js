@@ -31,7 +31,8 @@ const validateCandidate = async (req, res, next) => {
       .pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/)
       .required(),
 
-    password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
+    // password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
+    password: Joi.string(),
     passwordCheck: Joi.ref("password"),
 
     biography: Joi.string().allow(""),

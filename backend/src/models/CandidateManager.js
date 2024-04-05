@@ -38,10 +38,9 @@ class CandidateManager extends AbstractManager {
 
   async createResume(resume) {
     const [result] = await this.database.query(
-      `insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values (?, ?, ?, ?, ?, ? , ?)`,
+      `insert into resume (id, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values (?, ?, ?, ?, ?, ?)`,
       [
         resume.randomId,
-        resume.biography,
         resume.appetencesId,
         resume.candidateId,
         resume.contractTypesId,
@@ -92,6 +91,22 @@ class CandidateManager extends AbstractManager {
       join programming_languages on programming_languages.id = resume_has_programming_languages.programming_languages_id
       WHERE candidate.id = ?;`,
       [id]
+    );
+    return rows;
+  }
+
+  async readBiographyById(id) {
+    const [rows] = await this.database.query(
+      `select biography from resume where candidate_id=?;`,
+      [id]
+    );
+    return rows;
+  }
+
+  async updateBiographyById(resume) {
+    const [rows] = await this.database.query(
+      `UPDATE resume SET biography=? WHERE candidate_id=?;`,
+      [resume.biography, resume.id]
     );
     return rows;
   }
