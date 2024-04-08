@@ -37,9 +37,6 @@ function CandidateCandidacy() {
     fetchResume();
   }, []);
 
-  const candidateDescription =
-    "Passionnée par le développement et animé par l'innovation, je suis un développeur junior déterminé à apporter ma curiosité technique et ma créativité au sein d'une startup dynamique.";
-
   const getFirstLetter = () => {
     if (isLoading === false) {
       const { firstname } = resume[0].infos[0];
@@ -62,7 +59,7 @@ function CandidateCandidacy() {
           <div className="modify_display_in_desktop">
             <div>
               <h2>Qui suis-je ?</h2>
-              <p>{candidateDescription}</p>
+              <p>{resume[0].infos[0].biography}</p>
             </div>
 
             <section className="candidate_expectations_container">
