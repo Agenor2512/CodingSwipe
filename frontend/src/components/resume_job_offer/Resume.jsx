@@ -1,32 +1,37 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState, useContext } from "react";
 
 import { readAllAppetences } from "../../services/appetencesService";
 import { readAllContractTypes } from "../../services/contractTypes";
 import { readAllProgrammingLanguages } from "../../services/programmingLanguagesService";
 import { readAllWorkRhythms } from "../../services/workRhythmsService";
-import { readOfferById } from "../../services/jobOfferService";
+import { readAllSoftSkills } from "../../services/softSkillsService";
+import { readResumeById } from "../../services/resumesService";
 
 import LoginContext from "../../context/LoginUserContext";
 
 import DropDownList from "./DropDownList";
-import SalaryAdministrator from "./SalaryAdministrator";
+import AddExperienceButton from "./AddExperienceButton";
 import ModifyButton from "./ModifyButton";
 
-import "../../styles/resume_job_offer/enterpriseJobOffer.css";
+import "../../styles/resume_job_offer/resume.css";
 
-function EnterpriseJobOffer() {
+function Resume() {
   const { loginUser } = useContext(LoginContext);
 
   const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [softSkills, setSoftSkills] = useState([]);
   const [contractTypes, setContractTypes] = useState([]);
   const [workRhythms, setWorkRhythms] = useState([]);
   const [appetences, setAppetences] = useState([]);
-  const [jobOffer, setJobOffer] = useState({});
+  const [resume, setResume] = useState({});
 
   useEffect(() => {
     readAllProgrammingLanguages().then((resumeProgrammingLanguages) =>
       setProgrammingLanguages(resumeProgrammingLanguages)
+    );
+
+    readAllSoftSkills().then((resumeSoftSkills) =>
+      setSoftSkills(resumeSoftSkills)
     );
 
     readAllContractTypes().then((resumeContractTypes) =>
@@ -41,10 +46,12 @@ function EnterpriseJobOffer() {
       setAppetences(resumeAppetences)
     );
 
-    readOfferById(loginUser.id).then((enterpriseOffer) =>
-      setJobOffer(enterpriseOffer)
+    readResumeById(loginUser.id).then((candidateResume) =>
+      setResume(candidateResume)
     );
   }, []);
+
+  console.info("Resume : ", resume);
 
   return (
     <div className="users_infos_container">
@@ -54,36 +61,36 @@ function EnterpriseJobOffer() {
           <h1>Développeur/Développeuse</h1>
           <DropDownList
             appetences={appetences}
-            userAppetence={jobOffer.infos && jobOffer.infos.appetence}
+            userAppetence={resume.infos && resume.infos.appetence}
           />
         </section>
       </div>
 
       <div className="modify_display_desktop">
         <div>
-          <h2>Qui sommes-nous ?</h2>
+          <h2>Qui suis-je ?</h2>
           <ModifyButton />
         </div>
 
-        <section className="work_proposal_container">
-          <h2>Profil recherché</h2>
+        <section className="research_and_workplace_container">
+          <h2>Ma recherche</h2>
 
           <div>
             <div>
               <p>
-                Je propose <span>:</span>
+                Je recherche <span>:</span>
               </p>
               {contractTypes.map((contractType) => (
                 <div
-                  className="enterprise_expectation_container"
+                  className="candidate_expectation_container"
                   key={contractType.id}
                 >
                   <input
                     type="radio"
                     id="radio"
                     checked={
-                      jobOffer.infos &&
-                      jobOffer.infos.contract_types_id === contractType.id
+                      resume.infos &&
+                      resume.infos.contract_types_id === contractType.id
                     }
                   />
                   <label htmlFor="radio">{contractType.contract_type}</label>
@@ -97,15 +104,15 @@ function EnterpriseJobOffer() {
               </p>
               {workRhythms.map((workRhythm) => (
                 <div
-                  className="enterprise_expectation_container"
+                  className="candidate_expectation_container"
                   key={workRhythm.id}
                 >
                   <input
                     type="radio"
                     id="radio"
                     checked={
-                      jobOffer.infos &&
-                      jobOffer.infos.work_rhythms_id === workRhythm.id
+                      resume.infos &&
+                      resume.infos.work_rhythms_id === workRhythm.id
                     }
                   />
                   <label htmlFor="radio">{workRhythm.work_rhythm}</label>
@@ -116,14 +123,16 @@ function EnterpriseJobOffer() {
         </section>
       </div>
 
-      <div className="salary_languages_missions_desktop">
-        <section className="annual_salary">
-          <h2>Salaire annuel brut</h2>
+      <div className="skills_languages_experiences_desktop">
+        <section className="soft_skills">
+          <h2>Soft skills</h2>
           <div>
-            <label htmlFor="salary">
-              Salaire <span>:</span>
-            </label>
-            <SalaryAdministrator />
+            {softSkills.map((softSkill) => (
+              <div className="soft_skills_container" key={softSkill.id}>
+                <input type="checkbox" id="checkbox" />
+                <label htmlFor="checkbox">{softSkill.soft_skill}</label>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -136,8 +145,8 @@ function EnterpriseJobOffer() {
                   type="checkbox"
                   id="checkbox"
                   checked={
-                    jobOffer.langues &&
-                    jobOffer.langues.includes(programmingLanguage.id)
+                    resume.langues &&
+                    resume.langues.includes(programmingLanguage.id)
                   }
                 />
                 <label htmlFor="checkbox">
@@ -148,10 +157,10 @@ function EnterpriseJobOffer() {
           </div>
         </section>
 
-        <section className="missions">
-          <h2>Missions principales</h2>
+        <section className="significatives_experiences">
+          <h2>Expériences significatives</h2>
           <div>
-            <button type="button">Ajouter</button>
+            <AddExperienceButton />
           </div>
         </section>
       </div>
@@ -159,4 +168,4 @@ function EnterpriseJobOffer() {
   );
 }
 
-export default EnterpriseJobOffer;
+export default Resume;

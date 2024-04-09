@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+
+import { readAllOffer } from "../../services/jobOffersService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
@@ -13,19 +14,10 @@ function EnterpriseProposal() {
 
   const [jobOffer, setJobOffer] = useState([]);
 
-  const fetchJobOffer = () => {
-    axios
-      .get("http://localhost:3310/api/joboffer")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setJobOffer(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
-    fetchJobOffer();
+    readAllOffer()
+      .then((allOffers) => setJobOffer(allOffers))
+      .then(() => setIsLoading(false));
   }, []);
 
   const getFirstLetter = () => {
@@ -36,9 +28,9 @@ function EnterpriseProposal() {
     return "";
   };
 
-  const toolsEnterprise = {
-    fetchJobOffer: () => fetchJobOffer(),
-  };
+  // const toolsEnterprise = {
+  //   fetchJobOffer: () => fetchJobOffer(),
+  // };
 
   const displayJobOffer = () => {
     const { loginUser } = useContext(LoginUserContext);
@@ -82,8 +74,8 @@ function EnterpriseProposal() {
         <SwipeSystem
           enterpriseId={jobOffer[0].infos[0].id}
           candidateId={loginUser.id}
-          fetchJobOffer={() => fetchJobOffer()}
-          toolsEnterprise={{ toolsEnterprise }}
+          // fetchJobOffer={() => fetchJobOffer()}
+          // toolsEnterprise={{ toolsEnterprise }}
           setJobOffer={setJobOffer}
         />
       </div>

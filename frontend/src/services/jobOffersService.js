@@ -7,11 +7,18 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const readOfferById = (id) => {
+const readAllOffer = () => {
   return client
-    .get(`/joboffer/${id}`)
+    .get("/joboffers")
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-module.exports = { readOfferById };
+const readOfferById = (id) => {
+  return client
+    .get(`/joboffers/${id}`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+};
+
+module.exports = { readAllOffer, readOfferById };

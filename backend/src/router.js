@@ -42,17 +42,17 @@ router.post(
   candidateControllers.add
 );
 
-router.post("/experience", experienceControllers.add);
-router.delete("/experience/:id", experienceControllers.remove);
+router.post("/experiences", experienceControllers.add);
+router.delete("/experiences/:id", experienceControllers.remove);
 router.post("/candidates/likes", candidateLikeControllers.add);
 
-router.get("/resume", candidateControllers.readResume);
-router.get("/resume/:id", candidateControllers.readResumeById);
-router.get("/joboffer", enterpriseControllers.readJobOffer);
-router.get("/biography/:id", candidateControllers.readBiography);
-router.put("/biography/:id", candidateControllers.updateBiography);
-router.get("/description/:id", enterpriseControllers.readDescriptionById);
-router.put("/description/:id", enterpriseControllers.updateDescription);
+router.get("/resumes", candidateControllers.readResume);
+router.get("/resumes/:id", candidateControllers.readResumeById);
+router.get("/joboffers", enterpriseControllers.readJobOffer);
+router.get("/biographies/:id", candidateControllers.readBiography);
+router.put("/biographies/:id", candidateControllers.updateBiography);
+router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
+router.put("/descriptions/:id", enterpriseControllers.updateDescription);
 
 // router.get("/isConnected", middleware, controller.userChecked)
 
