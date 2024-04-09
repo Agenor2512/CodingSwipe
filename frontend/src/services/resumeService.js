@@ -7,11 +7,11 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const readById = (id) => {
+const readResumeById = (id) => {
   return client
     .get(`/resume/${id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-module.exports = { readById };
+module.exports = { readResumeById };

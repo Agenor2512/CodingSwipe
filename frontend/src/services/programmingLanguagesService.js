@@ -7,11 +7,11 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const readAll = () => {
+const readAllProgrammingLanguages = () => {
   return client
     .get("/programminglanguages")
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-module.exports = { readAll };
+module.exports = { readAllProgrammingLanguages };

@@ -1,227 +1,74 @@
-/* eslint-disable react/prop-types */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
-import axios from "axios";
+import { readAllAppetences } from "../../services/appetencesService";
+import { readAllContractTypes } from "../../services/contractTypes";
+import { readAllProgrammingLanguages } from "../../services/programmingLanguagesService";
+import { readAllWorkRhythms } from "../../services/workRhythmsService";
+import { readAllSoftSkills } from "../../services/softSkillsService";
+import { readResumeById } from "../../services/resumeService";
 
-import LoginUserContext from "../../context/LoginUserContext";
+import LoginContext from "../../context/LoginUserContext";
 
 import DropDownList from "./DropDownList";
 import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/candidateResume.css";
-import UserAddButton from "./UserAddButton";
 
-function CandidateResume({ tools }) {
-  const { loginUser } = useContext(LoginUserContext);
-  const [candidate, setCandidate] = useState([]);
+function CandidateResume() {
+  const { loginUser } = useContext(LoginContext);
 
-  const enterpriseExpectations = [
-    {
-      key: "full-time",
-      text: "Un CDI",
-    },
-    {
-      key: "contract",
-      text: "Un CDD",
-    },
-    {
-      key: "internship",
-      text: "Un Stage / Une Alternance",
-    },
-    {
-      key: "freelance",
-      text: "Du freelance",
-    },
-  ];
-
-  const enterpriseWorkplaces = [
-    {
-      key: "on-site",
-      text: "Sur site",
-    },
-    {
-      key: "half-remote",
-      text: "Remote partiel",
-    },
-    {
-      key: "full-remote",
-      text: "Full remote",
-    },
-  ];
-
-  const computerLanguages = [
-    {
-      key: "html-css",
-      text: "HTML/CSS",
-    },
-    {
-      key: "javascript",
-      text: "JavaScript",
-    },
-    {
-      key: "python",
-      text: "Python",
-    },
-    {
-      key: "java",
-      text: "Java",
-    },
-    {
-      key: "ruby",
-      text: "Ruby On Rails",
-    },
-    {
-      key: "vue",
-      text: "Vue.js",
-    },
-    {
-      key: "swift",
-      text: "Swift",
-    },
-    {
-      key: "kotlin",
-      text: "Kotlin",
-    },
-    {
-      key: "flutter",
-      text: "Flutter",
-    },
-    {
-      key: "go",
-      text: "Go",
-    },
-    {
-      key: "c#",
-      text: "C#",
-    },
-    {
-      key: "c++",
-      text: "C++",
-    },
-    {
-      key: "react",
-      text: "React",
-    },
-    {
-      key: "angular",
-      text: "Angular",
-    },
-    {
-      key: "nodejs",
-      text: "Node.js",
-    },
-    {
-      key: "php",
-      text: "PHP",
-    },
-    {
-      key: "rust",
-      text: "Rust",
-    },
-    {
-      key: ".net",
-      text: ".NET Core / .NET 5",
-    },
-    {
-      key: "sql",
-      text: "SQL",
-    },
-    {
-      key: "nosql",
-      text: "NoSQL",
-    },
-  ];
-
-  const softSkills = [
-    {
-      key: "communication",
-      text: "Communication",
-    },
-    {
-      key: "problem-resolution",
-      text: "Résolution de problème",
-    },
-    {
-      key: "critical-thinking",
-      text: "Pensée critique",
-    },
-    {
-      key: "teamwork",
-      text: "Travail d'équipe",
-    },
-    {
-      key: "adaptability",
-      text: "Adaptabilité",
-    },
-    {
-      key: "time-management",
-      text: "Gestion du temps",
-    },
-    {
-      key: "creativity",
-      text: "Créativité",
-    },
-    {
-      key: "emphathy",
-      text: "Empathie",
-    },
-    {
-      key: "stress-management",
-      text: "Gestion du stress",
-    },
-    {
-      key: "curiosity",
-      text: "Curiosité",
-    },
-    {
-      key: "autonomy",
-      text: "Autonomie",
-    },
-    {
-      key: "leadership",
-      text: "Leadership",
-    },
-    {
-      key: "listening-skill",
-      text: "Capacité d'écoute",
-    },
-    {
-      key: "perseverance",
-      text: "Persévérance",
-    },
-  ];
-
-  const readInfosAboutCandidate = () => {
-    axios
-      .get(`http://localhost:3310/api/resume/${loginUser.id}`)
-      .then((response) => setCandidate(response.data))
-      .catch((error) => console.error(error));
-  };
+  const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [softSkills, setSoftSkills] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
+  const [workRhythms, setWorkRhythms] = useState([]);
+  const [appetences, setAppetences] = useState([]);
+  const [resume, setResume] = useState({});
 
   useEffect(() => {
-    readInfosAboutCandidate();
+    readAllProgrammingLanguages().then((resumeProgrammingLanguages) =>
+      setProgrammingLanguages(resumeProgrammingLanguages)
+    );
+
+    readAllSoftSkills().then((resumeSoftSkills) =>
+      setSoftSkills(resumeSoftSkills)
+    );
+
+    readAllContractTypes().then((resumeContractTypes) =>
+      setContractTypes(resumeContractTypes)
+    );
+
+    readAllWorkRhythms().then((resumeWorkRhythms) =>
+      setWorkRhythms(resumeWorkRhythms)
+    );
+
+    readAllAppetences().then((resumeAppetences) =>
+      setAppetences(resumeAppetences)
+    );
+
+    readResumeById(loginUser.id).then((candidateResume) =>
+      setResume(candidateResume)
+    );
   }, []);
 
-  console.info("CANDIDATE", candidate);
+  console.info("Resume : ", resume);
 
   return (
     <div className="users_infos_container">
-      <button type="button" onClick={() => tools.setPageToDisplay("home")}>
-        Voir les annonces
-      </button>
       <div className="users_infos_header">
         <div>W</div>
         <section>
           <h1>Développeur/Développeuse</h1>
-          <DropDownList />
+          <DropDownList
+            appetences={appetences}
+            userAppetence={resume.infos && resume.infos.appetence}
+          />
         </section>
       </div>
 
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-
-          {candidate.length ? <ModifyButton candidate={candidate[0]} /> : ""}
+          <ModifyButton />
         </div>
 
         <section className="research_and_workplace_container">
@@ -232,10 +79,20 @@ function CandidateResume({ tools }) {
               <p>
                 Je recherche <span>:</span>
               </p>
-              {enterpriseExpectations.map(({ key, text }) => (
-                <div className="candidate_expectation_container" key={key}>
-                  <input type="checkbox" id="checkbox" />
-                  <label htmlFor="checkbox">{text}</label>
+              {contractTypes.map((contractType) => (
+                <div
+                  className="candidate_expectation_container"
+                  key={contractType.id}
+                >
+                  <input
+                    type="radio"
+                    id="radio"
+                    checked={
+                      resume.infos &&
+                      resume.infos.contract_types_id === contractType.id
+                    }
+                  />
+                  <label htmlFor="radio">{contractType.contract_type}</label>
                 </div>
               ))}
             </div>
@@ -244,10 +101,20 @@ function CandidateResume({ tools }) {
               <p>
                 Lieu de travail <span>:</span>
               </p>
-              {enterpriseWorkplaces.map(({ key, text }) => (
-                <div className="candidate_expectation_container" key={key}>
-                  <input type="checkbox" id="checkbox" />
-                  <label htmlFor="checkbox">{text}</label>
+              {workRhythms.map((workRhythm) => (
+                <div
+                  className="candidate_expectation_container"
+                  key={workRhythm.id}
+                >
+                  <input
+                    type="radio"
+                    id="radio"
+                    checked={
+                      resume.infos &&
+                      resume.infos.work_rhythms_id === workRhythm.id
+                    }
+                  />
+                  <label htmlFor="radio">{workRhythm.work_rhythm}</label>
                 </div>
               ))}
             </div>
@@ -259,10 +126,10 @@ function CandidateResume({ tools }) {
         <section className="soft_skills">
           <h2>Soft skills</h2>
           <div>
-            {softSkills.map(({ key, text }) => (
-              <div className="soft_skills_container" key={key}>
+            {softSkills.map((softSkill) => (
+              <div className="soft_skills_container" key={softSkill.id}>
                 <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">{text}</label>
+                <label htmlFor="checkbox">{softSkill.soft_skill}</label>
               </div>
             ))}
           </div>
@@ -271,10 +138,19 @@ function CandidateResume({ tools }) {
         <section className="computer_language_checkbox_container">
           <h2>Langages informatiques</h2>
           <div>
-            {computerLanguages.map(({ key, text }) => (
-              <div key={key}>
-                <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">{text}</label>
+            {programmingLanguages.map((programmingLanguage) => (
+              <div key={programmingLanguage.id}>
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  checked={
+                    resume.langues &&
+                    resume.langues.includes(programmingLanguage.id)
+                  }
+                />
+                <label htmlFor="checkbox">
+                  {programmingLanguage.programming_language}
+                </label>
               </div>
             ))}
           </div>
@@ -283,14 +159,7 @@ function CandidateResume({ tools }) {
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
           <div>
-            {candidate.length ? (
-              <UserAddButton
-                candidate={candidate[0]}
-                readInfosAboutCandidate={readInfosAboutCandidate}
-              />
-            ) : (
-              ""
-            )}
+            <button type="button">Ajouter</button>
           </div>
         </section>
       </div>

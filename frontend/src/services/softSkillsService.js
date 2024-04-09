@@ -7,11 +7,10 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const readAllContractTypes = () => {
+const readAllSoftSkills = () => {
   return client
-    .get("/contracttypes")
+    .get("/softskills")
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
-
-module.exports = { readAllContractTypes };
+module.exports = { readAllSoftSkills };
