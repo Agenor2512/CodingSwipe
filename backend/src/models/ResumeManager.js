@@ -5,7 +5,7 @@ class ResumeManager extends AbstractManager {
     super({ table: "resume" });
   }
 
-  async readResumeById(id) {
+  async readById(id) {
     const [rows] = await this.database.query(
       `select c.firstname, c.lastname, c.id, r.biography, a.appetence, ct.contract_type, d.id, wr.work_rhythm from ${this.table} r
       inner join candidate c on r.candidate_id = c.id
@@ -20,7 +20,7 @@ class ResumeManager extends AbstractManager {
     return rows;
   }
 
-  async createResume(resume) {
+  async create(resume) {
     const [result] = await this.database.query(
       `insert into ${this.table} (id, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values (?, ?, ?, ?, ?, ?)`,
       [

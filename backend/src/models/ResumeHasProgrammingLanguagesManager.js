@@ -5,7 +5,7 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     super({ table: "resume_has_programming_languages" });
   }
 
-  async readLanguagesById(id) {
+  async readById(id) {
     const [rows] = await this.database.query(
       `select programming_languages_id from ${this.table} rhpl
       inner join resume r on r.id = rhpl.resume_id
@@ -16,7 +16,7 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     return rows;
   }
 
-  async createProgrammingLanguages(resumeId, programmingLanguagesId) {
+  async create(resumeId, programmingLanguagesId) {
     const [result] = await this.database.query(
       `insert into ${this.table} (resume_id, programming_languages_id) values (?, ?)`,
       [resumeId, programmingLanguagesId]

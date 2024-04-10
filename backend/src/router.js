@@ -5,11 +5,11 @@ const router = express.Router();
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
 
-// const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
-// const softSkillsControllers = require("./controllers/softSkillsControllers");
-// const contractTypesControllers = require("./controllers/contractTypesControllers");
-// const workRhytmsControllers = require("./controllers/workRhythmsControllers");
-// const appetencesControllers = require("./controllers/appetencesControllers");
+const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
+const softSkillsControllers = require("./controllers/softSkillsControllers");
+const contractTypesControllers = require("./controllers/contractTypesControllers");
+const workRhytmsControllers = require("./controllers/workRhythmsControllers");
+const appetencesControllers = require("./controllers/appetencesControllers");
 
 const experienceControllers = require("./controllers/experienceControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
@@ -65,11 +65,11 @@ router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
 router.put("/descriptions/:id", enterpriseControllers.updateDescription);
 
 // Existing data part for Offer/Resume
-// router.get("/programminglanguages", programmingLanguagesControllers.browse);
-// router.get("/softskills", softSkillsControllers.browse);
-// router.get("/contracttypes", contractTypesControllers.browse);
-// router.get("/workrhythms", workRhytmsControllers.browse);
-// router.get("/appetences", appetencesControllers.browse);
+router.get("/programminglanguages", programmingLanguagesControllers.browse);
+router.get("/softskills", softSkillsControllers.browse);
+router.get("/contracttypes", contractTypesControllers.browse);
+router.get("/workrhythms", workRhytmsControllers.browse);
+router.get("/appetences", appetencesControllers.browse);
 
 // router.get("/isConnected", middleware, controller.userChecked)
 
