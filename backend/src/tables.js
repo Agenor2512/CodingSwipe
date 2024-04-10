@@ -6,17 +6,29 @@
 const ItemManager = require("./models/ItemManager");
 const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
-const ExperienceManager = require("./models/ExperienceManager");
+const ProgrammingLanguagesManager = require("./models/ProgrammingLanguagesManager");
+const SoftSkillsManager = require("./models/SoftSkillsManager");
+const ContractTypesManager = require("./models/ContractTypesManager");
+const WorkRhythmsManager = require("./models/WorkRhythmsManager");
+const AppetencesManager = require("./models/AppetencesManager");
 const CandidateLikeManager = require("./models/CandidateLikeManager");
 const EnterpriseLikeManager = require("./models/EnterpriseLikeManager");
+const ResumeHasProgrammingLanguagesManager = require("./models/ResumeHasProgrammingLanguagesManager");
+const JobOfferHasProgrammingLanguagesManager = require("./models/JobOfferHasProgrammingLanguagesManager");
 
 const managers = [
   ItemManager,
   EnterpriseManager,
   CandidateManager,
-  ExperienceManager,
+  ProgrammingLanguagesManager,
+  SoftSkillsManager,
+  ContractTypesManager,
+  WorkRhythmsManager,
+  AppetencesManager,
   CandidateLikeManager,
   EnterpriseLikeManager,
+  ResumeHasProgrammingLanguagesManager,
+  JobOfferHasProgrammingLanguagesManager,
   // Add other managers here
 ];
 

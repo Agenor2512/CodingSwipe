@@ -4,11 +4,19 @@ const router = express.Router();
 
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
+
+// const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
+// const softSkillsControllers = require("./controllers/softSkillsControllers");
+// const contractTypesControllers = require("./controllers/contractTypesControllers");
+// const workRhytmsControllers = require("./controllers/workRhythmsControllers");
+// const appetencesControllers = require("./controllers/appetencesControllers");
+
 const experienceControllers = require("./controllers/experienceControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
+
 const candidateValidator = require("./middlewares/candidateValidator");
 const enterpriseValidator = require("./middlewares/enterpriseValidator");
 
@@ -42,6 +50,7 @@ router.post(
   candidateControllers.add
 );
 
+// Job offer/Resume part
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
 router.post("/candidates/likes", candidateLikeControllers.add);
@@ -49,10 +58,18 @@ router.post("/candidates/likes", candidateLikeControllers.add);
 router.get("/resumes", candidateControllers.readResume);
 router.get("/resumes/:id", candidateControllers.readResumeById);
 router.get("/joboffers", enterpriseControllers.readJobOffer);
+router.get("/joboffers/:id", enterpriseControllers.readJobOfferById);
 router.get("/biographies/:id", candidateControllers.readBiography);
 router.put("/biographies/:id", candidateControllers.updateBiography);
 router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
 router.put("/descriptions/:id", enterpriseControllers.updateDescription);
+
+// Existing data part for Offer/Resume
+// router.get("/programminglanguages", programmingLanguagesControllers.browse);
+// router.get("/softskills", softSkillsControllers.browse);
+// router.get("/contracttypes", contractTypesControllers.browse);
+// router.get("/workrhythms", workRhytmsControllers.browse);
+// router.get("/appetences", appetencesControllers.browse);
 
 // router.get("/isConnected", middleware, controller.userChecked)
 
