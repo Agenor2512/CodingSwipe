@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState, useContext } from "react";
 
-import { readAllAppetences } from "../../services/appetencesService";
-import { readAllContractTypes } from "../../services/contractTypes";
-import { readAllProgrammingLanguages } from "../../services/programmingLanguagesService";
-import { readAllWorkRhythms } from "../../services/workRhythmsService";
+import readAllAppetences from "../../services/appetencesService";
+import readAllContractTypes from "../../services/contractTypes";
+import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
+import readAllWorkRhythms from "../../services/workRhythmsService";
 import { readOfferById } from "../../services/jobOffersService";
 
 import LoginContext from "../../context/LoginUserContext";
