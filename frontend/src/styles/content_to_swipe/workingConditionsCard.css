@@ -37,10 +37,10 @@
   margin: 0.5rem;
 }
 
-.enterprise_infos_container
+.candidate_infos_container
   > div
   > .modify_display_in_desktop
-  > .enterprise_proposal_container
+  > .candidate_expectations_container
   > div
   > div
   > img,
@@ -54,16 +54,16 @@
   height: 3vh;
 }
 
-.enterprise_infos_container
+.candidate_infos_container
   > div
   > .modify_display_in_desktop
-  > .enterprise_proposal_container
+  > .candidate_expectations_container
   > div
   > div
   > img,
-.enterprise_infos_container
+.candidate_infos_container
   > .modify_display_in_desktop
-  > .enterprise_proposal_container
+  > .candidate_expectations_container
   > div
   > div
   > p,

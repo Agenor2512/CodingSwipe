@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
+
 import "../../styles/register/enterpriseStepTwo.css";
 
 function EnterpriseStepTwo({
@@ -7,8 +9,33 @@ function EnterpriseStepTwo({
     registerEnterprise,
     handleChangeFormEnterprise,
     setEnterpriseInfos,
+    enterpriseInfos,
+    isError,
   },
 }) {
+  console.info("CONSOLE INFO DE LA STEP TWO :", enterpriseInfos);
+
+  const [formIsFill, setFormIsFill] = useState(false);
+
+  useEffect(() => {
+    if (
+      enterpriseInfos.description &&
+      enterpriseInfos.legalStatusId &&
+      enterpriseInfos.businessSectorsId &&
+      enterpriseInfos.salary &&
+      enterpriseInfos.contractTypesId &&
+      enterpriseInfos.workRhythmsId &&
+      enterpriseInfos.appetencesId &&
+      enterpriseInfos.programmingLanguages
+    ) {
+      setFormIsFill(true);
+    } else {
+      setFormIsFill(false);
+    }
+  }, [enterpriseInfos]);
+
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
+
   const enterpriseType = [
     {
       id: 0,
@@ -354,7 +381,7 @@ function EnterpriseStepTwo({
         <section className="research_and_workplace_container">
           <div>
             <p>
-              Je recherche <span>:</span>
+              Je propose <span>:</span>
             </p>
             {contractType.map(({ id, text }) => (
               <div className="enterprise_expectation_container" key={id}>
@@ -413,7 +440,9 @@ function EnterpriseStepTwo({
 
         <div className="salary_languages_missions_desktop">
           <section className="annual_salary">
-            <h2>Salaire annuel brut</h2>
+            <p>
+              Salaire annuel <span>:</span>
+            </p>
             <div>
               <label htmlFor="salary">
                 Salaire <span>:</span>
@@ -426,7 +455,12 @@ function EnterpriseStepTwo({
             </div>
           </section>
 
-          <button type="submit" onClick={registerEnterprise}>
+          <p>{isError ? "Remplissez tous les champs" : ""}</p>
+          <button
+            type="submit"
+            className="final_button_to_inscription_container"
+            onClick={registerEnterprise}
+          >
             Finaliser l'inscription
           </button>
         </div>

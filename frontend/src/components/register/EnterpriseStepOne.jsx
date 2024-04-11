@@ -1,11 +1,33 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 
 import "../../styles/register/registerStepOne.css";
 
 function EnterpriseStepOne({
-  formTools: { nextStep, handleFormSubmit, handleChangeFormEnterprise },
+  formTools: {
+    nextStep,
+    handleFormSubmit,
+    handleChangeFormEnterprise,
+    enterpriseInfos,
+  },
 }) {
+  const [formIsFill, setFormIsFill] = useState(false);
+
+  useEffect(() => {
+    if (
+      enterpriseInfos.name &&
+      enterpriseInfos.siret &&
+      enterpriseInfos.email &&
+      enterpriseInfos.departmentId &&
+      enterpriseInfos.password
+    ) {
+      setFormIsFill(true);
+    } else {
+      setFormIsFill(false);
+    }
+  }, [enterpriseInfos]);
+
   const departements = [
     {
       id: 1,
@@ -509,7 +531,7 @@ function EnterpriseStepOne({
           </div>
         </div>
 
-        <button type="submit" onClick={nextStep}>
+        <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
           Continuer
         </button>
       </form>
