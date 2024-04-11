@@ -15,7 +15,7 @@ function CandidateStepTwo({
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", candidateInfos);
 
-  const [formISFil, setFormIsFil] = useState(false);
+  const [formIsFill, setFormIsFill] = useState(false);
 
   useEffect(() => {
     if (
@@ -25,13 +25,13 @@ function CandidateStepTwo({
       candidateInfos.workRhythm &&
       candidateInfos.programmingLanguages
     ) {
-      setFormIsFil(true);
+      setFormIsFill(true);
     } else {
-      setFormIsFil(true);
+      setFormIsFill(false);
     }
   }, [candidateInfos]);
 
-  console.info("LE FORMULAIRE EST REMPLI ?", formISFil);
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
 
   const appetences = [
     {

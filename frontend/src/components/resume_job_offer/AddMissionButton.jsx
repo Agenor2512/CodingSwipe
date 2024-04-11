@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "../../styles/resume_job_offer/addEnterpriseMissionButton.css";
 
-function AddEnterpriseMissionButton() {
+import "../../styles/resume_job_offer/addMissionButton.css";
+
+function AddMissionButton() {
   const [modal, setModal] = useState(false);
   const [enterpriseMission, setEnterpriseMission] = useState("");
   const [experiences, setExperiences] = useState([]);
@@ -62,4 +63,4 @@ function AddEnterpriseMissionButton() {
   );
 }
 
-export default AddEnterpriseMissionButton;
+export default AddMissionButton;

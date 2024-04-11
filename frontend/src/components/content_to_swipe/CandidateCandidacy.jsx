@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+
+import { readAllResume } from "../../services/resumesService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
@@ -18,23 +19,14 @@ function CandidateCandidacy() {
 
   console.info("RESUME : ", resume);
 
-  const fetchResume = () => {
-    axios
-      .get("http://localhost:3310/api/resume")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setResume(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const toolsCandidate = {
-    fetchResume: () => fetchResume(),
-  };
+  // const toolsCandidate = {
+  //   fetchResume: () => fetchResume(),
+  // };
 
   useEffect(() => {
-    fetchResume();
+    readAllResume()
+      .then((allResume) => setResume(allResume))
+      .then(() => setIsLoading(false));
   }, []);
 
   const getFirstLetter = () => {
@@ -93,8 +85,8 @@ function CandidateCandidacy() {
         <SwipeSystem
           candidateId={resume[0].infos[0].id}
           enterpriseId={loginUser.id}
-          fetchResume={() => fetchResume()}
-          toolsCandidate={{ toolsCandidate }}
+          // fetchResume={() => fetchResume()}
+          // toolsCandidate={{ toolsCandidate }}
           setIsLoading={setIsLoading}
           setResume={setResume}
         />

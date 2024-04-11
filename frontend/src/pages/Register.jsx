@@ -101,6 +101,8 @@ function Register() {
               nextStep,
               handleFormSubmit,
               handleChangeFormEnterprise,
+              enterpriseInfos,
+              isError,
             }}
           />
         ) : (
@@ -110,6 +112,7 @@ function Register() {
               handleFormSubmit,
               handleChangeForm,
               candidateInfos,
+              isError,
             }}
           />
         );
@@ -122,6 +125,8 @@ function Register() {
               handleChangeFormEnterprise,
               registerEnterprise,
               setEnterpriseInfos,
+              enterpriseInfos,
+              isError,
             }}
           />
         ) : (

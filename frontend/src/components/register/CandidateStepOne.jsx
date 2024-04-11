@@ -4,7 +4,13 @@ import { useState, useEffect } from "react";
 import "../../styles/register/registerStepOne.css";
 
 function CandidateStepOne({
-  formTools: { nextStep, handleFormSubmit, handleChangeForm, candidateInfos },
+  formTools: {
+    nextStep,
+    handleFormSubmit,
+    handleChangeForm,
+    candidateInfos,
+    isError,
+  },
 }) {
   console.info("CONSOLE INFO DE LA STEP ONE :", candidateInfos);
 
@@ -525,7 +531,7 @@ function CandidateStepOne({
             />
           </div>
         </div>
-
+        <p>{isError ? "Remplissez tous les champs" : ""}</p>
         <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
           Continuer
         </button>

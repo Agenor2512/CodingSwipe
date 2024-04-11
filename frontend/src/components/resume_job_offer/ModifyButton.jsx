@@ -1,28 +1,19 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
+
+import modifyBiography from "../../services/biographiesService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/modifyButton.css";
 
 function ModifyButton({ candidate }) {
-  const { loginUser } = useContext(LoginUserContext);
+  const {
+    loginUser: { id, role },
+  } = useContext(LoginUserContext);
 
-  console.info(candidate);
   const [description, setDescription] = useState(candidate.biography);
   const [isEditing, setIsEditing] = useState(false);
-
-  console.info("CANDIDATE DEPUIS COMPONENT", candidate.biography);
-
-  const updateInfosAboutCandidate = () => {
-    axios
-      .put(`http://localhost:3310/api/biography/${loginUser.id}`, {
-        biography: description,
-      })
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
-  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -31,7 +22,7 @@ function ModifyButton({ candidate }) {
 
   const handleSave = () => {
     setIsEditing(false);
-    updateInfosAboutCandidate();
+    modifyBiography({ id, role, description });
   };
 
   const handleChange = (event) => {
@@ -65,9 +56,3 @@ function ModifyButton({ candidate }) {
 }
 
 export default ModifyButton;
-
-ModifyButton.propTypes = {
-  candidate: PropTypes.shape({
-    biography: PropTypes.string.isRequired,
-  }).isRequired,
-};

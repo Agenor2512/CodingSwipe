@@ -8,6 +8,8 @@ import Matchs from "./Matchs";
 import Messages from "./Messages";
 import RegisterContext from "../../context/RegisterContext";
 
+import ModalDisconnection from "../ModalDisconnection";
+
 function HomePageUserNav({ tools }) {
   console.info(tools);
 
@@ -117,6 +119,7 @@ function HomePageUserNav({ tools }) {
             </div>
           </button>
         </div>
+        <ModalDisconnection />
       </nav>
     </section>
   );
