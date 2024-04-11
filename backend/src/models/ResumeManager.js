@@ -35,6 +35,22 @@ class ResumeManager extends AbstractManager {
     );
     return rows;
   }
+
+  async readBiographyById(id) {
+    const [rows] = await this.database.query(
+      `select biography from ${this.table} where candidate_id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async updateBiographyById(resume) {
+    const [rows] = await this.database.query(
+      `update ${this.table} set biography = ? where candidate_id = ?`,
+      [resume.biography, resume.id]
+    );
+    return rows;
+  }
 }
 
 module.exports = ResumeManager;

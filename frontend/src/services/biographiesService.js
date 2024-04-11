@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -7,7 +7,7 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const modifyBiography = ({ id, role, description }) => {
+export default function modifyBiography({ id, role, description }) {
   if (role === "candidate") {
     return client
       .put(`/biographies/${id}`, {
@@ -22,6 +22,4 @@ const modifyBiography = ({ id, role, description }) => {
     })
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
-};
-
-module.exports = { modifyBiography };
+}

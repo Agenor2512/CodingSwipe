@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react";
 
-import { modifyBiography } from "../../services/biographiesService";
+import modifyBiography from "../../services/biographiesService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 

@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -7,11 +7,9 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const readAllProgrammingLanguages = () => {
+export default function readAllProgrammingLanguages() {
   return client
     .get("/programminglanguages")
     .then((response) => response.data)
     .catch((error) => console.error(error));
-};
-
-module.exports = { readAllProgrammingLanguages };
+}

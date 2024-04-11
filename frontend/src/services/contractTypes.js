@@ -1,17 +1,15 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
-const client = axios.create({
+export const client = axios.create({
   baseURL,
   timeout: 60_000,
 });
 
-const readAllContractTypes = () => {
+export default function readAllContractTypes() {
   return client
     .get("/contracttypes")
     .then((response) => response.data)
     .catch((error) => console.error(error));
-};
-
-module.exports = { readAllContractTypes };
+}

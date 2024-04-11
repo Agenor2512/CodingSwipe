@@ -2,7 +2,7 @@ import { useState } from "react";
 // import EnterpriseJobOffer from "../components/resume_job_offer/EnterpriseJobOffer";
 import HomePageUserNav from "../components/resume_job_offer/HomePageUserNav";
 import HomePageSwipe from "./HomePageSwipe";
-import CandidateResume from "../components/resume_job_offer/CandidateResume";
+import Resume from "../components/resume_job_offer/Resume";
 
 import "../styles/pages/usersHomePage.css";
 
@@ -16,7 +16,7 @@ function UsersHomePage() {
       {pageToDisplay === "home" ? (
         <HomePageSwipe />
       ) : (
-        <CandidateResume tools={{ setPageToDisplay }} />
+        <Resume tools={{ setPageToDisplay }} />
       )}
     </div>
   );

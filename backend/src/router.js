@@ -33,8 +33,8 @@ router.post(
 router.delete("/logout", authenticationControllers.logout);
 
 // Enterprise part
-router.get("/enterprises", enterpriseControllers.browse);
-router.get("/enterprises/:id", enterpriseControllers.readById);
+router.get("/enterprises", enterpriseControllers.browse); // checked
+router.get("/enterprises/:id", enterpriseControllers.readById); // checked
 router.post(
   "/enterprises",
   enterpriseValidator.validateEnterprise,
@@ -44,8 +44,8 @@ router.post(
 router.post("/enterprises/likes", enterpriseLikeControllers.add);
 
 // Candidate part
-router.get("/candidates", candidateControllers.browse);
-router.get("/candidates/:id", candidateControllers.readById);
+router.get("/candidates", candidateControllers.browse); // checked
+router.get("/candidates/:id", candidateControllers.readById); // checked
 router.post(
   "/candidates",
   candidateValidator.validateCandidate,
@@ -54,25 +54,25 @@ router.post(
 );
 
 // Job offer/Resume part
-router.post("/experiences", experienceControllers.add);
-router.delete("/experiences/:id", experienceControllers.remove);
+router.post("/experiences", experienceControllers.add); // checked
+router.delete("/experiences/:id", experienceControllers.remove); // checked
 router.post("/candidates/likes", candidateLikeControllers.add);
 
-router.get("/resumes", resumeControllers.browseRandom);
-router.get("/resumes/:id", resumeControllers.readById);
-router.get("/joboffers", jobOfferControllers.browseRandom);
-router.get("/joboffers/:id", jobOfferControllers.readById);
-router.get("/biographies/:id", candidateControllers.readBiography);
-router.put("/biographies/:id", candidateControllers.updateBiography);
-router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
-router.put("/descriptions/:id", enterpriseControllers.updateDescription);
+router.get("/resumes", resumeControllers.browseRandom); // checked
+router.get("/resumes/:id", resumeControllers.readById); // checked
+router.get("/joboffers", jobOfferControllers.browseRandom); // checked
+router.get("/joboffers/:id", jobOfferControllers.readById); // checked --> rajouter missions
+router.get("/biographies/:id", resumeControllers.readBiography); // checked
+router.put("/biographies/:id", resumeControllers.updateBiography); // checked
+router.get("/descriptions/:id", enterpriseControllers.readDescriptionById); // checked
+router.put("/descriptions/:id", enterpriseControllers.updateDescription); // checked
 
 // Existing data part for Offer/Resume
-router.get("/programminglanguages", programmingLanguagesControllers.browse);
-router.get("/softskills", softSkillsControllers.browse);
-router.get("/contracttypes", contractTypesControllers.browse);
-router.get("/workrhythms", workRhytmsControllers.browse);
-router.get("/appetences", appetencesControllers.browse);
+router.get("/programminglanguages", programmingLanguagesControllers.browse); // checked
+router.get("/softskills", softSkillsControllers.browse); // checked
+router.get("/contracttypes", contractTypesControllers.browse); // checked
+router.get("/workrhythms", workRhytmsControllers.browse); // checked
+router.get("/appetences", appetencesControllers.browse); // checked
 
 // router.get("/isConnected", middleware, controller.userChecked)
 

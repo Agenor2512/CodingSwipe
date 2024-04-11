@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -7,7 +7,12 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-const addExperience = ({ id, job, enterpriseName, experienceDescription }) => {
+export const addExperiences = ({
+  id,
+  job,
+  enterpriseName,
+  experienceDescription,
+}) => {
   return client
     .post(`/experiences`, {
       candidateId: id,
@@ -19,11 +24,9 @@ const addExperience = ({ id, job, enterpriseName, experienceDescription }) => {
     .catch((error) => console.error(error));
 };
 
-const destroyExperience = (id) => {
+export const destroyExperience = (id) => {
   return client
     .delete(`/experiences/${id}`)
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 };
-
-module.exports = { addExperience, destroyExperience };
