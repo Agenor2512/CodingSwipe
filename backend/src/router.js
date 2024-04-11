@@ -6,7 +6,7 @@ const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
 
 const resumeControllers = require("./controllers/resumeControllers");
-const jobOfferControllers = require("./controllers/jobOfferControllers")
+const jobOfferControllers = require("./controllers/jobOfferControllers");
 
 const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
 const softSkillsControllers = require("./controllers/softSkillsControllers");

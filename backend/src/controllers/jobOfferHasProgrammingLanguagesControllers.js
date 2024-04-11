@@ -25,12 +25,8 @@ const add = async (req, res, next) => {
   };
 
   try {
-    const resultEnterprise = await tables.enterprise.create(
-      enterpriseInfo
-    );
-    const resultJobOffer = await tables.job_offer.create(
-      jobOfferInfos
-    );
+    const resultEnterprise = await tables.enterprise.create(enterpriseInfo);
+    const resultJobOffer = await tables.job_offer.create(jobOfferInfos);
 
     const { languages } = req.body;
     console.info(languages);

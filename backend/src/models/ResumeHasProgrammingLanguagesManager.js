@@ -23,7 +23,6 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     );
     return rows;
   }
- 
 }
 
 module.exports = ResumeHasProgrammingLanguagesManager;

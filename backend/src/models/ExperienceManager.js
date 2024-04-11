@@ -4,7 +4,7 @@ class ExperienceManager extends AbstractManager {
   constructor() {
     super({ table: "experiences" });
   }
-  
+
   async create(infos) {
     const [rows] = await this.database.query(
       `insert into ${this.table} (candidate_id, job_title, company, experiences) values (?, ?, ?, ?)`,
@@ -12,7 +12,7 @@ class ExperienceManager extends AbstractManager {
     );
     return rows;
   }
-  
+
   async readById(id) {
     const [rows] = await this.database.query(
       `select * from ${this.table} where candidate_id = ?`,
@@ -20,7 +20,6 @@ class ExperienceManager extends AbstractManager {
     );
     return rows;
   }
-
 
   async delete(id) {
     const [rows] = await this.database.query(

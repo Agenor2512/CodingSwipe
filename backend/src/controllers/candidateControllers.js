@@ -47,9 +47,7 @@ const add = async (req, res, next) => {
   };
 
   try {
-    const resultCandidate = await tables.candidate.create(
-      candidatesInfo
-    );
+    const resultCandidate = await tables.candidate.create(candidatesInfo);
     const resultResume = await tables.resume.create(resumeInfos);
 
     const { languages } = req.body;
@@ -76,7 +74,9 @@ const readResumeById = async (req, res, next) => {
     const { id } = req.params;
     console.info("ID", id);
     const resume = await tables.resume.readById(id);
-    const languages = await tables.resume_has_programming_languages.readById(id);
+    const languages = await tables.resume_has_programming_languages.readById(
+      id
+    );
     const biography = await tables.candidate.readBiographyById(id);
     const experience = await tables.experiences.readById(id);
 

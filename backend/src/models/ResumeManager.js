@@ -35,7 +35,6 @@ class ResumeManager extends AbstractManager {
     );
     return rows;
   }
-  
 }
 
 module.exports = ResumeManager;
