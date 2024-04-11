@@ -3,7 +3,6 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
-const ItemManager = require("./models/ItemManager");
 const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
 const ProgrammingLanguagesManager = require("./models/ProgrammingLanguagesManager");
@@ -15,9 +14,11 @@ const CandidateLikeManager = require("./models/CandidateLikeManager");
 const EnterpriseLikeManager = require("./models/EnterpriseLikeManager");
 const ResumeHasProgrammingLanguagesManager = require("./models/ResumeHasProgrammingLanguagesManager");
 const JobOfferHasProgrammingLanguagesManager = require("./models/JobOfferHasProgrammingLanguagesManager");
+const ExperienceManager = require("./models/ExperienceManager");
+const JobOfferManager = require("./models/JobOfferManager");
+const ResumeManager = require("./models/ResumeManager");
 
 const managers = [
-  ItemManager,
   EnterpriseManager,
   CandidateManager,
   ProgrammingLanguagesManager,
@@ -29,6 +30,9 @@ const managers = [
   EnterpriseLikeManager,
   ResumeHasProgrammingLanguagesManager,
   JobOfferHasProgrammingLanguagesManager,
+  ExperienceManager,
+  JobOfferManager,
+  ResumeManager,
   // Add other managers here
 ];
 

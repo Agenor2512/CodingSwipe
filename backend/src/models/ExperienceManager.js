@@ -4,15 +4,7 @@ class ExperienceManager extends AbstractManager {
   constructor() {
     super({ table: "experiences" });
   }
-
-  async readExperienceById(id) {
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where candidate_id = ?`,
-      [id]
-    );
-    return rows;
-  }
-
+  
   async create(infos) {
     const [rows] = await this.database.query(
       `insert into ${this.table} (candidate_id, job_title, company, experiences) values (?, ?, ?, ?)`,
@@ -20,8 +12,17 @@ class ExperienceManager extends AbstractManager {
     );
     return rows;
   }
+  
+  async readById(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where candidate_id = ?`,
+      [id]
+    );
+    return rows;
+  }
 
-  async deleteExperience(id) {
+
+  async delete(id) {
     const [rows] = await this.database.query(
       `delete from ${this.table} where id = ?`,
       [id]
@@ -29,4 +30,5 @@ class ExperienceManager extends AbstractManager {
     return rows;
   }
 }
+
 module.exports = ExperienceManager;

@@ -5,6 +5,14 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
     super({ table: "job_offer_has_programming_languages" });
   }
 
+  async create(jobOfferId, programmingLanguagesId) {
+    const [result] = await this.database.query(
+      `insert into ${this.table} (job_offer_id, programming_languages_id) values (?, ?)`,
+      [jobOfferId, programmingLanguagesId]
+    );
+    return result;
+  }
+
   async readById(id) {
     const [rows] = await this.database.query(
       `select programming_languages_id from ${this.table} jbhpl
@@ -14,14 +22,6 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
       [id]
     );
     return rows;
-  }
-
-  async create(jobOfferId, programmingLanguagesId) {
-    const [result] = await this.database.query(
-      `insert into ${this.table} (job_offer_id, programming_languages_id) values (?, ?)`,
-      [jobOfferId, programmingLanguagesId]
-    );
-    return result;
   }
 }
 

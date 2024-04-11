@@ -25,10 +25,10 @@ const add = async (req, res, next) => {
   };
 
   try {
-    const resultEnterprise = await tables.enterprise.createEnterprise(
+    const resultEnterprise = await tables.enterprise.create(
       enterpriseInfo
     );
-    const resultJobOffer = await tables.enterprise.createJobOffer(
+    const resultJobOffer = await tables.job_offer.create(
       jobOfferInfos
     );
 
@@ -37,7 +37,7 @@ const add = async (req, res, next) => {
 
     await Promise.all(
       languages.map((language) =>
-        tables.enterprise.createProgrammingLanguages(randomId, language)
+        tables.job_offer_has_programming_languages.create(randomId, language)
       )
     );
 

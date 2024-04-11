@@ -47,17 +47,17 @@ const add = async (req, res, next) => {
   };
 
   try {
-    const resultCandidate = await tables.candidate.createCandidate(
+    const resultCandidate = await tables.candidate.create(
       candidatesInfo
     );
-    const resultResume = await tables.candidate.createResume(resumeInfos);
+    const resultResume = await tables.resume.create(resumeInfos);
 
     const { languages } = req.body;
     console.info(languages);
 
     await Promise.all(
       languages.map((language) =>
-        tables.candidate.createProgrammingLanguages(randomId, language)
+        tables.resume_has_programming_languages.create(randomId, language)
       )
     );
 
@@ -71,35 +71,14 @@ const add = async (req, res, next) => {
   }
 };
 
-const readResume = async (req, res, next) => {
-  try {
-    const candidate = await tables.candidate.randomCandidate();
-    const resume = await tables.candidate.readResumeById(candidate[0].id);
-    const languages = await tables.candidate.readLanguagesById(candidate[0].id);
-    const experience = await tables.experiences.readExperienceById(
-      candidate[0].id
-    );
-
-    res.json([
-      {
-        infos: resume,
-        langues: languages,
-        experience,
-      },
-    ]);
-  } catch (error) {
-    next(error);
-  }
-};
-
 const readResumeById = async (req, res, next) => {
   try {
     const { id } = req.params;
     console.info("ID", id);
-    const resume = await tables.candidate.readResumeById(id);
-    const languages = await tables.candidate.readLanguagesById(id);
+    const resume = await tables.resume.readById(id);
+    const languages = await tables.resume_has_programming_languages.readById(id);
     const biography = await tables.candidate.readBiographyById(id);
-    const experience = await tables.experiences.readExperienceById(id);
+    const experience = await tables.experiences.readById(id);
 
     console.info("BIO", biography);
     res.json([
@@ -154,7 +133,6 @@ module.exports = {
   browse,
   readById,
   add,
-  readResume,
   readResumeById,
   readBiography,
   updateBiography,

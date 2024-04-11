@@ -5,6 +5,14 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     super({ table: "resume_has_programming_languages" });
   }
 
+  async create(resumeId, programmingLanguagesId) {
+    const [result] = await this.database.query(
+      `insert into ${this.table} (resume_id, programming_languages_id) values (?, ?)`,
+      [resumeId, programmingLanguagesId]
+    );
+    return result;
+  }
+
   async readById(id) {
     const [rows] = await this.database.query(
       `select programming_languages_id from ${this.table} rhpl
@@ -15,14 +23,7 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     );
     return rows;
   }
-
-  async create(resumeId, programmingLanguagesId) {
-    const [result] = await this.database.query(
-      `insert into ${this.table} (resume_id, programming_languages_id) values (?, ?)`,
-      [resumeId, programmingLanguagesId]
-    );
-    return result;
-  }
+ 
 }
 
 module.exports = ResumeHasProgrammingLanguagesManager;

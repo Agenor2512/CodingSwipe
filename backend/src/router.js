@@ -5,6 +5,9 @@ const router = express.Router();
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
 
+const resumeControllers = require("./controllers/resumeControllers");
+const jobOfferControllers = require("./controllers/jobOfferControllers")
+
 const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
 const softSkillsControllers = require("./controllers/softSkillsControllers");
 const contractTypesControllers = require("./controllers/contractTypesControllers");
@@ -55,10 +58,10 @@ router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
 router.post("/candidates/likes", candidateLikeControllers.add);
 
-router.get("/resumes", candidateControllers.readResume);
-router.get("/resumes/:id", candidateControllers.readResumeById);
-router.get("/joboffers", enterpriseControllers.readJobOffer);
-router.get("/joboffers/:id", enterpriseControllers.readJobOfferById);
+router.get("/resumes", resumeControllers.browseRandom);
+router.get("/resumes/:id", resumeControllers.readById);
+router.get("/joboffers", jobOfferControllers.browseRandom);
+router.get("/joboffers/:id", jobOfferControllers.readById);
 router.get("/biographies/:id", candidateControllers.readBiography);
 router.put("/biographies/:id", candidateControllers.updateBiography);
 router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
