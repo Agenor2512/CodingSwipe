@@ -27,7 +27,7 @@ function CandidateStepTwo({
     ) {
       setFormIsFill(true);
     } else {
-      setFormIsFill(true);
+      setFormIsFill(false);
     }
   }, [candidateInfos]);
 

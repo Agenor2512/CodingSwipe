@@ -10,6 +10,7 @@ function EnterpriseStepOne({
     handleFormSubmit,
     handleChangeFormEnterprise,
     enterpriseInfos,
+    isError,
   },
 }) {
   const [formIsFill, setFormIsFill] = useState(false);
@@ -530,7 +531,7 @@ function EnterpriseStepOne({
             />
           </div>
         </div>
-
+        <p>{isError ? "Remplissez tous les champs" : ""}</p>
         <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
           Continuer
         </button>
