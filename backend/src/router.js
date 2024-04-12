@@ -15,6 +15,7 @@ const workRhytmsControllers = require("./controllers/workRhythmsControllers");
 const appetencesControllers = require("./controllers/appetencesControllers");
 
 const experienceControllers = require("./controllers/experienceControllers");
+const missionControllers = require("./controllers/missionControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
@@ -55,6 +56,9 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
+router.post("/missions", missionControllers.add);
+router.delete("/missions/:id", missionControllers.remove);
+
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
 

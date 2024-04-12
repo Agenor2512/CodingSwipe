@@ -29,6 +29,18 @@ create table work_rhythms (
   primary key(id)
 );
 
+create table legal_status (
+  id int not null auto_increment,
+  legal_status varchar(100) not null,
+  primary key(id)
+);
+
+create table business_sectors (
+  id int not null auto_increment,
+  business_sector varchar(100) not null,
+  primary key(id)
+);
+
 create table enterprise (
   id varchar(36) not null,
   name varchar(100) not null,
@@ -43,18 +55,6 @@ create table enterprise (
   foreign key(department_id) references departments(id),
   foreign key(legal_status_id) references legal_status(id),
   foreign key(business_sectors_id) references business_sectors(id)
-);
-
-create table legal_status (
-  id int not null auto_increment,
-  legal_status varchar(100) not null,
-  primary key(id)
-);
-
-create table business_sectors (
-  id int not null auto_increment,
-  business_sector varchar(100) not null,
-  primary key(id)
 );
 
 create table job_offer (
@@ -81,18 +81,10 @@ create table job_offer_has_programming_languages (
 
 create table missions (
   id int not null auto_increment, 
-  mission text,
-  job_offer_id varchar(36) not null,
-  primary key(id),
-  foreign key(job_offer_id) references job_offer(id)
-);
-
-create table enterprise_like (
-  id int not null auto_increment primary key,
   enterprise_id varchar(36) not null,
-  candidate_id varchar(36) not null,
-  foreign key (enterprise_id) references enterprise(id),
-  foreign key (candidate_id) references candidate(id)
+  missions text,
+  primary key(id),
+  foreign key(enterprise_id) references enterprise(id)
 );
 
 create table candidate (
@@ -150,6 +142,14 @@ create table experiences (
   experiences text not null,
   primary key(id),
   foreign key(candidate_id) references candidate(id)
+);
+
+create table enterprise_like (
+  id int not null auto_increment primary key,
+  enterprise_id varchar(36) not null,
+  candidate_id varchar(36) not null,
+  foreign key (enterprise_id) references enterprise(id),
+  foreign key (candidate_id) references candidate(id)
 );
 
 create table candidate_like (
@@ -639,3 +639,19 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 ("3de1feec-a19a-4f16-9226-af676acdab45", 8),
 ("3df1feec-a19a-4f16-9226-af676acdab46", 6),
 ("3df1feec-a19a-4f16-9226-af676acdab46", 4);
+
+insert into missions (missions, enterprise_id) values
+("Développer une application mobile de gestion des tâches pour la plateforme Android", "2de1feec-a19a-4f16-9226-af682acdab42"),
+("Créer un système de suivi des stocks et des commandes pour une entreprise de commerce électronique", "2de1feec-a19a-4f16-9226-af682acdab42"),
+
+("Concevoir et mettre en œuvre un algorithme de recommandation personnalisée pour une plateforme de streaming vidéo", "2de1feec-a19a-4f11-9226-af682acdab43"),
+("Effectuer une analyse de données approfondie pour identifier les tendances de marché pour une entreprise de recherche marketing", "2de1feec-a19a-4f11-9226-af682acdab43"),
+
+("Développer un site Web interactif et convivial pour une start-up de commerce électronique", "2de1feec-a19a-4f16-9226-af686acdab44"),
+("Concevoir et implémenter un système de gestion de contenu robuste pour une agence de marketing numérique", "2de1feec-a19a-4f16-9226-af686acdab44"),
+
+("Créer une application de suivi de fitness personnalisée pour une entreprise de santé et de bien-être", "2de1feec-a19a-4f16-9226-af676acdab45"),
+("Développer un système de gestion de la relation client (CRM) sur mesure pour une société de conseil en gestion", "2de1feec-a19a-4f16-9226-af676acdab45"),
+
+("Concevoir et mettre en œuvre un algorithme d''apprentissage automatique pour une entreprise de technologie", "2df1feec-a19a-4f16-9226-af676acdab46"),
+("Développer une application de planification financière pour une société de services financiers", "2df1feec-a19a-4f16-9226-af676acdab46");

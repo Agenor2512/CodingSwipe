@@ -17,6 +17,7 @@ const JobOfferHasProgrammingLanguagesManager = require("./models/JobOfferHasProg
 const ExperienceManager = require("./models/ExperienceManager");
 const JobOfferManager = require("./models/JobOfferManager");
 const ResumeManager = require("./models/ResumeManager");
+const MissionManager = require("./models/MissionManager");
 
 const managers = [
   EnterpriseManager,
@@ -33,6 +34,7 @@ const managers = [
   ExperienceManager,
   JobOfferManager,
   ResumeManager,
+  MissionManager,
   // Add other managers here
 ];
 

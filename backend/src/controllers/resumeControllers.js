@@ -4,6 +4,7 @@ const browseRandom = async (req, res, next) => {
   try {
     const candidate = await tables.candidate.readRandom();
     const resume = await tables.resume.readById(candidate[0].id);
+    const biography = await tables.resume.readBiographyById(candidate[0].id);
     const languages = await tables.resume_has_programming_languages.readById(
       candidate[0].id
     );
@@ -13,6 +14,7 @@ const browseRandom = async (req, res, next) => {
       {
         infos: resume,
         langues: languages,
+        biography: biography[0].biography,
         experience,
       },
     ]);
