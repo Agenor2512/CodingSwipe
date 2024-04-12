@@ -30,7 +30,7 @@ class JobOfferManager extends AbstractManager {
       where e.id = ?`,
       [id]
     );
-    return rows;
+    return rows[0];
   }
 }
 

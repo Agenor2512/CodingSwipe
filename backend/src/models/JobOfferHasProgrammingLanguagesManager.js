@@ -10,6 +10,7 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
       `insert into ${this.table} (job_offer_id, programming_languages_id) values (?, ?)`,
       [jobOfferId, programmingLanguagesId]
     );
+
     return result;
   }
 
@@ -21,7 +22,8 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
       where e.id = ?`,
       [id]
     );
-    return rows;
+
+    return rows.map((row) => row.programming_languages_id);
   }
 }
 

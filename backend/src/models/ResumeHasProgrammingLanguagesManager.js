@@ -10,6 +10,7 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
       `insert into ${this.table} (resume_id, programming_languages_id) values (?, ?)`,
       [resumeId, programmingLanguagesId]
     );
+
     return result;
   }
 
@@ -21,7 +22,8 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
       where c.id = ?`,
       [id]
     );
-    return rows;
+
+    return rows.map((row) => row.programming_languages_id);
   }
 }
 
