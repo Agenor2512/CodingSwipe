@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { readAllOffer } from "../../services/jobOffersService";
 
@@ -10,8 +10,8 @@ import WorkingConditionsCard from "./WorkingConditionsCard";
 import "../../styles/content_to_swipe/enterpriseProposal.css";
 
 function EnterpriseProposal() {
+  const { loginUser } = useContext(LoginUserContext);
   const [isLoading, setIsLoading] = useState(true);
-
   const [jobOffer, setJobOffer] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function EnterpriseProposal() {
 
   const getFirstLetter = () => {
     if (isLoading === false) {
-      const { name } = jobOffer[0].infos[0];
+      const { name } = jobOffer.infos;
       return name.charAt(0);
     }
     return "";
@@ -33,24 +33,23 @@ function EnterpriseProposal() {
   // };
 
   const displayJobOffer = () => {
-    const { loginUser } = useContext(LoginUserContext);
     return (
       <div className="enterprise_infos_container">
         <div>
           <div className="enterprise_infos_header">
             <div>{getFirstLetter()}</div>
-            <h1>Développeur/Développeuse</h1>
+            <h1>Développeur/Développeuse {jobOffer.infos.appetence}</h1>
           </div>
 
           <div className="modify_display_in_desktop">
             <div>
               <h2>Qui sommes-nous ?</h2>
-              <p>{jobOffer[0].infos[0].description}</p>
+              <p>{jobOffer.infos && jobOffer.infos.description}</p>
             </div>
 
             <section className="enterprise_proposal_container">
               <h2>Conditions de travail</h2>
-              <WorkingConditionsCard data={jobOffer[0]} />
+              <WorkingConditionsCard data={jobOffer.infos} />
             </section>
           </div>
 
@@ -58,21 +57,30 @@ function EnterpriseProposal() {
             <section className="computer_languages_container">
               <h2>Langages informatiques</h2>
               <ul>
-                {jobOffer[0].langues.map((langue) => (
-                  <li>{langue.programming_languages}</li>
-                ))}
+                {jobOffer.programmingLanguages &&
+                  jobOffer.programmingLanguages.map((languages) => (
+                    <li key={languages.programming_languages_id}>
+                      {languages.programming_language}
+                    </li>
+                  ))}
               </ul>
               <div />
             </section>
 
             <section className="missions">
               <h2>Missions Principales</h2>
+              <ul>
+                {jobOffer.missions &&
+                  jobOffer.missions.map((mission) => (
+                    <li key={mission.id}>{mission.missions}</li>
+                  ))}
+              </ul>
               <div />
             </section>
           </div>
         </div>
         <SwipeSystem
-          enterpriseId={jobOffer[0].infos[0].id}
+          enterpriseId={jobOffer.infos.id}
           candidateId={loginUser.id}
           // fetchJobOffer={() => fetchJobOffer()}
           // toolsEnterprise={{ toolsEnterprise }}

@@ -16,14 +16,15 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
 
   async readById(id) {
     const [rows] = await this.database.query(
-      `select programming_languages_id from ${this.table} rhpl
+      `select programming_languages_id, programming_language from ${this.table} rhpl
       inner join resume r on r.id = rhpl.resume_id
       inner join candidate c on c.id = r.candidate_id
+      inner join programming_languages pl on pl.id = rhpl.programming_languages_id
       where c.id = ?`,
       [id]
     );
 
-    return rows.map((row) => row.programming_languages_id);
+    return rows;
   }
 }
 

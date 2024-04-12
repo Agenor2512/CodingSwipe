@@ -31,32 +31,30 @@ function CandidateCandidacy() {
 
   const getFirstLetter = () => {
     if (isLoading === false) {
-      const { firstname } = resume[0].infos[0];
+      const { firstname } = resume.infos;
       return firstname.charAt(0);
     }
     return "";
   };
 
   const displayResume = () => {
-    console.info("ID CANDIDATE: ", resume[0].infos[0].id);
-
     return (
       <div className="candidate_infos_container">
         <div>
           <div className="candidate_infos_header">
             <div>{getFirstLetter()}</div>
-            <h1>Développeur/Développeuse</h1>
+            <h1>Développeur/Développeuse {resume.infos.appetence}</h1>
           </div>
 
           <div className="modify_display_in_desktop">
             <div>
               <h2>Qui suis-je ?</h2>
-              <p>{resume[0].infos[0].biography}</p>
+              <p>{resume.infos && resume.infos.biography}</p>
             </div>
 
             <section className="candidate_expectations_container">
               <h2>Ma recherche</h2>
-              <WorkingConditionsCard data={resume[0]} />
+              <WorkingConditionsCard data={resume.infos} />
             </section>
           </div>
 
@@ -69,21 +67,30 @@ function CandidateCandidacy() {
             <section className="computer_languages_container">
               <h2>Langages informatiques</h2>
               <ul>
-                {resume[0].langues.map((langue) => (
-                  <li>{langue.languages}</li>
-                ))}
+                {resume.programmingLanguages &&
+                  resume.programmingLanguages.map((languages) => (
+                    <li key={languages.programming_languages_id}>
+                      {languages.programming_language}
+                    </li>
+                  ))}
               </ul>
               <div />
             </section>
 
             <section className="significatives_experiences">
               <h2>Expériences significatives</h2>
+              <ul>
+                {resume.experiences &&
+                  resume.experiences.map((experience) => (
+                    <li key={experience.id}>{experience.experiences}</li>
+                  ))}
+              </ul>
               <div />
             </section>
           </div>
         </div>
         <SwipeSystem
-          candidateId={resume[0].infos[0].id}
+          candidateId={resume.infos.id}
           enterpriseId={loginUser.id}
           // fetchResume={() => fetchResume()}
           // toolsCandidate={{ toolsCandidate }}

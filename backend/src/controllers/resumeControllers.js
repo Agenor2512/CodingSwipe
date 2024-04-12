@@ -7,12 +7,12 @@ const browseRandom = async (req, res, next) => {
     const languages = await tables.resume_has_programming_languages.readById(
       candidate.id
     );
-    const experience = await tables.experiences.readById(candidate.id);
+    const experiences = await tables.experiences.readById(candidate.id);
 
     res.json({
       infos: resume,
       programmingLanguages: languages,
-      experience,
+      experiences,
     });
   } catch (error) {
     next(error);

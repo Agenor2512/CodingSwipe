@@ -56,16 +56,16 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
+router.get("/missions/:id", missionControllers.readById);
 router.post("/missions", missionControllers.add);
 router.delete("/missions/:id", missionControllers.remove);
-
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
 
 router.get("/resumes", resumeControllers.browseRandom);
 router.get("/resumes/:id", resumeControllers.readById);
 router.get("/joboffers", jobOfferControllers.browseRandom);
-router.get("/joboffers/:id", jobOfferControllers.readById); // --> rajouter missions
+router.get("/joboffers/:id", jobOfferControllers.readById);
 router.get("/biographies/:id", resumeControllers.readBiography);
 router.put("/biographies/:id", resumeControllers.updateBiography);
 router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);

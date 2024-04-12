@@ -1,83 +1,39 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import axios from "axios";
+
 import LoginUserContext from "../../context/LoginUserContext";
+
+import sendEnterpriseLike from "../../services/enterpriseLike";
+import sendCandidateLike from "../../services/candidateLike";
+import { readAllResume } from "../../services/resumesService";
+import { readAllOffer } from "../../services/jobOffersService";
 
 import "../../styles/content_to_swipe/swipeSystem.css";
 
 function SwipeSystem({
   candidateId,
   enterpriseId,
-  setIsLoading,
-  setJobOffer,
-  setResume,
+  // setIsLoading,
+  // setJobOffer,
+  // setResume,
 }) {
   const { loginUser } = useContext(LoginUserContext);
 
-  const baseURL = import.meta.env.VITE_BACKEND_URL;
-
-  console.info("SETRESUME", setResume);
-  console.info("SETJOBOFFER", setJobOffer);
-
-  const fetchResume = () => {
-    axios
-      .get("http://localhost:3310/api/resume")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setResume(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const fetchJobOffer = () => {
-    axios
-      .get("http://localhost:3310/api/joboffer")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setJobOffer(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
   const sendLike = () => {
-    console.info("CANDIDATE ID:", candidateId);
-    console.info("ENTERPRISE ID:", enterpriseId);
-    console.info("ROLE :", loginUser.role);
-
     const info = { candidateId, enterpriseId };
 
     if (loginUser.role === "enterprise") {
-      console.info("INFOS : ", info);
-
-      axios
-        .post(`${baseURL}/enterprises/likes`, info)
-        .then((response) => {
-          console.info(response.data);
-          fetchResume();
-        })
-        .catch((error) => console.error(error));
+      sendEnterpriseLike(info).then(() => readAllResume());
     } else {
-      console.info("INFOS : ", info);
-
-      axios
-        .post(`${baseURL}/candidates/likes`, info)
-        .then((response) => {
-          console.info(response.data);
-          fetchJobOffer();
-        })
-        .catch((error) => console.error(error));
+      sendCandidateLike(info).then(() => readAllOffer());
     }
   };
 
-  console.info("LOGIN USER", loginUser.role);
-
   const sendDislike = () => {
-    if (loginUser.role === "candidate") {
-      fetchJobOffer();
+    if (loginUser.role === "enterprise") {
+      readAllResume();
     } else {
-      fetchResume();
+      readAllOffer();
     }
   };
 

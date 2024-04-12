@@ -7,7 +7,7 @@ class MissionManager extends AbstractManager {
 
   async create(infos) {
     const [rows] = await this.database.query(
-      `insert into ${this.table} (enterprise_id, missions) values (?, ?, ?, ?)`,
+      `insert into ${this.table} (enterprise_id, missions) values (?, ?)`,
       [infos.enterpriseId, infos.mission]
     );
     return rows;

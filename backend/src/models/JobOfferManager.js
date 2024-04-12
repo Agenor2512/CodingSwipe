@@ -22,10 +22,11 @@ class JobOfferManager extends AbstractManager {
 
   async readById(id) {
     const [rows] = await this.database.query(
-      `select e.name, e.id, a.appetence, ct.contract_type, wr.work_rhythm, e.description from ${this.table} jb
+      `select e.id, e.name, e.description, jb.salary, a.appetence, ct.contract_type, d.department, wr.work_rhythm from ${this.table} jb
       inner join enterprise e on jb.enterprise_id = e.id
       inner join work_rhythms wr on jb.work_rhythms_id = wr.id
       inner join contract_types ct on jb.contract_types_id = ct.id
+      inner join departments d on e.department_id = d.id
       inner join appetences a on jb.appetences_id = a.id
       where e.id = ?`,
       [id]

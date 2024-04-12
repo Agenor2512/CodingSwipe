@@ -1,8 +1,18 @@
 const tables = require("../tables");
 
+const readById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const mission = await tables.missions.readById(id);
+    res.json(mission);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const add = async (req, res, next) => {
   const infos = {
-    enterpriseId: req.body.candidateId,
+    enterpriseId: req.body.enterpriseId,
     mission: req.body.mission,
   };
 
@@ -31,6 +41,7 @@ const remove = async (req, res, next) => {
 };
 
 module.exports = {
+  readById,
   add,
   remove,
 };

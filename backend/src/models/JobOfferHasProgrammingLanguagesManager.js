@@ -16,14 +16,15 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
 
   async readById(id) {
     const [rows] = await this.database.query(
-      `select programming_languages_id from ${this.table} jbhpl
+      `select programming_languages_id, programming_language from ${this.table} jbhpl
       inner join job_offer jb on jb.id = jbhpl.job_offer_id
       inner join enterprise e on e.id = jb.enterprise_id
+      inner join programming_languages pl on pl.id = jbhpl.programming_languages_id
       where e.id = ?`,
       [id]
     );
 
-    return rows.map((row) => row.programming_languages_id);
+    return rows;
   }
 }
 
