@@ -1,16 +1,17 @@
 const tables = require("../tables");
 
-const readById = async (req, res, next) => {
+const browseRandom = async (req, res, next) => {
   try {
-    const enterprise = await tables.enterprise.readById(req.params.id);
-    const joboffer = await tables.job_offer.readById(enterprise[0].id);
-    const mission = await tables.missions.readById(enterprise[0].id);
+    const enterprise = await tables.enterprise.readRandom();
+    const joboffer = await tables.job_offer.readById(enterprise.id);
+    const mission = await tables.missions.readById(enterprise.id);
     const languages = await tables.job_offer_has_programming_languages.readById(
-      enterprise[0].id
+      enterprise.id
     );
+    console.info(enterprise.id);
     res.json({
       infos: joboffer,
-      langues: languages,
+      programmingLanguages: languages,
       mission,
     });
   } catch (error) {
@@ -18,23 +19,20 @@ const readById = async (req, res, next) => {
   }
 };
 
-// TO DO : ajouter les missions
-const browseRandom = async (req, res, next) => {
+const readById = async (req, res, next) => {
   try {
-    const enterprise = await tables.enterprise.readRandom();
-    const joboffer = await tables.job_offer.readById(enterprise[0].id);
-    const mission = await tables.missions.readById(enterprise[0].id);
+    const { id } = req.params;
+    const enterprise = await tables.enterprise.readById(id);
+    const joboffer = await tables.job_offer.readById(enterprise.id);
+    const mission = await tables.missions.readById(enterprise.id);
     const languages = await tables.job_offer_has_programming_languages.readById(
-      enterprise[0].id
+      enterprise.id
     );
-    console.info(enterprise[0].id);
-    res.json([
-      {
-        infos: joboffer,
-        langues: languages,
-        mission,
-      },
-    ]);
+    res.json({
+      infos: joboffer,
+      programmingLanguages: languages,
+      mission,
+    });
   } catch (error) {
     next(error);
   }

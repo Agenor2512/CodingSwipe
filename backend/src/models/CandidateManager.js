@@ -48,7 +48,7 @@ class CandidateManager extends AbstractManager {
     const [rows] = await this.database.query(
       `select candidate.id from ${this.table} order by rand() limit 1`
     );
-    return rows;
+    return rows[0];
   }
 }
 

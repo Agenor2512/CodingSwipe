@@ -3,21 +3,17 @@ const tables = require("../tables");
 const browseRandom = async (req, res, next) => {
   try {
     const candidate = await tables.candidate.readRandom();
-    const resume = await tables.resume.readById(candidate[0].id);
-    const biography = await tables.resume.readBiographyById(candidate[0].id);
+    const resume = await tables.resume.readById(candidate.id);
     const languages = await tables.resume_has_programming_languages.readById(
-      candidate[0].id
+      candidate.id
     );
-    const experience = await tables.experiences.readById(candidate[0].id);
+    const experience = await tables.experiences.readById(candidate.id);
 
-    res.json([
-      {
-        infos: resume,
-        langues: languages,
-        biography: biography[0].biography,
-        experience,
-      },
-    ]);
+    res.json({
+      infos: resume,
+      programmingLanguages: languages,
+      experience,
+    });
   } catch (error) {
     next(error);
   }
@@ -28,15 +24,13 @@ const readById = async (req, res, next) => {
     const { id } = req.params;
     const candidate = await tables.candidate.readById(id);
     const resume = await tables.resume.readById(candidate.id);
-    const biography = await tables.resume.readBiographyById(id);
     const experience = await tables.experiences.readById(id);
     const languages = await tables.resume_has_programming_languages.readById(
       candidate.id
     );
     res.json({
       infos: resume,
-      langues: languages,
-      biography: biography[0].biography,
+      programmingLanguages: languages,
       experience,
     });
   } catch (error) {
@@ -78,23 +72,6 @@ const updateBiography = async (req, res, next) => {
     next(err);
   }
 };
-
-//
-// const readRandom = async (req, res, next) => {
-//   try {
-//     const candidate = await tables.candidate.readRandom();
-//     const resume = await tables.resume.readById(candidate[0].id);
-//     const languages = await tables.resume_has_programming_languages.readById(candidate[0].id);
-//     res.json([
-//       {
-//         infos: resume,
-//         langues: languages,
-//       },
-//     ]);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 module.exports = {
   readById,

@@ -48,7 +48,7 @@ class EnterpriseManager extends AbstractManager {
     const [rows] = await this.database.query(
       `select enterprise.id from ${this.table} order by rand() limit 1`
     );
-    return rows;
+    return rows[0];
   }
 
   async readDescriptionById(id) {
