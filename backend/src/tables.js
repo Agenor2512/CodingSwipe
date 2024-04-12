@@ -19,6 +19,9 @@ const JobOfferManager = require("./models/JobOfferManager");
 const ResumeManager = require("./models/ResumeManager");
 const MissionManager = require("./models/MissionManager");
 const DepartmentsManager = require("./models/DepartmentsManager");
+const LevelsManager = require("./models/LevelsManager");
+const BusinessSectorsManager = require("./models/BusinessSectors");
+const LegalStatusManager = require("./models/LegalStatus");
 
 const managers = [
   EnterpriseManager,
@@ -37,6 +40,9 @@ const managers = [
   ResumeManager,
   MissionManager,
   DepartmentsManager,
+  LevelsManager,
+  BusinessSectorsManager,
+  LegalStatusManager,
   // Add other managers here
 ];
 

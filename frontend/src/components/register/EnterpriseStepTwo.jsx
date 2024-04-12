@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 
+import readAllLegalStatus from "../../services/legalStatus";
+import readAllBusinessSectors from "../../services/businessSectors";
+import readAllAppetences from "../../services/appetencesService";
+import readAllContractTypes from "../../services/contractTypes";
+import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
+import readAllWorkRhythms from "../../services/workRhythmsService";
+
 import "../../styles/register/enterpriseStepTwo.css";
 
 function EnterpriseStepTwo({
@@ -15,9 +22,38 @@ function EnterpriseStepTwo({
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", enterpriseInfos);
 
+  const [legalStatus, setLegalStatus] = useState([]);
+  const [businessSectors, setBusinessSectors] = useState([]);
+  const [appetences, setAppetences] = useState([]);
+  const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
+  const [workRhythms, setWorkRhythms] = useState([]);
   const [formIsFill, setFormIsFill] = useState(false);
 
   useEffect(() => {
+    readAllLegalStatus().then((registerLegalStatus) =>
+      setLegalStatus(registerLegalStatus)
+    );
+
+    readAllBusinessSectors().then((registerBusinessSectors) =>
+      setBusinessSectors(registerBusinessSectors)
+    );
+
+    readAllProgrammingLanguages().then((registerProgrammingLanguages) =>
+      setProgrammingLanguages(registerProgrammingLanguages)
+    );
+
+    readAllContractTypes().then((registerContractTypes) =>
+      setContractTypes(registerContractTypes)
+    );
+
+    readAllWorkRhythms().then((registerWorkRhythms) =>
+      setWorkRhythms(registerWorkRhythms)
+    );
+
+    readAllAppetences().then((registerAppetences) =>
+      setAppetences(registerAppetences)
+    );
     if (
       enterpriseInfos.description &&
       enterpriseInfos.legalStatusId &&
@@ -35,258 +71,6 @@ function EnterpriseStepTwo({
   }, [enterpriseInfos]);
 
   console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
-
-  const enterpriseType = [
-    {
-      id: 0,
-      text: "EI - Entrepreneur individuel",
-    },
-    {
-      id: 1,
-      text: "EURL - Entreprise unipersonnelle à responsabilité limitée",
-    },
-    {
-      id: 2,
-      text: "SARL - Société à responsabilité limitée",
-    },
-    {
-      id: 3,
-      text: "SASU - Société par actions simplifiée unipersonnelle",
-    },
-    {
-      id: 4,
-      text: "SAS - Société par actions simplifiée",
-    },
-    {
-      id: 5,
-      text: "SA - Société anonyme",
-    },
-    {
-      id: 6,
-      text: "SNC - Société en nom collectif",
-    },
-    {
-      id: 7,
-      text: "SCS - Société en commandite simple",
-    },
-    {
-      id: 8,
-      text: "SCA - Société en commandite par actions",
-    },
-  ];
-
-  const industries = [
-    {
-      id: 0,
-      text: "Services financiers",
-    },
-    {
-      id: 1,
-      text: "Santé et sciences de la vie",
-    },
-    {
-      id: 2,
-      text: "Énergie",
-    },
-    {
-      id: 3,
-      text: "Industrie manufacturière",
-    },
-    {
-      id: 4,
-      text: "Commerce de détail et de gros",
-    },
-    {
-      id: 5,
-      text: "Alimentation et boissons",
-    },
-    {
-      id: 6,
-      text: "Transport et logistique",
-    },
-    {
-      id: 7,
-      text: "Immobilier",
-    },
-    {
-      id: 8,
-      text: "Éducation",
-    },
-    {
-      id: 9,
-      text: "Divertissement et médias",
-    },
-    {
-      id: 10,
-      text: "Services professionnels",
-    },
-    {
-      id: 11,
-      text: "Tourisme et hôtellerie",
-    },
-    {
-      id: 12,
-      text: "Industrie extractive",
-    },
-    {
-      id: 13,
-      text: "Télécommunications",
-    },
-    {
-      id: 14,
-      text: "Environnement et durabilité",
-    },
-    {
-      id: 15,
-      text: "Sport et loisirs",
-    },
-    {
-      id: 16,
-      text: "Mode et habillement",
-    },
-    {
-      id: 17,
-      text: "Biens de consommation",
-    },
-    {
-      id: 18,
-      text: "Services gouvernementaux et publics",
-    },
-    {
-      id: 19,
-      text: "Technologie de l'information et des communications (TIC)",
-    },
-  ];
-  const appetences = [
-    {
-      id: 1,
-      buttonText: "Frontend",
-    },
-    {
-      id: 2,
-      buttonText: "Backend",
-    },
-    {
-      id: 3,
-      buttonText: "Full Stack",
-    },
-  ];
-  const contractType = [
-    {
-      id: 1,
-      text: "Un CDI",
-    },
-    {
-      id: 2,
-      text: "Un CDD",
-    },
-    {
-      id: 3,
-      text: "Un Stage / Une Alternance",
-    },
-    {
-      id: 4,
-      text: "Du freelance",
-    },
-  ];
-
-  const workRhythm = [
-    {
-      id: 1,
-      text: "Sur site",
-    },
-    {
-      id: 2,
-      text: "Remote partiel",
-    },
-    {
-      id: 3,
-      text: "Full remote",
-    },
-  ];
-
-  const programmingLanguages = [
-    {
-      id: 1,
-      text: "HTML/CSS",
-    },
-    {
-      id: 2,
-      text: "JavaScript",
-    },
-    {
-      id: 3,
-      text: "Python",
-    },
-    {
-      id: 4,
-      text: "Java",
-    },
-    {
-      id: 5,
-      text: "Ruby On Rails",
-    },
-    {
-      id: 6,
-      text: "Vue.js",
-    },
-    {
-      id: 7,
-      text: "Swift",
-    },
-    {
-      id: 8,
-      text: "Kotlin",
-    },
-    {
-      id: 9,
-      text: "Flutter",
-    },
-    {
-      id: 10,
-      text: "Go",
-    },
-    {
-      id: 11,
-      text: "C#",
-    },
-    {
-      id: 12,
-      text: "C++",
-    },
-    {
-      id: 13,
-      text: "React",
-    },
-    {
-      id: 14,
-      text: "Angular",
-    },
-    {
-      id: 15,
-      text: "Node.js",
-    },
-    {
-      id: 16,
-      text: "PHP",
-    },
-    {
-      id: 17,
-      text: "Rust",
-    },
-    {
-      id: 18,
-      text: ".NET Core / .NET 5",
-    },
-    {
-      id: 19,
-      text: "SQL",
-    },
-    {
-      id: 20,
-      text: "NoSQL",
-    },
-  ];
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
@@ -321,9 +105,9 @@ function EnterpriseStepTwo({
           <option value="choose-enterprise-type">
             Veuillez choisir la forme juridique de votre entreprise
           </option>
-          {enterpriseType.map(({ id, text }) => (
-            <option key={id} value={id}>
-              {text}
+          {legalStatus.map((legalStatu) => (
+            <option key={legalStatu.id} value={legalStatu.id}>
+              {legalStatu.legal_status}
             </option>
           ))}
         </select>
@@ -339,9 +123,9 @@ function EnterpriseStepTwo({
           <option value="choose-industries">
             Veuillez choisir votre secteur d'activité
           </option>
-          {industries.map(({ id, text }) => (
-            <option key={id} value={id}>
-              {text}
+          {businessSectors.map((businessSector) => (
+            <option key={businessSector.id} value={businessSector.id}>
+              {businessSector.business_sector}
             </option>
           ))}
         </select>
@@ -364,15 +148,15 @@ function EnterpriseStepTwo({
             Je recherche un.e développeur·euse <span>:</span>
           </p>
           <section className="levels_and_experience_button_container">
-            {appetences.map(({ id, buttonText }) => (
+            {appetences.map((appetence) => (
               <button
                 type="button"
-                key={id}
+                key={appetence.id}
                 name="appetencesId"
-                value={id}
+                value={appetence.id}
                 onClick={handleChangeFormEnterprise}
               >
-                {buttonText}
+                {appetence.appetence}
               </button>
             ))}
           </section>
@@ -383,16 +167,21 @@ function EnterpriseStepTwo({
             <p>
               Je propose <span>:</span>
             </p>
-            {contractType.map(({ id, text }) => (
-              <div className="enterprise_expectation_container" key={id}>
+            {contractTypes.map((contractType) => (
+              <div
+                className="enterprise_expectation_container"
+                key={contractType.id}
+              >
                 <input
                   type="radio"
                   name="contractTypesId"
-                  id={`contractType-${id}`}
-                  value={id}
+                  id={contractType.id}
+                  value={contractType.id}
                   onChange={handleChangeFormEnterprise}
                 />
-                <label htmlFor={`contractType-${id}`}>{text}</label>
+                <label htmlFor={contractType.id}>
+                  {contractType.contract_type}
+                </label>
               </div>
             ))}
           </div>
@@ -401,16 +190,19 @@ function EnterpriseStepTwo({
             <p>
               Lieu de travail <span>:</span>
             </p>
-            {workRhythm.map(({ id, text }) => (
-              <div className="enterprise_workplace_container" key={id}>
+            {workRhythms.map((workRhythm) => (
+              <div
+                className="enterprise_workplace_container"
+                key={workRhythm.id}
+              >
                 <input
                   type="radio"
                   name="workRhythmsId"
-                  id={`workRhythm-${id}`}
-                  value={id}
+                  id={workRhythm.id}
+                  value={workRhythm.id}
                   onChange={handleChangeFormEnterprise}
                 />
-                <label htmlFor={`workRhythm-${id}`}>{text}</label>
+                <label htmlFor={workRhythm.id}>{workRhythm.work_rhythm}</label>
               </div>
             ))}
           </div>
@@ -424,15 +216,17 @@ function EnterpriseStepTwo({
             <span> : </span>
           </p>
           <section className="computer_language_checkbox_container">
-            {programmingLanguages.map(({ id, text }) => (
-              <div key={id}>
+            {programmingLanguages.map((programmingLanguage) => (
+              <div key={programmingLanguage.id}>
                 <input
                   type="checkbox"
-                  id={`checkbox-${id}`}
-                  value={id}
+                  id={programmingLanguage.id}
+                  value={programmingLanguage.id}
                   onChange={fillLanguagesArray}
                 />
-                <label htmlFor={`checkbox-${id}`}>{text}</label>
+                <label htmlFor={programmingLanguage.id}>
+                  {programmingLanguage.programming_language}
+                </label>
               </div>
             ))}
           </section>

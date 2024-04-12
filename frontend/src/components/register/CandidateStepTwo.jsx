@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 
+import readAllAppetences from "../../services/appetencesService";
+import readAllContractTypes from "../../services/contractTypes";
+import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
+import readAllWorkRhythms from "../../services/workRhythmsService";
+import readAllLevels from "../../services/levelsService";
+
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({
@@ -15,9 +21,31 @@ function CandidateStepTwo({
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", candidateInfos);
 
+  const [appetences, setAppetences] = useState([]);
+  const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
+  const [workRhythms, setWorkRhythms] = useState([]);
+  const [levels, setLevels] = useState([]);
   const [formIsFill, setFormIsFill] = useState(false);
 
   useEffect(() => {
+    readAllProgrammingLanguages().then((registerProgrammingLanguages) =>
+      setProgrammingLanguages(registerProgrammingLanguages)
+    );
+
+    readAllLevels().then((registerLevels) => setLevels(registerLevels));
+
+    readAllContractTypes().then((registerContractTypes) =>
+      setContractTypes(registerContractTypes)
+    );
+
+    readAllWorkRhythms().then((registerWorkRhythms) =>
+      setWorkRhythms(registerWorkRhythms)
+    );
+
+    readAllAppetences().then((registerAppetences) =>
+      setAppetences(registerAppetences)
+    );
     if (
       candidateInfos.appetences &&
       candidateInfos.level &&
@@ -32,156 +60,6 @@ function CandidateStepTwo({
   }, [candidateInfos]);
 
   console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
-
-  const appetences = [
-    {
-      id: 1,
-      buttonText: "Frontend",
-    },
-    {
-      id: 2,
-      buttonText: "Backend",
-    },
-    {
-      id: 3,
-      buttonText: "Full Stack",
-    },
-  ];
-
-  const level = [
-    {
-      id: 1,
-      name: "junior",
-      buttonText: "Junior",
-    },
-    {
-      id: 2,
-      name: "mid-Level",
-      buttonText: "Mid-level",
-    },
-    {
-      id: 3,
-      name: "senior",
-      buttonText: "Senior",
-    },
-  ];
-
-  const contractType = [
-    {
-      id: 1,
-      text: "Un CDI",
-    },
-    {
-      id: 2,
-      text: "Un CDD",
-    },
-    {
-      id: 3,
-      text: "Un Stage / Une Alternance",
-    },
-    {
-      id: 4,
-      text: "Du freelance",
-    },
-  ];
-
-  const workRhythm = [
-    {
-      id: 1,
-      text: "Sur site",
-    },
-    {
-      id: 2,
-      text: "Remote partiel",
-    },
-    {
-      id: 3,
-      text: "Full remote",
-    },
-  ];
-
-  const programmingLanguages = [
-    {
-      id: 1,
-      text: "HTML/CSS",
-    },
-    {
-      id: 2,
-      text: "JavaScript",
-    },
-    {
-      id: 3,
-      text: "Python",
-    },
-    {
-      id: 4,
-      text: "Java",
-    },
-    {
-      id: 5,
-      text: "Ruby On Rails",
-    },
-    {
-      id: 6,
-      text: "Vue.js",
-    },
-    {
-      id: 7,
-      text: "Swift",
-    },
-    {
-      id: 8,
-      text: "Kotlin",
-    },
-    {
-      id: 9,
-      text: "Flutter",
-    },
-    {
-      id: 10,
-      text: "Go",
-    },
-    {
-      id: 11,
-      text: "C#",
-    },
-    {
-      id: 12,
-      text: "C++",
-    },
-    {
-      id: 13,
-      text: "React",
-    },
-    {
-      id: 14,
-      text: "Angular",
-    },
-    {
-      id: 15,
-      text: "Node.js",
-    },
-    {
-      id: 16,
-      text: "PHP",
-    },
-    {
-      id: 17,
-      text: "Rust",
-    },
-    {
-      id: 18,
-      text: ".NET Core / .NET 5",
-    },
-    {
-      id: 19,
-      text: "SQL",
-    },
-    {
-      id: 20,
-      text: "NoSQL",
-    },
-  ];
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
@@ -216,15 +94,15 @@ function CandidateStepTwo({
           Appétences <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {appetences.map(({ id, buttonText }) => (
+          {appetences.map((appetence) => (
             <button
               type="button"
-              key={id}
+              key={appetence.id}
               name="appetencesId"
-              value={id}
+              value={appetence.id}
               onClick={handleChangeForm}
             >
-              {buttonText}
+              {appetence.appetence}
             </button>
           ))}
         </section>
@@ -235,16 +113,21 @@ function CandidateStepTwo({
           <p>
             Je recherche <span>:</span>
           </p>
-          {contractType.map(({ id, text }) => (
-            <div className="enterprise_expectation_container" key={id}>
+          {contractTypes.map((contractType) => (
+            <div
+              className="enterprise_expectation_container"
+              key={contractType.id}
+            >
               <input
                 type="radio"
                 name="contractTypesId"
-                id={`contractType-${id}`}
-                value={id}
+                id={contractType.id}
+                value={contractType.id}
                 onChange={handleChangeForm}
               />
-              <label htmlFor={`contractType-${id}`}>{text}</label>
+              <label htmlFor={contractType.id}>
+                {contractType.contract_type}
+              </label>
             </div>
           ))}
         </div>
@@ -253,16 +136,16 @@ function CandidateStepTwo({
           <p>
             Lieu de travail <span>:</span>
           </p>
-          {workRhythm.map(({ id, text }) => (
-            <div className="enterprise_workplace_container" key={id}>
+          {workRhythms.map((workRhythm) => (
+            <div className="enterprise_workplace_container" key={workRhythm.id}>
               <input
                 type="radio"
                 name="workRhythmsId"
-                id={`workRhythm-${id}`}
-                value={id}
+                id={workRhythm.id}
+                value={workRhythm.id}
                 onChange={handleChangeForm}
               />
-              <label htmlFor={`workRhythm-${id}`}>{text}</label>
+              <label htmlFor={workRhythm.id}>{workRhythm.work_rhythm}</label>
             </div>
           ))}
         </div>
@@ -272,15 +155,15 @@ function CandidateStepTwo({
           Je suis <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {level.map(({ id, buttonText }) => (
+          {levels.map((level) => (
             <button
               type="button"
-              key={id}
+              key={level.id}
               name="levelId"
-              value={id}
+              value={level.id}
               onClick={handleChangeForm}
             >
-              {buttonText}
+              {level.level}
             </button>
           ))}
         </section>
@@ -295,15 +178,17 @@ function CandidateStepTwo({
         <span> : </span>
       </p>
       <section className="computer_language_checkbox_container">
-        {programmingLanguages.map(({ id, text }) => (
-          <div key={id}>
+        {programmingLanguages.map((programmingLanguage) => (
+          <div key={programmingLanguage.id}>
             <input
               type="checkbox"
               id="checkbox"
-              value={id}
+              value={programmingLanguage.id}
               onChange={fillLanguagesArray}
             />
-            <label htmlFor="checkbox">{text}</label>
+            <label htmlFor="checkbox">
+              {programmingLanguage.programming_language}
+            </label>
           </div>
         ))}
       </section>

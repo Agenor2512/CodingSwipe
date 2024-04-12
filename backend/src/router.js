@@ -8,6 +8,9 @@ const candidateControllers = require("./controllers/candidateControllers");
 const resumeControllers = require("./controllers/resumeControllers");
 const jobOfferControllers = require("./controllers/jobOfferControllers");
 
+const legalStatusControllers = require("./controllers/legalStatusControllers");
+const businessSectorsControllers = require("./controllers/businessSectorsControllers");
+const levelsControllers = require("./controllers/levelsControllers");
 const departmentsControllers = require("./controllers/departmentsControllers");
 const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
 const softSkillsControllers = require("./controllers/softSkillsControllers");
@@ -73,6 +76,10 @@ router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
 router.put("/descriptions/:id", enterpriseControllers.updateDescription);
 
 // Existing data part for Offer/Resume
+router.get("/legalstatus", legalStatusControllers.browse);
+router.get("/businesssectors", businessSectorsControllers.browse);
+router.get("/levels", levelsControllers.browse);
+router.get("/levels", levelsControllers.browse);
 router.get("/departments", departmentsControllers.browse);
 router.get("/programminglanguages", programmingLanguagesControllers.browse);
 router.get("/softskills", softSkillsControllers.browse);
