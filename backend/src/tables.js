@@ -22,6 +22,7 @@ const DepartmentsManager = require("./models/DepartmentsManager");
 const LevelsManager = require("./models/LevelsManager");
 const BusinessSectorsManager = require("./models/BusinessSectors");
 const LegalStatusManager = require("./models/LegalStatus");
+const ResumeHasSoftSkillsManager = require("./models/ResumeHasSoftSkillsManager");
 
 const managers = [
   EnterpriseManager,
@@ -43,6 +44,7 @@ const managers = [
   LevelsManager,
   BusinessSectorsManager,
   LegalStatusManager,
+  ResumeHasSoftSkillsManager,
   // Add other managers here
 ];
 

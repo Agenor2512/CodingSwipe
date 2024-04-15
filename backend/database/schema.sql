@@ -134,6 +134,14 @@ create table resume_has_programming_languages (
   foreign key(programming_languages_id) references programming_languages(id)
 );
 
+create table resume_has_soft_skills (
+  resume_id varchar(36) not null,
+  soft_skills_id int not null,
+  primary key(resume_id, soft_skills_id),
+  foreign key(resume_id) references resume(id),
+  foreign key(soft_skills_id) references soft_skills(id)
+);
+
 create table experiences (
   id int not null auto_increment,
   candidate_id varchar(36) not null,
@@ -159,8 +167,6 @@ create table candidate_like (
   foreign key (candidate_id) references candidate(id),
   foreign key (enterprise_id) references enterprise(id)
 );
-
-
 
 insert into contract_types (contract_type) values
 ("Un CDI"),
@@ -464,6 +470,24 @@ resume_has_programming_languages (resume_id, programming_languages_id) values
 ("2de1feec-a12a-4f26-9226-af752acdab44", 8),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 6),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+
+insert into
+resume_has_soft_skills (resume_id, soft_skills_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", 5),
+("2de1feec-a19a-4f16-9226-af782acdab47", 2),
+("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 3),
+("2de1feec-a19a-4f16-9226-af752acdab46", 10),
+("2de1feec-a19a-4f16-9226-af752acdab46", 14),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6),
+("2de1feec-a12a-4f16-9226-af752acdab45", 10),
+("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 6),
+("2de2feec-a12a-4f16-9226-af752acdab43", 10),
+("2de2feec-a12a-4f16-9226-af752acdab43", 8),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8),
+("2de1feec-a12a-4f26-9226-af752acdab44", 4),
+("2de1feec-a12a-4f26-9226-af752acdab44", 12);
 
 insert into experiences (candidate_id, job_title, company, experiences) values
 (

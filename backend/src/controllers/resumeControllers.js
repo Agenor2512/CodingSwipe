@@ -25,6 +25,7 @@ const readById = async (req, res, next) => {
     const candidate = await tables.candidate.readById(id);
     const resume = await tables.resume.readById(candidate.id);
     const experience = await tables.experiences.readById(id);
+    const softSkills = await tables.resume_has_soft_skills.readById(id);
     const languages = await tables.resume_has_programming_languages.readById(
       candidate.id
     );
@@ -32,6 +33,7 @@ const readById = async (req, res, next) => {
       infos: resume,
       programmingLanguages: languages,
       experience,
+      softSkills,
     });
   } catch (error) {
     next(error);

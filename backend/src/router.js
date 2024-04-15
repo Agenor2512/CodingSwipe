@@ -19,6 +19,7 @@ const workRhytmsControllers = require("./controllers/workRhythmsControllers");
 const appetencesControllers = require("./controllers/appetencesControllers");
 
 const experienceControllers = require("./controllers/experienceControllers");
+const resumeHasSoftSkillsControlers = require("./controllers/resumeHasSoftSkillsControllers");
 const missionControllers = require("./controllers/missionControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
@@ -65,6 +66,7 @@ router.post("/missions", missionControllers.add);
 router.delete("/missions/:id", missionControllers.remove);
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
+router.post("/softskills", resumeHasSoftSkillsControlers.add);
 
 router.get("/resumes", resumeControllers.browseRandom);
 router.get("/resumes/:id", resumeControllers.readById);
