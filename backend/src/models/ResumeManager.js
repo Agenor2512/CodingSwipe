@@ -41,7 +41,7 @@ class ResumeManager extends AbstractManager {
       `select biography from ${this.table} where candidate_id = ?`,
       [id]
     );
-    return rows;
+    return rows[0];
   }
 
   async updateBiographyById(resume) {

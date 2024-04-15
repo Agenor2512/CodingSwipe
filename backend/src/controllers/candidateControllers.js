@@ -26,7 +26,7 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const randomId = generateRandomUUID();
+  const randomId = generateRandomUUID(); // FIXME ID utilisé pour resume et candidat en même temps
   const candidatesInfo = {
     randomId,
     firstname: req.body.firstname,
@@ -53,10 +53,9 @@ const add = async (req, res, next) => {
     const { languages } = req.body;
     console.info(languages);
 
-    await Promise.all(
-      languages.map((language) =>
-        tables.resume_has_programming_languages.create(randomId, language)
-      )
+    await tables.resume_has_programming_languages.createMultiple(
+      randomId,
+      languages
     );
 
     res.status(200).json({

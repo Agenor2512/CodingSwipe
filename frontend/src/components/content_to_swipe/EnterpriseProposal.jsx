@@ -59,9 +59,7 @@ function EnterpriseProposal() {
               <ul>
                 {jobOffer.programmingLanguages &&
                   jobOffer.programmingLanguages.map((languages) => (
-                    <li key={languages.programming_languages_id}>
-                      {languages.programming_language}
-                    </li>
+                    <li key={languages.id}>{languages.programming_language}</li>
                   ))}
               </ul>
               <div />

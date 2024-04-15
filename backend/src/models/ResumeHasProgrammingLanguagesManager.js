@@ -14,9 +14,15 @@ class ResumeHasProgrammingLanguagesManager extends AbstractManager {
     return result;
   }
 
+  async createMultiple(resumeId, programmingLanguages) {
+    await Promise.all(
+      programmingLanguages.map((language) => this.create(resumeId, language))
+    );
+  }
+
   async readById(id) {
     const [rows] = await this.database.query(
-      `select programming_languages_id, programming_language from ${this.table} rhpl
+      `select programming_languages_id id, programming_language from ${this.table} rhpl
       inner join resume r on r.id = rhpl.resume_id
       inner join candidate c on c.id = r.candidate_id
       inner join programming_languages pl on pl.id = rhpl.programming_languages_id

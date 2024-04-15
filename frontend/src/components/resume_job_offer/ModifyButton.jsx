@@ -18,13 +18,20 @@ function ModifyButton() {
   const [description, setDescription] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
+  const fetchBiography = () => {
+    readBiographyById({ id, role }).then(({ biography }) =>
+      setDescription(biography)
+    );
+  };
+
   const handleEdit = () => {
     setIsEditing(true);
   };
 
   const handleSave = () => {
     setIsEditing(false);
-    modifyBiography({ id, role, description });
+    // FIXME : sauvegarde de la bio non fonctionnelle
+    modifyBiography({ id, role, description }).then(() => fetchBiography());
   };
 
   const handleChange = (event) => {
@@ -32,9 +39,7 @@ function ModifyButton() {
   };
 
   useEffect(() => {
-    readBiographyById({ id, role }).then((biography) =>
-      setDescription(biography)
-    );
+    fetchBiography();
   }, []);
 
   return (
@@ -53,7 +58,7 @@ function ModifyButton() {
         </>
       ) : (
         <>
-          <p>{description !== undefined ? description : ""}</p>
+          <p>{description}</p>
           <button type="button" onClick={handleEdit}>
             Modifier
           </button>

@@ -171,7 +171,7 @@ create table candidate_like (
 insert into contract_types (contract_type) values
 ("Un CDI"),
 ("Un CDD"),
-("Un Stage / Une alternance"),
+("Un Stage / Une Alternance"),
 ("Du freelance");
 
 

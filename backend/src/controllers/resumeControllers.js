@@ -47,11 +47,9 @@ const readBiography = async (req, res, next) => {
     const biography = await tables.resume.readBiographyById(id);
 
     console.info("BIOGRAPHY", biography);
-    res.json([
-      {
-        biography: biography[0].biography,
-      },
-    ]);
+    res.json({
+      biography: biography.biography,
+    });
   } catch (error) {
     next(error);
   }
