@@ -10,8 +10,8 @@ import { readResumeById } from "../../services/resumesService";
 import LoginContext from "../../context/LoginUserContext";
 
 import DropDownList from "./DropDownList";
-import AddExperienceButton from "./AddExperienceButton";
-import ModifyButton from "./ModifyButton";
+// import AddExperienceButton from "./AddExperienceButton";
+// import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/resume.css";
 
@@ -69,7 +69,7 @@ function Resume() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-          <ModifyButton />
+          {/* <ModifyButton /> */}
         </div>
 
         <section className="research_and_workplace_container">
@@ -88,7 +88,7 @@ function Resume() {
                   <input
                     type="radio"
                     id="radio"
-                    checked={
+                    defaultChecked={
                       resume.infos &&
                       resume.infos.contract_types_id === contractType.id
                     }
@@ -110,7 +110,7 @@ function Resume() {
                   <input
                     type="radio"
                     id="radio"
-                    checked={
+                    defaultChecked={
                       resume.infos &&
                       resume.infos.work_rhythms_id === workRhythm.id
                     }
@@ -145,8 +145,8 @@ function Resume() {
                   type="checkbox"
                   id="checkbox"
                   checked={
-                    resume.langues &&
-                    resume.langues.includes(programmingLanguage.id)
+                    resume.programmingLanguages &&
+                    resume.programmingLanguages.includes(programmingLanguage.id)
                   }
                 />
                 <label htmlFor="checkbox">
@@ -160,7 +160,7 @@ function Resume() {
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
           <div>
-            <AddExperienceButton />
+            {/* <AddExperienceButton experiences={resume.experience} /> */}
           </div>
         </section>
       </div>

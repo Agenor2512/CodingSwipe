@@ -14,7 +14,7 @@ export const addExperiences = ({
   experienceDescription,
 }) => {
   return client
-    .post(`/experiences`, {
+    .post("/experience", {
       candidateId: id,
       jobTitle: job,
       company: enterpriseName,

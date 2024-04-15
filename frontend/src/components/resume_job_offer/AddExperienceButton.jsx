@@ -10,30 +10,27 @@ import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/addExperienceButton.css";
 
-function AddExperienceButton({ candidate }) {
+function AddExperienceButton({ experiences }) {
   const {
     loginUser: { id },
   } = useContext(LoginUserContext);
 
   const [modal, setModal] = useState(false);
   const [job, setJob] = useState("");
-  const [enterprise, setEnterprise] = useState("");
-  const [experienceDescription, setExperienceDescription] = useState("");
+  const [company, setCompany] = useState("");
+  const [experienceDescription, setExperienceDescription] = useState([]);
 
   const handleModal = () => setModal(true);
   const handleClose = () => setModal(false);
 
   return (
     <section>
-      {candidate.experience.map((experience) => (
+      {experiences.experience.map((xp) => (
         <ul>
-          <li className="job_title">{experience.job_title}</li>
-          <li>{experience.company}</li>
-          <li>{experience.experiences}</li>
-          <button
-            type="button"
-            onClick={() => destroyExperience(experience.id)}
-          >
+          <li className="job_title">{xp.job_title}</li>
+          <li>{xp.company}</li>
+          <li>{xp.experienceDescription}</li>
+          <button type="button" onClick={() => destroyExperience(xp.id)}>
             &times;
           </button>
         </ul>
@@ -66,8 +63,8 @@ function AddExperienceButton({ candidate }) {
                   id="enterprise"
                   name="enterprise"
                   type="text"
-                  value={enterprise}
-                  onChange={(event) => setEnterprise(event.target.value)}
+                  value={company}
+                  onChange={(event) => setCompany(event.target.value)}
                 />
               </div>
               <div className="form_group">
@@ -85,7 +82,7 @@ function AddExperienceButton({ candidate }) {
               <button
                 type="button"
                 onClick={() =>
-                  addExperiences({ id, job, enterprise, experienceDescription })
+                  addExperiences({ id, job, company, experienceDescription })
                 }
               >
                 Ajouter
