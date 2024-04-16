@@ -10,7 +10,7 @@ import { readResumeById } from "../../services/resumesService";
 import LoginContext from "../../context/LoginUserContext";
 
 import DropDownList from "./DropDownList";
-// import AddExperienceButton from "./AddExperienceButton";
+import AddExperienceButton from "./AddExperienceButton";
 import ModifyButton from "./ModifyButton";
 
 import "../../styles/resume_job_offer/resume.css";
@@ -173,7 +173,7 @@ function Resume() {
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
           <div>
-            {/* <AddExperienceButton experiences={resume.experience} /> */}
+            <AddExperienceButton experiences={resume.experience} />
           </div>
         </section>
       </div>

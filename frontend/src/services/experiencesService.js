@@ -7,17 +7,19 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export const addExperiences = ({
-  id,
-  job,
-  enterpriseName,
-  experienceDescription,
-}) => {
+export const readExperienceById = (id) => {
   return client
-    .post("/experience", {
+    .get(`/experiences/${id}`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+};
+
+export const addExperiences = ({ id, job, company, experienceDescription }) => {
+  return client
+    .post("/experiences", {
       candidateId: id,
       jobTitle: job,
-      company: enterpriseName,
+      company,
       experience: experienceDescription,
     })
     .then((response) => console.info(response.data))

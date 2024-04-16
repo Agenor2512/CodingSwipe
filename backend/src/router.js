@@ -64,6 +64,7 @@ router.post("/candidates/likes", candidateLikeControllers.add);
 router.get("/missions/:id", missionControllers.readById);
 router.post("/missions", missionControllers.add);
 router.delete("/missions/:id", missionControllers.remove);
+router.get("/experiences/:id", experienceControllers.readById);
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
 router.post("/softskills", resumeHasSoftSkillsControlers.add);
