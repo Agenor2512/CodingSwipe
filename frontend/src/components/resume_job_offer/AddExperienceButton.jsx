@@ -48,7 +48,7 @@ function AddExperienceButton() {
   return (
     <section>
       {experiences.map((experience) => (
-        <ul>
+        <ul key={experience.id}>
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
           <li>{experience.experienceDescription}</li>

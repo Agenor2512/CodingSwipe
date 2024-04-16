@@ -173,7 +173,7 @@ function Resume() {
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
           <div>
-            <AddExperienceButton experiences={resume.experience} />
+            <AddExperienceButton />
           </div>
         </section>
       </div>
