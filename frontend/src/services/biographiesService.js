@@ -7,32 +7,16 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export const modifyBiography = ({ id, role, description }) => {
-  if (role === "candidate") {
-    return client
-      .put(`/biographies/${id}`, {
-        description,
-      })
-      .then((response) => console.info(response.data))
-      .catch((error) => console.error(error));
-  }
+export const modifyBiography = (id, biography) => {
   return client
-    .put(`/descriptions/${id}`, {
-      description,
-    })
-    .then((response) => console.info(response.data))
+    .put(`/biographies/${id}`, biography)
+    .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-export const readBiographyById = ({ id, role }) => {
-  if (role === "candidate") {
-    return client
-      .get(`/biographies/${id}`)
-      .then((response) => response.data)
-      .catch((error) => console.error(error));
-  }
+export const readBiographyById = (id) => {
   return client
-    .get(`/descriptions/${id}`)
+    .get(`/biographies/${id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };

@@ -26,9 +26,11 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const randomId = generateRandomUUID(); // FIXME ID utilisé pour resume et candidat en même temps
+  const candidateId = generateRandomUUID();
+  const resumeId = generateRandomUUID();
+
   const candidatesInfo = {
-    randomId,
+    candidateId,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
@@ -37,10 +39,10 @@ const add = async (req, res, next) => {
   };
 
   const resumeInfos = {
-    randomId,
+    resumeId,
     biography: req.body.biography,
     appetencesId: req.body.appetencesId,
-    candidateId: randomId,
+    candidateId,
     contractTypesId: req.body.contractTypesId,
     workRhythmsId: req.body.workRhythmsId,
     levelId: req.body.levelId,
@@ -54,7 +56,7 @@ const add = async (req, res, next) => {
     console.info(languages);
 
     await tables.resume_has_programming_languages.createMultiple(
-      randomId,
+      resumeId,
       languages
     );
 

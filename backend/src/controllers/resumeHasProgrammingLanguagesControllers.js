@@ -14,7 +14,7 @@ const add = async (req, res, next) => {
     );
 
     res.status(201).json({
-      msg: "Langages mis à jour avec succés",
+      msg: "Langages mis à jour avec succès",
     });
   } catch (err) {
     next(err);

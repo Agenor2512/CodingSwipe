@@ -12,16 +12,14 @@ import "../../styles/resume_job_offer/modifyButton.css";
 
 function ModifyButton() {
   const {
-    loginUser: { id, role },
+    loginUser: { id },
   } = useContext(LoginUserContext);
 
   const [description, setDescription] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
   const fetchBiography = () => {
-    readBiographyById({ id, role }).then(({ biography }) =>
-      setDescription(biography)
-    );
+    readBiographyById(id).then(({ biography }) => setDescription(biography));
   };
 
   const handleEdit = () => {
@@ -30,8 +28,9 @@ function ModifyButton() {
 
   const handleSave = () => {
     setIsEditing(false);
-    // FIXME : sauvegarde de la bio non fonctionnelle
-    modifyBiography({ id, role, description }).then(() => fetchBiography());
+    modifyBiography(id, {
+      biography: description,
+    }).then(() => fetchBiography());
   };
 
   const handleChange = (event) => {
