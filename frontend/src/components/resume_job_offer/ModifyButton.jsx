@@ -6,20 +6,33 @@ import {
   modifyBiography,
 } from "../../services/biographiesService";
 
+import {
+  readDescriptionById,
+  modifyDescription,
+} from "../../services/descriptionsService";
+
 import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/modifyButton.css";
 
 function ModifyButton() {
   const {
-    loginUser: { id },
+    loginUser: { id, role },
   } = useContext(LoginUserContext);
 
-  const [description, setDescription] = useState("");
+  const [content, setContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
   const fetchBiography = () => {
-    readBiographyById(id).then(({ biography }) => setDescription(biography));
+    readBiographyById(id).then(({ biography }) => setContent(biography));
+  };
+
+  const fetchDescription = () => {
+    readDescriptionById(id).then((response) => {
+      const { description } = response; // Accédez à la propriété "description" de la réponse
+      setContent(description); // Mettez à jour l'état avec la valeur de "description"
+      console.info(description);
+    });
   };
 
   const handleEdit = () => {
@@ -28,17 +41,28 @@ function ModifyButton() {
 
   const handleSave = () => {
     setIsEditing(false);
-    modifyBiography(id, {
-      biography: description,
-    }).then(() => fetchBiography());
+
+    if (role === "candidate") {
+      modifyBiography(id, {
+        biography: content,
+      }).then(() => fetchBiography());
+    } else {
+      modifyDescription(id, { description: content }).then(() =>
+        fetchDescription()
+      );
+    }
   };
 
   const handleChange = (event) => {
-    setDescription(event.target.value);
+    setContent(event.target.value);
   };
 
   useEffect(() => {
-    fetchBiography();
+    if (role === "candidate") {
+      fetchBiography();
+    } else {
+      fetchDescription();
+    }
   }, []);
 
   return (
@@ -47,7 +71,7 @@ function ModifyButton() {
         <>
           <textarea
             type="text"
-            value={description}
+            value={content}
             onChange={handleChange}
             placeholder="Dites-en plus sur vous"
           />
@@ -57,7 +81,7 @@ function ModifyButton() {
         </>
       ) : (
         <>
-          <p>{description}</p>
+          <p>{content}</p>
           <button type="button" onClick={handleEdit}>
             Modifier
           </button>

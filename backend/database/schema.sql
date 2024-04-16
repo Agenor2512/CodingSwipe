@@ -59,6 +59,7 @@ create table enterprise (
 
 create table job_offer (
   id varchar(36) not null,
+  description TEXT DEFAULT ("Pas encore de description..."),
   salary varchar(100),
   contract_types_id int not null,
   work_rhythms_id int not null,

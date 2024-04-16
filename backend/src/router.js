@@ -75,8 +75,8 @@ router.get("/joboffers", jobOfferControllers.browseRandom);
 router.get("/joboffers/:id", jobOfferControllers.readById);
 router.get("/biographies/:id", resumeControllers.readBiography);
 router.put("/biographies/:id", resumeControllers.updateBiography);
-router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
-router.put("/descriptions/:id", enterpriseControllers.updateDescription);
+router.get("/descriptions/:id", jobOfferControllers.readDescription);
+router.put("/descriptions/:id", jobOfferControllers.updateDescription);
 
 // Existing data part for Offer/Resume
 router.get("/legalstatus", legalStatusControllers.browse);
