@@ -1,4 +1,3 @@
--- SQLBook: Code
 create table departments (
   id int not null auto_increment,
   department varchar(100) not null,
@@ -168,51 +167,6 @@ create table candidate_like (
   foreign key (enterprise_id) references enterprise(id)
 );
 
-insert into contract_types (contract_type) values
-("Un CDI"),
-("Un CDD"),
-("Un Stage / Une Alternance"),
-("Du freelance");
-
-
-insert into work_rhythms (work_rhythm) values
-("Sur site"),
-("Remote partiel"),
-("Full remote");
-
-insert into business_sectors (business_sector) values
-('Services financiers'),
-('Santé et sciences de la vie'),
-('Énergie'),
-('Industrie manufacturière'),
-('Commerce de détail et de gros'),
-('Alimentation et boissons'),
-('Transport et logistique'),
-('Immobilier'),
-('Éducation'),
-('Divertissement et médias'),
-('Services professionnels'),
-('Tourisme et hôtellerie'),
-('Industrie extractive'),
-('Télécommunications'),
-('Environnement et durabilité'),
-('Sport et loisirs'),
-('Mode et habillement'),
-('Biens de consommation'),
-('Services gouvernementaux et publics'),
-('Technologie de l''information et des communications (TIC)');
-
-insert into legal_status (legal_status) values
-('EI - Entrepreneur individuel'),
-('EURL - Entreprise unipersonnelle à responsabilité limitée'),
-('SARL - Société à responsabilité limitée'),
-('SASU - Société par actions simplifiée unipersonnelle'),
-('SAS - Société par actions simplifiée'),
-('SA - Société anonyme'),
-('SNC - Société en nom collectif'),
-('SCS - Société en commandite simple'),
-('SCA - Société en commandite par actions');
-
 insert into departments (department) values
 ("01 - Ain"),
 ("02 - Aisne"),
@@ -314,31 +268,10 @@ insert into departments (department) values
 ("974 - La Réunion"),
 ("976 - Mayotte");
 
-insert into levels (level) values
-("Junior"),
-("Mid-level"),
-("Senior");
-
 insert into appetences (appetence) values
 ("Frontend"),
 ("Backend"),
 ("Full stack");
-
-insert into soft_skills (soft_skill) values
-("Communication"),
-("Résolution de problème"),
-("Pensée critique"),
-("Travail d'équipe"),
-("Adaptabilité"),
-("Gestion du temps"),
-("Créativité"),
-("Empathie"),
-("Gestion du stresse"),
-("Curiosité"),
-("Autonomie"),
-("Leadership"),
-("Capacité d'écoute"),
-("Persévérance");
 
 insert into programming_languages (programming_language) values
 ("HTML / CSS"),
@@ -362,248 +295,102 @@ insert into programming_languages (programming_language) values
 ("SQL"),
 ("NoSQL");
 
--- CREATION CANDIDATS
-insert into
-candidate (id, firstname, lastname, email, password, department_id) values
-(
-  "2de1feec-a19a-4f16-9226-af782acdab42",
-  "Bernard",
-  "Martin",
-  "candidate@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
-  32
-),
-(
-  "2de1feec-a19a-4f16-9226-af752acdab43",
-  "Pauline",
-  "Mbappé",
-  "paulinembappe@hotmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
-  13
-),
-(
-  "2de1feec-a12a-4f16-9226-af752acdab44",
-  "Yves",
-  "Rocher",
-  "yvesrocher@wanadoo.fr",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
-  45
-),
-(
-  "2de2feec-a12a-4f16-9226-af752acdab45",
-  "Sarah",
-  "Croche",
-  "sarah_croche@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
-  4
-),
-(
-  "2de1feec-a12a-4f26-9226-af752acdab46",
-  "Guy",
-  "Tare",
-  "guy_tare@hotmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
-  75
-);
+insert into contract_types (contract_type) values
+("Un CDI"),
+("Un CDD"),
+("Un Stage / Une Alternance"),
+("Du freelance");
 
-insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values
-(
-  "2de1feec-a19a-4f16-9226-af782acdab47",
-  "Coucou je suis Bernard Martin, j'aime regarder les coucher de soleil et les longues balades sur la plage",
-  1,
-  "2de1feec-a19a-4f16-9226-af782acdab42",
-  1,
-  1,
-  2
-),
-(
-  "2de1feec-a19a-4f16-9226-af752acdab46",
-  "He coucou je ne suis pas de la famille à Kiki",
-  3,
-  "2de1feec-a19a-4f16-9226-af752acdab43",
-  2,
-  2,
-  3
-),
-(
-  "2de1feec-a12a-4f16-9226-af752acdab45",
-  "La vie par les plantes et un peu de code",
-  2,
-  "2de1feec-a12a-4f16-9226-af752acdab44",
-  1,
-  3,
-  1
-),
-(
-  "2de2feec-a12a-4f16-9226-af752acdab43",
-  "Hallo hallo Ozon 2001",
-  3,
-  "2de2feec-a12a-4f16-9226-af752acdab45",
-  3,
-  2,
-  1
-),
-(
-  "2de1feec-a12a-4f26-9226-af752acdab44",
-  "Merci pour les chaussures",
-  1,
-  "2de1feec-a12a-4f26-9226-af752acdab46",
-  2,
-  1,
-  2
-);
+insert into work_rhythms (work_rhythm) values
+("Sur site"),
+("Remote partiel"),
+("Full remote");
 
-insert into
-resume_has_programming_languages (resume_id, programming_languages_id) values
-("2de1feec-a19a-4f16-9226-af782acdab47", 5),
-("2de1feec-a19a-4f16-9226-af782acdab47", 7),
-("2de1feec-a19a-4f16-9226-af782acdab47", 4),
-("2de1feec-a19a-4f16-9226-af752acdab46", 1),
-("2de1feec-a19a-4f16-9226-af752acdab46", 10),
-("2de1feec-a19a-4f16-9226-af752acdab46", 17),
-("2de1feec-a12a-4f16-9226-af752acdab45", 6),
-("2de1feec-a12a-4f16-9226-af752acdab45", 17),
-("2de1feec-a12a-4f16-9226-af752acdab45", 12),
-("2de2feec-a12a-4f16-9226-af752acdab43", 9),
-("2de2feec-a12a-4f16-9226-af752acdab43", 10),
-("2de2feec-a12a-4f16-9226-af752acdab43", 11),
-("2de1feec-a12a-4f26-9226-af752acdab44", 8),
-("2de1feec-a12a-4f26-9226-af752acdab44", 6),
-("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+insert into legal_status (legal_status) values
+('EI - Entrepreneur individuel'),
+('EURL - Entreprise unipersonnelle à responsabilité limitée'),
+('SARL - Société à responsabilité limitée'),
+('SASU - Société par actions simplifiée unipersonnelle'),
+('SAS - Société par actions simplifiée'),
+('SA - Société anonyme'),
+('SNC - Société en nom collectif'),
+('SCS - Société en commandite simple'),
+('SCA - Société en commandite par actions');
 
-insert into
-resume_has_soft_skills (resume_id, soft_skills_id) values
-("2de1feec-a19a-4f16-9226-af782acdab47", 5),
-("2de1feec-a19a-4f16-9226-af782acdab47", 2),
-("2de1feec-a19a-4f16-9226-af782acdab47", 4),
-("2de1feec-a19a-4f16-9226-af752acdab46", 3),
-("2de1feec-a19a-4f16-9226-af752acdab46", 10),
-("2de1feec-a19a-4f16-9226-af752acdab46", 14),
-("2de1feec-a12a-4f16-9226-af752acdab45", 6),
-("2de1feec-a12a-4f16-9226-af752acdab45", 10),
-("2de1feec-a12a-4f16-9226-af752acdab45", 12),
-("2de2feec-a12a-4f16-9226-af752acdab43", 6),
-("2de2feec-a12a-4f16-9226-af752acdab43", 10),
-("2de2feec-a12a-4f16-9226-af752acdab43", 8),
-("2de1feec-a12a-4f26-9226-af752acdab44", 8),
-("2de1feec-a12a-4f26-9226-af752acdab44", 4),
-("2de1feec-a12a-4f26-9226-af752acdab44", 12);
+insert into business_sectors (business_sector) values
+('Services financiers'),
+('Santé et sciences de la vie'),
+('Énergie'),
+('Industrie manufacturière'),
+('Commerce de détail et de gros'),
+('Alimentation et boissons'),
+('Transport et logistique'),
+('Immobilier'),
+('Éducation'),
+('Divertissement et médias'),
+('Services professionnels'),
+('Tourisme et hôtellerie'),
+('Industrie extractive'),
+('Télécommunications'),
+('Environnement et durabilité'),
+('Sport et loisirs'),
+('Mode et habillement'),
+('Biens de consommation'),
+('Services gouvernementaux et publics'),
+('Technologie de l''information et des communications (TIC)');
 
-insert into experiences (candidate_id, job_title, company, experiences) values
-(
-  "2de1feec-a19a-4f16-9226-af782acdab42",
-  "Développeur back-end",
-  "Amazon",
-  "Missions : j'ai tout fait"
-),
-(
-  "2de1feec-a19a-4f16-9226-af782acdab42",
-  "Développeur fullstack",
-  "Ebay",
-  "Missions : la aussi j'ai tout fait"
-),
-(
-  "2de1feec-a19a-4f16-9226-af752acdab43",
-  "Développeur back-end",
-  "Google",
-  "Missions : j'ai tout fait"
-),
-(
-  "2de1feec-a19a-4f16-9226-af752acdab43",
-  "Développeur fullstack",
-  "Leclerc",
-  "Missions : la aussi j'ai tout fait"
-),
-(
-  "2de1feec-a12a-4f16-9226-af752acdab44",
-  "Développeur back-end",
-  "Lycos",
-  "Missions : j'ai tout fait"
-),
-(
-  "2de1feec-a12a-4f16-9226-af752acdab44",
-  "Développeur fullstack",
-  "Tinder",
-  "Missions : la aussi j'ai tout fait"
-),
-(
-  "2de1feec-a12a-4f16-9226-af752acdab44",
-  "Développeur back-end",
-  "AOL",
-  "Missions : j'ai tout fait"
-),
-(
-  "2de2feec-a12a-4f16-9226-af752acdab45",
-  "Développeur fullstack",
-  "Free",
-  "Missions : la aussi j'ai tout fait"
-),
-(
-  "2de1feec-a12a-4f26-9226-af752acdab46",
-  "Développeur back-end",
-  "Orange",
-  "Missions : j'ai tout fait"
-),
-(
-  "2de1feec-a12a-4f26-9226-af752acdab46",
-  "Développeur fullstack",
-  "Peugeot",
-  "Missions : la aussi j'ai tout fait"
-);
-
--- CREATION ENTREPRISES
 insert into enterprise (id, name, siret, description, email, password, department_id, legal_status_id, business_sectors_id) values
 (
   "2de1feec-a19a-4f16-9226-af682acdab42",
-  "Le Bon Coin",
+  "NexToys",
   94879165200019,
-  "Plateforme de vente d'objets d'occasion",
+  "Plateforme de vente de jouets en ligne",
   "entreprise@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   92,
   1,
   5
 ),
 (
   "2de1feec-a19a-4f11-9226-af682acdab43",
-  "CDiscount",
+  "TechMart",
   9487916210019,
-  "Plateforme de vente d'objets neufs",
-  "cdiscount@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "Plateforme de vente de produits électroniques en ligne",
+  "techmart@gmail.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   40,
   1,
   5
 ),
 (
   "2de1feec-a19a-4f16-9226-af686acdab44",
-  "Google",
+  "InnovateNow",
   9441916210019,
-  "Moteur de recherche",
-  "recrutement@google.fr",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "Entreprise spécialisée dans l'innovation technologique",
+  "recrutement@innovatenow.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   71,
   1,
   5
 ),
 (
   "2de1feec-a19a-4f16-9226-af676acdab45",
-  "BlaBlaCar",
+  "RideShare",
   9441916212219,
-  "Plateforme de covoiturage",
-  "recrutement@blablacar.fr",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "Plateforme de covoiturage urbain",
+  "recrutement@rideshare.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   12,
   1,
   5
 ),
 (
   "2df1feec-a19a-4f16-9226-af676acdab46",
-  "Orange",
+  "ConnectTel",
   9441917212219,
-  "Entreprise de téléphonie",
-  "recrutement@orange.fr",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "Entreprise de télécommunications et de services mobiles",
+  "recrutement@connecttel.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   69,
   1,
   5
@@ -667,15 +454,217 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 insert into missions (missions, enterprise_id) values
 ("Développer une application mobile de gestion des tâches pour la plateforme Android", "2de1feec-a19a-4f16-9226-af682acdab42"),
 ("Créer un système de suivi des stocks et des commandes pour une entreprise de commerce électronique", "2de1feec-a19a-4f16-9226-af682acdab42"),
-
 ("Concevoir et mettre en œuvre un algorithme de recommandation personnalisée pour une plateforme de streaming vidéo", "2de1feec-a19a-4f11-9226-af682acdab43"),
 ("Effectuer une analyse de données approfondie pour identifier les tendances de marché pour une entreprise de recherche marketing", "2de1feec-a19a-4f11-9226-af682acdab43"),
-
 ("Développer un site Web interactif et convivial pour une start-up de commerce électronique", "2de1feec-a19a-4f16-9226-af686acdab44"),
 ("Concevoir et implémenter un système de gestion de contenu robuste pour une agence de marketing numérique", "2de1feec-a19a-4f16-9226-af686acdab44"),
-
 ("Créer une application de suivi de fitness personnalisée pour une entreprise de santé et de bien-être", "2de1feec-a19a-4f16-9226-af676acdab45"),
 ("Développer un système de gestion de la relation client (CRM) sur mesure pour une société de conseil en gestion", "2de1feec-a19a-4f16-9226-af676acdab45"),
-
 ("Concevoir et mettre en œuvre un algorithme d''apprentissage automatique pour une entreprise de technologie", "2df1feec-a19a-4f16-9226-af676acdab46"),
 ("Développer une application de planification financière pour une société de services financiers", "2df1feec-a19a-4f16-9226-af676acdab46");
+
+insert into candidate (id, firstname, lastname, email, password, department_id) values
+(
+  "2de1feec-a19a-4f16-9226-af782acdab42",
+  "Lucas",
+  "Garcia",
+  "candidate@gmail.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  32
+),
+(
+  "2de1feec-a19a-4f16-9226-af752acdab43",
+  "Emma",
+  "Roux",
+  "emma.roux@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  13
+),
+(
+  "2de1feec-a12a-4f16-9226-af752acdab44",
+  "Thomas",
+  "Lefevre",
+  "thomas.lefevre@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  45
+),
+(
+  "2de2feec-a12a-4f16-9226-af752acdab45",
+  "Julie",
+  "Martin",
+  "julie.martin@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  4
+),
+(
+  "2de1feec-a12a-4f26-9226-af752acdab46",
+  "Antoine",
+  "Dubois",
+  "antoine.dubois@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  75
+);
+
+insert into levels (level) values
+("Junior"),
+("Mid-level"),
+("Senior");
+
+insert into soft_skills (soft_skill) values
+("Communication"),
+("Résolution de problème"),
+("Pensée critique"),
+("Travail d'équipe"),
+("Adaptabilité"),
+("Gestion du temps"),
+("Créativité"),
+("Empathie"),
+("Gestion du stresse"),
+("Curiosité"),
+("Autonomie"),
+("Leadership"),
+("Capacité d'écoute"),
+("Persévérance");
+
+insert into resume (id, biography, appetences_id, candidate_id, contract_types_id, work_rhythms_id, level_id) values
+(
+  "2de1feec-a19a-4f16-9226-af782acdab47",
+  "Bonjour, je suis Lucas Garcia. Passionné d'informatique, j'aime coder des applications web et découvrir de nouveaux langages de programmation.",
+  1,
+  "2de1feec-a19a-4f16-9226-af782acdab42",
+  1,
+  1,
+  2
+),
+(
+  "2de1feec-a19a-4f16-9226-af752acdab46",
+  "Salut, je suis Emma Roux. Je m'intéresse particulièrement à la sécurité informatique et aux systèmes distribués.",
+  3,
+  "2de1feec-a19a-4f16-9226-af752acdab43",
+  2,
+  2,
+  3
+),
+(
+  "2de1feec-a12a-4f16-9226-af752acdab45",
+  "Hello, je suis Thomas Lefevre. Mon domaine de prédilection est le développement mobile et les applications Android.",
+  2,
+  "2de1feec-a12a-4f16-9226-af752acdab44",
+  1,
+  3,
+  1
+),
+(
+  "2de2feec-a12a-4f16-9226-af752acdab43",
+  "Hi, je suis Julie Martin. Je suis passionnée par l'intelligence artificielle et les algorithmes d'apprentissage automatique.",
+  3,
+  "2de2feec-a12a-4f16-9226-af752acdab45",
+  3,
+  2,
+  1
+),
+(
+  "2de1feec-a12a-4f26-9226-af752acdab44",
+  "Salutations, je suis Antoine Dubois. J'aime explorer le monde du développement logiciel et contribuer à des projets open source.",
+  1,
+  "2de1feec-a12a-4f26-9226-af752acdab46",
+  2,
+  1,
+  2
+);
+
+insert into resume_has_programming_languages (resume_id, programming_languages_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", 5),
+("2de1feec-a19a-4f16-9226-af782acdab47", 7),
+("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 1),
+("2de1feec-a19a-4f16-9226-af752acdab46", 10),
+("2de1feec-a19a-4f16-9226-af752acdab46", 17),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6),
+("2de1feec-a12a-4f16-9226-af752acdab45", 17),
+("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 9),
+("2de2feec-a12a-4f16-9226-af752acdab43", 10),
+("2de2feec-a12a-4f16-9226-af752acdab43", 11),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8),
+("2de1feec-a12a-4f26-9226-af752acdab44", 6),
+("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+
+insert into resume_has_soft_skills (resume_id, soft_skills_id) values
+("2de1feec-a19a-4f16-9226-af782acdab47", 5),
+("2de1feec-a19a-4f16-9226-af782acdab47", 2),
+("2de1feec-a19a-4f16-9226-af782acdab47", 4),
+("2de1feec-a19a-4f16-9226-af752acdab46", 3),
+("2de1feec-a19a-4f16-9226-af752acdab46", 10),
+("2de1feec-a19a-4f16-9226-af752acdab46", 14),
+("2de1feec-a12a-4f16-9226-af752acdab45", 6),
+("2de1feec-a12a-4f16-9226-af752acdab45", 10),
+("2de1feec-a12a-4f16-9226-af752acdab45", 12),
+("2de2feec-a12a-4f16-9226-af752acdab43", 6),
+("2de2feec-a12a-4f16-9226-af752acdab43", 10),
+("2de2feec-a12a-4f16-9226-af752acdab43", 8),
+("2de1feec-a12a-4f26-9226-af752acdab44", 8),
+("2de1feec-a12a-4f26-9226-af752acdab44", 4),
+("2de1feec-a12a-4f26-9226-af752acdab44", 12);
+
+insert into experiences (candidate_id, job_title, company, experiences) values
+(
+  "2de1feec-a19a-4f16-9226-af782acdab42",
+  "Développeur back-end",
+  "Amazon",
+  "Conception et développement de services web sécurisés en utilisant Node.js et Express. Intégration de bases de données relationnelles et non relationnelles pour optimiser les performances et la scalabilité."
+),
+(
+  "2de1feec-a19a-4f16-9226-af782acdab42",
+  "Développeur fullstack",
+  "Ebay",
+  "Création d'une application e-commerce complète en utilisant React pour le front-end et Node.js pour le back-end. Gestion des flux de données, des authentifications et des paiements en ligne."
+),
+(
+  "2de1feec-a19a-4f16-9226-af752acdab43",
+  "Développeur back-end",
+  "Google",
+  "Développement d'APIs robustes et évolutives en utilisant Python et Django. Optimisation des performances et de la sécurité des applications web à grande échelle."
+),
+(
+  "2de1feec-a19a-4f16-9226-af752acdab43",
+  "Développeur fullstack",
+  "Leclerc",
+  "Implémentation de fonctionnalités front-end avancées en utilisant Angular et développement de services back-end RESTful avec Java et Spring Boot. Collaboration étroite avec les équipes de conception pour assurer une expérience utilisateur optimale."
+),
+(
+  "2de1feec-a12a-4f16-9226-af752acdab44",
+  "Développeur back-end",
+  "Lycos",
+  "Création d'applications web évolutives en utilisant Ruby on Rails. Conception et développement de bases de données performantes et scalables pour répondre aux besoins de l'entreprise."
+),
+(
+  "2de1feec-a12a-4f16-9226-af752acdab44",
+  "Développeur fullstack",
+  "Tinder",
+  "Développement de fonctionnalités innovantes pour une application de rencontres populaire en utilisant React Native pour le front-end mobile et Node.js pour le back-end. Intégration de services tiers et optimisation des performances."
+),
+(
+  "2de1feec-a12a-4f16-9226-af752acdab44",
+  "Développeur back-end",
+  "AOL",
+  "Conception et développement d'applications web haute disponibilité en utilisant PHP et Laravel. Gestion des bases de données MySQL et mise en place de stratégies de sauvegarde et de récupération des données."
+),
+(
+  "2de2feec-a12a-4f16-9226-af752acdab45",
+  "Développeur fullstack",
+  "Free",
+  "Développement d'une plateforme de gestion de contenu personnalisable en utilisant Vue.js pour le front-end et Node.js avec MongoDB pour le back-end. Mise en œuvre de fonctionnalités collaboratives et de gestion des droits d'accès."
+),
+(
+  "2de1feec-a12a-4f26-9226-af752acdab46",
+  "Développeur back-end",
+  "Orange",
+  "Création et maintenance de services web critiques pour les opérations internes en utilisant Java et Spring. Intégration de solutions de sécurité avancées pour protéger les données sensibles de l'entreprise."
+),
+(
+  "2de1feec-a12a-4f26-9226-af752acdab46",
+  "Développeur fullstack",
+  "Peugeot",
+  "Développement d'applications de gestion de la chaîne logistique en utilisant React pour le front-end et Java avec Spring Boot pour le back-end. Collaboration avec les équipes métier pour identifier et résoudre les problèmes opérationnels."
+);
