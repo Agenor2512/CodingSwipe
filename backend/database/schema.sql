@@ -468,7 +468,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "2de1feec-a19a-4f16-9226-af782acdab42",
   "Lucas",
   "Garcia",
-  "lucas.garcia@example.com",
+  "candidate@gmail.com",
   "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
   32
 ),
