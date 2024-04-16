@@ -29,9 +29,8 @@ function ModifyButton() {
 
   const fetchDescription = () => {
     readDescriptionById(id).then((response) => {
-      const { description } = response; // Accédez à la propriété "description" de la réponse
-      setContent(description); // Mettez à jour l'état avec la valeur de "description"
-      console.info(description);
+      const { description } = response;
+      setContent(description);
     });
   };
 

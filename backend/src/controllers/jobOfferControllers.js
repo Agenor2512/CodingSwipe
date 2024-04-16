@@ -38,37 +38,6 @@ const readById = async (req, res, next) => {
   }
 };
 
-const readDescription = async (req, res, next) => {
-  const { id } = req.params;
-
-  try {
-    const description = await tables.job_offer.readDescriptionById(id);
-    res.json({
-      description: description.description,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-const updateDescription = async (req, res, next) => {
-  const jobOfferInfos = {
-    description: req.body.description,
-    id: req.params.id,
-  };
-
-  try {
-    const result = await tables.job_offer.updateDescriptionById(jobOfferInfos);
-    if (result.affectedRows === 0) {
-      res.status(404).json({ msg: "offre introuvable" });
-    } else {
-      res.json({ msg: "offre modifiée avec succès" });
-    }
-  } catch (error) {
-    next(error);
-  }
-};
-
 const readSalary = async (req, res, next) => {
   const { id } = req.params;
 
@@ -103,8 +72,6 @@ const updateSalary = async (req, res, next) => {
 module.exports = {
   readById,
   browseRandom,
-  readDescription,
-  updateDescription,
   readSalary,
   updateSalary,
 };

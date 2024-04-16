@@ -22,7 +22,7 @@ class JobOfferManager extends AbstractManager {
 
   async readById(id) {
     const [rows] = await this.database.query(
-      `select jb.id jobOfferId, e.name, jb.description, jb.salary, a.appetence, ct.contract_type, d.department, wr.work_rhythm from ${this.table} jb
+      `select jb.id jobOfferId, e.name, e.description, jb.salary, a.appetence, ct.contract_type, d.department, wr.work_rhythm from ${this.table} jb
       inner join enterprise e on jb.enterprise_id = e.id
       inner join appetences a on jb.appetences_id = a.id
       inner join contract_types ct on jb.contract_types_id = ct.id
@@ -32,22 +32,6 @@ class JobOfferManager extends AbstractManager {
       [id]
     );
     return rows[0];
-  }
-
-  async readDescriptionById(id) {
-    const [rows] = await this.database.query(
-      `select description from ${this.table} where enterprise_id = ?`,
-      [id]
-    );
-    return rows[0];
-  }
-
-  async updateDescriptionById(jobOffer) {
-    const [rows] = await this.database.query(
-      `update ${this.table} set description = ? where enterprise_id = ?`,
-      [jobOffer.description, jobOffer.id]
-    );
-    return rows;
   }
 
   async readSalaryById(id) {

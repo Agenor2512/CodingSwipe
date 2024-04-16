@@ -50,6 +50,22 @@ class EnterpriseManager extends AbstractManager {
     );
     return rows[0];
   }
+
+  async readDescriptionById(id) {
+    const [rows] = await this.database.query(
+      `select description from ${this.table} where id = ?`,
+      [id]
+    );
+    return rows[0];
+  }
+
+  async updateDescriptionById(jobOffer) {
+    const [rows] = await this.database.query(
+      `update ${this.table} set description = ? where id = ?`,
+      [jobOffer.description, jobOffer.id]
+    );
+    return rows;
+  }
 }
 
 module.exports = EnterpriseManager;
