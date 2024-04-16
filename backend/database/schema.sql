@@ -346,7 +346,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   94879165200019,
   "Plateforme de vente de jouets en ligne",
   "entreprise@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   92,
   1,
   5
@@ -357,7 +357,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   9487916210019,
   "Plateforme de vente de produits électroniques en ligne",
   "techmart@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   40,
   1,
   5
@@ -368,7 +368,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   9441916210019,
   "Entreprise spécialisée dans l'innovation technologique",
   "recrutement@innovatenow.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   71,
   1,
   5
@@ -379,7 +379,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   9441916212219,
   "Plateforme de covoiturage urbain",
   "recrutement@rideshare.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   12,
   1,
   5
@@ -390,7 +390,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   9441917212219,
   "Entreprise de télécommunications et de services mobiles",
   "recrutement@connecttel.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   69,
   1,
   5
@@ -469,7 +469,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "Lucas",
   "Garcia",
   "candidate@gmail.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   32
 ),
 (
@@ -477,7 +477,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "Emma",
   "Roux",
   "emma.roux@example.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   13
 ),
 (
@@ -485,7 +485,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "Thomas",
   "Lefevre",
   "thomas.lefevre@example.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   45
 ),
 (
@@ -493,7 +493,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "Julie",
   "Martin",
   "julie.martin@example.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   4
 ),
 (
@@ -501,7 +501,7 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "Antoine",
   "Dubois",
   "antoine.dubois@example.com",
-  "$argon2id$v=19$m=19456,t=2,p=1$ZH23KqlzAUfjnnUDS2Nw/w$y3OTxkwuiuOu8uRUFRpCltURCrvcBR8vxJR31S0ZdvQ",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   75
 );
 
