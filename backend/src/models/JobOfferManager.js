@@ -49,6 +49,22 @@ class JobOfferManager extends AbstractManager {
     );
     return rows;
   }
+
+  async readSalaryById(id) {
+    const [rows] = await this.database.query(
+      `select salary from ${this.table} where enterprise_id = ?`,
+      [id]
+    );
+    return rows[0];
+  }
+
+  async updateSalaryById(jobOffer) {
+    const [rows] = await this.database.query(
+      `update ${this.table} set salary = ? where enterprise_id = ?`,
+      [jobOffer.salary, jobOffer.id]
+    );
+    return rows;
+  }
 }
 
 module.exports = JobOfferManager;

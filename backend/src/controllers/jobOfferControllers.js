@@ -69,9 +69,42 @@ const updateDescription = async (req, res, next) => {
   }
 };
 
+const readSalary = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const salary = await tables.job_offer.readSalaryById(id);
+    res.json({
+      salary: salary.salary,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateSalary = async (req, res, next) => {
+  const jobOfferInfos = {
+    salary: req.body.salary,
+    id: req.params.id,
+  };
+
+  try {
+    const result = await tables.job_offer.updateSalaryById(jobOfferInfos);
+    if (result.affectedRows === 0) {
+      res.status(404).json({ msg: "offre introuvable" });
+    } else {
+      res.json({ msg: "offre modifiée avec succès" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   readById,
   browseRandom,
   readDescription,
   updateDescription,
+  readSalary,
+  updateSalary,
 };

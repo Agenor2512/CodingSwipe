@@ -61,22 +61,26 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
+router.get("/resumes", resumeControllers.browseRandom);
+router.get("/resumes/:id", resumeControllers.readById);
+router.get("/joboffers", jobOfferControllers.browseRandom);
+router.get("/joboffers/:id", jobOfferControllers.readById);
+
+router.get("/biographies/:id", resumeControllers.readBiography);
+router.put("/biographies/:id", resumeControllers.updateBiography);
+router.get("/descriptions/:id", jobOfferControllers.readDescription);
+router.put("/descriptions/:id", jobOfferControllers.updateDescription);
+router.get("/wages/:id", jobOfferControllers.readSalary);
+router.put("/wages/:id", jobOfferControllers.updateSalary);
+
 router.get("/missions/:id", missionControllers.readById);
 router.post("/missions", missionControllers.add);
 router.delete("/missions/:id", missionControllers.remove);
 router.get("/experiences/:id", experienceControllers.readById);
 router.post("/experiences", experienceControllers.add);
 router.delete("/experiences/:id", experienceControllers.remove);
-router.post("/softskills", resumeHasSoftSkillsControlers.add);
 
-router.get("/resumes", resumeControllers.browseRandom);
-router.get("/resumes/:id", resumeControllers.readById);
-router.get("/joboffers", jobOfferControllers.browseRandom);
-router.get("/joboffers/:id", jobOfferControllers.readById);
-router.get("/biographies/:id", resumeControllers.readBiography);
-router.put("/biographies/:id", resumeControllers.updateBiography);
-router.get("/descriptions/:id", jobOfferControllers.readDescription);
-router.put("/descriptions/:id", jobOfferControllers.updateDescription);
+router.post("/softskills", resumeHasSoftSkillsControlers.add);
 
 // Existing data part for Offer/Resume
 router.get("/legalstatus", legalStatusControllers.browse);
