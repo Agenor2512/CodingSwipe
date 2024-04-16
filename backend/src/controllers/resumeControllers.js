@@ -3,19 +3,17 @@ const tables = require("../tables");
 const browseRandom = async (req, res, next) => {
   try {
     const candidate = await tables.candidate.readRandom();
-    const resume = await tables.resume.readById(candidate[0].id);
+    const resume = await tables.resume.readById(candidate.id);
     const languages = await tables.resume_has_programming_languages.readById(
-      candidate[0].id
+      candidate.id
     );
-    const experience = await tables.experiences.readById(candidate[0].id);
+    const experiences = await tables.experiences.readById(candidate.id);
 
-    res.json([
-      {
-        infos: resume,
-        langues: languages,
-        experience,
-      },
-    ]);
+    res.json({
+      infos: resume,
+      programmingLanguages: languages,
+      experiences,
+    });
   } catch (error) {
     next(error);
   }
@@ -26,16 +24,16 @@ const readById = async (req, res, next) => {
     const { id } = req.params;
     const candidate = await tables.candidate.readById(id);
     const resume = await tables.resume.readById(candidate.id);
-    const biography = await tables.resume.readBiographyById(id);
     const experience = await tables.experiences.readById(id);
+    const softSkills = await tables.resume_has_soft_skills.readById(id);
     const languages = await tables.resume_has_programming_languages.readById(
       candidate.id
     );
     res.json({
       infos: resume,
-      langues: languages,
-      biography: biography[0].biography,
+      programmingLanguages: languages,
       experience,
+      softSkills,
     });
   } catch (error) {
     next(error);
@@ -49,11 +47,9 @@ const readBiography = async (req, res, next) => {
     const biography = await tables.resume.readBiographyById(id);
 
     console.info("BIOGRAPHY", biography);
-    res.json([
-      {
-        biography: biography[0].biography,
-      },
-    ]);
+    res.json({
+      biography: biography.biography,
+    });
   } catch (error) {
     next(error);
   }
@@ -76,23 +72,6 @@ const updateBiography = async (req, res, next) => {
     next(err);
   }
 };
-
-//
-// const readRandom = async (req, res, next) => {
-//   try {
-//     const candidate = await tables.candidate.readRandom();
-//     const resume = await tables.resume.readById(candidate[0].id);
-//     const languages = await tables.resume_has_programming_languages.readById(candidate[0].id);
-//     res.json([
-//       {
-//         infos: resume,
-//         langues: languages,
-//       },
-//     ]);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 module.exports = {
   readById,

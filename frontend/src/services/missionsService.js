@@ -7,28 +7,26 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export const readExperienceById = (id) => {
+export const readMissionsById = (id) => {
   return client
-    .get(`/experiences/${id}`)
+    .get(`/missions/${id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-export const addExperiences = ({ id, job, company, experienceDescription }) => {
+export const addMissions = ({ id, missionDescription }) => {
   return client
-    .post("/experiences", {
-      candidateId: id,
-      jobTitle: job,
-      company,
-      experience: experienceDescription,
+    .post("/missions", {
+      enterpriseId: id,
+      mission: missionDescription,
     })
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 };
 
-export const destroyExperience = (id) => {
+export const destroyMission = (id) => {
   return client
-    .delete(`/experiences/${id}`)
+    .delete(`/missions/${id}`)
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 };

@@ -23,7 +23,7 @@ class ResumeManager extends AbstractManager {
 
   async readById(id) {
     const [rows] = await this.database.query(
-      `select c.firstname, c.lastname, c.id, r.biography, a.appetence, ct.contract_type, d.id, wr.work_rhythm from ${this.table} r
+      `select r.id resumeId, c.firstname, c.lastname, r.biography, a.appetence, ct.contract_type, d.department, wr.work_rhythm from ${this.table} r
       inner join candidate c on r.candidate_id = c.id
       inner join appetences a on r.appetences_id = a.id
       inner join contract_types ct on r.contract_types_id = ct.id
@@ -33,7 +33,7 @@ class ResumeManager extends AbstractManager {
       where c.id = ?`,
       [id]
     );
-    return rows;
+    return rows[0];
   }
 
   async readBiographyById(id) {
@@ -41,7 +41,7 @@ class ResumeManager extends AbstractManager {
       `select biography from ${this.table} where candidate_id = ?`,
       [id]
     );
-    return rows;
+    return rows[0];
   }
 
   async updateBiographyById(resume) {

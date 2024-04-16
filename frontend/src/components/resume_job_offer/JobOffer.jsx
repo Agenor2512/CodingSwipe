@@ -26,20 +26,20 @@ function JobOffer() {
   const [jobOffer, setJobOffer] = useState({});
 
   useEffect(() => {
-    readAllProgrammingLanguages().then((resumeProgrammingLanguages) =>
-      setProgrammingLanguages(resumeProgrammingLanguages)
+    readAllProgrammingLanguages().then((jobOfferProgrammingLanguages) =>
+      setProgrammingLanguages(jobOfferProgrammingLanguages)
     );
 
-    readAllContractTypes().then((resumeContractTypes) =>
-      setContractTypes(resumeContractTypes)
+    readAllContractTypes().then((jobOfferContractTypes) =>
+      setContractTypes(jobOfferContractTypes)
     );
 
-    readAllWorkRhythms().then((resumeWorkRhythms) =>
-      setWorkRhythms(resumeWorkRhythms)
+    readAllWorkRhythms().then((jobOfferWorkRhythms) =>
+      setWorkRhythms(jobOfferWorkRhythms)
     );
 
-    readAllAppetences().then((resumeAppetences) =>
-      setAppetences(resumeAppetences)
+    readAllAppetences().then((jobOfferAppetences) =>
+      setAppetences(jobOfferAppetences)
     );
 
     readOfferById(loginUser.id).then((enterpriseOffer) =>
@@ -63,7 +63,9 @@ function JobOffer() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui sommes-nous ?</h2>
-          <ModifyButton />
+          {jobOffer.infos && jobOffer.infos && (
+            <ModifyButton defaultDescription={jobOffer.infos.description} />
+          )}
         </div>
 
         <section className="work_proposal_container">
@@ -82,9 +84,19 @@ function JobOffer() {
                   <input
                     type="radio"
                     id="radio"
-                    checked={
+                    defaultChecked={
                       jobOffer.infos &&
-                      jobOffer.infos.contract_types_id === contractType.id
+                      jobOffer.infos.contract_type ===
+                        contractType.contract_type
+                    }
+                    onChange={() =>
+                      setJobOffer({
+                        ...jobOffer,
+                        infos: {
+                          ...jobOffer.infos,
+                          contractType: contractType.contract_type,
+                        },
+                      })
                     }
                   />
                   <label htmlFor="radio">{contractType.contract_type}</label>
@@ -106,7 +118,7 @@ function JobOffer() {
                     id="radio"
                     checked={
                       jobOffer.infos &&
-                      jobOffer.infos.work_rhythms_id === workRhythm.id
+                      jobOffer.infos.work_rhythm === workRhythm.work_rhythm
                     }
                   />
                   <label htmlFor="radio">{workRhythm.work_rhythm}</label>
@@ -136,9 +148,11 @@ function JobOffer() {
                 <input
                   type="checkbox"
                   id="checkbox"
-                  checked={
-                    jobOffer.langues &&
-                    jobOffer.langues.includes(programmingLanguage.id)
+                  defaultChecked={
+                    jobOffer.programmingLanguages &&
+                    jobOffer.programmingLanguages
+                      .map((language) => language.id)
+                      .includes(programmingLanguage.id)
                   }
                 />
                 <label htmlFor="checkbox">

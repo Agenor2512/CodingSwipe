@@ -69,7 +69,9 @@ function Resume() {
       <div className="modify_display_desktop">
         <div>
           <h2>Qui suis-je ?</h2>
-          <ModifyButton />
+          {resume.infos && resume.infos && (
+            <ModifyButton defaultDescription={resume.infos.biography} />
+          )}
         </div>
 
         <section className="research_and_workplace_container">
@@ -88,9 +90,18 @@ function Resume() {
                   <input
                     type="radio"
                     id="radio"
-                    checked={
+                    defaultChecked={
                       resume.infos &&
-                      resume.infos.contract_types_id === contractType.id
+                      resume.infos.contract_type === contractType.contract_type
+                    }
+                    onChange={() =>
+                      setResume({
+                        ...resume,
+                        infos: {
+                          ...resume.infos,
+                          contractType: contractType.contract_type,
+                        },
+                      })
                     }
                   />
                   <label htmlFor="radio">{contractType.contract_type}</label>
@@ -112,7 +123,7 @@ function Resume() {
                     id="radio"
                     checked={
                       resume.infos &&
-                      resume.infos.work_rhythms_id === workRhythm.id
+                      resume.infos.work_rhythm === workRhythm.work_rhythm
                     }
                   />
                   <label htmlFor="radio">{workRhythm.work_rhythm}</label>
@@ -144,9 +155,11 @@ function Resume() {
                 <input
                   type="checkbox"
                   id="checkbox"
-                  checked={
-                    resume.langues &&
-                    resume.langues.includes(programmingLanguage.id)
+                  defaultChecked={
+                    resume.programmingLanguages &&
+                    resume.programmingLanguages
+                      .map((language) => language.id)
+                      .includes(programmingLanguage.id)
                   }
                 />
                 <label htmlFor="checkbox">

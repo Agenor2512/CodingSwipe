@@ -3,8 +3,8 @@ const tables = require("../tables");
 const readById = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const experience = await tables.experiences.readById(id);
-    res.json(experience);
+    const mission = await tables.missions.readById(id);
+    res.json(mission);
   } catch (err) {
     next(err);
   }
@@ -12,16 +12,14 @@ const readById = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const infos = {
-    candidateId: req.body.candidateId,
-    jobTitle: req.body.jobTitle,
-    company: req.body.company,
-    experience: req.body.experience,
+    enterpriseId: req.body.enterpriseId,
+    mission: req.body.mission,
   };
 
   console.info("INFOS", infos);
   try {
-    const experience = await tables.experiences.create(infos);
-    res.status(201).json({ experience });
+    const mission = await tables.missions.create(infos);
+    res.status(201).json({ mission });
   } catch (err) {
     next(err);
   }
@@ -31,11 +29,11 @@ const remove = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const result = await tables.experiences.delete(id);
+    const result = await tables.missions.delete(id);
     if (result.affectedRows === 0) {
-      res.status(404).json({ msg: "Expérience introuvable" });
+      res.status(404).json({ msg: "Mission introuvable" });
     } else {
-      res.json({ msg: "Expérience supprimée avec succès" });
+      res.json({ msg: "Mission supprimée avec succès" });
     }
   } catch (err) {
     next(err);

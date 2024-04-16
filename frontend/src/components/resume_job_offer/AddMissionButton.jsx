@@ -1,28 +1,59 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+
+import {
+  readMissionsById,
+  addMissions,
+  destroyMission,
+} from "../../services/missionsService";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/addMissionButton.css";
 
 function AddMissionButton() {
+  const {
+    loginUser: { id },
+  } = useContext(LoginUserContext);
+
   const [modal, setModal] = useState(false);
-  const [enterpriseMission, setEnterpriseMission] = useState("");
-  const [experiences, setExperiences] = useState([]);
+  const [missionDescription, setMissionDescription] = useState([]);
+  const [missions, setMissions] = useState([]);
 
   const handleModal = () => setModal(true);
   const handleClose = () => setModal(false);
 
-  const handleAddEnterpriseExperience = () => {
-    const newExperience = {
-      enterpriseMission,
-    };
-    setExperiences([...experiences, newExperience]);
-    setEnterpriseMission("");
-    handleClose();
+  const fetchMission = () => {
+    readMissionsById(id).then((enterpriseMissions) =>
+      setMissions(enterpriseMissions)
+    );
   };
+
+  const handleAddEnterpriseMission = () => {
+    addMissions({ id, missionDescription })
+      .then(() => handleClose())
+      .then(() => fetchMission());
+  };
+
+  const handleDeleteExperience = (experienceId) => {
+    destroyMission(experienceId).then(() => fetchMission());
+  };
+
+  useEffect(() => {
+    fetchMission();
+  }, []);
 
   return (
     <section className="enterprise_modal">
-      {experiences.map((experience) => (
-        <div className="experience">{experience.enterpriseMission}</div>
+      {missions.map((mission) => (
+        <ul key={mission.id}>
+          <li className="experience">{mission.missions}</li>
+          <button
+            type="button"
+            onClick={() => handleDeleteExperience(mission.id)}
+          >
+            &times;
+          </button>
+        </ul>
       ))}
       <button
         type="button"
@@ -43,15 +74,18 @@ function AddMissionButton() {
                 <label htmlFor="description">Description de la mission</label>
                 <textarea
                   id="description"
+                  name="description"
                   rows="3"
-                  value={enterpriseMission}
-                  onChange={(event) => setEnterpriseMission(event.target.value)}
+                  value={missionDescription}
+                  onChange={(event) =>
+                    setMissionDescription(event.target.value)
+                  }
                 />
               </div>
               <button
                 className="add_enterprise_button"
                 type="button"
-                onClick={handleAddEnterpriseExperience}
+                onClick={handleAddEnterpriseMission}
               >
                 Ajouter
               </button>

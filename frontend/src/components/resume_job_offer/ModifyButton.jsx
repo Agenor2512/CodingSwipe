@@ -1,33 +1,68 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
-import modifyBiography from "../../services/biographiesService";
+import {
+  readBiographyById,
+  modifyBiography,
+} from "../../services/biographiesService";
+
+import {
+  readDescriptionById,
+  modifyDescription,
+} from "../../services/descriptionsService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/modifyButton.css";
 
-function ModifyButton({ candidate }) {
+function ModifyButton() {
   const {
     loginUser: { id, role },
   } = useContext(LoginUserContext);
 
-  const [description, setDescription] = useState(candidate.biography);
+  const [content, setContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+
+  const fetchBiography = () => {
+    readBiographyById(id).then(({ biography }) => setContent(biography));
+  };
+
+  const fetchDescription = () => {
+    readDescriptionById(id).then((response) => {
+      const { description } = response;
+      setContent(description);
+    });
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
-    setDescription(description);
   };
 
   const handleSave = () => {
     setIsEditing(false);
-    modifyBiography({ id, role, description });
+
+    if (role === "candidate") {
+      modifyBiography(id, {
+        biography: content,
+      }).then(() => fetchBiography());
+    } else {
+      modifyDescription(id, { description: content }).then(() =>
+        fetchDescription()
+      );
+    }
   };
 
   const handleChange = (event) => {
-    setDescription(event.target.value);
+    setContent(event.target.value);
   };
+
+  useEffect(() => {
+    if (role === "candidate") {
+      fetchBiography();
+    } else {
+      fetchDescription();
+    }
+  }, []);
 
   return (
     <div>
@@ -35,7 +70,7 @@ function ModifyButton({ candidate }) {
         <>
           <textarea
             type="text"
-            value={description}
+            value={content}
             onChange={handleChange}
             placeholder="Dites-en plus sur vous"
           />
@@ -45,7 +80,7 @@ function ModifyButton({ candidate }) {
         </>
       ) : (
         <>
-          <p>{description}</p>
+          <p>{content}</p>
           <button type="button" onClick={handleEdit}>
             Modifier
           </button>

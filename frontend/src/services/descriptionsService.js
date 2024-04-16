@@ -7,16 +7,16 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export const readBiographyById = (id) => {
+export const readDescriptionById = (id) => {
   return client
-    .get(`/biographies/${id}`)
+    .get(`/descriptions/${id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-export const modifyBiography = (id, biography) => {
+export const modifyDescription = (id, description) => {
   return client
-    .put(`/biographies/${id}`, biography)
+    .put(`/descriptions/${id}`, description)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };

@@ -70,16 +70,14 @@ const readById = async (req, res, next) => {
   }
 };
 
-const readDescriptionById = async (req, res, next) => {
+const readDescription = async (req, res, next) => {
   const { id } = req.params;
 
   try {
     const description = await tables.enterprise.readDescriptionById(id);
-    res.json([
-      {
-        description: description[0].description,
-      },
-    ]);
+    res.json({
+      description: description.description,
+    });
   } catch (error) {
     next(error);
   }
@@ -98,8 +96,8 @@ const updateDescription = async (req, res, next) => {
     } else {
       res.json({ msg: "offre modifiée avec succès" });
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -107,6 +105,6 @@ module.exports = {
   add,
   browse,
   readById,
-  readDescriptionById,
+  readDescription,
   updateDescription,
 };

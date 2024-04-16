@@ -26,9 +26,11 @@ const readById = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const randomId = generateRandomUUID();
+  const candidateId = generateRandomUUID();
+  const resumeId = generateRandomUUID();
+
   const candidatesInfo = {
-    randomId,
+    candidateId,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
@@ -37,10 +39,10 @@ const add = async (req, res, next) => {
   };
 
   const resumeInfos = {
-    randomId,
+    resumeId,
     biography: req.body.biography,
     appetencesId: req.body.appetencesId,
-    candidateId: randomId,
+    candidateId,
     contractTypesId: req.body.contractTypesId,
     workRhythmsId: req.body.workRhythmsId,
     levelId: req.body.levelId,
@@ -53,10 +55,9 @@ const add = async (req, res, next) => {
     const { languages } = req.body;
     console.info(languages);
 
-    await Promise.all(
-      languages.map((language) =>
-        tables.resume_has_programming_languages.create(randomId, language)
-      )
+    await tables.resume_has_programming_languages.createMultiple(
+      resumeId,
+      languages
     );
 
     res.status(200).json({

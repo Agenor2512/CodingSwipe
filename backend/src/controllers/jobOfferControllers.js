@@ -1,36 +1,69 @@
 const tables = require("../tables");
 
-const readById = async (req, res, next) => {
+const browseRandom = async (req, res, next) => {
   try {
-    const enterprise = await tables.enterprise.readById(req.params.id);
+    const enterprise = await tables.enterprise.readRandom();
     const joboffer = await tables.job_offer.readById(enterprise.id);
+    const missions = await tables.missions.readById(enterprise.id);
     const languages = await tables.job_offer_has_programming_languages.readById(
       enterprise.id
     );
+    console.info(enterprise.id);
     res.json({
       infos: joboffer,
-      langues: languages,
+      programmingLanguages: languages,
+      missions,
     });
   } catch (error) {
     next(error);
   }
 };
 
-// TO DO : ajouter les missions
-const browseRandom = async (req, res, next) => {
+const readById = async (req, res, next) => {
   try {
-    const enterprise = await tables.enterprise.readRandom();
-    const joboffer = await tables.job_offer.readById(enterprise[0].id);
+    const { id } = req.params;
+    const enterprise = await tables.enterprise.readById(id);
+    const joboffer = await tables.job_offer.readById(enterprise.id);
+    const missions = await tables.missions.readById(enterprise.id);
     const languages = await tables.job_offer_has_programming_languages.readById(
-      enterprise[0].id
+      enterprise.id
     );
-    console.info(enterprise[0].id);
-    res.json([
-      {
-        infos: joboffer,
-        langues: languages,
-      },
-    ]);
+    res.json({
+      infos: joboffer,
+      programmingLanguages: languages,
+      missions,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const readSalary = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const salary = await tables.job_offer.readSalaryById(id);
+    res.json({
+      salary: salary.salary,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateSalary = async (req, res, next) => {
+  const jobOfferInfos = {
+    salary: req.body.salary,
+    id: req.params.id,
+  };
+
+  try {
+    const result = await tables.job_offer.updateSalaryById(jobOfferInfos);
+    if (result.affectedRows === 0) {
+      res.status(404).json({ msg: "offre introuvable" });
+    } else {
+      res.json({ msg: "offre modifiée avec succès" });
+    }
   } catch (error) {
     next(error);
   }
@@ -39,4 +72,6 @@ const browseRandom = async (req, res, next) => {
 module.exports = {
   readById,
   browseRandom,
+  readSalary,
+  updateSalary,
 };

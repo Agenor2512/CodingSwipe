@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import {
+  readExperienceById,
   addExperiences,
   destroyExperience,
 } from "../../services/experiencesService";
@@ -10,29 +11,50 @@ import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/addExperienceButton.css";
 
-function AddExperienceButton({ candidate }) {
+function AddExperienceButton() {
   const {
     loginUser: { id },
   } = useContext(LoginUserContext);
 
   const [modal, setModal] = useState(false);
   const [job, setJob] = useState("");
-  const [enterprise, setEnterprise] = useState("");
-  const [experienceDescription, setExperienceDescription] = useState("");
+  const [company, setCompany] = useState("");
+  const [experienceDescription, setExperienceDescription] = useState([]);
+  const [experiences, setExperiences] = useState([]);
 
   const handleModal = () => setModal(true);
   const handleClose = () => setModal(false);
 
+  const fetchExperience = () => {
+    readExperienceById(id).then((candidateExperiences) =>
+      setExperiences(candidateExperiences)
+    );
+  };
+
+  const handleAddExperience = () => {
+    addExperiences({ id, job, company, experienceDescription })
+      .then(() => handleClose())
+      .then(() => fetchExperience());
+  };
+
+  const handleDeleteExperience = (experienceId) => {
+    destroyExperience(experienceId).then(() => fetchExperience());
+  };
+
+  useEffect(() => {
+    fetchExperience();
+  }, []);
+
   return (
     <section>
-      {candidate.experience.map((experience) => (
-        <ul>
+      {experiences.map((experience) => (
+        <ul key={experience.id}>
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
-          <li>{experience.experiences}</li>
+          <li>{experience.experienceDescription}</li>
           <button
             type="button"
-            onClick={() => destroyExperience(experience.id)}
+            onClick={() => handleDeleteExperience(experience.id)}
           >
             &times;
           </button>
@@ -66,8 +88,8 @@ function AddExperienceButton({ candidate }) {
                   id="enterprise"
                   name="enterprise"
                   type="text"
-                  value={enterprise}
-                  onChange={(event) => setEnterprise(event.target.value)}
+                  value={company}
+                  onChange={(event) => setCompany(event.target.value)}
                 />
               </div>
               <div className="form_group">
@@ -82,12 +104,7 @@ function AddExperienceButton({ candidate }) {
                   }
                 />
               </div>
-              <button
-                type="button"
-                onClick={() =>
-                  addExperiences({ id, job, enterprise, experienceDescription })
-                }
-              >
+              <button type="button" onClick={() => handleAddExperience()}>
                 Ajouter
               </button>
             </form>

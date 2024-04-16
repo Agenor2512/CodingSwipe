@@ -8,6 +8,10 @@ const candidateControllers = require("./controllers/candidateControllers");
 const resumeControllers = require("./controllers/resumeControllers");
 const jobOfferControllers = require("./controllers/jobOfferControllers");
 
+const legalStatusControllers = require("./controllers/legalStatusControllers");
+const businessSectorsControllers = require("./controllers/businessSectorsControllers");
+const levelsControllers = require("./controllers/levelsControllers");
+const departmentsControllers = require("./controllers/departmentsControllers");
 const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
 const softSkillsControllers = require("./controllers/softSkillsControllers");
 const contractTypesControllers = require("./controllers/contractTypesControllers");
@@ -15,6 +19,8 @@ const workRhytmsControllers = require("./controllers/workRhythmsControllers");
 const appetencesControllers = require("./controllers/appetencesControllers");
 
 const experienceControllers = require("./controllers/experienceControllers");
+const resumeHasSoftSkillsControlers = require("./controllers/resumeHasSoftSkillsControllers");
+const missionControllers = require("./controllers/missionControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
@@ -55,19 +61,33 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
-router.post("/experiences", experienceControllers.add);
-router.delete("/experiences/:id", experienceControllers.remove);
-
 router.get("/resumes", resumeControllers.browseRandom);
 router.get("/resumes/:id", resumeControllers.readById);
 router.get("/joboffers", jobOfferControllers.browseRandom);
-router.get("/joboffers/:id", jobOfferControllers.readById); // --> rajouter missions
+router.get("/joboffers/:id", jobOfferControllers.readById);
+
 router.get("/biographies/:id", resumeControllers.readBiography);
 router.put("/biographies/:id", resumeControllers.updateBiography);
-router.get("/descriptions/:id", enterpriseControllers.readDescriptionById);
+router.get("/descriptions/:id", enterpriseControllers.readDescription);
 router.put("/descriptions/:id", enterpriseControllers.updateDescription);
+router.get("/wages/:id", jobOfferControllers.readSalary);
+router.put("/wages/:id", jobOfferControllers.updateSalary);
+
+router.get("/missions/:id", missionControllers.readById);
+router.post("/missions", missionControllers.add);
+router.delete("/missions/:id", missionControllers.remove);
+router.get("/experiences/:id", experienceControllers.readById);
+router.post("/experiences", experienceControllers.add);
+router.delete("/experiences/:id", experienceControllers.remove);
+
+router.post("/softskills", resumeHasSoftSkillsControlers.add);
 
 // Existing data part for Offer/Resume
+router.get("/legalstatus", legalStatusControllers.browse);
+router.get("/businesssectors", businessSectorsControllers.browse);
+router.get("/levels", levelsControllers.browse);
+router.get("/levels", levelsControllers.browse);
+router.get("/departments", departmentsControllers.browse);
 router.get("/programminglanguages", programmingLanguagesControllers.browse);
 router.get("/softskills", softSkillsControllers.browse);
 router.get("/contracttypes", contractTypesControllers.browse);

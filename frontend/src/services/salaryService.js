@@ -7,16 +7,16 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export const readBiographyById = (id) => {
+export const readSalaryById = (id) => {
   return client
-    .get(`/biographies/${id}`)
+    .get(`/wages/${id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-export const modifyBiography = (id, biography) => {
+export const modifySalary = (id, salary) => {
   return client
-    .put(`/biographies/${id}`, biography)
+    .put(`/wages/${id}`, salary)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
