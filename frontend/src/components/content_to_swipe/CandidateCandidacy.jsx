@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
 
 import { readAllResume } from "../../services/resumesService";
@@ -16,12 +15,6 @@ function CandidateCandidacy() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [resume, setResume] = useState([]);
-
-  console.info("RESUME : ", resume);
-
-  // const toolsCandidate = {
-  //   fetchResume: () => fetchResume(),
-  // };
 
   useEffect(() => {
     readAllResume()
@@ -90,8 +83,6 @@ function CandidateCandidacy() {
         <SwipeSystem
           candidateId={resume.infos.id}
           enterpriseId={loginUser.id}
-          // fetchResume={() => fetchResume()}
-          // toolsCandidate={{ toolsCandidate }}
           setIsLoading={setIsLoading}
           setResume={setResume}
         />

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import readAllLegalStatus from "../../services/legalStatus";
 import readAllBusinessSectors from "../../services/businessSectors";
@@ -262,5 +262,25 @@ function EnterpriseStepTwo({
     </div>
   );
 }
+
+EnterpriseStepTwo.propTypes = {
+  formTools: PropTypes.shape({
+    handleFormSubmit: PropTypes.func.isRequired,
+    registerEnterprise: PropTypes.func.isRequired,
+    handleChangeFormEnterprise: PropTypes.func.isRequired,
+    setEnterpriseInfos: PropTypes.func.isRequired,
+    enterpriseInfos: PropTypes.shape({
+      description: PropTypes.string.isRequired,
+      legalStatusId: PropTypes.string.isRequired,
+      businessSectorsId: PropTypes.string.isRequired,
+      salary: PropTypes.number.isRequired,
+      contractTypesId: PropTypes.string.isRequired,
+      workRhythmsId: PropTypes.string.isRequired,
+      appetencesId: PropTypes.string.isRequired,
+      programmingLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+    isError: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default EnterpriseStepTwo;

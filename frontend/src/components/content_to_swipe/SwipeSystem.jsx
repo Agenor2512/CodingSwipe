@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
+import PropTypes from "prop-types";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
@@ -10,13 +10,7 @@ import { readAllOffer } from "../../services/jobOffersService";
 
 import "../../styles/content_to_swipe/swipeSystem.css";
 
-function SwipeSystem({
-  candidateId,
-  enterpriseId,
-  // setIsLoading,
-  // setJobOffer,
-  // setResume,
-}) {
+function SwipeSystem({ candidateId, enterpriseId }) {
   const { loginUser } = useContext(LoginUserContext);
 
   const sendLike = () => {
@@ -59,5 +53,10 @@ function SwipeSystem({
     </section>
   );
 }
+
+SwipeSystem.propTypes = {
+  candidateId: PropTypes.number.isRequired,
+  enterpriseId: PropTypes.number.isRequired,
+};
 
 export default SwipeSystem;

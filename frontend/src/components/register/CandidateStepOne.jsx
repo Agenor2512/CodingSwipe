@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import readAllDepartments from "../../services/departmentsService";
 
@@ -138,5 +138,21 @@ function CandidateStepOne({
     </div>
   );
 }
+
+CandidateStepOne.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    handleChangeForm: PropTypes.func.isRequired,
+    candidateInfos: PropTypes.shape({
+      firstname: PropTypes.string,
+      lastname: PropTypes.string,
+      password: PropTypes.string,
+      email: PropTypes.string,
+      departmentId: PropTypes.number,
+    }).isRequired,
+    isError: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default CandidateStepOne;

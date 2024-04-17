@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
+import PropTypes from "prop-types";
+
 import "../../styles/register/firstViewRegisterForm.css";
 
 function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
@@ -43,5 +44,13 @@ function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
     </section>
   );
 }
+
+FirstView.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    setRole: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default FirstView;

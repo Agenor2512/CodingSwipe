@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import readAllAppetences from "../../services/appetencesService";
 import readAllContractTypes from "../../services/contractTypes";
@@ -204,5 +204,22 @@ function CandidateStepTwo({
     </form>
   );
 }
+
+CandidateStepTwo.propTypes = {
+  formTools: PropTypes.shape({
+    handleFormSubmit: PropTypes.func.isRequired,
+    registerCandidate: PropTypes.func.isRequired,
+    handleChangeForm: PropTypes.func.isRequired,
+    setCandidateInfos: PropTypes.func.isRequired,
+    candidateInfos: PropTypes.shape({
+      appetences: PropTypes.arrayOf(PropTypes.string).isRequired,
+      level: PropTypes.number.isRequired,
+      contractType: PropTypes.number.isRequired,
+      workRhythm: PropTypes.number.isRequired,
+      programmingLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+    isError: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default CandidateStepTwo;

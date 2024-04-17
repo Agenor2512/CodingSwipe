@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import axios from "axios";
@@ -23,7 +22,6 @@ function Register() {
     email: "",
     password: "",
     departmentId: "",
-    // biography: "",
     appetencesId: "",
     contractTypesId: "",
     workRhythmsId: "",

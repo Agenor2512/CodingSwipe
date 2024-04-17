@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Matchs from "./Matchs";
 import Messages from "./Messages";
@@ -130,5 +130,9 @@ function HomePageUserNav({ handleTabClick }) {
     </section>
   );
 }
+
+HomePageUserNav.propTypes = {
+  handleTabClick: PropTypes.func.isRequired,
+};
 
 export default HomePageUserNav;
