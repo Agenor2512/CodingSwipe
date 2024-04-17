@@ -11,8 +11,7 @@ import Register from "./pages/Register";
 import UsersHomePage from "./pages/UsersHomePage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePageSwipe from "./pages/HomePageSwipe";
-
-import ModalDisconnection from "./components/ModalDisconnection";
+import HomePageProfile from "./pages/HomePageProfile";
 import HomePageMessages from "./pages/HomePageMessages";
 
 const router = createBrowserRouter([
@@ -28,20 +27,22 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/usersHomePage",
+        path: "/usershomepage",
         element: <UsersHomePage />,
-      },
-      {
-        path: "/homePageSwipe",
-        element: <HomePageSwipe />,
-      },
-      {
-        path: "/homePageMessages",
-        element: <HomePageMessages />,
-      },
-      {
-        path: "/modalDisconnection",
-        element: <ModalDisconnection />,
+        children: [
+          {
+            path: "profile",
+            element: <HomePageProfile />,
+          },
+          {
+            path: "match",
+            element: <HomePageSwipe />,
+          },
+          {
+            path: "messages",
+            element: <HomePageMessages />,
+          },
+        ],
       },
     ],
     errorElement: <ErrorPage />,

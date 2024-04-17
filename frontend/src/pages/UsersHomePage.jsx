@@ -1,30 +1,34 @@
-import { useContext } from "react";
+/* eslint-disable no-else-return */
+import React, { useState } from "react";
 
-// import HomePageUserNav from "../components/resume_job_offer/HomePageUserNav";
-// import HomePageSwipe from "./HomePageSwipe";
-import Resume from "../components/resume_job_offer/Resume";
-import JobOffer from "../components/resume_job_offer/JobOffer";
-
-import LoginUserContext from "../context/LoginUserContext";
+import HomePageUserNav from "../components/resume_job_offer/HomePageUserNav";
+import HomePageSwipe from "./HomePageSwipe";
+import HomePageMessages from "./HomePageMessages";
+import HomePageProfile from "./HomePageProfile";
 
 import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
-  const { loginUser } = useContext(LoginUserContext);
+  const [pageType, setPageType] = useState("");
 
-  // const [pageToDisplay, setPageToDisplay] = useState("home");
+  const handleTabClick = (type) => {
+    setPageType(type);
+  };
+
+  const displayRightPages = () => {
+    if (pageType === "profile") {
+      return <HomePageProfile />;
+    } else if (pageType === "match") {
+      return <HomePageSwipe />;
+    } else {
+      return <HomePageMessages />;
+    }
+  };
 
   return (
     <div className="users_homepage">
-      {/* <HomePageUserNav tools={{ setPageToDisplay }} /> */}
-
-      {/* {pageToDisplay === "home" ? (
-        <HomePageSwipe />
-      ) : (
-        <Resume tools={{ setPageToDisplay }} />
-      )} */}
-
-      {loginUser.role === "candidate" ? <Resume /> : <JobOffer />}
+      <HomePageUserNav handleTabClick={handleTabClick} />
+      {displayRightPages()}
     </div>
   );
 }

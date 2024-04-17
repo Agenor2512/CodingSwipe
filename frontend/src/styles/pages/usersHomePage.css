@@ -1,9 +1,5 @@
-@media screen and (min-width: 600px) {
-  .users_homepage {
-    display: flex;
-    justify-content: center;
-    background-color: var(--background-users-homepage);
-    min-height: 100vh;
-    width: 100vw;
-  }
+.users_homepage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }

@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState, useContext } from "react";
-import "../../styles/resume_job_offer/homePageUserNav.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Matchs from "./Matchs";
 import Messages from "./Messages";
-import RegisterContext from "../../context/RegisterContext";
 
 import ModalDisconnection from "../ModalDisconnection";
 
-function HomePageUserNav({ tools }) {
-  console.info(tools);
+import "../../styles/resume_job_offer/homePageUserNav.css";
 
+function HomePageUserNav({ handleTabClick }) {
   const matchesData = [
     {
       id: 1,
@@ -67,7 +66,6 @@ function HomePageUserNav({ tools }) {
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { setInfos } = useContext(RegisterContext);
 
   const openNav = () => {
     setIsNavOpen(true);
@@ -77,20 +75,22 @@ function HomePageUserNav({ tools }) {
     setIsNavOpen(false);
   };
 
-  const handleTabClick = (type) => {
-    setInfos(type);
-  };
-
   return (
     <section className="user_navigation_container">
       <div className="desktop_nav">
         <ul>
-          <li onClick={() => handleTabClick("match")}>MATCHS</li>
-          <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
-          <li onClick={() => tools.setPageToDisplay("settings")}>MON PROFIL</li>
+          <Link to="/usershomepage/match">
+            <li onClick={() => handleTabClick("match")}>MATCHS</li>
+          </Link>
+          <Link to="/usershomepage/messages">
+            <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
+          </Link>
+          <Link to="/usershomepage/profile">
+            <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
+          </Link>
         </ul>
-        <Matchs userType={setInfos} matchesData={matchesData} />
-        <Messages userType={setInfos} messagesData={messagesData} />
+        <Matchs matchesData={matchesData} />
+        <Messages messagesData={messagesData} />
       </div>
 
       <nav>
@@ -104,11 +104,17 @@ function HomePageUserNav({ tools }) {
             &times;
           </button>
           <ul>
-            <li onClick={() => handleTabClick("match")}>MATCHS</li>
-            <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
-            <li>MON PROFIL</li>
+            <Link to="/usershomepage/match">
+              <li onClick={() => handleTabClick("match")}>MATCHS</li>
+            </Link>
+            <Link to="/usershomepage/messages">
+              <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
+            </Link>
+            <Link to="/usershomepage/profile">
+              <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
+            </Link>
           </ul>
-          <Matchs userType={setInfos} matchesData={matchesData} />
+          <Matchs matchesData={matchesData} />
         </div>
         <div className="button_container">
           <button type="button" id="openBtn" onClick={openNav}>
