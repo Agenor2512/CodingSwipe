@@ -22,7 +22,6 @@ function Register() {
     email: "",
     password: "",
     departmentId: "",
-    // biography: "",
     appetencesId: "",
     contractTypesId: "",
     workRhythmsId: "",
