@@ -16,12 +16,6 @@ function CandidateCandidacy() {
 
   const [resume, setResume] = useState([]);
 
-  console.info("RESUME : ", resume);
-
-  // const toolsCandidate = {
-  //   fetchResume: () => fetchResume(),
-  // };
-
   useEffect(() => {
     readAllResume()
       .then((allResume) => setResume(allResume))
@@ -89,8 +83,6 @@ function CandidateCandidacy() {
         <SwipeSystem
           candidateId={resume.infos.id}
           enterpriseId={loginUser.id}
-          // fetchResume={() => fetchResume()}
-          // toolsCandidate={{ toolsCandidate }}
           setIsLoading={setIsLoading}
           setResume={setResume}
         />

@@ -10,13 +10,7 @@ import { readAllOffer } from "../../services/jobOffersService";
 
 import "../../styles/content_to_swipe/swipeSystem.css";
 
-function SwipeSystem({
-  candidateId,
-  enterpriseId,
-  // setIsLoading,
-  // setJobOffer,
-  // setResume,
-}) {
+function SwipeSystem({ candidateId, enterpriseId }) {
   const { loginUser } = useContext(LoginUserContext);
 
   const sendLike = () => {
