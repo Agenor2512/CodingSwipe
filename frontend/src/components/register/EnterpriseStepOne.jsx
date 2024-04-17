@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import readAllDepartments from "../../services/departmentsService";
 
@@ -137,5 +137,21 @@ function EnterpriseStepOne({
     </div>
   );
 }
+
+EnterpriseStepOne.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    handleChangeFormEnterprise: PropTypes.func.isRequired,
+    enterpriseInfos: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      siret: PropTypes.number.isRequired,
+      email: PropTypes.string.isRequired,
+      departmentId: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+    }).isRequired,
+    isError: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default EnterpriseStepOne;

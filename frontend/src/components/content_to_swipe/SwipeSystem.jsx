@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
+import PropTypes from "prop-types";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
@@ -59,5 +59,10 @@ function SwipeSystem({
     </section>
   );
 }
+
+SwipeSystem.propTypes = {
+  candidateId: PropTypes.number.isRequired,
+  enterpriseId: PropTypes.number.isRequired,
+};
 
 export default SwipeSystem;

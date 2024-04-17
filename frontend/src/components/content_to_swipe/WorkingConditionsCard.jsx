@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 
 import contract from "../../assets/contract.png";
 import mobility from "../../assets/mobility.png";
@@ -48,5 +48,14 @@ function WorkingConditionsCard({ data }) {
     </div>
   );
 }
+
+WorkingConditionsCard.propTypes = {
+  data: PropTypes.shape({
+    contract_type: PropTypes.string.isRequired,
+    department: PropTypes.string.isRequired,
+    work_rhythm: PropTypes.string.isRequired,
+    salary: PropTypes.string,
+  }).isRequired,
+};
 
 export default WorkingConditionsCard;
