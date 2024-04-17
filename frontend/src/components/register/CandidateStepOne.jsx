@@ -11,12 +11,12 @@ function CandidateStepOne({
     handleFormSubmit,
     handleChangeForm,
     candidateInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
   console.info("CONSOLE INFO DE LA STEP ONE :", candidateInfos);
 
-  const [formIsFill, setFormIsFill] = useState(false);
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
@@ -30,13 +30,13 @@ function CandidateStepOne({
       candidateInfos.email &&
       candidateInfos.departmentId
     ) {
-      setFormIsFill(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFill(false);
+      setFormIsFilled(false);
     }
   }, [candidateInfos]);
 
-  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
   return (
     <div className="step_one_register">
@@ -130,8 +130,8 @@ function CandidateStepOne({
             />
           </div>
         </div>
-        <p>{isError ? "Remplissez tous les champs" : ""}</p>
-        <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
+        <p>{formIsFilled ? "Remplissez tous les champs" : ""}</p>
+        <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
           Continuer
         </button>
       </form>
@@ -151,7 +151,8 @@ CandidateStepOne.propTypes = {
       email: PropTypes.string,
       departmentId: PropTypes.number,
     }).isRequired,
-    isError: PropTypes.bool.isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

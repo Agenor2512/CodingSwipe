@@ -12,10 +12,10 @@ function EnterpriseStepOne({
     handleFormSubmit,
     handleChangeFormEnterprise,
     enterpriseInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
-  const [formIsFill, setFormIsFill] = useState(false);
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
@@ -29,9 +29,9 @@ function EnterpriseStepOne({
       enterpriseInfos.departmentId &&
       enterpriseInfos.password
     ) {
-      setFormIsFill(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFill(false);
+      setFormIsFilled(false);
     }
   }, [enterpriseInfos]);
 
@@ -129,8 +129,8 @@ function EnterpriseStepOne({
             />
           </div>
         </div>
-        <p>{isError ? "Remplissez tous les champs" : ""}</p>
-        <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
+        <p>{formIsFilled ? "Remplissez tous les champs" : ""}</p>
+        <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
           Continuer
         </button>
       </form>
@@ -150,7 +150,8 @@ EnterpriseStepOne.propTypes = {
       departmentId: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
     }).isRequired,
-    isError: PropTypes.bool.isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
