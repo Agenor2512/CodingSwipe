@@ -31,15 +31,15 @@ const router = createBrowserRouter([
         element: <UsersHomePage />,
         children: [
           {
-            path: "/usershomepage/profile",
+            path: "profile",
             element: <HomePageProfile />,
           },
           {
-            path: "/usershomepage/match",
+            path: "match",
             element: <HomePageSwipe />,
           },
           {
-            path: "/usershomepage/messages",
+            path: "messages",
             element: <HomePageMessages />,
           },
         ],

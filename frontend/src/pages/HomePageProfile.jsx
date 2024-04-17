@@ -11,7 +11,9 @@ function HomePageProfile() {
   const { loginUser } = useContext(LoginUserContext);
 
   return (
-    <div>{loginUser.role === "enterprise" ? <JobOffer /> : <Resume />}</div>
+    <div className="homepage_profile">
+      {loginUser.role === "enterprise" ? <JobOffer /> : <Resume />}
+    </div>
   );
 }
 

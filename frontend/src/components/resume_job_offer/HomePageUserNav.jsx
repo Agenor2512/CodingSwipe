@@ -1,20 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Matchs from "./Matchs";
 import Messages from "./Messages";
-import RegisterContext from "../../context/RegisterContext";
 
 import ModalDisconnection from "../ModalDisconnection";
 
 import "../../styles/resume_job_offer/homePageUserNav.css";
 
-function HomePageUserNav({ tools }) {
-  console.info(tools);
-
+function HomePageUserNav({ handleTabClick }) {
   const matchesData = [
     {
       id: 1,
@@ -69,7 +66,6 @@ function HomePageUserNav({ tools }) {
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { setInfos } = useContext(RegisterContext);
 
   const openNav = () => {
     setIsNavOpen(true);
@@ -77,10 +73,6 @@ function HomePageUserNav({ tools }) {
 
   const closeNav = () => {
     setIsNavOpen(false);
-  };
-
-  const handleTabClick = (type) => {
-    setInfos(type);
   };
 
   return (
@@ -97,8 +89,8 @@ function HomePageUserNav({ tools }) {
             <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
           </Link>
         </ul>
-        <Matchs userType={setInfos} matchesData={matchesData} />
-        <Messages userType={setInfos} messagesData={messagesData} />
+        <Matchs matchesData={matchesData} />
+        <Messages messagesData={messagesData} />
       </div>
 
       <nav>
@@ -122,7 +114,7 @@ function HomePageUserNav({ tools }) {
               <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
             </Link>
           </ul>
-          <Matchs userType={setInfos} matchesData={matchesData} />
+          <Matchs matchesData={matchesData} />
         </div>
         <div className="button_container">
           <button type="button" id="openBtn" onClick={openNav}>
