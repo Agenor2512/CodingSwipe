@@ -41,7 +41,7 @@ function ModalConnection() {
         role: response.role,
         email: response.email,
       });
-      navigate("/usershomepage");
+      navigate("/usershomepage/profile");
     });
   };
 

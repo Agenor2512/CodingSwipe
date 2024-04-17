@@ -16,12 +16,12 @@ function UsersHomePage() {
   };
 
   const displayRightPages = () => {
-    if (pageType === "profile") {
-      return <HomePageProfile />;
+    if (pageType === "messages") {
+      return <HomePageMessages />;
     } else if (pageType === "match") {
       return <HomePageSwipe />;
     } else {
-      return <HomePageMessages />;
+      return <HomePageProfile />;
     }
   };
 
