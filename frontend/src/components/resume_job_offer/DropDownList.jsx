@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import "../../styles/resume_job_offer/dropDownList.css";
 
@@ -22,5 +22,15 @@ function DropDownList({ appetences, userAppetence }) {
     </select>
   );
 }
+
+DropDownList.propTypes = {
+  appetences: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      appetence: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  userAppetence: PropTypes.string.isRequired,
+};
 
 export default DropDownList;
