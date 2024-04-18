@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 
 import readAllAppetences from "../../services/appetencesService";
-import readAllContractTypes from "../../services/contractTypes";
+import readAllContractTypes from "../../services/contractTypesService";
 import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
 import readAllWorkRhythms from "../../services/workRhythmsService";
 import { readOfferById } from "../../services/jobOffersService";

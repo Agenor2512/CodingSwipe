@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import readAllLegalStatus from "../../services/legalStatus";
-import readAllBusinessSectors from "../../services/businessSectors";
+import readAllLegalStatus from "../../services/legalStatusService";
+import readAllBusinessSectors from "../../services/businessSectorsService";
 import readAllAppetences from "../../services/appetencesService";
-import readAllContractTypes from "../../services/contractTypes";
+import readAllContractTypes from "../../services/contractTypesService";
 import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
 import readAllWorkRhythms from "../../services/workRhythmsService";
 
@@ -61,8 +61,8 @@ function EnterpriseStepTwo({
       enterpriseInfos.salary &&
       enterpriseInfos.contractTypesId &&
       enterpriseInfos.workRhythmsId &&
-      enterpriseInfos.appetencesId !== null &&
-      enterpriseInfos.programmingLanguagesId !== null
+      enterpriseInfos.appetencesId !== "" &&
+      enterpriseInfos.languages.length > 0
     ) {
       setFormIsFilled(true);
     } else {
@@ -76,7 +76,7 @@ function EnterpriseStepTwo({
     const { value, checked } = event.target;
     setEnterpriseInfos((prevInfos) => {
       const updatedLanguages = checked
-        ? [...(prevInfos.languages || []), value] // If prevInfos.languages is not defined, initialize it as an empty array
+        ? [...(prevInfos.languages || []), value]
         : prevInfos.languages.filter((language) => language !== value);
       return { ...prevInfos, languages: updatedLanguages };
     });
@@ -283,7 +283,7 @@ EnterpriseStepTwo.propTypes = {
       contractTypesId: PropTypes.string.isRequired,
       workRhythmsId: PropTypes.string.isRequired,
       appetencesId: PropTypes.string.isRequired,
-      programmingLanguagesId: PropTypes.arrayOf(PropTypes.string).isRequired,
+      languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
     setFormIsFilled: PropTypes.bool.isRequired,

@@ -1,8 +1,9 @@
+/* eslint-disable no-else-return */
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import readAllAppetences from "../../services/appetencesService";
-import readAllContractTypes from "../../services/contractTypes";
+import readAllContractTypes from "../../services/contractTypesService";
 import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
 import readAllWorkRhythms from "../../services/workRhythmsService";
 import readAllLevels from "../../services/levelsService";
@@ -47,9 +48,9 @@ function CandidateStepTwo({
       setAppetences(registerAppetences)
     );
     if (
-      candidateInfos.appetencesId !== null &&
-      candidateInfos.programmingLanguagesId !== null &&
-      candidateInfos.levelId !== null &&
+      candidateInfos.appetencesId !== "" &&
+      candidateInfos.languages.length > 0 &&
+      candidateInfos.levelId !== "" &&
       candidateInfos.contractTypesId &&
       candidateInfos.workRhythmsId
     ) {
@@ -71,6 +72,7 @@ function CandidateStepTwo({
       const filteredLanguages = prevInfos.languages.filter(
         (language) => language !== value
       );
+
       return { ...prevInfos, languages: filteredLanguages };
     });
   };
@@ -219,7 +221,7 @@ CandidateStepTwo.propTypes = {
       levelId: PropTypes.number.isRequired,
       contractTypesId: PropTypes.number.isRequired,
       workRhythmsId: PropTypes.number.isRequired,
-      programmingLanguagesId: PropTypes.arrayOf(PropTypes.string).isRequired,
+      languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
     setFormIsFilled: PropTypes.bool.isRequired,

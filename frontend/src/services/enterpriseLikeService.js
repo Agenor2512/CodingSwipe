@@ -7,9 +7,9 @@ export const client = axios.create({
   timeout: 60_000,
 });
 
-export default function sendCandidateLike(info) {
-  client
-    .post("/candidates/likes", info)
+export default function sendEnterpriseLike(info) {
+  return client
+    .post("/enterprises/likes", info)
     .then((response) => {
       console.info(response.data);
     })

@@ -31,10 +31,9 @@ const add = async (req, res, next) => {
     const { languages } = req.body;
     console.info(languages);
 
-    await Promise.all(
-      languages.map((language) =>
-        tables.job_offer_has_programming_languages.create(randomId, language)
-      )
+    await tables.job_offer_has_programming_languages.createMultiple(
+      randomId,
+      languages
     );
 
     res.status(201).json({

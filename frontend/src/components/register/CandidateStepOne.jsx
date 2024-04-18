@@ -114,6 +114,8 @@ function CandidateStepOne({
               name="password"
               id="password"
               placeholder="Saisissez un mot de passe"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
+              title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial."
               required
               onChange={handleChangeForm}
             />
