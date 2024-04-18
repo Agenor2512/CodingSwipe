@@ -130,7 +130,7 @@ function CandidateStepOne({
             />
           </div>
         </div>
-        <p>{formIsFilled ? "Remplissez tous les champs" : ""}</p>
+        <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
         <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
           Continuer
         </button>

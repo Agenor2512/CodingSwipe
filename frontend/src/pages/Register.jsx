@@ -71,13 +71,35 @@ function Register() {
   };
 
   const sendCandidateInfos = () => {
-    registerCandidate(candidateInfos);
-    nextStep();
+    // Vérifier si le level est sélectionné
+    const isLevelSelected =
+      candidateInfos.levelId !== null && candidateInfos.levelId !== undefined;
+
+    // Vérifier si au moins une appetence est sélectionnée
+    const isAppetenceSelected = candidateInfos.appetencesId !== null;
+
+    // Vérifier si au moins une checkbox est cochée pour les langages informatiques
+    const isLanguageSelected = candidateInfos.programmingLanguagesId !== null;
+
+    // Si toutes les conditions sont remplies, envoyer les informations du candidat
+    if (isLevelSelected && isAppetenceSelected && isLanguageSelected) {
+      registerCandidate(candidateInfos);
+      nextStep();
+    }
   };
 
   const sendEnterpriseInfos = () => {
-    registerEnterprise(enterpriseInfos);
-    nextStep();
+    // Vérifier si au moins une appetence est sélectionnée
+    const isAppetenceSelected = enterpriseInfos.appetencesId !== null;
+
+    // Vérifier si au moins une checkbox est cochée pour les langages informatiques
+    const isLanguageSelected = enterpriseInfos.programmingLanguagesId !== null;
+
+    // Si toutes les conditions sont remplies, envoyer les informations du candidat
+    if (isAppetenceSelected && isLanguageSelected) {
+      registerEnterprise(enterpriseInfos);
+      nextStep();
+    }
   };
 
   const displayRegisterStep = () => {

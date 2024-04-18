@@ -47,11 +47,11 @@ function CandidateStepTwo({
       setAppetences(registerAppetences)
     );
     if (
-      candidateInfos.appetencesId &&
-      candidateInfos.levelId &&
+      candidateInfos.appetencesId !== null &&
+      candidateInfos.programmingLanguagesId !== null &&
+      candidateInfos.levelId !== null &&
       candidateInfos.contractTypesId &&
-      candidateInfos.workRhythmsId &&
-      candidateInfos.programmingLanguagesId
+      candidateInfos.workRhythmsId
     ) {
       setFormIsFilled(true);
     } else {
@@ -184,7 +184,7 @@ function CandidateStepTwo({
           <div key={programmingLanguage.id}>
             <input
               type="checkbox"
-              name="programmingLanguages"
+              name="programmingLanguagesId"
               id="checkbox"
               value={programmingLanguage.id}
               onChange={fillLanguagesArray}
@@ -195,7 +195,7 @@ function CandidateStepTwo({
           </div>
         ))}
       </section>
-      <p>{formIsFilled ? "Remplissez tous les champs" : ""}</p>
+      <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
       <section className="final_button_to_inscription_container">
         <input
           type="submit"

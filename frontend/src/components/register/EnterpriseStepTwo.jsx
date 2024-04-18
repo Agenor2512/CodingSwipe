@@ -61,8 +61,8 @@ function EnterpriseStepTwo({
       enterpriseInfos.salary &&
       enterpriseInfos.contractTypesId &&
       enterpriseInfos.workRhythmsId &&
-      enterpriseInfos.appetencesId &&
-      enterpriseInfos.programmingLanguages
+      enterpriseInfos.appetencesId !== null &&
+      enterpriseInfos.programmingLanguagesId !== null
     ) {
       setFormIsFilled(true);
     } else {
@@ -224,6 +224,7 @@ function EnterpriseStepTwo({
               <div key={programmingLanguage.id}>
                 <input
                   type="checkbox"
+                  name="programmingLanguagesId"
                   id={programmingLanguage.id}
                   value={programmingLanguage.id}
                   onChange={fillLanguagesArray}
@@ -254,7 +255,7 @@ function EnterpriseStepTwo({
             </div>
           </section>
 
-          <p>{formIsFilled ? "Remplissez tous les champs" : ""}</p>
+          <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
           <button
             type="submit"
             className="final_button_to_inscription_container"
@@ -282,7 +283,7 @@ EnterpriseStepTwo.propTypes = {
       contractTypesId: PropTypes.string.isRequired,
       workRhythmsId: PropTypes.string.isRequired,
       appetencesId: PropTypes.string.isRequired,
-      programmingLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+      programmingLanguagesId: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
     setFormIsFilled: PropTypes.bool.isRequired,
