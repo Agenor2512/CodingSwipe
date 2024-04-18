@@ -1,8 +1,9 @@
+/* eslint-disable no-else-return */
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import readAllAppetences from "../../services/appetencesService";
-import readAllContractTypes from "../../services/contractTypes";
+import readAllContractTypes from "../../services/contractTypesService";
 import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
 import readAllWorkRhythms from "../../services/workRhythmsService";
 import readAllLevels from "../../services/levelsService";
@@ -12,11 +13,12 @@ import "../../styles/register/candidateStepTwo.css";
 function CandidateStepTwo({
   formTools: {
     handleFormSubmit,
-    registerCandidate,
+    sendCandidateInfos,
     handleChangeForm,
     setCandidateInfos,
     candidateInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", candidateInfos);
@@ -26,7 +28,6 @@ function CandidateStepTwo({
   const [contractTypes, setContractTypes] = useState([]);
   const [workRhythms, setWorkRhythms] = useState([]);
   const [levels, setLevels] = useState([]);
-  const [formIsFill, setFormIsFill] = useState(false);
 
   useEffect(() => {
     readAllProgrammingLanguages().then((registerProgrammingLanguages) =>
@@ -47,19 +48,19 @@ function CandidateStepTwo({
       setAppetences(registerAppetences)
     );
     if (
-      candidateInfos.appetences &&
-      candidateInfos.level &&
-      candidateInfos.contractType &&
-      candidateInfos.workRhythm &&
-      candidateInfos.programmingLanguages
+      candidateInfos.appetencesId !== "" &&
+      candidateInfos.languages.length > 0 &&
+      candidateInfos.levelId !== "" &&
+      candidateInfos.contractTypesId &&
+      candidateInfos.workRhythmsId
     ) {
-      setFormIsFill(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFill(false);
+      setFormIsFilled(false);
     }
   }, [candidateInfos]);
 
-  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
@@ -71,6 +72,7 @@ function CandidateStepTwo({
       const filteredLanguages = prevInfos.languages.filter(
         (language) => language !== value
       );
+
       return { ...prevInfos, languages: filteredLanguages };
     });
   };
@@ -123,6 +125,7 @@ function CandidateStepTwo({
                 name="contractTypesId"
                 id={contractType.id}
                 value={contractType.id}
+                required
                 onChange={handleChangeForm}
               />
               <label htmlFor={contractType.id}>
@@ -143,6 +146,7 @@ function CandidateStepTwo({
                 name="workRhythmsId"
                 id={workRhythm.id}
                 value={workRhythm.id}
+                required
                 onChange={handleChangeForm}
               />
               <label htmlFor={workRhythm.id}>{workRhythm.work_rhythm}</label>
@@ -182,6 +186,7 @@ function CandidateStepTwo({
           <div key={programmingLanguage.id}>
             <input
               type="checkbox"
+              name="programmingLanguagesId"
               id="checkbox"
               value={programmingLanguage.id}
               onChange={fillLanguagesArray}
@@ -192,13 +197,13 @@ function CandidateStepTwo({
           </div>
         ))}
       </section>
-      <p>{isError ? "Remplissez tous les champs" : ""}</p>
+      <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
       <section className="final_button_to_inscription_container">
         <input
           type="submit"
           value="Finaliser l'inscription"
           className="final_button_to_inscription"
-          onClick={registerCandidate}
+          onClick={formIsFilled ? () => sendCandidateInfos() : null}
         />
       </section>
     </form>
@@ -208,17 +213,18 @@ function CandidateStepTwo({
 CandidateStepTwo.propTypes = {
   formTools: PropTypes.shape({
     handleFormSubmit: PropTypes.func.isRequired,
-    registerCandidate: PropTypes.func.isRequired,
+    sendCandidateInfos: PropTypes.func.isRequired,
     handleChangeForm: PropTypes.func.isRequired,
     setCandidateInfos: PropTypes.func.isRequired,
     candidateInfos: PropTypes.shape({
-      appetences: PropTypes.arrayOf(PropTypes.string).isRequired,
-      level: PropTypes.number.isRequired,
-      contractType: PropTypes.number.isRequired,
-      workRhythm: PropTypes.number.isRequired,
-      programmingLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+      appetencesId: PropTypes.arrayOf(PropTypes.string).isRequired,
+      levelId: PropTypes.number.isRequired,
+      contractTypesId: PropTypes.number.isRequired,
+      workRhythmsId: PropTypes.number.isRequired,
+      languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
-    isError: PropTypes.bool.isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

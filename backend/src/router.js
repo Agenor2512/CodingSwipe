@@ -36,7 +36,7 @@ router.post(
   authenticationControllers.login
 );
 
-router.delete("/logout", authenticationControllers.logout); // --> rediriger vers page d'accueil
+router.delete("/logout", authenticationControllers.logout);
 
 // Enterprise part
 router.get("/enterprises", enterpriseControllers.browse);
@@ -46,7 +46,7 @@ router.post(
   enterpriseValidator.validateEnterprise,
   authenticationService.hashPassword,
   enterpriseControllers.add
-); // --> rediriger vers la dernière étape
+);
 router.post("/enterprises/likes", enterpriseLikeControllers.add);
 
 // Candidate part
@@ -57,7 +57,7 @@ router.post(
   candidateValidator.validateCandidate,
   authenticationService.hashPassword,
   candidateControllers.add
-); // --> rediriger vers la dernière étape
+);
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
@@ -93,13 +93,5 @@ router.get("/softskills", softSkillsControllers.browse);
 router.get("/contracttypes", contractTypesControllers.browse);
 router.get("/workrhythms", workRhytmsControllers.browse);
 router.get("/appetences", appetencesControllers.browse);
-
-// router.get("/isConnected", middleware, controller.userChecked)
-
-// middleware :
-// si le token est invalide => 401 /// Next()
-
-// userChecked :
-// res.sendStatus(200)
 
 module.exports = router;

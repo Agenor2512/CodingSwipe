@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
+
 import RegisterContext from "../../context/RegisterContext";
+
 import "../../styles/resume_job_offer/matchs.css";
-import "../../styles/resume_job_offer/messages.css";
 
 function getFirstLetter(name) {
   return name.charAt(0).toUpperCase();

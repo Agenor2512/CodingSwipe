@@ -28,10 +28,6 @@ function EnterpriseProposal() {
     return "";
   };
 
-  // const toolsEnterprise = {
-  //   fetchJobOffer: () => fetchJobOffer(),
-  // };
-
   const displayJobOffer = () => {
     return (
       <div className="enterprise_infos_container">
@@ -78,10 +74,8 @@ function EnterpriseProposal() {
           </div>
         </div>
         <SwipeSystem
-          enterpriseId={jobOffer.infos.id}
+          enterpriseId={jobOffer.infos.jobOfferId}
           candidateId={loginUser.id}
-          // fetchJobOffer={() => fetchJobOffer()}
-          // toolsEnterprise={{ toolsEnterprise }}
           setJobOffer={setJobOffer}
         />
       </div>

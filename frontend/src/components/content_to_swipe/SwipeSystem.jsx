@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
-import sendEnterpriseLike from "../../services/enterpriseLike";
-import sendCandidateLike from "../../services/candidateLike";
+import sendEnterpriseLike from "../../services/enterpriseLikeService";
+import sendCandidateLike from "../../services/candidateLikeService";
 import { readAllResume } from "../../services/resumesService";
 import { readAllOffer } from "../../services/jobOffersService";
 
@@ -34,7 +34,7 @@ function SwipeSystem({ candidateId, enterpriseId }) {
   return (
     <section className="swipe_system_container">
       <div>
-        <button type="button" onClick={sendLike}>
+        <button type="button" onClick={() => sendLike()}>
           <img
             className="like_icon"
             src="/src/assets/heart_swipe.svg"
@@ -55,8 +55,8 @@ function SwipeSystem({ candidateId, enterpriseId }) {
 }
 
 SwipeSystem.propTypes = {
-  candidateId: PropTypes.number.isRequired,
-  enterpriseId: PropTypes.number.isRequired,
+  candidateId: PropTypes.string.isRequired,
+  enterpriseId: PropTypes.string.isRequired,
 };
 
 export default SwipeSystem;

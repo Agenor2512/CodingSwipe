@@ -21,8 +21,8 @@ class CandidateManager extends AbstractManager {
   }
 
   async create(candidate) {
-    const [result] = await this.database.query(
-      `insert into ${this.table} (id, firstname, lastname, email, password, department_id) values (?,?, ?, ?, ?, ?)`,
+    const [rows] = await this.database.query(
+      `insert into ${this.table} (id, firstname, lastname, email, password, department_id) values (?, ?, ?, ?, ?, ?)`,
       [
         candidate.randomId,
         candidate.firstname,
@@ -33,7 +33,7 @@ class CandidateManager extends AbstractManager {
       ]
     );
 
-    return result.insertId;
+    return rows;
   }
 
   async readByEmailWithPassword(email) {

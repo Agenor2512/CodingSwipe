@@ -12,10 +12,10 @@ function EnterpriseStepOne({
     handleFormSubmit,
     handleChangeFormEnterprise,
     enterpriseInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
-  const [formIsFill, setFormIsFill] = useState(false);
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
@@ -29,11 +29,13 @@ function EnterpriseStepOne({
       enterpriseInfos.departmentId &&
       enterpriseInfos.password
     ) {
-      setFormIsFill(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFill(false);
+      setFormIsFilled(false);
     }
   }, [enterpriseInfos]);
+
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
   return (
     <div className="step_one_register">
@@ -49,7 +51,7 @@ function EnterpriseStepOne({
             <label htmlFor="enterpriseName">Nom de l'entreprise</label>
             <input
               type="text"
-              minLength={1}
+              minLength={3}
               name="name"
               id="name"
               onChange={handleChangeFormEnterprise}
@@ -62,8 +64,8 @@ function EnterpriseStepOne({
             <label htmlFor="siretNumber">Numéro Siret</label>
             <input
               type="number"
-              min={0}
               name="siret"
+              min={14}
               id="siret"
               onChange={handleChangeFormEnterprise}
               placeholder="exemple: 12345678901234"
@@ -111,8 +113,10 @@ function EnterpriseStepOne({
               minLength={8}
               name="password"
               id="password"
-              onChange={handleChangeFormEnterprise}
               placeholder="Saisissez un mot de passe"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
+              title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial."
+              onChange={handleChangeFormEnterprise}
               required
             />
           </div>
@@ -129,8 +133,8 @@ function EnterpriseStepOne({
             />
           </div>
         </div>
-        <p>{isError ? "Remplissez tous les champs" : ""}</p>
-        <button type="submit" onClick={formIsFill ? () => nextStep() : null}>
+        <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
+        <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
           Continuer
         </button>
       </form>
@@ -145,12 +149,13 @@ EnterpriseStepOne.propTypes = {
     handleChangeFormEnterprise: PropTypes.func.isRequired,
     enterpriseInfos: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      siret: PropTypes.number.isRequired,
+      siret: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       departmentId: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
     }).isRequired,
-    isError: PropTypes.bool.isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.func.isRequired,
   }).isRequired,
 };
 

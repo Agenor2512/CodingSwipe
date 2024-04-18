@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import readAllLegalStatus from "../../services/legalStatus";
-import readAllBusinessSectors from "../../services/businessSectors";
+import readAllLegalStatus from "../../services/legalStatusService";
+import readAllBusinessSectors from "../../services/businessSectorsService";
 import readAllAppetences from "../../services/appetencesService";
-import readAllContractTypes from "../../services/contractTypes";
+import readAllContractTypes from "../../services/contractTypesService";
 import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
 import readAllWorkRhythms from "../../services/workRhythmsService";
 
@@ -13,11 +13,12 @@ import "../../styles/register/enterpriseStepTwo.css";
 function EnterpriseStepTwo({
   formTools: {
     handleFormSubmit,
-    registerEnterprise,
+    sendEnterpriseInfos,
     handleChangeFormEnterprise,
     setEnterpriseInfos,
     enterpriseInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", enterpriseInfos);
@@ -28,7 +29,6 @@ function EnterpriseStepTwo({
   const [programmingLanguages, setProgrammingLanguages] = useState([]);
   const [contractTypes, setContractTypes] = useState([]);
   const [workRhythms, setWorkRhythms] = useState([]);
-  const [formIsFill, setFormIsFill] = useState(false);
 
   useEffect(() => {
     readAllLegalStatus().then((registerLegalStatus) =>
@@ -61,22 +61,22 @@ function EnterpriseStepTwo({
       enterpriseInfos.salary &&
       enterpriseInfos.contractTypesId &&
       enterpriseInfos.workRhythmsId &&
-      enterpriseInfos.appetencesId &&
-      enterpriseInfos.programmingLanguages
+      enterpriseInfos.appetencesId !== "" &&
+      enterpriseInfos.languages.length > 0
     ) {
-      setFormIsFill(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFill(false);
+      setFormIsFilled(false);
     }
   }, [enterpriseInfos]);
 
-  console.info("LE FORMULAIRE EST REMPLI ?", formIsFill);
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
     setEnterpriseInfos((prevInfos) => {
       const updatedLanguages = checked
-        ? [...(prevInfos.languages || []), value] // If prevInfos.languages is not defined, initialize it as an empty array
+        ? [...(prevInfos.languages || []), value]
         : prevInfos.languages.filter((language) => language !== value);
       return { ...prevInfos, languages: updatedLanguages };
     });
@@ -100,6 +100,7 @@ function EnterpriseStepTwo({
         <select
           name="legalStatusId"
           id="enterprise-type-select"
+          required
           onChange={handleChangeFormEnterprise}
         >
           <option value="choose-enterprise-type">
@@ -118,6 +119,7 @@ function EnterpriseStepTwo({
         <select
           name="businessSectorsId"
           id="industries-select"
+          required
           onChange={handleChangeFormEnterprise}
         >
           <option value="choose-industries">
@@ -134,10 +136,10 @@ function EnterpriseStepTwo({
           Description de votre entreprise <span>:</span>
         </label>
         <textarea
-          required
           name="description"
           type="text"
           id="description-area"
+          required
           onChange={handleChangeFormEnterprise}
           rows="10"
           placeholder="Sans la nommer, merci d’ajouter une description de votre entreprise (exemple : nombre de salariés, précisions concernant le secteur d’activité, date de création ...)"
@@ -154,6 +156,7 @@ function EnterpriseStepTwo({
                 key={appetence.id}
                 name="appetencesId"
                 value={appetence.id}
+                required
                 onClick={handleChangeFormEnterprise}
               >
                 {appetence.appetence}
@@ -177,6 +180,7 @@ function EnterpriseStepTwo({
                   name="contractTypesId"
                   id={contractType.id}
                   value={contractType.id}
+                  required
                   onChange={handleChangeFormEnterprise}
                 />
                 <label htmlFor={contractType.id}>
@@ -220,6 +224,7 @@ function EnterpriseStepTwo({
               <div key={programmingLanguage.id}>
                 <input
                   type="checkbox"
+                  name="programmingLanguagesId"
                   id={programmingLanguage.id}
                   value={programmingLanguage.id}
                   onChange={fillLanguagesArray}
@@ -244,16 +249,17 @@ function EnterpriseStepTwo({
               <input
                 type="number"
                 name="salary"
+                required
                 onChange={handleChangeFormEnterprise}
               />
             </div>
           </section>
 
-          <p>{isError ? "Remplissez tous les champs" : ""}</p>
+          <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
           <button
             type="submit"
             className="final_button_to_inscription_container"
-            onClick={registerEnterprise}
+            onClick={formIsFilled ? () => sendEnterpriseInfos() : null}
           >
             Finaliser l'inscription
           </button>
@@ -266,7 +272,7 @@ function EnterpriseStepTwo({
 EnterpriseStepTwo.propTypes = {
   formTools: PropTypes.shape({
     handleFormSubmit: PropTypes.func.isRequired,
-    registerEnterprise: PropTypes.func.isRequired,
+    sendEnterpriseInfos: PropTypes.func.isRequired,
     handleChangeFormEnterprise: PropTypes.func.isRequired,
     setEnterpriseInfos: PropTypes.func.isRequired,
     enterpriseInfos: PropTypes.shape({
@@ -277,9 +283,10 @@ EnterpriseStepTwo.propTypes = {
       contractTypesId: PropTypes.string.isRequired,
       workRhythmsId: PropTypes.string.isRequired,
       appetencesId: PropTypes.string.isRequired,
-      programmingLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+      languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
-    isError: PropTypes.bool.isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

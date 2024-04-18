@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import {
+  registerCandidate,
+  registerEnterprise,
+} from "../services/registerService";
 
 import FirstView from "../components/register/FirstView";
 import EnterpriseStepOne from "../components/register/EnterpriseStepOne";
@@ -11,10 +14,8 @@ import FinalStepView from "../components/register/FinalStepView";
 
 function Register() {
   const [step, setStep] = useState(1);
-
+  const [formIsFilled, setFormIsFilled] = useState(false);
   const [role, setRole] = useState("enterprise");
-
-  const [isError, setIsError] = useState(false);
 
   const [candidateInfos, setCandidateInfos] = useState({
     firstname: "",
@@ -69,21 +70,14 @@ function Register() {
     event.preventDefault();
   };
 
-  const registerCandidate = () => {
-    axios
-      .post("http://localhost:3310/api/candidates", candidateInfos)
-      .then((response) => {
-        setIsError(false);
-        console.info(response);
-      })
-      .catch(() => setIsError(true));
+  const sendCandidateInfos = () => {
+    registerCandidate(candidateInfos);
+    nextStep();
   };
 
-  const registerEnterprise = () => {
-    axios
-      .post("http://localhost:3310/api/enterprises", enterpriseInfos)
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
+  const sendEnterpriseInfos = () => {
+    registerEnterprise(enterpriseInfos);
+    nextStep();
   };
 
   const displayRegisterStep = () => {
@@ -100,7 +94,8 @@ function Register() {
               handleFormSubmit,
               handleChangeFormEnterprise,
               enterpriseInfos,
-              isError,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         ) : (
@@ -110,7 +105,8 @@ function Register() {
               handleFormSubmit,
               handleChangeForm,
               candidateInfos,
-              isError,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         );
@@ -121,10 +117,11 @@ function Register() {
               nextStep,
               handleFormSubmit,
               handleChangeFormEnterprise,
-              registerEnterprise,
+              sendEnterpriseInfos,
               setEnterpriseInfos,
               enterpriseInfos,
-              isError,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         ) : (
@@ -132,11 +129,12 @@ function Register() {
             formTools={{
               nextStep,
               handleFormSubmit,
-              registerCandidate,
+              sendCandidateInfos,
               handleChangeForm,
               setCandidateInfos,
               candidateInfos,
-              isError,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         );
