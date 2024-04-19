@@ -8,7 +8,7 @@ const add = async (req, res, next) => {
     const { enterpriseId } = req.params;
     const jobOfferId = tables.job_offer.readById(enterpriseId);
 
-    await tables.resume_has_programming_languages.createMultiple(
+    await tables.job_offer_has_programming_languages.createMultiple(
       jobOfferId,
       languages
     );

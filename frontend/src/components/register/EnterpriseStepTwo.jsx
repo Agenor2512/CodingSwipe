@@ -258,7 +258,9 @@ function EnterpriseStepTwo({
           <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
           <button
             type="submit"
-            className="final_button_to_inscription_container"
+            className={
+              formIsFilled ? "final_button_to_inscription" : "invisible"
+            }
             onClick={formIsFilled ? () => sendEnterpriseInfos() : null}
           >
             Finaliser l'inscription

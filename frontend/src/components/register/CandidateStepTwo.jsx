@@ -14,7 +14,7 @@ function CandidateStepTwo({
   formTools: {
     handleFormSubmit,
     sendCandidateInfos,
-    handleChangeForm,
+    handleChangeFormCandidate,
     setCandidateInfos,
     candidateInfos,
     formIsFilled,
@@ -102,7 +102,7 @@ function CandidateStepTwo({
               key={appetence.id}
               name="appetencesId"
               value={appetence.id}
-              onClick={handleChangeForm}
+              onClick={handleChangeFormCandidate}
             >
               {appetence.appetence}
             </button>
@@ -126,7 +126,7 @@ function CandidateStepTwo({
                 id={contractType.id}
                 value={contractType.id}
                 required
-                onChange={handleChangeForm}
+                onChange={handleChangeFormCandidate}
               />
               <label htmlFor={contractType.id}>
                 {contractType.contract_type}
@@ -147,7 +147,7 @@ function CandidateStepTwo({
                 id={workRhythm.id}
                 value={workRhythm.id}
                 required
-                onChange={handleChangeForm}
+                onChange={handleChangeFormCandidate}
               />
               <label htmlFor={workRhythm.id}>{workRhythm.work_rhythm}</label>
             </div>
@@ -165,7 +165,7 @@ function CandidateStepTwo({
               key={level.id}
               name="levelId"
               value={level.id}
-              onClick={handleChangeForm}
+              onClick={handleChangeFormCandidate}
             >
               {level.level}
             </button>
@@ -202,7 +202,7 @@ function CandidateStepTwo({
         <input
           type="submit"
           value="Finaliser l'inscription"
-          className="final_button_to_inscription"
+          className={formIsFilled ? "final_button_to_inscription" : "invisible"}
           onClick={formIsFilled ? () => sendCandidateInfos() : null}
         />
       </section>
@@ -214,7 +214,7 @@ CandidateStepTwo.propTypes = {
   formTools: PropTypes.shape({
     handleFormSubmit: PropTypes.func.isRequired,
     sendCandidateInfos: PropTypes.func.isRequired,
-    handleChangeForm: PropTypes.func.isRequired,
+    handleChangeFormCandidate: PropTypes.func.isRequired,
     setCandidateInfos: PropTypes.func.isRequired,
     candidateInfos: PropTypes.shape({
       appetencesId: PropTypes.arrayOf(PropTypes.string).isRequired,

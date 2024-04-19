@@ -14,6 +14,12 @@ class JobOfferHasProgrammingLanguagesManager extends AbstractManager {
     return result;
   }
 
+  async createMultiple(resumeId, programmingLanguages) {
+    await Promise.all(
+      programmingLanguages.map((language) => this.create(resumeId, language))
+    );
+  }
+
   async readById(id) {
     const [rows] = await this.database.query(
       `select programming_languages_id id, programming_language from ${this.table} jbhpl

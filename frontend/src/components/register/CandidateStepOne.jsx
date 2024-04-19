@@ -9,7 +9,7 @@ function CandidateStepOne({
   formTools: {
     nextStep,
     handleFormSubmit,
-    handleChangeForm,
+    handleChangeFormCandidate,
     candidateInfos,
     formIsFilled,
     setFormIsFilled,
@@ -19,6 +19,12 @@ function CandidateStepOne({
 
   const [departments, setDepartments] = useState([]);
 
+  const validatePassword = () => {
+    const pattern =
+      /(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}/;
+    return pattern.test(candidateInfos.password);
+  };
+
   useEffect(() => {
     readAllDepartments().then((allDepartments) =>
       setDepartments(allDepartments)
@@ -27,8 +33,11 @@ function CandidateStepOne({
       candidateInfos.firstname &&
       candidateInfos.lastname &&
       candidateInfos.password &&
+      candidateInfos.passwordCheck &&
       candidateInfos.email &&
-      candidateInfos.departmentId
+      candidateInfos.departmentId &&
+      candidateInfos.password === candidateInfos.passwordCheck &&
+      validatePassword()
     ) {
       setFormIsFilled(true);
     } else {
@@ -57,7 +66,7 @@ function CandidateStepOne({
               id="candidate-lastname"
               placeholder="Doe"
               required
-              onChange={handleChangeForm}
+              onChange={handleChangeFormCandidate}
             />
           </div>
 
@@ -70,7 +79,7 @@ function CandidateStepOne({
               id="candidate-firstame"
               placeholder="John"
               required
-              onChange={handleChangeForm}
+              onChange={handleChangeFormCandidate}
             />
           </div>
         </div>
@@ -84,7 +93,7 @@ function CandidateStepOne({
               id="email-candidate"
               placeholder="exemple@gmail.com"
               required
-              onChange={handleChangeForm}
+              onChange={handleChangeFormCandidate}
             />
           </div>
           <div className="register_label_input_container">
@@ -92,7 +101,7 @@ function CandidateStepOne({
             <select
               id="department"
               name="departmentId"
-              onChange={handleChangeForm}
+              onChange={handleChangeFormCandidate}
               required
             >
               <option value="">Veuillez choisir votre département</option>
@@ -110,30 +119,36 @@ function CandidateStepOne({
             <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
-              minLength={8}
               name="password"
               id="password"
               placeholder="Saisissez un mot de passe"
               pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
               title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial."
               required
-              onChange={handleChangeForm}
+              onChange={handleChangeFormCandidate}
             />
           </div>
           <div className="register_label_input_container">
-            <label htmlFor="password-check">Vérification du mot de passe</label>
+            <label htmlFor="passwordCheck">Vérification du mot de passe</label>
             <input
               type="password"
-              minLength={8}
               name="passwordCheck"
               id="passwordCheck"
               placeholder="Vérifiez votre mot de passe"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
+              title="Le mot de passe ne correspond pas à celui entré précédemment."
               required
+              onChange={handleChangeFormCandidate}
             />
           </div>
         </div>
         <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
-        <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
+
+        <button
+          type="submit"
+          onClick={formIsFilled ? () => nextStep() : null}
+          className={formIsFilled ? "" : "invisible"}
+        >
           Continuer
         </button>
       </form>
@@ -145,13 +160,14 @@ CandidateStepOne.propTypes = {
   formTools: PropTypes.shape({
     nextStep: PropTypes.func.isRequired,
     handleFormSubmit: PropTypes.func.isRequired,
-    handleChangeForm: PropTypes.func.isRequired,
+    handleChangeFormCandidate: PropTypes.func.isRequired,
     candidateInfos: PropTypes.shape({
-      firstname: PropTypes.string,
-      lastname: PropTypes.string,
-      password: PropTypes.string,
-      email: PropTypes.string,
-      departmentId: PropTypes.number,
+      firstname: PropTypes.string.isRequired,
+      lastname: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      passwordCheck: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      departmentId: PropTypes.number.isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
     setFormIsFilled: PropTypes.bool.isRequired,
