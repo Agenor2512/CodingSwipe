@@ -14,13 +14,19 @@ function CandidateCandidacy() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [resume, setResume] = useState([]);
+  const [resume, setResume] = useState({});
+
+  const [refreshResume, setRefreshResume] = useState(1);
+
+  const triggerResumeRefresh = () => {
+    setRefreshResume(Math.random());
+  };
 
   useEffect(() => {
     readAllResume()
       .then((allResume) => setResume(allResume))
       .then(() => setIsLoading(false));
-  }, []);
+  }, [refreshResume]);
 
   const getFirstLetter = () => {
     if (isLoading === false) {
@@ -81,10 +87,10 @@ function CandidateCandidacy() {
           </div>
         </div>
         <SwipeSystem
-          resumeId={resume.infos.id}
+          resumeId={resume.infos.resumeId}
           enterpriseId={loginUser.id}
           setIsLoading={setIsLoading}
-          setResume={setResume}
+          triggerRefresh={triggerResumeRefresh}
         />
       </div>
     );

@@ -10,8 +10,6 @@ export const client = axios.create({
 export default function sendEnterpriseLike(enterpriseLikeInfos) {
   return client
     .post("/enterprises/likes", enterpriseLikeInfos)
-    .then((response) => {
-      console.info(response.data);
-    })
+    .then((response) => response.data)
     .catch((error) => console.error(error));
 }

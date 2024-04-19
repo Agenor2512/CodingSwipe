@@ -1,10 +1,7 @@
 const tables = require("../tables");
 
 const add = async (req, res, next) => {
-  const likeInfo = {
-    enterpriseId: req.body.enterpriseId,
-    candidateId: req.body.candidateId,
-  };
+  const likeInfo = req.body;
 
   try {
     await tables.candidate_like.create(likeInfo);

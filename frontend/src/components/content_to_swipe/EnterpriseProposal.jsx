@@ -12,13 +12,19 @@ import "../../styles/content_to_swipe/enterpriseProposal.css";
 function EnterpriseProposal() {
   const { loginUser } = useContext(LoginUserContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [jobOffer, setJobOffer] = useState([]);
+  const [jobOffer, setJobOffer] = useState({});
+
+  const [refreshOffer, setRefreshOffer] = useState(1);
+
+  const triggerOfferRefresh = () => {
+    setRefreshOffer(Math.random());
+  };
 
   useEffect(() => {
     readAllOffer()
       .then((allOffers) => setJobOffer(allOffers))
       .then(() => setIsLoading(false));
-  }, []);
+  }, [refreshOffer]);
 
   const getFirstLetter = () => {
     if (isLoading === false) {
@@ -77,6 +83,7 @@ function EnterpriseProposal() {
           jobOfferId={jobOffer.infos.jobOfferId}
           candidateId={loginUser.id}
           setJobOffer={setJobOffer}
+          triggerRefresh={triggerOfferRefresh}
         />
       </div>
     );
