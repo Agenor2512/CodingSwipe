@@ -74,7 +74,7 @@ function EnterpriseProposal() {
           </div>
         </div>
         <SwipeSystem
-          enterpriseId={jobOffer.infos.jobOfferId}
+          jobOfferId={jobOffer.infos.jobOfferId}
           candidateId={loginUser.id}
           setJobOffer={setJobOffer}
         />

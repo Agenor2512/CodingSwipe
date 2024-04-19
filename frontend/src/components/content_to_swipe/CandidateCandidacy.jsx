@@ -81,7 +81,7 @@ function CandidateCandidacy() {
           </div>
         </div>
         <SwipeSystem
-          candidateId={resume.infos.id}
+          resumeId={resume.infos.id}
           enterpriseId={loginUser.id}
           setIsLoading={setIsLoading}
           setResume={setResume}
