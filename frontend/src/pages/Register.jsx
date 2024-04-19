@@ -22,6 +22,7 @@ function Register() {
     lastname: "",
     email: "",
     password: "",
+    passwordCheck: "",
     departmentId: "",
     appetencesId: "",
     contractTypesId: "",
@@ -36,6 +37,7 @@ function Register() {
     description: "",
     email: "",
     password: "",
+    passwordCheck: "",
     departmentId: "",
     legalStatusId: "",
     businessSectorsId: "",
@@ -48,7 +50,7 @@ function Register() {
 
   console.info("ENTREPRISE INFOS: ", enterpriseInfos);
 
-  const handleChangeForm = (event) => {
+  const handleChangeFormCandidate = (event) => {
     setCandidateInfos({
       ...candidateInfos,
       [event.target.name]: event.target.value,
@@ -103,7 +105,7 @@ function Register() {
             formTools={{
               nextStep,
               handleFormSubmit,
-              handleChangeForm,
+              handleChangeFormCandidate,
               candidateInfos,
               formIsFilled,
               setFormIsFilled,
@@ -130,7 +132,7 @@ function Register() {
               nextStep,
               handleFormSubmit,
               sendCandidateInfos,
-              handleChangeForm,
+              handleChangeFormCandidate,
               setCandidateInfos,
               candidateInfos,
               formIsFilled,

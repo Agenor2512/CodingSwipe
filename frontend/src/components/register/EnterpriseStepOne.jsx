@@ -17,6 +17,13 @@ function EnterpriseStepOne({
   },
 }) {
   const [departments, setDepartments] = useState([]);
+  // const [isPasswordMatching, setIsPasswordMatching] = useState(false);
+
+  const validatePassword = () => {
+    const pattern =
+      /(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}/;
+    return pattern.test(enterpriseInfos.password);
+  };
 
   useEffect(() => {
     readAllDepartments().then((allDepartments) =>
@@ -27,7 +34,10 @@ function EnterpriseStepOne({
       enterpriseInfos.siret &&
       enterpriseInfos.email &&
       enterpriseInfos.departmentId &&
-      enterpriseInfos.password
+      enterpriseInfos.password &&
+      enterpriseInfos.passwordCheck &&
+      enterpriseInfos.password === enterpriseInfos.passwordCheck &&
+      validatePassword()
     ) {
       setFormIsFilled(true);
     } else {
@@ -110,14 +120,13 @@ function EnterpriseStepOne({
             <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
-              minLength={8}
               name="password"
               id="password"
               placeholder="Saisissez un mot de passe"
               pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
               title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial."
-              onChange={handleChangeFormEnterprise}
               required
+              onChange={handleChangeFormEnterprise}
             />
           </div>
 
@@ -125,16 +134,22 @@ function EnterpriseStepOne({
             <label htmlFor="passwordCheck">Vérification du mot de passe</label>
             <input
               type="password"
-              minLength={8}
               name="passwordCheck"
               id="passwordCheck"
               placeholder="Vérifiez votre mot de passe"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#].{8,15}"
+              title="Le mot de passe ne correspond pas à celui entré précédemment."
               required
+              onChange={handleChangeFormEnterprise}
             />
           </div>
         </div>
         <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
-        <button type="submit" onClick={formIsFilled ? () => nextStep() : null}>
+        <button
+          type="submit"
+          onClick={formIsFilled ? () => nextStep() : null}
+          className={formIsFilled ? "" : "invisible"}
+        >
           Continuer
         </button>
       </form>
@@ -153,6 +168,7 @@ EnterpriseStepOne.propTypes = {
       email: PropTypes.string.isRequired,
       departmentId: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
+      passwordCheck: PropTypes.string.isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
     setFormIsFilled: PropTypes.func.isRequired,
