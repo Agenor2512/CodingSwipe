@@ -194,10 +194,11 @@ function CandidateStepTwo({
 
       <section className="computer_language_checkbox_container">
         <p>
-          Mes langages informatiques <br />
+          Mes langages informatiques
           <span className="select_languages_span">
             <span>{" { "}</span>
-            sélectionnez au moins un langage <span>{" } "}</span>
+            sélectionnez au moins un langage
+            <span>{" } "}</span>
           </span>
           <span> : </span>
         </p>
@@ -219,15 +220,14 @@ function CandidateStepTwo({
         </section>
       </section>
       <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
-      <section className="final_button_to_inscription_container">
-        <button
-          type="submit"
-          className={formIsFilled ? "" : "invisible"}
-          onClick={formIsFilled ? () => sendCandidateInfos() : null}
-        >
-          Finaliser l'inscription
-        </button>
-      </section>
+
+      <button
+        type="submit"
+        className={formIsFilled ? "" : "invisible"}
+        onClick={formIsFilled ? () => sendCandidateInfos() : null}
+      >
+        Finaliser l'inscription
+      </button>
     </form>
   );
 }

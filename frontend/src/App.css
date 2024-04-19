@@ -13,6 +13,7 @@
   --register-background-color: #1e2228;
   --background-color: #f7f7f7;
   --background-users-homepage: #f0f5fa;
+  --overlay-color: rgb(49, 49, 49, 0.8);
 }
 
 * {

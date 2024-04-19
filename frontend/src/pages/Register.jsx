@@ -149,7 +149,7 @@ function Register() {
     }
   };
 
-  return <div>{displayRegisterStep()}</div>;
+  return <>{displayRegisterStep()}</>;
 }
 
 export default Register;
