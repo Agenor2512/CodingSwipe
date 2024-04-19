@@ -22,11 +22,11 @@ const browseRandom = async (req, res, next) => {
 const readById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const enterprise = await tables.enterprise.readById(id);
-    const joboffer = await tables.job_offer.readById(enterprise.id);
-    const missions = await tables.missions.readById(enterprise.id);
+    await tables.enterprise.readById(id);
+    const joboffer = await tables.job_offer.readById(id);
+    const missions = await tables.missions.readById(id);
     const languages = await tables.job_offer_has_programming_languages.readById(
-      enterprise.id
+      id
     );
     res.json({
       infos: joboffer,

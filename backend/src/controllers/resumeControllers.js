@@ -22,12 +22,12 @@ const browseRandom = async (req, res, next) => {
 const readById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const candidate = await tables.candidate.readById(id);
-    const resume = await tables.resume.readById(candidate.id);
+    await tables.candidate.readById(id);
+    const resume = await tables.resume.readById(id);
     const experience = await tables.experiences.readById(id);
     const softSkills = await tables.resume_has_soft_skills.readById(id);
     const languages = await tables.resume_has_programming_languages.readById(
-      candidate.id
+      id
     );
     res.json({
       infos: resume,
