@@ -29,6 +29,9 @@ function CandidateStepTwo({
   const [workRhythms, setWorkRhythms] = useState([]);
   const [levels, setLevels] = useState([]);
 
+  const [appetenceButton, setAppetenceButton] = useState("Frontend");
+  const [levelButton, setLevelButton] = useState("Junior");
+
   useEffect(() => {
     readAllProgrammingLanguages().then((registerProgrammingLanguages) =>
       setProgrammingLanguages(registerProgrammingLanguages)
@@ -58,9 +61,25 @@ function CandidateStepTwo({
     } else {
       setFormIsFilled(false);
     }
-  }, [candidateInfos]);
+  }, [candidateInfos, setFormIsFilled]);
 
   console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
+
+  const handleFocusAppetenceButton = (event) => {
+    setAppetenceButton(event.target.name);
+    setCandidateInfos((prevInfos) => ({
+      ...prevInfos,
+      appetencesId: event.target.value,
+    }));
+  };
+
+  const handleFocusLevelButton = (event) => {
+    setLevelButton(event.target.name);
+    setCandidateInfos((prevInfos) => ({
+      ...prevInfos,
+      levelId: event.target.value,
+    }));
+  };
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
@@ -78,11 +97,7 @@ function CandidateStepTwo({
   };
 
   return (
-    <form
-      action="submit"
-      className="candidate_step_two_form"
-      onSubmit={handleFormSubmit}
-    >
+    <form className="candidate_step_two_form" onSubmit={handleFormSubmit}>
       <h1>Créer Un Compte</h1>
       <section className="subtitle">
         <div className="square"> </div>
@@ -100,9 +115,12 @@ function CandidateStepTwo({
             <button
               type="button"
               key={appetence.id}
-              name="appetencesId"
+              name={appetence.appetence}
               value={appetence.id}
-              onClick={handleChangeFormCandidate}
+              className={
+                appetenceButton === appetence.appetence ? "focusedButton" : ""
+              }
+              onClick={(event) => handleFocusAppetenceButton(event)}
             >
               {appetence.appetence}
             </button>
@@ -163,9 +181,10 @@ function CandidateStepTwo({
             <button
               type="button"
               key={level.id}
-              name="levelId"
+              name={level.level}
               value={level.id}
-              onClick={handleChangeFormCandidate}
+              className={levelButton === level.level ? "focusedButton" : ""}
+              onClick={(event) => handleFocusLevelButton(event)}
             >
               {level.level}
             </button>
@@ -173,38 +192,41 @@ function CandidateStepTwo({
         </section>
       </section>
 
-      <p>
-        Mes langages informatiques
-        <span className="select_languages_span">
-          <span>{" { "}</span>
-          sélectionnez au moins un langage <span>{" } "}</span>
-        </span>
-        <span> : </span>
-      </p>
       <section className="computer_language_checkbox_container">
-        {programmingLanguages.map((programmingLanguage) => (
-          <div key={programmingLanguage.id}>
-            <input
-              type="checkbox"
-              name="programmingLanguagesId"
-              id="checkbox"
-              value={programmingLanguage.id}
-              onChange={fillLanguagesArray}
-            />
-            <label htmlFor="checkbox">
-              {programmingLanguage.programming_language}
-            </label>
-          </div>
-        ))}
+        <p>
+          Mes langages informatiques <br />
+          <span className="select_languages_span">
+            <span>{" { "}</span>
+            sélectionnez au moins un langage <span>{" } "}</span>
+          </span>
+          <span> : </span>
+        </p>
+        <section className="programming_languages">
+          {programmingLanguages.map((programmingLanguage) => (
+            <div key={programmingLanguage.id}>
+              <input
+                type="checkbox"
+                name="programmingLanguagesId"
+                id="checkbox"
+                value={programmingLanguage.id}
+                onChange={fillLanguagesArray}
+              />
+              <label htmlFor="checkbox">
+                {programmingLanguage.programming_language}
+              </label>
+            </div>
+          ))}
+        </section>
       </section>
       <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
       <section className="final_button_to_inscription_container">
-        <input
+        <button
           type="submit"
-          value="Finaliser l'inscription"
-          className={formIsFilled ? "final_button_to_inscription" : "invisible"}
+          className={formIsFilled ? "" : "invisible"}
           onClick={formIsFilled ? () => sendCandidateInfos() : null}
-        />
+        >
+          Finaliser l'inscription
+        </button>
       </section>
     </form>
   );
