@@ -20,10 +20,6 @@
   > .levels_experience_part_container,
 .enterprise_form_container
   > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > div,
-.enterprise_form_container
-  > .step_two_enterprise_form
   > .salary_languages_missions_desktop
   > .annual_salary {
   margin: 1rem 0;
@@ -31,12 +27,12 @@
 
 .enterprise_form_container
   > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > .computer_language_checkbox_container,
+  > .computer_language_checkbox_container
+  > p,
 .enterprise_form_container
   > .step_two_enterprise_form
   > .research_and_workplace_container
-  > p,
+  > div,
 .enterprise_form_container
   > .step_two_enterprise_form
   > .salary_languages_missions_desktop
@@ -139,11 +135,23 @@
   > p,
 .enterprise_form_container
   > .step_two_enterprise_form
-  > .research_and_workplace_container
   > .computer_language_checkbox_container
+  > p,
+.enterprise_form_container
+  > .step_two_enterprise_form
+  > .computer_language_checkbox_container
+  > .programming_languages
   > div
-  > p {
+  > label {
   color: var(--secondary-color);
+}
+
+.enterprise_form_container
+  > .step_two_enterprise_form
+  > .computer_language_checkbox_container
+  > p
+  > .select_languages_span {
+  color: var(--third-color);
 }
 
 .enterprise_form_container > .step_two_enterprise_form > h1,
@@ -160,10 +168,10 @@
   margin-bottom: 0.5rem;
 }
 
-.enterprise_form_container > .step_two_enterprise_form select#industries-select,
+.enterprise_form_container > .step_two_enterprise_form select#industries_select,
 .enterprise_form_container
   > .step_two_enterprise_form
-  select#enterprise-type-select {
+  select#enterprise_type_select {
   margin-bottom: 2rem;
 }
 
@@ -246,62 +254,19 @@
   color: var(--secondary-color);
 }
 
-.enterprise_form_container
+/* .enterprise_form_container
   > .step_two_enterprise_form
   > .research_and_workplace_container
   > div
   > label,
 .enterprise_form_container
   > .step_two_enterprise_form
-  > .research_and_workplace_container
   > .computer_language_checkbox_container
   > div
   input {
   margin-right: 0.35rem;
   margin-bottom: 0.35rem;
-}
-
-.enterprise_form_container
-  > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > .computer_language_checkbox_container
-  > div
-  input {
-  display: inline-block;
-  width: 1.15em;
-  height: 1.15em;
-  appearance: none;
-  border-radius: 0.1rem;
-  border: 0;
-  background: var(--third-color);
-}
-
-.enterprise_form_container
-  > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > .computer_language_checkbox_container
-  > div
-  input:checked {
-  background-color: var(--primary-color);
-  border: 0;
-}
-
-.enterprise_form_container
-  > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > .computer_language_checkbox_container
-  > div
-  input:checked:after {
-  position: relative;
-  padding: 0.1rem;
-  content: "\2714";
-  color: var(--secondary-color);
-}
-
-.enterprise_expectation_container > p {
-  display: flex;
-  align-items: center;
-}
+} */
 
 .enterprise_form_container
   > .step_two_enterprise_form
@@ -319,19 +284,72 @@
   margin-bottom: 0.5rem;
 }
 
-.enterprise_form_container p > .step_two_enterprise_form,
-.step_two_enterprise_form > .research_and_workplace_container > div > p {
-  text-align: left;
+.enterprise_form_container
+  > .step_two_enterprise_form
+  > .computer_language_checkbox_container
+  > .programming_languages {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-around;
+  margin-top: 1rem;
+  height: 28vh;
+}
+
+/* .enterprise_form_container
+  > .step_two_enterprise_form
+  > .computer_language_checkbox_container
+  > .programming_languages
+  > div
+  > label,
+.enterprise_form_container > .step_two_enterprise_form input#checkbox {
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+} */
+
+.enterprise_form_container > .step_two_enterprise_form input#checkbox {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  appearance: none;
+  border-radius: 0.1rem;
+  border: 0;
+  background: var(--third-color);
+}
+
+.enterprise_form_container > .step_two_enterprise_form input#checkbox:checked {
+  background-color: var(--primary-color);
+  border: 0;
 }
 
 .enterprise_form_container
   > .step_two_enterprise_form
+  input#checkbox:checked:after {
+  position: relative;
+  padding: 0.1rem;
+  content: "\2714";
+  color: var(--secondary-color);
+}
+
+/* .enterprise_expectation_container > p {
+  display: flex;
+  align-items: center;
+} */
+
+/* .enterprise_form_container p > .step_two_enterprise_form,
+.step_two_enterprise_form > .research_and_workplace_container > div > p {
+  text-align: left;
+} */
+
+/* .enterprise_form_container
+  > .step_two_enterprise_form
   > p
   > .select_languages_span {
   color: var(--third-color);
-}
+} */
 
-.enterprise_form_container
+/* .enterprise_form_container
   > .step_two_enterprise_form
   > .research_and_workplace_container
   > .computer_language_checkbox_container {
@@ -341,7 +359,7 @@
   justify-content: flex-start;
   align-content: space-around;
   height: 32vh;
-}
+} */
 
 .enterprise_form_container
   > .step_two_enterprise_form
@@ -353,8 +371,8 @@
   .enterprise_workplace_container,
 .enterprise_form_container
   > .step_two_enterprise_form
-  .research_and_workplace_container
   > .computer_language_checkbox_container
+  > .programming_languages
   > div {
   display: flex;
   flex-direction: row;
@@ -406,7 +424,7 @@
   border-color: var(--secondary-color);
 }
 
-.step_two_form_enterprise
+/* .step_two_form_enterprise
   > .computer_language_checkbox_container
   > .programming_languages
   > div {
@@ -415,7 +433,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-}
+} */
 
 .enterprise_form_container
   > .step_two_enterprise_form
@@ -457,7 +475,8 @@
   .enterprise_form_container > .step_two_enterprise_form {
     display: flex;
     align-items: flex-start;
-    padding: 0 10rem;
+    padding: 0 9rem;
+    font-size: 1rem;
   }
 
   .enterprise_form_container > .step_two_enterprise_form > h1 {
@@ -483,18 +502,32 @@
 
   .enterprise_form_container
     > .step_two_enterprise_form
-    select#industries-select,
+    select#industries_select,
   .enterprise_form_container
     > .step_two_enterprise_form
-    select#enterprise-type-select {
-    margin-bottom: 3rem;
+    select#enterprise_type_select,
+  .enterprise_form_container
+    > .step_two_enterprise_form
+    textarea#description_area,
+  .enterprise_form_container
+    > .step_two_enterprise_form
+    > .levels_experience_part_container
+    > .levels_and_experience_button_container,
+  .enterprise_form_container
+    > .step_two_enterprise_form
+    > .research_and_workplace_container,
+  .enterprise_form_container
+    > .step_two_enterprise_form
+    > .computer_language_checkbox_container
+    > .programming_languages {
+    margin-bottom: 2rem;
   }
 
-  .enterprise_form_container
+  /* .enterprise_form_container
     > .step_two_enterprise_form
     > .research_and_workplace_container {
     align-items: flex-start;
-  }
+  } */
 
   .enterprise_form_container
     > .step_two_enterprise_form
@@ -505,17 +538,27 @@
 
   .enterprise_form_container
     > .step_two_enterprise_form
+    > .computer_language_checkbox_container
+    > .programming_languages {
+    width: 70rem;
+    height: 10vh;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .enterprise_form_container
+    > .step_two_enterprise_form
     > .salary_languages_missions_desktop {
     width: 30vw;
   }
 
   .enterprise_form_container
-    > .step_two_enterprise_form
-    select#industries-select,
-  .enterprise_form_containerCandidate
-    > .step_two_enterprise_form
-    select#enterprise-type-select,
-  .enterprise_form_container > .step_two_enterprise_form > textarea,
+  > .step_two_enterprise_form
+  select#industries_select,
+.enterprise_form_container
+  > .step_two_enterprise_form
+  select#enterprise_type_select,
+  /* .enterprise_form_container > .step_two_enterprise_form > textarea, */
   .enterprise_form_container
     > .step_two_enterprise_form
     > .levels_experience_part_container
@@ -523,30 +566,22 @@
     > button,
   .enterprise_form_container
     > .step_two_enterprise_form
-    > .research_and_workplace_container
-    > div
-    > .enterprise_expectation_container
-    > input[type="radio" i],
+     input[type="radio" i],
   .enterprise_form_container
     > .step_two_enterprise_form
-    > .research_and_workplace_container
-    > div
-    > .enterprise_workplace_container
-    > input[type="radio" i],
-  .enterprise_form_container
-    > .step_two_enterprise_form
-    > .research_and_workplace_container
-    > .computer_language_checkbox_container
-    > div
-    input,
-  .enterprise_form_container
+    input#checkbox,
+  /* .enterprise_form_container
     > .step_two_enterprise_form
     > .salary_languages_missions_desktop
     > .annual_salary
     > div
-    > input,
-  .enterprise_form_container > .step_two_enterprise_form > button {
+    > input, */
+    .enterprise_form_container > .step_two_enterprise_form > button {
     cursor: pointer;
+  }
+
+  .enterprise_form_container > .step_two_enterprise_form > p {
+    margin-bottom: 1rem;
   }
 
   .enterprise_form_container > .step_two_enterprise_form > button:hover {

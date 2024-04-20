@@ -104,12 +104,12 @@ function EnterpriseStepTwo({
           </p>
         </section>
 
-        <label htmlFor="enterprise-type-select">
+        <label htmlFor="enterprise_type_select">
           Type d'entreprise <span>:</span>
         </label>
         <select
           name="legalStatusId"
-          id="enterprise-type-select"
+          id="enterprise_type_select"
           required
           onChange={handleChangeFormEnterprise}
         >
@@ -123,12 +123,12 @@ function EnterpriseStepTwo({
           ))}
         </select>
 
-        <label htmlFor="industries-select">
+        <label htmlFor="industries_select">
           Secteur d'activité <span>:</span>
         </label>
         <select
           name="businessSectorsId"
-          id="industries-select"
+          id="industries_select"
           required
           onChange={handleChangeFormEnterprise}
         >
@@ -142,13 +142,13 @@ function EnterpriseStepTwo({
           ))}
         </select>
 
-        <label htmlFor="description-area">
+        <label htmlFor="description_area">
           Description de votre entreprise <span>:</span>
         </label>
         <textarea
           name="description"
           type="text"
-          id="description-area"
+          id="description_area"
           required
           onChange={handleChangeFormEnterprise}
           rows="10"
@@ -241,11 +241,11 @@ function EnterpriseStepTwo({
                 <input
                   type="checkbox"
                   name="programmingLanguagesId"
-                  id={programmingLanguage.id}
+                  id="checkbox"
                   value={programmingLanguage.id}
                   onChange={fillLanguagesArray}
                 />
-                <label htmlFor={programmingLanguage.id}>
+                <label htmlFor="checkbox">
                   {programmingLanguage.programming_language}
                 </label>
               </div>
