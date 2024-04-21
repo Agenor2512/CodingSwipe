@@ -24,10 +24,10 @@ function Register() {
     password: "",
     passwordCheck: "",
     departmentId: "",
-    appetencesId: "",
+    appetencesId: "1",
     contractTypesId: "",
     workRhythmsId: "",
-    levelId: "",
+    levelId: "1",
     languages: [],
   });
 
@@ -44,7 +44,7 @@ function Register() {
     salary: "",
     contractTypesId: "",
     workRhythmsId: "",
-    appetencesId: "",
+    appetencesId: "1",
     languages: [],
   });
 
@@ -149,7 +149,7 @@ function Register() {
     }
   };
 
-  return <div>{displayRegisterStep()}</div>;
+  return <>{displayRegisterStep()}</>;
 }
 
 export default Register;

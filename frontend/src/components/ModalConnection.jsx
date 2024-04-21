@@ -68,7 +68,6 @@ function ModalConnection() {
                 type="email"
                 required
                 placeholder="exemple@gmail.com"
-                pattern="[chiffres/lettres/tiret]@[lettres].[lettres]"
                 onChange={handleChangeEmail}
               />
               <label htmlFor="password">Mot de passe</label>
@@ -80,7 +79,7 @@ function ModalConnection() {
                 placeholder="Saisissez votre mot de passe"
                 onChange={handleChangePassword}
               />
-              <input type="submit" className="continue" value="Continuer" />
+              <button type="submit">Continuer</button>
             </form>
             <button type="button" onClick={toggleModal}>
               &times;

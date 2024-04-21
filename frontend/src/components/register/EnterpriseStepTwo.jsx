@@ -23,6 +23,8 @@ function EnterpriseStepTwo({
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", enterpriseInfos);
 
+  const [appetenceButton, setAppetenceButton] = useState("Frontend");
+
   const [legalStatus, setLegalStatus] = useState([]);
   const [businessSectors, setBusinessSectors] = useState([]);
   const [appetences, setAppetences] = useState([]);
@@ -72,6 +74,14 @@ function EnterpriseStepTwo({
 
   console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
+  const handleFocusAppetenceButton = (event) => {
+    setAppetenceButton(event.target.name);
+    setEnterpriseInfos((prevInfos) => ({
+      ...prevInfos,
+      appetencesId: event.target.value,
+    }));
+  };
+
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
     setEnterpriseInfos((prevInfos) => {
@@ -94,12 +104,12 @@ function EnterpriseStepTwo({
           </p>
         </section>
 
-        <label htmlFor="enterprise-type-select">
+        <label htmlFor="enterprise_type_select">
           Type d'entreprise <span>:</span>
         </label>
         <select
           name="legalStatusId"
-          id="enterprise-type-select"
+          id="enterprise_type_select"
           required
           onChange={handleChangeFormEnterprise}
         >
@@ -113,12 +123,12 @@ function EnterpriseStepTwo({
           ))}
         </select>
 
-        <label htmlFor="industries-select">
+        <label htmlFor="industries_select">
           Secteur d'activité <span>:</span>
         </label>
         <select
           name="businessSectorsId"
-          id="industries-select"
+          id="industries_select"
           required
           onChange={handleChangeFormEnterprise}
         >
@@ -132,13 +142,13 @@ function EnterpriseStepTwo({
           ))}
         </select>
 
-        <label htmlFor="description-area">
+        <label htmlFor="description_area">
           Description de votre entreprise <span>:</span>
         </label>
         <textarea
           name="description"
           type="text"
-          id="description-area"
+          id="description_area"
           required
           onChange={handleChangeFormEnterprise}
           rows="10"
@@ -154,10 +164,13 @@ function EnterpriseStepTwo({
               <button
                 type="button"
                 key={appetence.id}
-                name="appetencesId"
+                name={appetence.appetence}
                 value={appetence.id}
                 required
-                onClick={handleChangeFormEnterprise}
+                className={
+                  appetenceButton === appetence.appetence ? "focusedButton" : ""
+                }
+                onClick={(event) => handleFocusAppetenceButton(event)}
               >
                 {appetence.appetence}
               </button>
@@ -210,26 +223,29 @@ function EnterpriseStepTwo({
               </div>
             ))}
           </div>
+        </section>
 
+        <section className="computer_language_checkbox_container">
           <p>
             Mes langages informatiques
             <span className="select_languages_span">
               <span>{" { "}</span>
-              sélectionnez au moins un langage <span>{" } "}</span>
+              sélectionnez au moins un langage
+              <span>{" } "}</span>
             </span>
             <span> : </span>
           </p>
-          <section className="computer_language_checkbox_container">
+          <section className="programming_languages">
             {programmingLanguages.map((programmingLanguage) => (
               <div key={programmingLanguage.id}>
                 <input
                   type="checkbox"
                   name="programmingLanguagesId"
-                  id={programmingLanguage.id}
+                  id="checkbox"
                   value={programmingLanguage.id}
                   onChange={fillLanguagesArray}
                 />
-                <label htmlFor={programmingLanguage.id}>
+                <label htmlFor="checkbox">
                   {programmingLanguage.programming_language}
                 </label>
               </div>
@@ -254,18 +270,15 @@ function EnterpriseStepTwo({
               />
             </div>
           </section>
-
-          <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
-          <button
-            type="submit"
-            className={
-              formIsFilled ? "final_button_to_inscription" : "invisible"
-            }
-            onClick={formIsFilled ? () => sendEnterpriseInfos() : null}
-          >
-            Finaliser l'inscription
-          </button>
         </div>
+        <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
+        <button
+          type="submit"
+          className={formIsFilled ? "" : "invisible"}
+          onClick={formIsFilled ? () => sendEnterpriseInfos() : null}
+        >
+          Finaliser l'inscription
+        </button>
       </form>
     </div>
   );

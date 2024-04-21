@@ -58,12 +58,12 @@ function CandidateStepOne({
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="candidate-lastname">Nom</label>
+            <label htmlFor="candidate_lastname">Nom</label>
             <input
               type="text"
               minLength={3}
               name="lastname"
-              id="candidate-lastname"
+              id="candidate_lastname"
               placeholder="Doe"
               required
               onChange={handleChangeFormCandidate}
@@ -71,12 +71,12 @@ function CandidateStepOne({
           </div>
 
           <div className="register_label_input_container">
-            <label htmlFor="candidate-firstame">Prénom</label>
+            <label htmlFor="candidate_firstame">Prénom</label>
             <input
               type="text"
               minLength={3}
               name="firstname"
-              id="candidate-firstame"
+              id="candidate_firstame"
               placeholder="John"
               required
               onChange={handleChangeFormCandidate}
@@ -86,11 +86,11 @@ function CandidateStepOne({
 
         <div className="step_one_register_container">
           <div className="register_label_input_container">
-            <label htmlFor="email-candidate">Email</label>
+            <label htmlFor="email_candidate">Email</label>
             <input
               type="email"
               name="email"
-              id="email-candidate"
+              id="email_candidate"
               placeholder="exemple@gmail.com"
               required
               onChange={handleChangeFormCandidate}
@@ -146,8 +146,8 @@ function CandidateStepOne({
 
         <button
           type="submit"
-          onClick={formIsFilled ? () => nextStep() : null}
           className={formIsFilled ? "" : "invisible"}
+          onClick={formIsFilled ? () => nextStep() : null}
         >
           Continuer
         </button>

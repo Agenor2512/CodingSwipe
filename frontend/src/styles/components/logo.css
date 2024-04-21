@@ -8,7 +8,7 @@
 }
 
 .logo_container > h1 {
-  color: var(--color-white);
+  color: var(--secondary-color);
   font-size: 2rem;
 }
 
