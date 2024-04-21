@@ -10,16 +10,24 @@ import { readAllOffer } from "../../services/jobOffersService";
 
 import "../../styles/content_to_swipe/swipeSystem.css";
 
-function SwipeSystem({ candidateId, enterpriseId }) {
+function SwipeSystem({
+  jobOfferId,
+  candidateId,
+  resumeId,
+  enterpriseId,
+  triggerRefresh,
+}) {
   const { loginUser } = useContext(LoginUserContext);
 
   const sendLike = () => {
-    const info = { candidateId, enterpriseId };
-
     if (loginUser.role === "enterprise") {
-      sendEnterpriseLike(info).then(() => readAllResume());
+      sendEnterpriseLike({ resumeId, enterpriseId }).then(() =>
+        triggerRefresh()
+      );
     } else {
-      sendCandidateLike(info).then(() => readAllOffer());
+      sendCandidateLike({ jobOfferId, candidateId }).then(() =>
+        triggerRefresh()
+      );
     }
   };
 
@@ -34,7 +42,7 @@ function SwipeSystem({ candidateId, enterpriseId }) {
   return (
     <section className="swipe_system_container">
       <div>
-        <button type="button" onClick={() => sendLike()}>
+        <button type="button" onClick={sendLike}>
           <img
             className="like_icon"
             src="/src/assets/heart_swipe.svg"
@@ -42,7 +50,7 @@ function SwipeSystem({ candidateId, enterpriseId }) {
           />
         </button>
 
-        <button type="button" onClick={() => sendDislike()}>
+        <button type="button" onClick={sendDislike}>
           <img
             className="dislike_icon"
             src="/src/assets/cross_swipe.svg"
@@ -55,8 +63,11 @@ function SwipeSystem({ candidateId, enterpriseId }) {
 }
 
 SwipeSystem.propTypes = {
+  jobOfferId: PropTypes.string.isRequired,
   candidateId: PropTypes.string.isRequired,
+  resumeId: PropTypes.string.isRequired,
   enterpriseId: PropTypes.string.isRequired,
+  triggerRefresh: PropTypes.func.isRequired,
 };
 
 export default SwipeSystem;

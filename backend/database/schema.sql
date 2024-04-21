@@ -155,17 +155,17 @@ create table experiences (
 create table enterprise_like (
   id int not null auto_increment primary key,
   enterprise_id varchar(36) not null,
-  candidate_id varchar(36) not null,
+  resume_id varchar(36) not null,
   foreign key (enterprise_id) references enterprise(id),
-  foreign key (candidate_id) references candidate(id)
+  foreign key (resume_id) references resume(id)
 );
 
 create table candidate_like (
   id int not null auto_increment primary key,
   candidate_id varchar(36) not null,
-  enterprise_id varchar(36) not null,
+  job_offer_id varchar(36) not null,
   foreign key (candidate_id) references candidate(id),
-  foreign key (enterprise_id) references enterprise(id)
+  foreign key (job_offer_id) references job_offer(id)
 );
 
 insert into departments (department) values

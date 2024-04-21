@@ -5,10 +5,10 @@ class EnterpriseLikeManager extends AbstractManager {
     super({ table: "enterprise_like" });
   }
 
-  async create({ candidateId, enterpriseId }) {
+  async create({ resumeId, enterpriseId }) {
     const [rows] = await this.database.query(
-      `insert into ${this.table} (candidate_id, enterprise_id) values (?,?)`,
-      [candidateId, enterpriseId]
+      `insert into ${this.table} (resume_id, enterprise_id) values (?,?)`,
+      [resumeId, enterpriseId]
     );
 
     // Return the ID of the newly inserted item
