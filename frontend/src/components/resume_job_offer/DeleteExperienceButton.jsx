@@ -1,5 +1,5 @@
 import { useState } from "react";
-import deleteIcon from "../../assets/red_crash.png";
+import deleteIcon from "../../assets/red_trash_can.png";
 
 import "../../styles/resume_job_offer/deleteExperienceButton.css";
 

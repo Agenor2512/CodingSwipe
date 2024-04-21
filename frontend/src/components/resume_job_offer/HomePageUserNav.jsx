@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 import Matchs from "./Matchs";
 import Messages from "./Messages";
+import UsersNavigationHeader from "./UsersNavigationHeader";
 
 import ModalDisconnection from "../ModalDisconnection";
 
@@ -78,6 +79,7 @@ function HomePageUserNav({ handleTabClick }) {
   return (
     <section className="user_navigation_container">
       <div className="desktop_nav">
+        <UsersNavigationHeader />
         <ul>
           <Link to="/usershomepage/match">
             <li onClick={() => handleTabClick("match")}>MATCHS</li>
@@ -91,6 +93,7 @@ function HomePageUserNav({ handleTabClick }) {
         </ul>
         <Matchs matchesData={matchesData} />
         <Messages messagesData={messagesData} />
+        <ModalDisconnection />
       </div>
 
       <nav>
@@ -103,6 +106,7 @@ function HomePageUserNav({ handleTabClick }) {
           >
             &times;
           </button>
+          <UsersNavigationHeader />
           <ul>
             <Link to="/usershomepage/match">
               <li onClick={() => handleTabClick("match")}>MATCHS</li>
@@ -115,7 +119,9 @@ function HomePageUserNav({ handleTabClick }) {
             </Link>
           </ul>
           <Matchs matchesData={matchesData} />
+          <ModalDisconnection />
         </div>
+
         <div className="button_container">
           <button type="button" id="openBtn" onClick={openNav}>
             <div className="burger_icon">
@@ -125,7 +131,6 @@ function HomePageUserNav({ handleTabClick }) {
             </div>
           </button>
         </div>
-        <ModalDisconnection />
       </nav>
     </section>
   );
