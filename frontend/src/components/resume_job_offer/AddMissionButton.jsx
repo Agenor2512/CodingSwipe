@@ -1,5 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 
+import deleteIcon from "../../assets/red_trash_can.png";
+
 import {
   readMissionsById,
   addMissions,
@@ -34,7 +36,7 @@ function AddMissionButton() {
       .then(() => fetchMission());
   };
 
-  const handleDeleteExperience = (experienceId) => {
+  const handleDeleteMission = (experienceId) => {
     destroyMission(experienceId).then(() => fetchMission());
   };
 
@@ -47,11 +49,8 @@ function AddMissionButton() {
       {missions.map((mission) => (
         <ul key={mission.id}>
           <li className="experience">{mission.missions}</li>
-          <button
-            type="button"
-            onClick={() => handleDeleteExperience(mission.id)}
-          >
-            &times;
+          <button type="button" onClick={() => handleDeleteMission(mission.id)}>
+            <img src={deleteIcon} alt="delete-icon" />
           </button>
         </ul>
       ))}
