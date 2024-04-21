@@ -254,20 +254,6 @@
   color: var(--secondary-color);
 }
 
-/* .enterprise_form_container
-  > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > div
-  > label,
-.enterprise_form_container
-  > .step_two_enterprise_form
-  > .computer_language_checkbox_container
-  > div
-  input {
-  margin-right: 0.35rem;
-  margin-bottom: 0.35rem;
-} */
-
 .enterprise_form_container
   > .step_two_enterprise_form
   > .research_and_workplace_container {
@@ -294,19 +280,8 @@
   justify-content: flex-start;
   align-content: space-around;
   margin-top: 1rem;
-  height: 28vh;
+  height: 30vh;
 }
-
-/* .enterprise_form_container
-  > .step_two_enterprise_form
-  > .computer_language_checkbox_container
-  > .programming_languages
-  > div
-  > label,
-.enterprise_form_container > .step_two_enterprise_form input#checkbox {
-  margin-right: 0.35rem;
-  margin-bottom: 0.35rem;
-} */
 
 .enterprise_form_container > .step_two_enterprise_form input#checkbox {
   display: inline-block;
@@ -331,35 +306,6 @@
   content: "\2714";
   color: var(--secondary-color);
 }
-
-/* .enterprise_expectation_container > p {
-  display: flex;
-  align-items: center;
-} */
-
-/* .enterprise_form_container p > .step_two_enterprise_form,
-.step_two_enterprise_form > .research_and_workplace_container > div > p {
-  text-align: left;
-} */
-
-/* .enterprise_form_container
-  > .step_two_enterprise_form
-  > p
-  > .select_languages_span {
-  color: var(--third-color);
-} */
-
-/* .enterprise_form_container
-  > .step_two_enterprise_form
-  > .research_and_workplace_container
-  > .computer_language_checkbox_container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: space-around;
-  height: 32vh;
-} */
 
 .enterprise_form_container
   > .step_two_enterprise_form
@@ -423,17 +369,6 @@
   color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
-
-/* .step_two_form_enterprise
-  > .computer_language_checkbox_container
-  > .programming_languages
-  > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-} */
 
 .enterprise_form_container
   > .step_two_enterprise_form
@@ -523,12 +458,6 @@
     margin-bottom: 2rem;
   }
 
-  /* .enterprise_form_container
-    > .step_two_enterprise_form
-    > .research_and_workplace_container {
-    align-items: flex-start;
-  } */
-
   .enterprise_form_container
     > .step_two_enterprise_form
     > .research_and_workplace_container
@@ -553,30 +482,19 @@
   }
 
   .enterprise_form_container
-  > .step_two_enterprise_form
-  select#industries_select,
-.enterprise_form_container
-  > .step_two_enterprise_form
-  select#enterprise_type_select,
-  /* .enterprise_form_container > .step_two_enterprise_form > textarea, */
+    > .step_two_enterprise_form
+    select#industries_select,
+  .enterprise_form_container
+    > .step_two_enterprise_form
+    select#enterprise_type_select,
   .enterprise_form_container
     > .step_two_enterprise_form
     > .levels_experience_part_container
     > .levels_and_experience_button_container
     > button,
-  .enterprise_form_container
-    > .step_two_enterprise_form
-     input[type="radio" i],
-  .enterprise_form_container
-    > .step_two_enterprise_form
-    input#checkbox,
-  /* .enterprise_form_container
-    > .step_two_enterprise_form
-    > .salary_languages_missions_desktop
-    > .annual_salary
-    > div
-    > input, */
-    .enterprise_form_container > .step_two_enterprise_form > button {
+  .enterprise_form_container > .step_two_enterprise_form input[type="radio" i],
+  .enterprise_form_container > .step_two_enterprise_form input#checkbox,
+  .enterprise_form_container > .step_two_enterprise_form > button {
     cursor: pointer;
   }
 

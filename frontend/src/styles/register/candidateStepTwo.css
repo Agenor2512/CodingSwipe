@@ -89,12 +89,6 @@
   color: var(--secondary-color);
 }
 
-/* .candidate_step_two_form > .research_and_workplace_container > div > label,
-.candidate_step_two_form > input#checkbox {
-  margin-right: 0.35rem;
-  margin-bottom: 0.35rem;
-} */
-
 .candidate_step_two_form input#checkbox {
   display: inline-block;
   width: 1.15em;
