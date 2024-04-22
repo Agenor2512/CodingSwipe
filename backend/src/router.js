@@ -22,6 +22,7 @@ const experienceControllers = require("./controllers/experienceControllers");
 const resumeHasSoftSkillsControlers = require("./controllers/resumeHasSoftSkillsControllers");
 const missionControllers = require("./controllers/missionControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
+const candidateMatchControllers = require("./controllers/candidateMatchControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
@@ -62,6 +63,7 @@ router.post(
   candidateControllers.add
 );
 router.post("/candidates/likes", candidateLikeControllers.add);
+router.get("/candidates/matches/:id", candidateMatchControllers.readById);
 
 // Job offer/Resume part
 router.get(
