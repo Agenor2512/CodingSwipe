@@ -80,8 +80,24 @@
 
 @media only screen and (min-width: 600px) {
   .user_navigation_container > .desktop_nav > .disconnection_button {
-    width: 15.37rem;
+    width: 15rem;
     height: 2.12rem;
+    align-self: center;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--register-background-color);
+    color: var(--secondary-color);
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .user_navigation_container > .desktop_nav > .disconnection_button:hover {
+    color: var(--third-color);
+    background-color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
   }
 
   .overlay > .disconnection_modal {
