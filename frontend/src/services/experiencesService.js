@@ -1,4 +1,5 @@
 import axios from "axios";
+import { retrieveToken } from "./loginService";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -9,7 +10,9 @@ const client = axios.create({
 
 export const readExperienceById = (id) => {
   return client
-    .get(`/experiences/${id}`)
+    .get(`/experiences/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
@@ -28,7 +31,9 @@ export const addExperiences = ({ id, job, company, experienceDescription }) => {
 
 export const destroyExperience = (id) => {
   return client
-    .delete(`/experiences/${id}`)
+    .delete(`/experiences/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 };

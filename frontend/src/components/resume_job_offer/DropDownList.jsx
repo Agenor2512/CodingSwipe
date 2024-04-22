@@ -28,9 +28,10 @@ DropDownList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       appetence: PropTypes.string.isRequired,
-    })
+    }).isRequired
   ).isRequired,
-  userAppetence: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  userAppetence: PropTypes.string,
 };
 
 export default DropDownList;

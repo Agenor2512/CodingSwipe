@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -7,7 +8,7 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export default function login({ email, password }) {
+export const login = ({ email, password }) => {
   return client
     .post(
       "/login",
@@ -21,4 +22,9 @@ export default function login({ email, password }) {
     )
     .then((response) => response.data)
     .catch((error) => console.error(error));
-}
+};
+
+export const retrieveToken = () => {
+  const token = Cookies.get("authentication");
+  return token;
+};

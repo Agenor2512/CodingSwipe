@@ -1,50 +1,44 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import deleteIcon from "../../assets/red_trash_can.png";
+
+import {
+  readExperienceById,
+  destroyExperience,
+} from "../../services/experiencesService";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/deleteExperienceButton.css";
 
-function DeleteExperienceButton() {
-  const [experienceUser, setExperienceUser] = useState([
-    {
-      id: 1,
-      post: "Développer et maintenir des applications web de haute qualité en utilisant JavaScript et ses frameworks associés (par ex. React, Vue.js, Node.js).",
-    },
-    {
-      id: 2,
-      post: "Collaborer étroitement avec l'équipe de conception UX/UI pour transformer les maquettes en interfaces réactives et performantes.",
-    },
-  ]);
+function DeleteExperienceButton({ setExperiences, experienceId }) {
+  const {
+    loginUser: { id },
+  } = useContext(LoginUserContext);
 
   const [modal, setModal] = useState(false);
-  const [experienceIdToDelete, setExperienceIdToDelete] = useState(null);
+
+  const fetchExperience = () => {
+    readExperienceById(id).then((candidateExperiences) =>
+      setExperiences(candidateExperiences)
+    );
+  };
 
   const handleDeleteExperience = () => {
-    const updatedExperiences = experienceUser.filter(
-      (experience) => experience.id !== experienceIdToDelete
-    );
-    setExperienceUser(updatedExperiences);
+    destroyExperience(experienceId).then(() => fetchExperience());
     setModal(false);
   };
 
-  const toggleModal = (id) => {
-    setExperienceIdToDelete(id);
+  const toggleModal = () => {
     setModal(!modal);
   };
 
   return (
     <section>
-      <div className="experience_container">
-        {experienceUser.map((experience) => (
-          <div className="experience_content" key={experience.id}>
-            <div className="square"> </div>
-            <p>
-              {experience.post}
-              <button type="button" onClick={() => toggleModal(experience.id)}>
-                <img src={deleteIcon} alt="delete-icon" />
-              </button>
-            </p>
-          </div>
-        ))}
+      <div className="experience_content">
+        <button type="button" onClick={() => toggleModal()}>
+          <img src={deleteIcon} alt="delete-icon" />
+        </button>
       </div>
       {modal && (
         <div className="overlay">
@@ -72,5 +66,10 @@ function DeleteExperienceButton() {
     </section>
   );
 }
+
+DeleteExperienceButton.propTypes = {
+  setExperiences: PropTypes.func.isRequired,
+  experienceId: PropTypes.number.isRequired,
+};
 
 export default DeleteExperienceButton;

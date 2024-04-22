@@ -1,4 +1,5 @@
 import axios from "axios";
+import { retrieveToken } from "./loginService";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -9,14 +10,18 @@ const client = axios.create({
 
 export const readAllOffer = () => {
   return client
-    .get("/joboffers")
+    .get("/joboffers", {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
 export const readOfferById = (id) => {
   return client
-    .get(`/joboffers/${id}`)
+    .get(`/joboffers/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
