@@ -1,4 +1,5 @@
 import axios from "axios";
+import { retrieveToken } from "./loginService";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -9,7 +10,9 @@ const client = axios.create({
 
 export const readMissionsById = (id) => {
   return client
-    .get(`/missions/${id}`)
+    .get(`/missions/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
@@ -26,7 +29,9 @@ export const addMissions = ({ id, missionDescription }) => {
 
 export const destroyMission = (id) => {
   return client
-    .delete(`/missions/${id}`)
+    .delete(`/missions/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
     .then((response) => console.info(response.data))
     .catch((error) => console.error(error));
 };

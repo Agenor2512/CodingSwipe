@@ -26,6 +26,7 @@ const enterpriseLikeControllers = require("./controllers/enterpriseLikeControlle
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
 
+const authenticationValidator = require("./middlewares/authenticationValidator");
 const candidateValidator = require("./middlewares/candidateValidator");
 const enterpriseValidator = require("./middlewares/enterpriseValidator");
 
@@ -35,6 +36,8 @@ router.post(
   authenticationService.checkIfEmailExist,
   authenticationControllers.login
 );
+
+router.get("/verify", authenticationValidator.validateAuthentication);
 
 router.delete("/logout", authenticationControllers.logout);
 
@@ -61,24 +64,60 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 
 // Job offer/Resume part
-router.get("/resumes", resumeControllers.browseRandom);
-router.get("/resumes/:id", resumeControllers.readById);
-router.get("/joboffers", jobOfferControllers.browseRandom);
-router.get("/joboffers/:id", jobOfferControllers.readById);
+router.get(
+  "/resumes",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.browseRandom
+);
+router.get(
+  "/resumes/:id",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.readById
+);
+router.get(
+  "/joboffers",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.browseRandom
+);
+router.get(
+  "/joboffers/:id",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.readById
+);
 
-router.get("/biographies/:id", resumeControllers.readBiography);
+router.get(
+  "/biographies/:id",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.readBiography
+);
 router.put("/biographies/:id", resumeControllers.updateBiography);
-router.get("/descriptions/:id", enterpriseControllers.readDescription);
+router.get(
+  "/descriptions/:id",
+  authenticationValidator.validateAuthentication,
+  enterpriseControllers.readDescription
+);
 router.put("/descriptions/:id", enterpriseControllers.updateDescription);
-router.get("/wages/:id", jobOfferControllers.readSalary);
+router.get(
+  "/wages/:id",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.readSalary
+);
 router.put("/wages/:id", jobOfferControllers.updateSalary);
 
-router.get("/missions/:id", missionControllers.readById);
+router.get(
+  "/missions/:id",
+  authenticationValidator.validateAuthentication,
+  missionControllers.readById
+);
 router.post("/missions", missionControllers.add);
 router.delete("/missions/:id", missionControllers.remove);
 router.get("/experiences/:id", experienceControllers.readById);
 router.post("/experiences", experienceControllers.add);
-router.delete("/experiences/:id", experienceControllers.remove);
+router.delete(
+  "/experiences/:id",
+  authenticationValidator.validateAuthentication,
+  experienceControllers.remove
+);
 
 router.post("/softskills", resumeHasSoftSkillsControlers.add);
 

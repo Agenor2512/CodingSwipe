@@ -23,7 +23,6 @@ section > ul > li {
 }
 
 section > ul > button {
-  color: red;
   background: none;
   border: none;
   font-size: larger;

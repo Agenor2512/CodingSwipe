@@ -3,10 +3,11 @@ import { useContext, useState, useEffect } from "react";
 import {
   readExperienceById,
   addExperiences,
-  destroyExperience,
 } from "../../services/experiencesService";
 
 import LoginUserContext from "../../context/LoginUserContext";
+
+import DeleteExperienceButton from "./DeleteExperienceButton";
 
 import "../../styles/resume_job_offer/addExperienceButton.css";
 
@@ -36,10 +37,6 @@ function AddExperienceButton() {
       .then(() => fetchExperience());
   };
 
-  const handleDeleteExperience = (experienceId) => {
-    destroyExperience(experienceId).then(() => fetchExperience());
-  };
-
   useEffect(() => {
     fetchExperience();
   }, []);
@@ -51,12 +48,11 @@ function AddExperienceButton() {
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
           <li>{experience.experienceDescription}</li>
-          <button
-            type="button"
-            onClick={() => handleDeleteExperience(experience.id)}
-          >
-            &times;
-          </button>
+          <DeleteExperienceButton
+            experiences={experiences}
+            setExperiences={setExperiences}
+            experienceId={experience.id}
+          />
         </ul>
       ))}
       <button type="button" className="add_button" onClick={handleModal}>
