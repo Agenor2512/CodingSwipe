@@ -1,7 +1,7 @@
 section > .add_button {
   width: 8.2rem;
   height: 2.1rem;
-  color: var(--color-white);
+  color: var(--secondary-color);
   background-color: var(--register-background-color);
   border-radius: 1rem;
   font-family: var(--primary-font);
@@ -48,7 +48,7 @@ section > .overlay > .modal_container {
   text-align: center;
   width: 100vw;
   height: 55vh;
-  background-color: var(--color-white);
+  background-color: var(--secondary-color);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;

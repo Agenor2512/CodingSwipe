@@ -12,6 +12,10 @@
   background-color: var(--register-background-color);
 }
 
+.overlay {
+  z-index: 10;
+}
+
 .overlay > .disconnection_modal {
   display: flex;
   align-items: center;
