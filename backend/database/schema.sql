@@ -400,7 +400,7 @@ insert into enterprise (id, name, siret, description, email, password, departmen
 insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id) values 
 (
   "3de1feec-a19a-4f16-9226-af682acdab42",
-  2000,
+  24000,
   1,
   3,
   2,
@@ -408,7 +408,7 @@ insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetence
 ),
 (
   "3de1feec-a19a-4f11-9226-af682acdab43",
-  3000,
+  36000,
   2,
   2,
   3,
@@ -416,7 +416,7 @@ insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetence
 ),
 (
   "3de1feec-a19a-4f16-9226-af686acdab44",
-  1400,
+  16800,
   3,
   1,
   1,
@@ -424,7 +424,7 @@ insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetence
 ),
 (
   "3de1feec-a19a-4f16-9226-af676acdab45",
-  1700,
+  20400,
   2,
   2,
   2,
@@ -432,7 +432,7 @@ insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetence
 ),
 (
   "3df1feec-a19a-4f16-9226-af676acdab46",
-  2100,
+  25200,
   1,
   3,
   2,
