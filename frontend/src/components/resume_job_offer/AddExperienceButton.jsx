@@ -7,7 +7,7 @@ import {
 
 import LoginUserContext from "../../context/LoginUserContext";
 
-import DeleteExperienceButton from "./DeleteExperienceButton";
+import DeleteButton from "./DeleteButton";
 
 import "../../styles/resume_job_offer/addExperienceButton.css";
 
@@ -48,8 +48,7 @@ function AddExperienceButton() {
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
           <li>{experience.experienceDescription}</li>
-          <DeleteExperienceButton
-            experiences={experiences}
+          <DeleteButton
             setExperiences={setExperiences}
             experienceId={experience.id}
           />

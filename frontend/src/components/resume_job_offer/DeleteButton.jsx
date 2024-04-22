@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import deleteIcon from "../../assets/red_trash_can.png";
@@ -6,14 +7,23 @@ import {
   readExperienceById,
   destroyExperience,
 } from "../../services/experiencesService";
+import {
+  readMissionsById,
+  destroyMission,
+} from "../../services/missionsService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
-import "../../styles/resume_job_offer/deleteExperienceButton.css";
+import "../../styles/resume_job_offer/deleteButton.css";
 
-function DeleteExperienceButton({ setExperiences, experienceId }) {
+function DeleteButton({
+  setExperiences,
+  experienceId,
+  setMissions,
+  missionId,
+}) {
   const {
-    loginUser: { id },
+    loginUser: { id, role },
   } = useContext(LoginUserContext);
 
   const [modal, setModal] = useState(false);
@@ -24,9 +34,20 @@ function DeleteExperienceButton({ setExperiences, experienceId }) {
     );
   };
 
-  const handleDeleteExperience = () => {
-    destroyExperience(experienceId).then(() => fetchExperience());
-    setModal(false);
+  const fetchMission = () => {
+    readMissionsById(id).then((enterpriseMissions) =>
+      setMissions(enterpriseMissions)
+    );
+  };
+
+  const handleDelete = () => {
+    if (role === "candidate") {
+      destroyExperience(experienceId).then(() => fetchExperience());
+      setModal(false);
+    } else {
+      destroyMission(missionId).then(() => fetchMission());
+      setModal(false);
+    }
   };
 
   const toggleModal = () => {
@@ -43,12 +64,12 @@ function DeleteExperienceButton({ setExperiences, experienceId }) {
       {modal && (
         <div className="overlay">
           <div className="modal_container">
-            <p>Êtes-vous sûr de vouloir supprimer cette expérience ?</p>
+            <p>Êtes-vous sûr de vouloir la supprimer ?</p>
             <div className="modal_buttons">
               <button
                 type="button"
                 className="delete_button"
-                onClick={handleDeleteExperience}
+                onClick={handleDelete}
               >
                 Supprimer
               </button>
@@ -67,9 +88,11 @@ function DeleteExperienceButton({ setExperiences, experienceId }) {
   );
 }
 
-DeleteExperienceButton.propTypes = {
-  setExperiences: PropTypes.func.isRequired,
-  experienceId: PropTypes.number.isRequired,
+DeleteButton.propTypes = {
+  setExperiences: PropTypes.func,
+  experienceId: PropTypes.number,
+  setMissions: PropTypes.func,
+  missionId: PropTypes.func,
 };
 
-export default DeleteExperienceButton;
+export default DeleteButton;

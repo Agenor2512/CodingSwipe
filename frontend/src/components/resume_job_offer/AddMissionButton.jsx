@@ -1,14 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 
-import deleteIcon from "../../assets/red_trash_can.png";
-
-import {
-  readMissionsById,
-  addMissions,
-  destroyMission,
-} from "../../services/missionsService";
+import { readMissionsById, addMissions } from "../../services/missionsService";
 
 import LoginUserContext from "../../context/LoginUserContext";
+
+import DeleteButton from "./DeleteButton";
 
 import "../../styles/resume_job_offer/addMissionButton.css";
 
@@ -36,10 +32,6 @@ function AddMissionButton() {
       .then(() => fetchMission());
   };
 
-  const handleDeleteMission = (experienceId) => {
-    destroyMission(experienceId).then(() => fetchMission());
-  };
-
   useEffect(() => {
     fetchMission();
   }, []);
@@ -49,9 +41,7 @@ function AddMissionButton() {
       {missions.map((mission) => (
         <ul key={mission.id}>
           <li className="experience">{mission.missions}</li>
-          <button type="button" onClick={() => handleDeleteMission(mission.id)}>
-            <img src={deleteIcon} alt="delete-icon" />
-          </button>
+          <DeleteButton setMissions={setMissions} missionId={mission.id} />
         </ul>
       ))}
       <button
