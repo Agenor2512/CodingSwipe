@@ -10,9 +10,11 @@ import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
   const [pageType, setPageType] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleTabClick = (type) => {
     setPageType(type);
+    setIsClicked(true);
   };
 
   const displayRightPages = () => {
@@ -27,7 +29,7 @@ function UsersHomePage() {
 
   return (
     <div className="users_homepage">
-      <HomePageUserNav handleTabClick={handleTabClick} />
+      <HomePageUserNav handleTabClick={handleTabClick} isClicked={isClicked} />
       {displayRightPages()}
     </div>
   );

@@ -97,7 +97,7 @@ function HomePageUserNav({ handleTabClick }) {
       </div>
 
       <nav>
-        <div id="mySidenav" className={`sidenav ${isNavOpen ? "open" : ""}`}>
+        <div id="mobile_nav" className={`sidenav ${isNavOpen ? "open" : ""}`}>
           <button
             type="button"
             id="closeBtn"

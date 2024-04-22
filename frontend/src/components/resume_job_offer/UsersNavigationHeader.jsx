@@ -55,7 +55,7 @@ function UsersNavigation() {
   };
 
   return (
-    <div className="header">
+    <div className="nav_header">
       <Logo />
       <div className="user_info_container">
         <div className="user_avatar">{getFirstLetter()}</div>
