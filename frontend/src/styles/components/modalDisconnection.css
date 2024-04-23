@@ -1,9 +1,15 @@
+.user_navigation_container > nav > #mobile_nav {
+  display: flex;
+  flex-direction: column;
+}
+
 .user_navigation_container > nav > #mobile_nav > .disconnection_button {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: flex-end;
+  align-self: center;
   font-family: var(--primary-font);
+  font-size: 1rem;
   font-weight: bold;
   color: var(--secondary-color);
   width: 13rem;
