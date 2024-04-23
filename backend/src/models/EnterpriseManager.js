@@ -38,15 +38,19 @@ class EnterpriseManager extends AbstractManager {
 
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
-      `select * FROM ${this.table} where email = ?`,
+      `select * from ${this.table} where email = ?`,
       [email]
     );
     return rows;
   }
 
-  async readRandom() {
+  async readRandom(id) {
     const [rows] = await this.database.query(
-      `select enterprise.id from ${this.table} order by rand() limit 1`
+      `select e.id from ${this.table} e
+      inner join job_offer jo on e.id = jo.enterprise_id
+      left join candidate_like cl on jo.id = cl.job_offer_id
+      where cl.candidate_id is null or cl.candidate_id != ? limit 1`,
+      [id]
     );
     return rows[0];
   }
