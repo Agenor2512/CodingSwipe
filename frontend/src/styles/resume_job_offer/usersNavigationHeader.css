@@ -1,34 +1,35 @@
-.header {
+.nav_header {
   display: flex;
   flex-direction: column;
   font-family: var(--primary-font);
   background-color: var(--register-background-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
-.header > .logo_container {
+.nav_header > .logo_container {
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
-.header > .logo_container > h1 {
+.nav_header > .logo_container > h1 {
   font-size: 1rem;
 }
 
-.header .logo_container > .square {
+.nav_header .logo_container > .square {
   min-width: 12px;
   min-height: 12px;
   margin-left: 0.1rem;
 }
 
-.header > .user_info_container {
+.nav_header > .user_info_container {
   display: flex;
   align-items: center;
-  margin: 0 0 1.25rem 1.25rem;
-  font-size: 1.1rem;
-  color: var(--color-white);
+  margin: 0 0 2rem 1rem;
+  font-size: 1rem;
+  color: var(--secondary-color);
 }
 
-.header > .user_info_container > .user_avatar {
+.nav_header > .user_info_container > .user_avatar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,17 +40,17 @@
   font-size: 1.25rem;
   font-weight: bold;
   background-color: var(--primary-color);
-  color: var(--color-white);
+  color: var(--secondary-color);
 }
 
 @media screen and (min-width: 600px) {
-  .header .logo_container > .square {
+  .nav_header .logo_container > .square {
     width: 12px;
     height: 12px;
     margin-left: 0.1rem;
   }
 
-  .header > .user_info_container > .user_avatar {
+  .nav_header > .user_info_container > .user_avatar {
     width: 3.5vw;
     height: 5vh;
   }

@@ -1,28 +1,45 @@
-section > .add_button {
+.candidate_modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate_modal > .add_button {
   width: 8.2rem;
   height: 2.1rem;
-  color: var(--color-white);
+  color: var(--secondary-color);
   background-color: var(--register-background-color);
   border-radius: 1rem;
   font-family: var(--primary-font);
   font-size: 14px;
+  align-self: center;
+  margin: 1rem 0;
 }
 
-section > ul {
+.candidate_modal > ul {
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
+}
+
+.candidate_modal > ul > .job_title {
+  font-weight: bold;
+  list-style-type: square;
+}
+
+.candidate_modal > ul > .job_title::marker {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.candidate_modal > ul > li {
   list-style-type: none;
 }
 
-section > ul > .job_title {
-  font-weight: bold;
-}
-
-section > ul > li {
+.candidate_modal > ul > li {
   margin: 0.1rem;
 }
 
-section > ul > button {
+section > ul > li > button {
   background: none;
   border: none;
   font-size: larger;
@@ -47,8 +64,8 @@ section > .overlay > .modal_container {
   align-items: center;
   text-align: center;
   width: 100vw;
-  height: 55vh;
-  background-color: var(--color-white);
+  height: 60vh;
+  background-color: var(--background-resume-jobOffer);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;
@@ -82,14 +99,19 @@ section > .overlay > .modal_container > form {
 
 section > .overlay > .modal_container > form > .form_group {
   margin-bottom: 1rem;
+  font-family: var(--secondary-font);
+  font-weight: bold;
 }
 
 section > .overlay > .modal_container > form > .form_group > label {
   display: flex;
+  font-size: 1rem;
 }
+
 section > .overlay > .modal_container > form > .form_group input {
   height: 5vh;
 }
+
 section > .overlay > .modal_container > form > .form_group input,
 .form_group textarea {
   display: block;
@@ -101,6 +123,12 @@ section > .overlay > .modal_container > form > .form_group input,
   padding: 0.6rem;
   margin-top: 0.5rem;
   border: none;
+}
+
+section > .overlay > .modal_container > form > .form_group input:focus,
+.form_group textarea:focus {
+  outline: none;
+  border: 1px solid var(--register-background-color);
 }
 
 section > .overlay > .modal_container > form > .form_group textarea {
@@ -121,6 +149,10 @@ section > .overlay > .modal_container > form > button {
 }
 
 @media screen and (min-width: 600px) {
+  .candidate_modal::-webkit-scrollbar {
+    width: 5px;
+  }
+
   section > .overlay > .modal_container {
     width: 53vw;
   }
@@ -132,10 +164,18 @@ section > .overlay > .modal_container > form > button {
 
   section > .overlay > .modal_container > form > .form_group textarea {
     height: 12vh;
+    resize: none;
   }
 
   section > .overlay > .modal_container > .close_btn {
-    top: 15rem;
-    right: 22rem;
+    top: 14rem;
+    right: 23rem;
+  }
+
+  .candidate_modal > ul > li > button,
+  .candidate_modal > button,
+  section > .overlay > .modal_container > .close_btn,
+  section > .overlay > .modal_container > form > button {
+    cursor: pointer;
   }
 }

@@ -165,9 +165,8 @@ function JobOffer() {
 
         <section className="missions">
           <h2>Missions principales</h2>
-          <div>
-            <AddMissionButton />
-          </div>
+
+          <AddMissionButton />
         </section>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .users_infos_container > div > .annual_salary > div > input {
-  width: 40vw;
+  width: 50vw;
   margin: 0 1rem;
   padding: 0.3rem;
   border: none;
@@ -46,5 +46,6 @@
   .users_infos_container > div > .annual_salary > div > .locked {
     width: 2vw;
     height: 2.5vh;
+    cursor: pointer;
   }
 }

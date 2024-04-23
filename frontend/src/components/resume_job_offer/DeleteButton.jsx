@@ -55,12 +55,15 @@ function DeleteButton({
   };
 
   return (
-    <section>
-      <div className="experience_content">
-        <button type="button" onClick={() => toggleModal()}>
-          <img src={deleteIcon} alt="delete-icon" />
-        </button>
-      </div>
+    <>
+      <button
+        type="button"
+        className="delete_experiences_missions"
+        onClick={() => toggleModal()}
+      >
+        <img src={deleteIcon} alt="delete-icon" />
+      </button>
+
       {modal && (
         <div className="overlay">
           <div className="modal_container">
@@ -84,7 +87,7 @@ function DeleteButton({
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }
 

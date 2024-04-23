@@ -9,8 +9,9 @@
   margin: 1.5rem 0;
   border: none;
   resize: none;
-  color: var(--color-black);
+  color: var(--register-background-color);
   font-family: var(--secondary-font);
+  font-size: 1rem;
 }
 
 .users_infos_container > .modify_display_desktop > div > div > p {
@@ -30,7 +31,7 @@
   margin: 1rem;
   align-self: center;
   color: var(--secondary-color);
-  background-color: var(--color-black);
+  background-color: var(--register-background-color);
   border: none;
   border-radius: 10px;
   font-family: var(--primary-font);

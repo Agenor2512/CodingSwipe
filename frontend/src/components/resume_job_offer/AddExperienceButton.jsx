@@ -42,16 +42,18 @@ function AddExperienceButton() {
   }, []);
 
   return (
-    <section>
+    <section className="candidate_modal">
       {experiences.map((experience) => (
         <ul key={experience.id}>
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
-          <li>{experience.experienceDescription}</li>
-          <DeleteButton
-            setExperiences={setExperiences}
-            experienceId={experience.id}
-          />
+          <li>
+            {experience.experiences}
+            <DeleteButton
+              setExperiences={setExperiences}
+              experienceId={experience.id}
+            />
+          </li>
         </ul>
       ))}
       <button type="button" className="add_button" onClick={handleModal}>
