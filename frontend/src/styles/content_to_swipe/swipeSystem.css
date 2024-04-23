@@ -1,19 +1,23 @@
 .swipe_system_container {
   display: flex;
   justify-content: center;
-  position: relative;
-  height: 20vh;
-  background-image: url("src/assets/background_swipe_mobile.png");
   background-position: center bottom;
   background-repeat: no-repeat;
+  position: fixed;
+  bottom: 0;
 }
 
 .swipe_system_container > div {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   width: 60vw;
   position: absolute;
-  margin-top: 4vh;
+}
+
+.swipe_system_container > img {
+  width: 100vw;
+  height: 12vh;
 }
 
 .swipe_system_container > div > button {
@@ -35,22 +39,10 @@
   padding-top: 0.3rem;
 }
 
-.swipe_system_container > div > button,
-.swipe_system_container > div > button > .dislike_icon,
-.swipe_system_container > div > button > .like_icon {
-  background-color: var(--color-white);
+.swipe_system_container > div > button {
+  background-color: var(--secondary-color);
   border-radius: 50%;
 }
 
 @media screen and (min-width: 600px) {
-  .swipe_system_container {
-    width: 70vw;
-    background-image: url("src/assets/background_swipe_desktop.png");
-    background-size: 70vw;
-  }
-
-  .swipe_system_container > div {
-    width: 25vw;
-    margin-top: 4vh;
-  }
 }
