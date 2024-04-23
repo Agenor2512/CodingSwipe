@@ -8,7 +8,7 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export default function readMatchesById(id, role) {
+export default function readMatchesById({ id, role }) {
   if (role === "candidate") {
     return client
       .get(`candidates/matches/${id}`, {

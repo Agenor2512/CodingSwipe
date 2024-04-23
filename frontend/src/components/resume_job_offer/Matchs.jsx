@@ -1,41 +1,47 @@
-import { useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState, useContext } from "react";
 
-import RegisterContext from "../../context/RegisterContext";
+import readMatchesById from "../../services/matchesService";
+
+import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/matchs.css";
 
-function getFirstLetter(name) {
-  return name.charAt(0).toUpperCase();
-}
+function Matchs() {
+  function getFirstLetter(name) {
+    return name.charAt(0).toUpperCase();
+  }
+  const {
+    loginUser: { id, role },
+  } = useContext(LoginUserContext);
 
-function Matchs({ matchesData }) {
-  const { infos } = useContext(RegisterContext);
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    readMatchesById({ id, role }).then((allMatches) => setMatches(allMatches));
+  }, []);
+
+  console.info("Matches : ", matches);
 
   return (
     <section className="match_container">
-      {infos === "match" &&
-        matchesData.map((match) => (
+      {matches &&
+        matches.map((match) => (
           <div key={match.id} className="match_card">
-            {infos === "candidat" ? (
+            {role === "candidat" ? (
               <div>
                 <div>{getFirstLetter(match.name)}</div>
-                <div>{match.jobName}</div>
-                <div>{match.date}</div>
-                <div>{match.jobPosting}</div>
+                <div>{match.description}</div>
+                <div>{match.email}</div>
               </div>
             ) : (
               <div className="match_card_content">
-                <div className="first_content_block">
-                  {getFirstLetter(match.name)}
-                </div>
+                <div className="first_content_block">{match.firstname}</div>
 
                 <div className="second_content_block">
                   <div className="bold_font">
-                    <span>{match.category} </span>
-                    <p>{`- ${match.date}`}</p>
+                    <span>{match.appetence} </span>
                   </div>
-                  <div className="font_content"> {match.jobName}</div>
+                  <div className="font_content"> {match.email}</div>
                 </div>
               </div>
             )}
@@ -44,18 +50,5 @@ function Matchs({ matchesData }) {
     </section>
   );
 }
-
-Matchs.propTypes = {
-  matchesData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      region: PropTypes.string.isRequired,
-      jobName: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
 
 export default Matchs;
