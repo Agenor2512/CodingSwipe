@@ -261,6 +261,13 @@
     width: 30vw;
   }
 
+  .users_infos_container
+    > div
+    > .computer_language_checkbox_container
+    > .resume_programming_languages {
+    height: 21vh;
+  }
+
   .users_infos_container > .modify_display_desktop > div > h2,
   .users_infos_container
     > .modify_display_desktop

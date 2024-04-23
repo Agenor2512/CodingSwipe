@@ -83,12 +83,13 @@
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
-  > .computer_languages_container,
+  > .computer_languages_container
+  > ul,
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
   > .significatives_experiences
-  > div {
+  > ul {
   margin: 1rem 0;
 }
 
@@ -101,25 +102,65 @@
   > div
   > .skills_languages_experiences_desktop
   > .soft_skills
-  > div,
+  > div {
+  min-height: 10vh;
+}
+
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
   > .computer_languages_container
-  > div,
+  > ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 10vh;
+}
+
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .computer_languages_container
+  > ul,
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
   > .significatives_experiences
-  > div {
-  min-height: 10vh;
+  > ul {
+  list-style-type: square;
+  padding-left: 1rem;
+}
+
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .computer_languages_container
+  > ul
+  > li::marker,
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .significatives_experiences
+  > ul
+  > li::marker {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.candidate_infos_container
+  > div
+  > .skills_languages_experiences_desktop
+  > .significatives_experiences
+  > ul
+  > li {
+  margin: 0.5rem 0;
 }
 
 @media screen and (min-width: 600px) {
   .candidate_infos_container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 70vw;
     margin: 2rem;
@@ -186,29 +227,15 @@
     align-content: space-between;
     flex-wrap: wrap;
     width: 63vw;
-    height: 71vh;
+    height: 40vh;
   }
 
-  .candidate_infos_container
-    > div
-    > .modify_display_in_desktop
-    > .candidate_expectations_container
-    > div,
-  .candidate_infos_container
-    > div
-    > .skills_languages_experiences_desktop
-    > .soft_skills
-    > div,
-  .candidate_infos_container
-    > div
-    > .skills_languages_experiences_desktop
-    > .computer_languages_container
-    > div,
-  .candidate_infos_container
-    > div
-    > .skills_languages_experiences_desktop
-    > .significatives_experiences
-    > div {
-    min-height: 20vh;
+  .candidate_infos_container > .swipe_system_container > img {
+    width: 70vw;
+    bottom: 2rem;
+  }
+
+  .candidate_infos_container > .swipe_system_container > div {
+    width: 25vw;
   }
 }

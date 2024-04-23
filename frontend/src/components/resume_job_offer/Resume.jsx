@@ -149,7 +149,7 @@ function Resume() {
 
         <section className="computer_language_checkbox_container">
           <h2>Langages informatiques</h2>
-          <div>
+          <div className="resume_programming_languages">
             {programmingLanguages.map((programmingLanguage) => (
               <div key={programmingLanguage.id}>
                 <input
@@ -172,9 +172,8 @@ function Resume() {
 
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
-          <div>
-            <AddExperienceButton />
-          </div>
+
+          <AddExperienceButton />
         </section>
       </div>
     </div>

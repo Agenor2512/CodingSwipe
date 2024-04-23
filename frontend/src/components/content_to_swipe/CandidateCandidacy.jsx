@@ -71,7 +71,6 @@ function CandidateCandidacy() {
                     <li key={languages.id}>{languages.programming_language}</li>
                   ))}
               </ul>
-              <div />
             </section>
 
             <section className="significatives_experiences">
@@ -82,7 +81,6 @@ function CandidateCandidacy() {
                     <li key={experience.id}>{experience.experiences}</li>
                   ))}
               </ul>
-              <div />
             </section>
           </div>
         </div>
