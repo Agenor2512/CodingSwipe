@@ -12,7 +12,7 @@ import ModalDisconnection from "../ModalDisconnection";
 
 import "../../styles/resume_job_offer/homePageUserNav.css";
 
-function HomePageUserNav({ handleTabClick }) {
+function HomePageUserNav({ handleTabClick, pageType }) {
   const messagesData = [
     {
       id: 1,
@@ -56,13 +56,28 @@ function HomePageUserNav({ handleTabClick }) {
         <UsersNavigationHeader />
         <ul>
           <Link to="/usershomepage/match">
-            <li onClick={() => handleTabClick("match")}>MATCHS</li>
+            <li
+              className={pageType === "match" ? "clicked" : ""}
+              onClick={() => handleTabClick("match")}
+            >
+              MATCHS
+            </li>
           </Link>
           <Link to="/usershomepage/messages">
-            <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
+            <li
+              className={pageType === "messages" ? "clicked" : ""}
+              onClick={() => handleTabClick("messages")}
+            >
+              MESSAGES
+            </li>
           </Link>
           <Link to="/usershomepage/profile">
-            <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
+            <li
+              className={pageType === "profile" ? "clicked" : ""}
+              onClick={() => handleTabClick("profile")}
+            >
+              MON PROFIL
+            </li>
           </Link>
         </ul>
         <Matchs />
@@ -71,7 +86,7 @@ function HomePageUserNav({ handleTabClick }) {
       </div>
 
       <nav>
-        <div id="mySidenav" className={`sidenav ${isNavOpen ? "open" : ""}`}>
+        <div id="mobile_nav" className={`sidenav ${isNavOpen ? "open" : ""}`}>
           <button
             type="button"
             id="closeBtn"
@@ -83,13 +98,28 @@ function HomePageUserNav({ handleTabClick }) {
           <UsersNavigationHeader />
           <ul>
             <Link to="/usershomepage/match">
-              <li onClick={() => handleTabClick("match")}>MATCHS</li>
+              <li
+                className={pageType === "match" ? "clicked" : ""}
+                onClick={() => handleTabClick("match")}
+              >
+                MATCHS
+              </li>
             </Link>
             <Link to="/usershomepage/messages">
-              <li onClick={() => handleTabClick("messages")}>MESSAGES</li>
+              <li
+                className={pageType === "messages" ? "clicked" : ""}
+                onClick={() => handleTabClick("messages")}
+              >
+                MESSAGES
+              </li>
             </Link>
             <Link to="/usershomepage/profile">
-              <li onClick={() => handleTabClick("profile")}>MON PROFIL</li>
+              <li
+                className={pageType === "profile" ? "clicked" : ""}
+                onClick={() => handleTabClick("profile")}
+              >
+                MON PROFIL
+              </li>
             </Link>
           </ul>
           <Matchs />
@@ -112,6 +142,7 @@ function HomePageUserNav({ handleTabClick }) {
 
 HomePageUserNav.propTypes = {
   handleTabClick: PropTypes.func.isRequired,
+  pageType: PropTypes.string.isRequired,
 };
 
 export default HomePageUserNav;

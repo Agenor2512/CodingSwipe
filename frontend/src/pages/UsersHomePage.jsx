@@ -9,7 +9,7 @@ import HomePageProfile from "./HomePageProfile";
 import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
-  const [pageType, setPageType] = useState("");
+  const [pageType, setPageType] = useState("profile");
 
   const handleTabClick = (type) => {
     setPageType(type);
@@ -27,7 +27,7 @@ function UsersHomePage() {
 
   return (
     <div className="users_homepage">
-      <HomePageUserNav handleTabClick={handleTabClick} />
+      <HomePageUserNav handleTabClick={handleTabClick} pageType={pageType} />
       {displayRightPages()}
     </div>
   );

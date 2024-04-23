@@ -10,16 +10,16 @@
   left: -18.75rem;
   width: 15.6rem;
   height: 100vh;
+  padding: 1rem 0;
   background-color: var(--register-background-color);
   color: var(--third-color);
-  padding-top: 3.75rem;
   z-index: 1;
   transition: 0.3s;
 }
 
 .user_navigation_container > nav > .sidenav.open {
-  left: 0;
   width: 100vw;
+  left: 0;
 }
 
 .user_navigation_container > nav > .sidenav > .close {
@@ -43,18 +43,18 @@
   gap: 1rem;
   list-style-type: none;
 }
+.user_navigation_container > nav > .sidenav > ul > a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
 
-.user_navigation_container > nav > .sidenav > ul > li {
+.user_navigation_container > nav > .sidenav > ul > a > li {
   margin-bottom: 15px;
   font-family: var(--primary-font);
 }
 
-.user_navigation_container > nav > .sidenav > ul > li:hover {
-  color: var(--color-white);
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color);
-  text-decoration-thickness: 0.2em;
-  cursor: pointer;
+.user_navigation_container > nav > .sidenav > ul > a > .clicked {
+  border-bottom: 4px solid var(--primary-color);
 }
 
 .user_navigation_container > nav > .button_container {
@@ -64,8 +64,7 @@
 }
 
 .user_navigation_container > nav > .button_container > #openBtn {
-  cursor: pointer;
-  background-color: var(--color-white);
+  background: none;
   border: none;
   padding: 10px;
 }
@@ -75,7 +74,7 @@
   flex-direction: column;
   height: 3px;
   width: 25px;
-  background-color: var(--color-white);
+  background-color: var(--secondary-color);
   margin-bottom: 5px;
 }
 
@@ -88,7 +87,7 @@
   display: block;
   height: 3px;
   width: 100%;
-  background-color: var(--color-black);
+  background-color: var(--register-background-color);
   margin-bottom: 5px;
 }
 
@@ -105,7 +104,6 @@
     height: 100vh;
     background-color: var(--register-background-color);
     color: var(--third-color);
-    padding-top: 3.75rem;
   }
 
   .user_navigation_container > .desktop_nav > ul {
@@ -117,17 +115,18 @@
     list-style-type: none;
   }
 
-  .user_navigation_container > .desktop_nav > ul > li:hover {
-    color: var(--color-white);
-    text-decoration: underline;
-    text-decoration-color: var(--primary-color);
-    text-decoration-thickness: 0.2em;
+  .user_navigation_container > .desktop_nav > ul > a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-family: var(--primary-font);
+  }
+
+  .user_navigation_container > .desktop_nav > ul > a > li {
     cursor: pointer;
   }
 
-  .user_navigation_container > .desktop_nav > ul > li {
-    margin-bottom: 0;
-    font-family: var(--primary-font);
+  .user_navigation_container > .desktop_nav > ul > a > .clicked {
+    border-bottom: 4px solid var(--primary-color);
   }
 
   .user_navigation_container > nav > .button_container > #openBtn {

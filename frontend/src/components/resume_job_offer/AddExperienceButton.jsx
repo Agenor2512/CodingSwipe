@@ -48,6 +48,7 @@ function AddExperienceButton() {
           <li className="job_title">{experience.job_title}</li>
           <li>{experience.company}</li>
           <li>{experience.experienceDescription}</li>
+
           <DeleteButton
             setExperiences={setExperiences}
             experienceId={experience.id}
