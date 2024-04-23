@@ -59,12 +59,6 @@
   border-bottom: 4px solid var(--primary-color);
 }
 
-/* .user_navigation_container > nav > .button_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
 .user_navigation_container > nav > .button_container > #openBtn {
   background: none;
   background-color: var(--background-resume-jobOffer);

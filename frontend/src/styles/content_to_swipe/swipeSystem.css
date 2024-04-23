@@ -1,10 +1,7 @@
 .swipe_system_container {
   display: flex;
   justify-content: center;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  position: fixed;
-  bottom: 0;
+  height: 12vh;
 }
 
 .swipe_system_container > div {
@@ -13,11 +10,14 @@
   align-items: flex-start;
   width: 60vw;
   position: absolute;
+  bottom: 3rem;
 }
 
 .swipe_system_container > img {
-  width: 100vw;
+  width: 180vw;
   height: 10vh;
+  position: fixed;
+  bottom: 0;
 }
 
 .swipe_system_container > div > button {
@@ -40,12 +40,13 @@
 }
 
 .swipe_system_container > div > button {
-  background-color: var(--secondary-color);
+  background-color: var(--background-resume-jobOffer);
   border-radius: 50%;
 }
 
 @media screen and (min-width: 600px) {
   .swipe_system_container > div > button {
+    margin-bottom: 2.5rem;
     cursor: pointer;
   }
 }

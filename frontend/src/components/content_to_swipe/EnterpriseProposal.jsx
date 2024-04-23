@@ -64,7 +64,6 @@ function EnterpriseProposal() {
                     <li key={languages.id}>{languages.programming_language}</li>
                   ))}
               </ul>
-              <div />
             </section>
 
             <section className="missions">
@@ -75,7 +74,6 @@ function EnterpriseProposal() {
                     <li key={mission.id}>{mission.missions}</li>
                   ))}
               </ul>
-              <div />
             </section>
           </div>
         </div>
