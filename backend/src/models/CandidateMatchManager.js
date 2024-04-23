@@ -17,7 +17,7 @@ class CandidateMatchManager extends AbstractManager {
       [id]
     );
 
-    return rows[0];
+    return rows;
   }
 }
 

@@ -7,17 +7,19 @@ class EnterpriseMatchManager extends AbstractManager {
 
   async readMatchById(id) {
     const [rows] = await this.database.query(
-      `select c.* from ${this.table} el
-      inner join resume r on el.resume_id = r.id
-      inner join candidate c on r.candidate_id = c.id
-      inner join candidate_like cl on c.id = cl.candidate_id
-      inner join job_offer jo on cl.job_offer_id = jo.id
+      `select c.*, r.*, a.*
+      from ${this.table} el
+      inner join codingswipe.resume r on el.resume_id = r.id
+      inner join codingswipe.appetences a on r.appetences_id = a.id
+      inner join codingswipe.candidate c on r.candidate_id = c.id
+      inner join codingswipe.candidate_like cl on c.id = cl.candidate_id
+      inner join codingswipe.job_offer jo on cl.job_offer_id = jo.id
       where el.enterprise_id = jo.enterprise_id 
       and el.enterprise_id = ?`,
       [id]
     );
 
-    return rows[0];
+    return rows;
   }
 }
 
