@@ -268,4 +268,9 @@
     width: 63vw;
     height: 55vh;
   }
+
+  .users_infos_container input#radio,
+  .users_infos_container input#checkbox {
+    cursor: pointer;
+  }
 }

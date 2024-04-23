@@ -46,5 +46,6 @@
   .users_infos_container > div > .annual_salary > div > .locked {
     width: 2vw;
     height: 2.5vh;
+    cursor: pointer;
   }
 }

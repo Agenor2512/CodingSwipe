@@ -40,8 +40,10 @@ function AddMissionButton() {
     <section className="enterprise_modal">
       {missions.map((mission) => (
         <ul key={mission.id}>
-          <li className="experience">{mission.missions}</li>
-          <DeleteButton setMissions={setMissions} missionId={mission.id} />
+          <li className="experience">
+            {mission.missions}
+            <DeleteButton setMissions={setMissions} missionId={mission.id} />
+          </li>
         </ul>
       ))}
       <button

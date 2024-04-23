@@ -42,10 +42,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: space-evenly;
   width: 100vw;
   height: 40vh;
-  background-color: var(--secondary-color);
+  background-color: var(--background-resume-jobOffer);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;
@@ -118,7 +118,17 @@
   height: 15vh;
 }
 
-/* .enterprise_modal
+.enterprise_modal
+  > .overlay
+  > .modal_container_enterprise
+  > form
+  > .form_group_enterprise
+  textarea:focus {
+  outline: none;
+  border: 1px solid var(--register-background-color);
+}
+
+.enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
@@ -131,7 +141,7 @@
   border: none;
   border-radius: 2.5rem;
   font-family: var(--primary-font);
-} */
+}
 
 .enterprise_modal > .overlay > .modal_container_enterprise > form {
   display: flex;
@@ -140,8 +150,26 @@
 }
 
 @media screen and (min-width: 600px) {
+  .enterprise_modal > ul > li {
+    margin: 0.3rem 0;
+  }
+
   .enterprise_modal > .overlay > .modal_container_enterprise {
     width: 50vw;
+    height: 45vh;
+  }
+
+  .enterprise_modal > .overlay > .modal_container_enterprise > form {
+    height: 40vh;
+  }
+
+  .enterprise_modal
+    > .overlay
+    > .modal_container_enterprise
+    > form
+    > .form_group_enterprise
+    textarea {
+    resize: none;
   }
 
   .enterprise_modal
@@ -153,19 +181,26 @@
   .form_group_enterprise textarea {
     width: 45vw;
   }
+
   .enterprise_modal > .overlay > .modal_container_enterprise > button {
-    top: 20rem;
+    top: 18.5rem;
     right: 24rem;
   }
+
   .enterprise_modal
     > .overlay
     > .modal_container_enterprise
     > form
     > .add_enterprise_button {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .enterprise_modal > .overlay > .modal_container_enterprise > h2 {
     margin: 1.5rem 0 1rem 0;
+  }
+
+  .enterprise_modal > ul > li > button,
+  .enterprise_modal > .add_enterprise_button {
+    cursor: pointer;
   }
 }
