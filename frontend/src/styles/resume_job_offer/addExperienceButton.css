@@ -1,4 +1,4 @@
-section > .add_button {
+.candidate_modal > .add_button {
   width: 8.2rem;
   height: 2.1rem;
   color: var(--secondary-color);
@@ -8,21 +8,31 @@ section > .add_button {
   font-size: 14px;
 }
 
-section > ul {
+.candidate_modal > ul {
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
+}
+
+.candidate_modal > ul > .job_title {
+  font-weight: bold;
+  list-style-type: square;
+}
+
+.candidate_modal > ul > .job_title::marker {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.candidate_modal > ul > li {
   list-style-type: none;
 }
 
-section > ul > .job_title {
-  font-weight: bold;
-}
-
-section > ul > li {
+.candidate_modal > ul > li {
   margin: 0.1rem;
 }
 
-section > ul > button {
+section > ul > li > button {
   background: none;
   border: none;
   font-size: larger;
@@ -137,5 +147,10 @@ section > .overlay > .modal_container > form > button {
   section > .overlay > .modal_container > .close_btn {
     top: 15rem;
     right: 22rem;
+  }
+
+  .candidate_modal > ul > li > button,
+  .candidate_modal > button {
+    cursor: pointer;
   }
 }

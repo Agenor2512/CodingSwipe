@@ -16,6 +16,7 @@
   margin-top: 1rem;
 } */
 
+.candidate_modal > ul > li > .delete_experiences_missions,
 .enterprise_modal > ul > .experience > .delete_experiences_missions {
   margin-left: 1rem;
   border: none;

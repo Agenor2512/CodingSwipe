@@ -172,9 +172,8 @@ function Resume() {
 
         <section className="significatives_experiences">
           <h2>Expériences significatives</h2>
-          <div>
-            <AddExperienceButton />
-          </div>
+
+          <AddExperienceButton />
         </section>
       </div>
     </div>
