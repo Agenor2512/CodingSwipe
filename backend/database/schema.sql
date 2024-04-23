@@ -669,3 +669,11 @@ insert into experiences (candidate_id, job_title, company, experiences) values
   "Peugeot",
   "Développement d'applications de gestion de la chaîne logistique en utilisant React pour le front-end et Java avec Spring Boot pour le back-end. Collaboration avec les équipes métier pour identifier et résoudre les problèmes opérationnels."
 );
+
+insert into enterprise_like (enterprise_id, resume_id) values 
+("2de1feec-a19a-4f11-9226-af682acdab43", "2de1feec-a19a-4f16-9226-af782acdab47"),
+("2de1feec-a19a-4f11-9226-af682acdab43", "2de1feec-a12a-4f26-9226-af752acdab44");
+
+insert into candidate_like (candidate_id, job_offer_id) values
+("2de1feec-a19a-4f16-9226-af782acdab42", "3de1feec-a19a-4f11-9226-af682acdab43"),
+("2de1feec-a19a-4f16-9226-af782acdab42", "3de1feec-a19a-4f16-9226-af682acdab42");
