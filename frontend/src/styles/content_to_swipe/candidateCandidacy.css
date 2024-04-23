@@ -83,12 +83,13 @@
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
-  > .computer_languages_container,
+  > .computer_languages_container
+  > ul,
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
   > .significatives_experiences
-  > div {
+  > ul {
   margin: 1rem 0;
 }
 
@@ -119,9 +120,7 @@
   .candidate_infos_container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 70vw;
     margin: 2rem;
     box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -210,5 +209,14 @@
     > .significatives_experiences
     > div {
     min-height: 20vh;
+  }
+
+  .candidate_infos_container > .swipe_system_container {
+    width: 73vw;
+    background-size: 70vw;
+  }
+
+  .candidate_infos_container > .swipe_system_container > div {
+    width: 25vw;
   }
 }

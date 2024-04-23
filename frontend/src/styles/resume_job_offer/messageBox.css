@@ -1,13 +1,10 @@
 .user_message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: var(--primary-font);
   background-color: var(--background-resume-jobOffer);
 }
 
 .user_message > div {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .user_message > div > .candidate_infos_header {
@@ -69,7 +66,7 @@
   font-family: var(--primary-font);
   font-size: 1.2rem;
   background-color: var(--website-background-color);
-  color: var(--color-white);
+  color: var(--secondary-color);
 }
 
 .user_message > .see_content {
@@ -77,23 +74,30 @@
   justify-content: center;
   width: 100vw;
   height: 15vh;
-  background-image: url("src/assets/background_swipe_mobile.png");
   background-position: center bottom;
   background-repeat: no-repeat;
   margin-top: 1rem;
 }
 
+.user_message > .see_content > img {
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+}
+
 .user_message > .see_content > button {
   width: 13.2rem;
   height: 2rem;
-  margin: 0 0.3rem;
-  outline: 0.3rem solid var(--color-white);
+  outline: 0.3rem solid var(--secondary-color);
   border: none;
   background-color: var(--primary-color);
-  color: var(--color-white);
+  color: var(--secondary-color);
   border-radius: 150px;
   font-family: var(--primary-font);
   font-size: 1rem;
+  position: absolute;
+  bottom: 4.5rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -137,7 +141,13 @@
   .user_message > .see_content {
     width: 70vw;
     background-size: 70vw;
-    background-image: url("src/assets/background_swipe_desktop.png");
+  }
+
+  .user_message > .see_content > img {
+    width: 70vw;
+    height: 10vh;
+    bottom: 1rem;
+    border-radius: 0 0 22px 22px;
   }
 
   .user_message > div > .send_text_button {
