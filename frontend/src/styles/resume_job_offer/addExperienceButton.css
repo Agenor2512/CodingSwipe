@@ -1,3 +1,8 @@
+.candidate_modal {
+  display: flex;
+  flex-direction: column;
+}
+
 .candidate_modal > .add_button {
   width: 8.2rem;
   height: 2.1rem;
@@ -6,6 +11,8 @@
   border-radius: 1rem;
   font-family: var(--primary-font);
   font-size: 14px;
+  align-self: center;
+  margin: 1rem 0;
 }
 
 .candidate_modal > ul {
@@ -57,8 +64,8 @@ section > .overlay > .modal_container {
   align-items: center;
   text-align: center;
   width: 100vw;
-  height: 55vh;
-  background-color: var(--secondary-color);
+  height: 60vh;
+  background-color: var(--background-resume-jobOffer);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;
@@ -92,14 +99,19 @@ section > .overlay > .modal_container > form {
 
 section > .overlay > .modal_container > form > .form_group {
   margin-bottom: 1rem;
+  font-family: var(--secondary-font);
+  font-weight: bold;
 }
 
 section > .overlay > .modal_container > form > .form_group > label {
   display: flex;
+  font-size: 1rem;
 }
+
 section > .overlay > .modal_container > form > .form_group input {
   height: 5vh;
 }
+
 section > .overlay > .modal_container > form > .form_group input,
 .form_group textarea {
   display: block;
@@ -111,6 +123,12 @@ section > .overlay > .modal_container > form > .form_group input,
   padding: 0.6rem;
   margin-top: 0.5rem;
   border: none;
+}
+
+section > .overlay > .modal_container > form > .form_group input:focus,
+.form_group textarea:focus {
+  outline: none;
+  border: 1px solid var(--register-background-color);
 }
 
 section > .overlay > .modal_container > form > .form_group textarea {
@@ -131,6 +149,10 @@ section > .overlay > .modal_container > form > button {
 }
 
 @media screen and (min-width: 600px) {
+  .candidate_modal::-webkit-scrollbar {
+    width: 5px;
+  }
+
   section > .overlay > .modal_container {
     width: 53vw;
   }
@@ -142,15 +164,18 @@ section > .overlay > .modal_container > form > button {
 
   section > .overlay > .modal_container > form > .form_group textarea {
     height: 12vh;
+    resize: none;
   }
 
   section > .overlay > .modal_container > .close_btn {
-    top: 15rem;
-    right: 22rem;
+    top: 14rem;
+    right: 23rem;
   }
 
   .candidate_modal > ul > li > button,
-  .candidate_modal > button {
+  .candidate_modal > button,
+  section > .overlay > .modal_container > .close_btn,
+  section > .overlay > .modal_container > form > button {
     cursor: pointer;
   }
 }
