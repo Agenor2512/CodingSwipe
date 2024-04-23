@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 1rem;
   font-family: var(--primary-font);
-  background-color: var(--color-white);
+  background-color: var(--background-resume-jobOffer);
 }
 
 .users_infos_container > .users_infos_header {

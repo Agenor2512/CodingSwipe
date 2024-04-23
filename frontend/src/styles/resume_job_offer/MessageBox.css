@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   font-family: var(--primary-font);
+  background-color: var(--background-resume-jobOffer);
 }
 
 .user_message > div {
