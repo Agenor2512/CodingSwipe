@@ -67,6 +67,7 @@
 
 .user_navigation_container > nav > .button_container > #openBtn {
   background: none;
+  background-color: var(--background-resume-jobOffer);
   border: none;
   padding: 10px;
   position: absolute;

@@ -1,11 +1,28 @@
+.enterprise_modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.enterprise_modal > ul {
+  padding-left: 1rem;
+  list-style-type: square;
+}
+
+.enterprise_modal > ul > li::marker {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
 .enterprise_modal > .add_enterprise_button {
   width: 8.2rem;
   height: 2.1rem;
-  color: var(--color-white);
+  color: var(--secondary-color);
   background-color: var(--register-background-color);
   border-radius: 1rem;
   font-family: var(--primary-font);
   font-size: 14px;
+  align-self: center;
+  margin: 1rem 0;
 }
 
 .enterprise_modal > .overlay {
@@ -28,7 +45,7 @@
   text-align: center;
   width: 100vw;
   height: 40vh;
-  background-color: var(--color-white);
+  background-color: var(--secondary-color);
   border: none;
   font-family: var(--primary-font);
   margin: 1rem;
@@ -64,6 +81,7 @@
   font-family: var(--secondary-font);
   font-weight: bold;
 }
+
 .enterprise_modal
   > .overlay
   > .modal_container_enterprise
@@ -72,6 +90,7 @@
   > label {
   display: flex;
 }
+
 .enterprise_modal
   > .overlay
   > .modal_container_enterprise
@@ -99,7 +118,7 @@
   height: 15vh;
 }
 
-.enterprise_modal
+/* .enterprise_modal
   > .overlay
   > .modal_container_enterprise
   > form
@@ -112,7 +131,8 @@
   border: none;
   border-radius: 2.5rem;
   font-family: var(--primary-font);
-}
+} */
+
 .enterprise_modal > .overlay > .modal_container_enterprise > form {
   display: flex;
   justify-content: center;

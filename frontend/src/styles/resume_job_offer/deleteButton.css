@@ -11,11 +11,14 @@
   background-color: var(--primary-color);
   margin-right: 1rem;
 }
+
 .experience_container > .experience_content > p {
   margin-top: 1rem;
 }
-.experience_container > .experience_content > p > button {
+
+section > .experience_content > button {
   border: none;
+  background: none;
 }
 
 .overlay {
@@ -23,7 +26,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(49, 49, 49, 0.919);
+  background-color: var(-);
   position: fixed;
   top: 0;
   left: 0;
