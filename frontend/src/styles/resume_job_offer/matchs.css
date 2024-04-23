@@ -1,4 +1,4 @@
-.match_container {
+section.match_container {
   display: flex;
   flex-direction: column;
 }
@@ -7,6 +7,10 @@
   border: 2px solid var(--primary-color);
   color: var(--secondary-color);
   margin: 1rem;
+}
+
+.match_container > .match_card.invisible {
+  display: none;
 }
 
 .match_container > .match_card > .match_card_content {

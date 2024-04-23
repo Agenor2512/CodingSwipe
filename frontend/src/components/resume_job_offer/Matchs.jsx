@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import readMatchesById from "../../services/matchesService";
+import {
+  readCandidateMatchesById,
+  readEnterpriseMatchesById,
+} from "../../services/matchesService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
@@ -17,7 +20,13 @@ function Matchs() {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    readMatchesById({ id, role }).then((allMatches) => setMatches(allMatches));
+    if (role === "candidate") {
+      readCandidateMatchesById(id).then((allMatches) => setMatches(allMatches));
+    } else if (role === "enterprise") {
+      readEnterpriseMatchesById(id).then((allMatches) =>
+        setMatches(allMatches)
+      );
+    }
   }, []);
 
   console.info("Matches : ", matches);
@@ -27,21 +36,33 @@ function Matchs() {
       {matches &&
         matches.map((match) => (
           <div key={match.id} className="match_card">
-            {role === "candidat" ? (
-              <div>
-                <div>{getFirstLetter(match.name)}</div>
-                <div>{match.description}</div>
-                <div>{match.email}</div>
-              </div>
-            ) : (
+            {role === "candidate" ? (
               <div className="match_card_content">
-                <div className="first_content_block">{match.firstname}</div>
+                <div className="first_content_block">
+                  {getFirstLetter(match.name)}
+                </div>
 
                 <div className="second_content_block">
                   <div className="bold_font">
-                    <span>{match.appetence} </span>
+                    <span>{match.name} </span>
                   </div>
-                  <div className="font_content"> {match.email}</div>
+                  <div className="font_content"> {match.department}</div>
+                  <div className="font_content"> {match.work_rhythm}</div>
+                  <div className="font_content"> {match.salary}</div>
+                </div>
+              </div>
+            ) : (
+              <div className="match_card_content">
+                <div className="first_content_block">
+                  {getFirstLetter(match.firstname)}
+                </div>
+
+                <div className="second_content_block">
+                  <div className="bold_font">
+                    <span>{match.firstname}</span>
+                  </div>
+                  <div className="font_content"> {match.appetence}</div>
+                  <div className="font_content"> {match.contract_type}</div>
                 </div>
               </div>
             )}

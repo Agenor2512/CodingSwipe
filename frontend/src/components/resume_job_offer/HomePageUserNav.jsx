@@ -80,7 +80,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
             </li>
           </Link>
         </ul>
-        <Matchs />
+        {pageType === "match" && <Matchs />}
         <Messages messagesData={messagesData} />
         <ModalDisconnection />
       </div>
@@ -122,7 +122,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
               </li>
             </Link>
           </ul>
-          <Matchs />
+          {pageType === "match" && <Matchs />}
           <ModalDisconnection />
         </div>
 

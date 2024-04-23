@@ -8,19 +8,20 @@ const client = axios.create({
   timeout: 60_000,
 });
 
-export default function readMatchesById({ id, role }) {
-  if (role === "candidate") {
-    return client
-      .get(`candidates/matches/${id}`, {
-        headers: { Authorization: `Bearer ${retrieveToken()}` },
-      })
-      .then((response) => response.data)
-      .catch((error) => console.error(error));
-  }
+export const readCandidateMatchesById = (id) => {
+  return client
+    .get(`candidates/matches/${id}`, {
+      headers: { Authorization: `Bearer ${retrieveToken()}` },
+    })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+};
+
+export const readEnterpriseMatchesById = (id) => {
   return client
     .get(`enterprises/matches/${id}`, {
       headers: { Authorization: `Bearer ${retrieveToken()}` },
     })
     .then((response) => response.data)
     .catch((error) => console.error(error));
-}
+};
