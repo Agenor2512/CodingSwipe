@@ -8,7 +8,7 @@ import sendCandidateLike from "../../services/candidateLikeService";
 import { readAllResume } from "../../services/resumesService";
 import { readAllOffer } from "../../services/jobOffersService";
 
-import swipeBackgroundMobile from "../../assets/background_swipe_mobile.png";
+import swipeBackground from "../../assets/background_swipe_desktop.png";
 import "../../styles/content_to_swipe/swipeSystem.css";
 
 function SwipeSystem({
@@ -42,7 +42,7 @@ function SwipeSystem({
 
   return (
     <section className="swipe_system_container">
-      <img src={swipeBackgroundMobile} alt="swipe background" />
+      <img src={swipeBackground} alt="swipe background" />
       <div>
         <button type="button" onClick={sendLike}>
           <img

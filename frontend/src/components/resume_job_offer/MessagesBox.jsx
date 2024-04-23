@@ -1,6 +1,6 @@
 import React from "react";
 
-import messageBoxBackground from "../../assets/background_swipe_mobile.png";
+import messageBoxBackground from "../../assets/background_swipe_desktop.png";
 import "../../styles/resume_job_offer/messageBox.css";
 
 function MessagesBox() {

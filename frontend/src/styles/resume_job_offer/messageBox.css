@@ -80,7 +80,7 @@
 }
 
 .user_message > .see_content > img {
-  width: 100vw;
+  width: 180vw;
   height: 10vh;
   position: fixed;
   bottom: 0;
@@ -89,7 +89,7 @@
 .user_message > .see_content > button {
   width: 13.2rem;
   height: 2rem;
-  outline: 0.3rem solid var(--secondary-color);
+  outline: 0.3rem solid var(--background-resume-jobOffer);
   border: none;
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -138,14 +138,18 @@
     font-size: 4rem;
   }
 
+  .user_message > div > .messages {
+    min-height: 60vh;
+  }
+
   .user_message > .see_content {
     width: 70vw;
-    background-size: 70vw;
   }
 
   .user_message > .see_content > img {
     width: 70vw;
     height: 10vh;
+
     bottom: 1rem;
     border-radius: 0 0 22px 22px;
   }
@@ -165,6 +169,7 @@
   }
 
   .user_message > .see_content > button {
+    margin-bottom: 2rem;
     font-size: 1.2rem;
   }
 }
