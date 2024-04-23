@@ -45,4 +45,7 @@
 }
 
 @media screen and (min-width: 600px) {
+  .swipe_system_container > div > button {
+    cursor: pointer;
+  }
 }

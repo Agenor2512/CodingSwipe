@@ -1,6 +1,7 @@
 import React from "react";
 
-import "../../styles/resume_job_offer/MessageBox.css";
+import messageBoxBackground from "../../assets/background_swipe_mobile.png";
+import "../../styles/resume_job_offer/messageBox.css";
 
 function MessagesBox() {
   return (
@@ -19,6 +20,7 @@ function MessagesBox() {
       </div>
 
       <section className="see_content">
+        <img src={messageBoxBackground} alt="messages bottom background" />
         <button type="button">Voir l'annonce</button>
       </section>
     </section>
