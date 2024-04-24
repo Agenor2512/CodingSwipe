@@ -38,32 +38,23 @@ function Matchs() {
           <div key={match.id} className="match_card">
             {role === "candidate" ? (
               <div className="match_card_content">
-                <div className="first_content_block">
-                  {getFirstLetter(match.name)}
-                </div>
+                <div>{getFirstLetter(match.name)}</div>
 
-                <div className="second_content_block">
-                  <div className="bold_font">
-                    <span>{match.name} </span>
-                  </div>
-                  <div className="font_content"> {match.department}</div>
-                  <div className="font_content"> {match.work_rhythm}</div>
-                  <div className="font_content"> {match.salary}</div>
-                </div>
+                <ul>
+                  <li className="bold_font">{match.name}</li>
+                  <li> {match.work_rhythm}</li>
+                  <li> {match.salary}</li>
+                </ul>
               </div>
             ) : (
               <div className="match_card_content">
-                <div className="first_content_block">
-                  {getFirstLetter(match.firstname)}
-                </div>
+                <div>{getFirstLetter(match.firstname)}</div>
 
-                <div className="second_content_block">
-                  <div className="bold_font">
-                    <span>{match.firstname}</span>
-                  </div>
-                  <div className="font_content"> {match.appetence}</div>
-                  <div className="font_content"> {match.contract_type}</div>
-                </div>
+                <ul>
+                  <li className="bold_font">{match.firstname}</li>
+                  <li> {match.appetence}</li>
+                  <li> {match.contract_type}</li>
+                </ul>
               </div>
             )}
           </div>
