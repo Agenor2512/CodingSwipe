@@ -44,9 +44,13 @@ class CandidateManager extends AbstractManager {
     return rows;
   }
 
-  async readRandom() {
+  async readRandom(id) {
     const [rows] = await this.database.query(
-      `select candidate.id from ${this.table} order by rand() limit 1`
+      `select c.id from ${this.table} c
+      inner join resume r on c.id = r.candidate_id
+      left join enterprise_like el on r.id = el.resume_id
+      where el.enterprise_id is null or el.enterprise_id != ? limit 1`,
+      [id]
     );
     return rows[0];
   }

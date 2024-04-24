@@ -1,8 +1,10 @@
 const tables = require("../tables");
 
 const browseRandom = async (req, res, next) => {
+  const { id } = req.user;
+
   try {
-    const enterprise = await tables.enterprise.readRandom();
+    const enterprise = await tables.enterprise.readRandom(id);
     const joboffer = await tables.job_offer.readById(enterprise.id);
     const missions = await tables.missions.readById(enterprise.id);
     const languages = await tables.job_offer_has_programming_languages.readById(

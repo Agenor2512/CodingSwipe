@@ -1,6 +1,6 @@
 import Logo from "../components/Logo";
 import HeaderDesktop from "../components/HeaderDesktop";
-import Nav from "../components/Nav";
+import HomePageNav from "../components/HomePageNav";
 import RegisterButton from "../components/register/RegisterButton";
 import TitlesDescription from "../components/TitlesDescription";
 import ModalConnection from "../components/ModalConnection";
@@ -25,7 +25,7 @@ function HomePage() {
         </div>
       </main>
       <div className="mobile_element">
-        <Nav />
+        <HomePageNav />
       </div>
     </div>
   );
