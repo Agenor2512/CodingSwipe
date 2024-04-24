@@ -13,32 +13,6 @@ import ModalDisconnection from "../ModalDisconnection";
 import "../../styles/resume_job_offer/homePageUserNav.css";
 
 function HomePageUserNav({ handleTabClick, pageType }) {
-  const matchesData = [
-    {
-      id: 1,
-      name: "Paul",
-      category: "Développeur Frontend",
-      date: "2024",
-      region: "Bordeaux",
-      jobName: "CDiscount",
-    },
-    {
-      id: 2,
-      name: "Nono",
-      category: "Data Scientist",
-      date: "2024",
-      region: "Lille",
-      jobName: "Ubisoft",
-    },
-    {
-      id: 3,
-      name: "Mathieu",
-      category: "Chef de Projet",
-      date: "2024",
-      region: "Marseille",
-      jobName: "Crédit Agricole",
-    },
-  ];
   const messagesData = [
     {
       id: 1,
@@ -106,7 +80,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
             </li>
           </Link>
         </ul>
-        <Matchs matchesData={matchesData} />
+        {pageType === "match" && <Matchs />}
         <Messages messagesData={messagesData} />
         <ModalDisconnection />
       </div>
@@ -148,7 +122,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
               </li>
             </Link>
           </ul>
-          <Matchs matchesData={matchesData} />
+          {pageType === "match" && <Matchs />}
           <ModalDisconnection />
         </div>
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
-import { useState, useContext } from "react";
+/* eslint-disable react/no-unknown-property */
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import deleteIcon from "../../assets/red_trash_can.png";
 
 import {
   readExperienceById,
@@ -13,6 +13,8 @@ import {
 } from "../../services/missionsService";
 
 import LoginUserContext from "../../context/LoginUserContext";
+
+import deleteIcon from "../../assets/red_trash_can.png";
 
 import "../../styles/resume_job_offer/deleteButton.css";
 
@@ -78,6 +80,7 @@ function DeleteButton({
               </button>
               <button
                 type="button"
+                useContext
                 className="return_profil"
                 onClick={() => setModal(false)}
               >
