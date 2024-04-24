@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import "../styles/components/nav.css";
+import "../styles/components/homePageNav.css";
 
-function Nav() {
+function HomePageNav() {
   return (
     <nav>
       <ul>
@@ -19,4 +19,4 @@ function Nav() {
     </nav>
   );
 }
-export default Nav;
+export default HomePageNav;

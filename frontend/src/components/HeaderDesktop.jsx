@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+import HomePageNav from "./HomePageNav";
 import Logo from "./Logo";
 import ModalConnection from "./ModalConnection";
 
@@ -8,7 +8,7 @@ function HeaderDesktop() {
   return (
     <div className="header_desktop">
       <Logo />
-      <Nav />
+      <HomePageNav />
       <ModalConnection />
     </div>
   );
