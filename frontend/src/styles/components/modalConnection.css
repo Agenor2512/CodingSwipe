@@ -3,7 +3,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(49, 49, 49, 0.8);
+  background-color: var(--overlay-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -52,12 +52,12 @@
 }
 
 .overlay > .connection_modal > .connection_modal_content > h2 {
-  color: var(--color-white);
+  color: var(--secondary-color);
   margin: 0.5rem;
 }
 
 .overlay > .connection_modal > .connection_modal_content > label {
-  color: var(--color-white);
+  color: var(--secondary-color);
   width: 20rem;
 }
 
@@ -66,31 +66,27 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
   outline: 0;
-  border: none;
+  border: 1px solid var(--secondary-color);
   border-radius: 10px;
   font: var(--primary-font);
-  color: var(--color-white);
-  background-color: var(--color-black);
+  color: var(--third-color);
+  background-color: var(--secondary-color);
 }
 
-.overlay > .connection_modal > .connection_modal_content > input:focus {
-  border: var(--color-white) solid 2px;
-}
-
-.overlay > .connection_modal > .connection_modal_content > a {
-  text-decoration: none;
-}
-
-.overlay > .connection_modal > .connection_modal_content > a > .continue {
+.overlay > .connection_modal > .connection_modal_content > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 9rem;
+  height: 2.3rem;
+  border: 0;
+  border-radius: 2rem;
   font-family: var(--primary-font);
+  font-size: 1rem;
   font-weight: bold;
-  padding: 0.5rem 2rem;
   color: var(--secondary-color);
   background-color: var(--primary-color);
-  border-radius: 20px;
-  border: 0;
-  margin: 1rem;
-  margin-top: 2rem;
 }
 
 .overlay > .connection_modal > button {
@@ -128,8 +124,8 @@
   }
 
   .connection_button:hover {
-    background-color: var(--third-color);
-    color: var(--color-white);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     transition:
       background-color 0.2s,
       color 0.2s;
@@ -140,24 +136,30 @@
   }
 
   .overlay > .connection_modal > .connection_modal_content > label {
-    width: 32.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > label,
+  .overlay > .connection_modal > .connection_modal_content > input {
+    width: 30rem;
   }
 
   .overlay > .connection_modal > .connection_modal_content > input {
-    width: 32.4rem;
     margin-bottom: 1.5rem;
   }
 
-  .overlay > .connection_modal > .connection_modal_content > a > .continue {
-    display: flex;
-    margin-top: 3rem;
-    height: 2rem;
-    font-size: 1rem;
-    padding: 0;
-    width: 10.7rem;
-    align-items: center;
-    justify-content: center;
+  .overlay > .connection_modal > .connection_modal_content > button {
+    width: 12rem;
+    margin-top: 1.5rem;
     cursor: pointer;
+  }
+
+  .overlay > .connection_modal > .connection_modal_content > button:hover {
+    color: var(--third-color);
+    background-color: var(--secondary-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
   }
 
   .overlay > .connection_modal > button {

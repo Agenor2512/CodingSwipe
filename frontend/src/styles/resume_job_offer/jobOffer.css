@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 1rem;
   font-family: var(--primary-font);
-  background-color: var(--color-white);
+  background-color: var(--background-resume-jobOffer);
 }
 
 .users_infos_container > .users_infos_header {
@@ -102,6 +102,7 @@
   > div
   > div {
   display: flex;
+  align-items: center;
   margin: 0.3rem 0;
 }
 
@@ -266,5 +267,10 @@
     flex-wrap: wrap;
     width: 63vw;
     height: 55vh;
+  }
+
+  .users_infos_container input#radio,
+  .users_infos_container input#checkbox {
+    cursor: pointer;
   }
 }

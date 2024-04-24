@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { createContext, useMemo, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const LoginUserContext = createContext();
 
@@ -24,5 +24,9 @@ export function LoginUserProvider({ children }) {
     </LoginUserContext.Provider>
   );
 }
+
+LoginUserProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default LoginUserContext;

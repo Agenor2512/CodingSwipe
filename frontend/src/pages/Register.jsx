@@ -1,7 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-import axios from "axios";
+import {
+  registerCandidate,
+  registerEnterprise,
+} from "../services/registerService";
 
 import FirstView from "../components/register/FirstView";
 import EnterpriseStepOne from "../components/register/EnterpriseStepOne";
@@ -12,22 +14,20 @@ import FinalStepView from "../components/register/FinalStepView";
 
 function Register() {
   const [step, setStep] = useState(1);
-
+  const [formIsFilled, setFormIsFilled] = useState(false);
   const [role, setRole] = useState("enterprise");
-
-  const [isError, setIsError] = useState(false);
 
   const [candidateInfos, setCandidateInfos] = useState({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
+    passwordCheck: "",
     departmentId: "",
-    // biography: "",
-    appetencesId: "",
+    appetencesId: "1",
     contractTypesId: "",
     workRhythmsId: "",
-    levelId: "",
+    levelId: "1",
     languages: [],
   });
 
@@ -37,19 +37,20 @@ function Register() {
     description: "",
     email: "",
     password: "",
+    passwordCheck: "",
     departmentId: "",
     legalStatusId: "",
     businessSectorsId: "",
     salary: "",
     contractTypesId: "",
     workRhythmsId: "",
-    appetencesId: "",
+    appetencesId: "1",
     languages: [],
   });
 
   console.info("ENTREPRISE INFOS: ", enterpriseInfos);
 
-  const handleChangeForm = (event) => {
+  const handleChangeFormCandidate = (event) => {
     setCandidateInfos({
       ...candidateInfos,
       [event.target.name]: event.target.value,
@@ -71,21 +72,14 @@ function Register() {
     event.preventDefault();
   };
 
-  const registerCandidate = () => {
-    axios
-      .post("http://localhost:3310/api/candidates", candidateInfos)
-      .then((response) => {
-        setIsError(false);
-        console.info(response);
-      })
-      .catch(() => setIsError(true));
+  const sendCandidateInfos = () => {
+    registerCandidate(candidateInfos);
+    nextStep();
   };
 
-  const registerEnterprise = () => {
-    axios
-      .post("http://localhost:3310/api/enterprises", enterpriseInfos)
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
+  const sendEnterpriseInfos = () => {
+    registerEnterprise(enterpriseInfos);
+    nextStep();
   };
 
   const displayRegisterStep = () => {
@@ -101,6 +95,9 @@ function Register() {
               nextStep,
               handleFormSubmit,
               handleChangeFormEnterprise,
+              enterpriseInfos,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         ) : (
@@ -108,8 +105,10 @@ function Register() {
             formTools={{
               nextStep,
               handleFormSubmit,
-              handleChangeForm,
+              handleChangeFormCandidate,
               candidateInfos,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         );
@@ -120,8 +119,11 @@ function Register() {
               nextStep,
               handleFormSubmit,
               handleChangeFormEnterprise,
-              registerEnterprise,
+              sendEnterpriseInfos,
               setEnterpriseInfos,
+              enterpriseInfos,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         ) : (
@@ -129,11 +131,12 @@ function Register() {
             formTools={{
               nextStep,
               handleFormSubmit,
-              registerCandidate,
-              handleChangeForm,
+              sendCandidateInfos,
+              handleChangeFormCandidate,
               setCandidateInfos,
               candidateInfos,
-              isError,
+              formIsFilled,
+              setFormIsFilled,
             }}
           />
         );
@@ -146,7 +149,7 @@ function Register() {
     }
   };
 
-  return <div>{displayRegisterStep()}</div>;
+  return <>{displayRegisterStep()}</>;
 }
 
 export default Register;

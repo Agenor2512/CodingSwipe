@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 1rem;
   font-family: var(--primary-font);
-  background-color: var(--color-white);
+  background-color: var(--background-resume-jobOffer);
 }
 
 .users_infos_container > .users_infos_header {
@@ -259,6 +259,13 @@
   .users_infos_container > div > .significatives_experiences,
   .users_infos_container > div > .significatives_experiences > div {
     width: 30vw;
+  }
+
+  .users_infos_container
+    > div
+    > .computer_language_checkbox_container
+    > .resume_programming_languages {
+    height: 21vh;
   }
 
   .users_infos_container > .modify_display_desktop > div > h2,

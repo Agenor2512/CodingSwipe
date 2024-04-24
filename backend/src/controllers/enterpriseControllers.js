@@ -48,20 +48,15 @@ const add = async (req, res, next) => {
   };
 
   try {
-    const resultEnterprise = await tables.enterprise.createEnterprise(
-      enterpriseInfo
-    );
-    const resultJobOffer = await tables.enterprise.createJobOffer(
-      jobOfferInfos
-    );
+    const resultEnterprise = await tables.enterprise.create(enterpriseInfo);
+    const resultJobOffer = await tables.job_offer.create(jobOfferInfos);
 
     const { languages } = req.body;
     console.info(languages);
 
-    await Promise.all(
-      languages.map((language) =>
-        tables.enterprise.createProgrammingLanguages(randomId, language)
-      )
+    await tables.job_offer_has_programming_languages.createMultiple(
+      randomId,
+      languages
     );
 
     res.status(201).json({
@@ -74,35 +69,14 @@ const add = async (req, res, next) => {
   }
 };
 
-const readJobOffer = async (req, res, next) => {
-  try {
-    const enterprise = await tables.enterprise.randomEnterprise();
-    const joboffer = await tables.enterprise.readJobOfferById(enterprise[0].id);
-    const languages = await tables.enterprise.readLanguagesById(
-      enterprise[0].id
-    );
-    console.info(enterprise[0].id);
-    res.json([
-      {
-        infos: joboffer,
-        langues: languages,
-      },
-    ]);
-  } catch (error) {
-    next(error);
-  }
-};
-
-const readDescriptionById = async (req, res, next) => {
+const readDescription = async (req, res, next) => {
   const { id } = req.params;
 
   try {
     const description = await tables.enterprise.readDescriptionById(id);
-    res.json([
-      {
-        description: description[0].description,
-      },
-    ]);
+    res.json({
+      description: description.description,
+    });
   } catch (error) {
     next(error);
   }
@@ -121,16 +95,15 @@ const updateDescription = async (req, res, next) => {
     } else {
       res.json({ msg: "offre modifiée avec succès" });
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
 module.exports = {
+  add,
   browse,
   readById,
-  add,
-  readJobOffer,
-  readDescriptionById,
+  readDescription,
   updateDescription,
 };

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import ModalConnection from "../ModalConnection";
 
 import "../../styles/register/finalStepView.css";

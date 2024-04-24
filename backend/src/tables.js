@@ -3,20 +3,48 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
-const ItemManager = require("./models/ItemManager");
 const EnterpriseManager = require("./models/EnterpriseManager");
 const CandidateManager = require("./models/CandidateManager");
-const ExperienceManager = require("./models/ExperienceManager");
+const ProgrammingLanguagesManager = require("./models/ProgrammingLanguagesManager");
+const SoftSkillsManager = require("./models/SoftSkillsManager");
+const ContractTypesManager = require("./models/ContractTypesManager");
+const WorkRhythmsManager = require("./models/WorkRhythmsManager");
+const AppetencesManager = require("./models/AppetencesManager");
 const CandidateLikeManager = require("./models/CandidateLikeManager");
 const EnterpriseLikeManager = require("./models/EnterpriseLikeManager");
+const ResumeHasProgrammingLanguagesManager = require("./models/ResumeHasProgrammingLanguagesManager");
+const JobOfferHasProgrammingLanguagesManager = require("./models/JobOfferHasProgrammingLanguagesManager");
+const ExperienceManager = require("./models/ExperienceManager");
+const JobOfferManager = require("./models/JobOfferManager");
+const ResumeManager = require("./models/ResumeManager");
+const MissionManager = require("./models/MissionManager");
+const DepartmentsManager = require("./models/DepartmentsManager");
+const LevelsManager = require("./models/LevelsManager");
+const BusinessSectorsManager = require("./models/BusinessSectors");
+const LegalStatusManager = require("./models/LegalStatus");
+const ResumeHasSoftSkillsManager = require("./models/ResumeHasSoftSkillsManager");
 
 const managers = [
-  ItemManager,
   EnterpriseManager,
   CandidateManager,
-  ExperienceManager,
+  ProgrammingLanguagesManager,
+  SoftSkillsManager,
+  ContractTypesManager,
+  WorkRhythmsManager,
+  AppetencesManager,
   CandidateLikeManager,
   EnterpriseLikeManager,
+  ResumeHasProgrammingLanguagesManager,
+  JobOfferHasProgrammingLanguagesManager,
+  ExperienceManager,
+  JobOfferManager,
+  ResumeManager,
+  MissionManager,
+  DepartmentsManager,
+  LevelsManager,
+  BusinessSectorsManager,
+  LegalStatusManager,
+  ResumeHasSoftSkillsManager,
   // Add other managers here
 ];
 

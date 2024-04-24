@@ -1,5 +1,15 @@
 const tables = require("../tables");
 
+const readById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const experience = await tables.experiences.readById(id);
+    res.json(experience);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const add = async (req, res, next) => {
   const infos = {
     candidateId: req.body.candidateId,
@@ -21,7 +31,7 @@ const remove = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const result = await tables.experiences.deleteExperience(id);
+    const result = await tables.experiences.delete(id);
     if (result.affectedRows === 0) {
       res.status(404).json({ msg: "Expérience introuvable" });
     } else {
@@ -33,6 +43,7 @@ const remove = async (req, res, next) => {
 };
 
 module.exports = {
+  readById,
   add,
   remove,
 };

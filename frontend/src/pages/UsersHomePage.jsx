@@ -1,23 +1,34 @@
-import { useState } from "react";
-// import EnterpriseJobOffer from "../components/resume_job_offer/EnterpriseJobOffer";
+/* eslint-disable no-else-return */
+import React, { useState } from "react";
+
 import HomePageUserNav from "../components/resume_job_offer/HomePageUserNav";
 import HomePageSwipe from "./HomePageSwipe";
-import CandidateResume from "../components/resume_job_offer/CandidateResume";
+import HomePageMessages from "./HomePageMessages";
+import HomePageProfile from "./HomePageProfile";
 
 import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
-  const [pageToDisplay, setPageToDisplay] = useState("home");
+  const [pageType, setPageType] = useState("profile");
+
+  const handleTabClick = (type) => {
+    setPageType(type);
+  };
+
+  const displayRightPages = () => {
+    if (pageType === "messages") {
+      return <HomePageMessages />;
+    } else if (pageType === "match") {
+      return <HomePageSwipe />;
+    } else {
+      return <HomePageProfile />;
+    }
+  };
 
   return (
     <div className="users_homepage">
-      <HomePageUserNav tools={{ setPageToDisplay }} />
-
-      {pageToDisplay === "home" ? (
-        <HomePageSwipe />
-      ) : (
-        <CandidateResume tools={{ setPageToDisplay }} />
-      )}
+      <HomePageUserNav handleTabClick={handleTabClick} pageType={pageType} />
+      {displayRightPages()}
     </div>
   );
 }

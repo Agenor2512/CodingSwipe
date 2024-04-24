@@ -1,88 +1,48 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
-import axios from "axios";
+import PropTypes from "prop-types";
+
 import LoginUserContext from "../../context/LoginUserContext";
 
+import sendEnterpriseLike from "../../services/enterpriseLikeService";
+import sendCandidateLike from "../../services/candidateLikeService";
+import { readAllResume } from "../../services/resumesService";
+import { readAllOffer } from "../../services/jobOffersService";
+
+import swipeBackground from "../../assets/background_swipe_desktop.png";
 import "../../styles/content_to_swipe/swipeSystem.css";
 
 function SwipeSystem({
+  jobOfferId,
   candidateId,
+  resumeId,
   enterpriseId,
-  setIsLoading,
-  setJobOffer,
-  setResume,
+  triggerRefresh,
 }) {
   const { loginUser } = useContext(LoginUserContext);
 
-  const baseURL = import.meta.env.VITE_BACKEND_URL;
-
-  console.info("SETRESUME", setResume);
-  console.info("SETJOBOFFER", setJobOffer);
-
-  const fetchResume = () => {
-    axios
-      .get("http://localhost:3310/api/resume")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setResume(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const fetchJobOffer = () => {
-    axios
-      .get("http://localhost:3310/api/joboffer")
-      .then((response) => {
-        console.info("RESPONSE : ", response);
-        setJobOffer(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  };
-
   const sendLike = () => {
-    console.info("CANDIDATE ID:", candidateId);
-    console.info("ENTERPRISE ID:", enterpriseId);
-    console.info("ROLE :", loginUser.role);
-
-    const info = { candidateId, enterpriseId };
-
     if (loginUser.role === "enterprise") {
-      console.info("INFOS : ", info);
-
-      axios
-        .post(`${baseURL}/enterprises/likes`, info)
-        .then((response) => {
-          console.info(response.data);
-          fetchResume();
-        })
-        .catch((error) => console.error(error));
+      sendEnterpriseLike({ resumeId, enterpriseId }).then(() =>
+        triggerRefresh()
+      );
     } else {
-      console.info("INFOS : ", info);
-
-      axios
-        .post(`${baseURL}/candidates/likes`, info)
-        .then((response) => {
-          console.info(response.data);
-          fetchJobOffer();
-        })
-        .catch((error) => console.error(error));
+      sendCandidateLike({ jobOfferId, candidateId }).then(() =>
+        triggerRefresh()
+      );
     }
   };
 
-  console.info("LOGIN USER", loginUser.role);
-
   const sendDislike = () => {
-    if (loginUser.role === "candidate") {
-      fetchJobOffer();
+    if (loginUser.role === "enterprise") {
+      readAllResume();
     } else {
-      fetchResume();
+      readAllOffer();
     }
   };
 
   return (
     <section className="swipe_system_container">
+      <img src={swipeBackground} alt="swipe background" />
       <div>
         <button type="button" onClick={sendLike}>
           <img
@@ -92,7 +52,7 @@ function SwipeSystem({
           />
         </button>
 
-        <button type="button" onClick={() => sendDislike()}>
+        <button type="button" onClick={sendDislike}>
           <img
             className="dislike_icon"
             src="/src/assets/cross_swipe.svg"
@@ -103,5 +63,13 @@ function SwipeSystem({
     </section>
   );
 }
+
+SwipeSystem.propTypes = {
+  jobOfferId: PropTypes.string.isRequired,
+  candidateId: PropTypes.string.isRequired,
+  resumeId: PropTypes.string.isRequired,
+  enterpriseId: PropTypes.string.isRequired,
+  triggerRefresh: PropTypes.func.isRequired,
+};
 
 export default SwipeSystem;

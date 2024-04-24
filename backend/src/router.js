@@ -4,11 +4,30 @@ const router = express.Router();
 
 const enterpriseControllers = require("./controllers/enterpriseControllers");
 const candidateControllers = require("./controllers/candidateControllers");
+
+const resumeControllers = require("./controllers/resumeControllers");
+const jobOfferControllers = require("./controllers/jobOfferControllers");
+
+const legalStatusControllers = require("./controllers/legalStatusControllers");
+const businessSectorsControllers = require("./controllers/businessSectorsControllers");
+const levelsControllers = require("./controllers/levelsControllers");
+const departmentsControllers = require("./controllers/departmentsControllers");
+const programmingLanguagesControllers = require("./controllers/programmingLanguagesControllers");
+const softSkillsControllers = require("./controllers/softSkillsControllers");
+const contractTypesControllers = require("./controllers/contractTypesControllers");
+const workRhytmsControllers = require("./controllers/workRhythmsControllers");
+const appetencesControllers = require("./controllers/appetencesControllers");
+
 const experienceControllers = require("./controllers/experienceControllers");
+const resumeHasSoftSkillsControlers = require("./controllers/resumeHasSoftSkillsControllers");
+const missionControllers = require("./controllers/missionControllers");
 const candidateLikeControllers = require("./controllers/candidateLikeControllers");
 const enterpriseLikeControllers = require("./controllers/enterpriseLikeControllers");
+const matchesControllers = require("./controllers/matchesControllers");
 const authenticationControllers = require("./controllers/authenticationControllers");
 const authenticationService = require("./services/authentication");
+
+const authenticationValidator = require("./middlewares/authenticationValidator");
 const candidateValidator = require("./middlewares/candidateValidator");
 const enterpriseValidator = require("./middlewares/enterpriseValidator");
 
@@ -18,6 +37,8 @@ router.post(
   authenticationService.checkIfEmailExist,
   authenticationControllers.login
 );
+
+router.get("/verify", authenticationValidator.validateAuthentication);
 
 router.delete("/logout", authenticationControllers.logout);
 
@@ -31,6 +52,10 @@ router.post(
   enterpriseControllers.add
 );
 router.post("/enterprises/likes", enterpriseLikeControllers.add);
+router.get(
+  "/enterprises/matches/:id",
+  matchesControllers.readEnterpriseMatchesById
+);
 
 // Candidate part
 router.get("/candidates", candidateControllers.browse);
@@ -41,25 +66,80 @@ router.post(
   authenticationService.hashPassword,
   candidateControllers.add
 );
-
-router.post("/experience", experienceControllers.add);
-router.delete("/experience/:id", experienceControllers.remove);
 router.post("/candidates/likes", candidateLikeControllers.add);
+router.get(
+  "/candidates/matches/:id",
+  matchesControllers.readCandidateMatchesById
+);
 
-router.get("/resume", candidateControllers.readResume);
-router.get("/resume/:id", candidateControllers.readResumeById);
-router.get("/joboffer", enterpriseControllers.readJobOffer);
-router.get("/biography/:id", candidateControllers.readBiography);
-router.put("/biography/:id", candidateControllers.updateBiography);
-router.get("/description/:id", enterpriseControllers.readDescriptionById);
-router.put("/description/:id", enterpriseControllers.updateDescription);
+// Job offer/Resume part
+router.get(
+  "/resumes",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.browseRandom
+);
+router.get(
+  "/resumes/:id",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.readById
+);
+router.get(
+  "/joboffers",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.browseRandom
+);
+router.get(
+  "/joboffers/:id",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.readById
+);
 
-// router.get("/isConnected", middleware, controller.userChecked)
+router.get(
+  "/biographies/:id",
+  authenticationValidator.validateAuthentication,
+  resumeControllers.readBiography
+);
+router.put("/biographies/:id", resumeControllers.updateBiography);
+router.get(
+  "/descriptions/:id",
+  authenticationValidator.validateAuthentication,
+  enterpriseControllers.readDescription
+);
+router.put("/descriptions/:id", enterpriseControllers.updateDescription);
+router.get(
+  "/wages/:id",
+  authenticationValidator.validateAuthentication,
+  jobOfferControllers.readSalary
+);
+router.put("/wages/:id", jobOfferControllers.updateSalary);
 
-// middleware :
-// si le token est invalide => 401 /// Next()
+router.get(
+  "/missions/:id",
+  authenticationValidator.validateAuthentication,
+  missionControllers.readById
+);
+router.post("/missions", missionControllers.add);
+router.delete("/missions/:id", missionControllers.remove);
+router.get("/experiences/:id", experienceControllers.readById);
+router.post("/experiences", experienceControllers.add);
+router.delete(
+  "/experiences/:id",
+  authenticationValidator.validateAuthentication,
+  experienceControllers.remove
+);
 
-// userChecked :
-// res.sendStatus(200)
+router.post("/softskills", resumeHasSoftSkillsControlers.add);
+
+// Existing data part for Offer/Resume
+router.get("/legalstatus", legalStatusControllers.browse);
+router.get("/businesssectors", businessSectorsControllers.browse);
+router.get("/levels", levelsControllers.browse);
+router.get("/levels", levelsControllers.browse);
+router.get("/departments", departmentsControllers.browse);
+router.get("/programminglanguages", programmingLanguagesControllers.browse);
+router.get("/softskills", softSkillsControllers.browse);
+router.get("/contracttypes", contractTypesControllers.browse);
+router.get("/workrhythms", workRhytmsControllers.browse);
+router.get("/appetences", appetencesControllers.browse);
 
 module.exports = router;

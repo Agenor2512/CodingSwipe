@@ -134,15 +134,25 @@ input[type="number"]::-webkit-outer-spin-button {
   color: var(--secondary-color);
 }
 
+.step_one_register > form > p {
+  margin: 1rem 0;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
 .step_one_register > form > button {
   width: 10.625rem;
   padding: 0.5rem 2rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   border: 0;
   border-radius: 2rem;
-  background-color: var(--third-color);
+  background-color: var(--secondary-color);
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+.step_one_register > form > button.invisible {
+  display: none;
 }
 
 @media screen and (min-width: 600px) {
@@ -197,13 +207,22 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 10rem;
   }
 
+  .step_one_register
+    > form
+    > .step_one_register_container
+    > .register_label_input_container
+    > select,
   .step_one_register > form > button {
     cursor: pointer;
+  }
+
+  .step_one_register > form > button {
     margin-top: 4rem;
   }
 
   .step_one_register > form > button:hover {
-    background-color: var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
     transition:
       background-color 0.2s,
       color 0.2s;

@@ -18,12 +18,12 @@ const validateEnterprise = async (req, res, next) => {
       .pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/)
       .required(),
 
-    // password: Joi.string().pattern(/^(?=.*[*#])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/),
-    password: Joi.string(),
+    password: Joi.string().pattern(
+      /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%&*])[a-zA-Z0-9À-ÖØ-öø-ÿ*#]{8,15}$/
+    ),
     passwordCheck: Joi.ref("password"),
 
-    // siret: Joi.string().length(14).required(),
-    siret: Joi.string().required(),
+    siret: Joi.string().length(14).required(),
     description: Joi.string().required(),
     departmentId: Joi.number().required(),
     legalStatusId: Joi.number().required(),

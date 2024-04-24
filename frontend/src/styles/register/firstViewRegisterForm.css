@@ -104,7 +104,8 @@ h3 {
   }
 
   .form_container > form > input:hover {
-    background-color: var(--third-color);
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--secondary-color);
     transition:
       background-color 0.2s,

@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
-// import { useContext, useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
 import "../../styles/register/firstViewRegisterForm.css";
 
-// import RegisterContext from "../../context/RegisterContext";
-
 function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
-  // const [focusedButton, setFocusedButton] = useState("enterprise");
+  const [focusedButton, setFocusedButton] = useState("enterprise");
   const selectionButtons = [
     {
       name: "enterprise",
@@ -17,10 +16,10 @@ function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
     },
   ];
 
-  // const handleClickButton = (event) => {
-  //   setFocusedButton(event.target.name);
-  //   setInfos({ ...infos, userRole: event.target.name });
-  // };
+  const handleClickButton = (event) => {
+    setFocusedButton(event.target.name);
+    setRole(event.target.name);
+  };
 
   return (
     <section className="form_container">
@@ -33,8 +32,8 @@ function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
               key={name}
               name={name}
               type="button"
-              // className={focusedButton === name ? "focusedButton" : ""}
-              onClick={() => setRole(name)}
+              className={focusedButton === name ? "focusedButton" : ""}
+              onClick={handleClickButton}
             >
               {buttonText}
             </button>
@@ -45,5 +44,13 @@ function FirstView({ formTools: { nextStep, handleFormSubmit, setRole } }) {
     </section>
   );
 }
+
+FirstView.propTypes = {
+  formTools: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    setRole: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default FirstView;

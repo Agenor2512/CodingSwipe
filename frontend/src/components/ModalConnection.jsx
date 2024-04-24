@@ -1,20 +1,13 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
+import { login } from "../services/loginService";
 
 import LoginUserContext from "../context/LoginUserContext";
 
 import "../styles/components/modalConnection.css";
 
 function ModalConnection() {
-  const baseURL = import.meta.env.VITE_BACKEND_URL;
-
-  const client = axios.create({
-    baseURL,
-    timeout: 60_000,
-  });
-
   const [modal, setModal] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,26 +35,14 @@ function ModalConnection() {
   const submitForm = (event) => {
     event.preventDefault();
 
-    client
-      .post(
-        "/login",
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        setLoginUser({
-          id: response.data.id,
-          role: response.data.role,
-          email: response.data.email,
-        });
-        navigate("/usershomepage");
-      })
-      .catch((error) => console.error(error));
+    login({ email, password }).then((response) => {
+      setLoginUser({
+        id: response.id,
+        role: response.role,
+        email: response.email,
+      });
+      navigate("/usershomepage/profile");
+    });
   };
 
   return (
@@ -87,7 +68,6 @@ function ModalConnection() {
                 type="email"
                 required
                 placeholder="exemple@gmail.com"
-                pattern="[chiffres/lettres/tiret]@[lettres].[lettres]"
                 onChange={handleChangeEmail}
               />
               <label htmlFor="password">Mot de passe</label>
@@ -99,7 +79,7 @@ function ModalConnection() {
                 placeholder="Saisissez votre mot de passe"
                 onChange={handleChangePassword}
               />
-              <input type="submit" className="continue" value="Continuer" />
+              <button type="submit">Continuer</button>
             </form>
             <button type="button" onClick={toggleModal}>
               &times;

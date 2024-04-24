@@ -1,187 +1,85 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-else-return */
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
+import readAllAppetences from "../../services/appetencesService";
+import readAllContractTypes from "../../services/contractTypesService";
+import readAllProgrammingLanguages from "../../services/programmingLanguagesService";
+import readAllWorkRhythms from "../../services/workRhythmsService";
+import readAllLevels from "../../services/levelsService";
 
 import "../../styles/register/candidateStepTwo.css";
 
 function CandidateStepTwo({
   formTools: {
     handleFormSubmit,
-    registerCandidate,
-    handleChangeForm,
+    sendCandidateInfos,
+    handleChangeFormCandidate,
     setCandidateInfos,
     candidateInfos,
-    isError,
+    formIsFilled,
+    setFormIsFilled,
   },
 }) {
   console.info("CONSOLE INFO DE LA STEP TWO :", candidateInfos);
 
-  const [formISFil, setFormIsFil] = useState(false);
+  const [appetences, setAppetences] = useState([]);
+  const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
+  const [workRhythms, setWorkRhythms] = useState([]);
+  const [levels, setLevels] = useState([]);
+
+  const [appetenceButton, setAppetenceButton] = useState("Frontend");
+  const [levelButton, setLevelButton] = useState("Junior");
 
   useEffect(() => {
+    readAllProgrammingLanguages().then((registerProgrammingLanguages) =>
+      setProgrammingLanguages(registerProgrammingLanguages)
+    );
+
+    readAllLevels().then((registerLevels) => setLevels(registerLevels));
+
+    readAllContractTypes().then((registerContractTypes) =>
+      setContractTypes(registerContractTypes)
+    );
+
+    readAllWorkRhythms().then((registerWorkRhythms) =>
+      setWorkRhythms(registerWorkRhythms)
+    );
+
+    readAllAppetences().then((registerAppetences) =>
+      setAppetences(registerAppetences)
+    );
     if (
-      candidateInfos.appetences &&
-      candidateInfos.level &&
-      candidateInfos.contractType &&
-      candidateInfos.workRhythm &&
-      candidateInfos.programmingLanguages
+      candidateInfos.appetencesId !== "" &&
+      candidateInfos.languages.length > 0 &&
+      candidateInfos.levelId !== "" &&
+      candidateInfos.contractTypesId &&
+      candidateInfos.workRhythmsId
     ) {
-      setFormIsFil(true);
+      setFormIsFilled(true);
     } else {
-      setFormIsFil(true);
+      setFormIsFilled(false);
     }
-  }, [candidateInfos]);
+  }, [candidateInfos, setFormIsFilled]);
 
-  console.info("LE FORMULAIRE EST REMPLI ?", formISFil);
+  console.info("LE FORMULAIRE EST REMPLI ?", formIsFilled);
 
-  const appetences = [
-    {
-      id: 1,
-      buttonText: "Frontend",
-    },
-    {
-      id: 2,
-      buttonText: "Backend",
-    },
-    {
-      id: 3,
-      buttonText: "Full Stack",
-    },
-  ];
+  const handleFocusAppetenceButton = (event) => {
+    setAppetenceButton(event.target.name);
+    setCandidateInfos((prevInfos) => ({
+      ...prevInfos,
+      appetencesId: event.target.value,
+    }));
+  };
 
-  const level = [
-    {
-      id: 1,
-      name: "junior",
-      buttonText: "Junior",
-    },
-    {
-      id: 2,
-      name: "mid-Level",
-      buttonText: "Mid-level",
-    },
-    {
-      id: 3,
-      name: "senior",
-      buttonText: "Senior",
-    },
-  ];
-
-  const contractType = [
-    {
-      id: 1,
-      text: "Un CDI",
-    },
-    {
-      id: 2,
-      text: "Un CDD",
-    },
-    {
-      id: 3,
-      text: "Un Stage / Une Alternance",
-    },
-    {
-      id: 4,
-      text: "Du freelance",
-    },
-  ];
-
-  const workRhythm = [
-    {
-      id: 1,
-      text: "Sur site",
-    },
-    {
-      id: 2,
-      text: "Remote partiel",
-    },
-    {
-      id: 3,
-      text: "Full remote",
-    },
-  ];
-
-  const programmingLanguages = [
-    {
-      id: 1,
-      text: "HTML/CSS",
-    },
-    {
-      id: 2,
-      text: "JavaScript",
-    },
-    {
-      id: 3,
-      text: "Python",
-    },
-    {
-      id: 4,
-      text: "Java",
-    },
-    {
-      id: 5,
-      text: "Ruby On Rails",
-    },
-    {
-      id: 6,
-      text: "Vue.js",
-    },
-    {
-      id: 7,
-      text: "Swift",
-    },
-    {
-      id: 8,
-      text: "Kotlin",
-    },
-    {
-      id: 9,
-      text: "Flutter",
-    },
-    {
-      id: 10,
-      text: "Go",
-    },
-    {
-      id: 11,
-      text: "C#",
-    },
-    {
-      id: 12,
-      text: "C++",
-    },
-    {
-      id: 13,
-      text: "React",
-    },
-    {
-      id: 14,
-      text: "Angular",
-    },
-    {
-      id: 15,
-      text: "Node.js",
-    },
-    {
-      id: 16,
-      text: "PHP",
-    },
-    {
-      id: 17,
-      text: "Rust",
-    },
-    {
-      id: 18,
-      text: ".NET Core / .NET 5",
-    },
-    {
-      id: 19,
-      text: "SQL",
-    },
-    {
-      id: 20,
-      text: "NoSQL",
-    },
-  ];
+  const handleFocusLevelButton = (event) => {
+    setLevelButton(event.target.name);
+    setCandidateInfos((prevInfos) => ({
+      ...prevInfos,
+      levelId: event.target.value,
+    }));
+  };
 
   const fillLanguagesArray = (event) => {
     const { value, checked } = event.target;
@@ -193,16 +91,13 @@ function CandidateStepTwo({
       const filteredLanguages = prevInfos.languages.filter(
         (language) => language !== value
       );
+
       return { ...prevInfos, languages: filteredLanguages };
     });
   };
 
   return (
-    <form
-      action="submit"
-      className="candidate_step_two_form"
-      onSubmit={handleFormSubmit}
-    >
+    <form className="candidate_step_two_form" onSubmit={handleFormSubmit}>
       <h1>Créer Un Compte</h1>
       <section className="subtitle">
         <div className="square"> </div>
@@ -216,15 +111,18 @@ function CandidateStepTwo({
           Appétences <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {appetences.map(({ id, buttonText }) => (
+          {appetences.map((appetence) => (
             <button
               type="button"
-              key={id}
-              name="appetencesId"
-              value={id}
-              onClick={handleChangeForm}
+              key={appetence.id}
+              name={appetence.appetence}
+              value={appetence.id}
+              className={
+                appetenceButton === appetence.appetence ? "focusedButton" : ""
+              }
+              onClick={(event) => handleFocusAppetenceButton(event)}
             >
-              {buttonText}
+              {appetence.appetence}
             </button>
           ))}
         </section>
@@ -235,16 +133,22 @@ function CandidateStepTwo({
           <p>
             Je recherche <span>:</span>
           </p>
-          {contractType.map(({ id, text }) => (
-            <div className="enterprise_expectation_container" key={id}>
+          {contractTypes.map((contractType) => (
+            <div
+              className="enterprise_expectation_container"
+              key={contractType.id}
+            >
               <input
                 type="radio"
                 name="contractTypesId"
-                id={`contractType-${id}`}
-                value={id}
-                onChange={handleChangeForm}
+                id={contractType.id}
+                value={contractType.id}
+                required
+                onChange={handleChangeFormCandidate}
               />
-              <label htmlFor={`contractType-${id}`}>{text}</label>
+              <label htmlFor={contractType.id}>
+                {contractType.contract_type}
+              </label>
             </div>
           ))}
         </div>
@@ -253,16 +157,17 @@ function CandidateStepTwo({
           <p>
             Lieu de travail <span>:</span>
           </p>
-          {workRhythm.map(({ id, text }) => (
-            <div className="enterprise_workplace_container" key={id}>
+          {workRhythms.map((workRhythm) => (
+            <div className="enterprise_workplace_container" key={workRhythm.id}>
               <input
                 type="radio"
                 name="workRhythmsId"
-                id={`workRhythm-${id}`}
-                value={id}
-                onChange={handleChangeForm}
+                id={workRhythm.id}
+                value={workRhythm.id}
+                required
+                onChange={handleChangeFormCandidate}
               />
-              <label htmlFor={`workRhythm-${id}`}>{text}</label>
+              <label htmlFor={workRhythm.id}>{workRhythm.work_rhythm}</label>
             </div>
           ))}
         </div>
@@ -272,52 +177,77 @@ function CandidateStepTwo({
           Je suis <span>:</span>
         </p>
         <section className="levels_and_experience_button_container">
-          {level.map(({ id, buttonText }) => (
+          {levels.map((level) => (
             <button
               type="button"
-              key={id}
-              name="levelId"
-              value={id}
-              onClick={handleChangeForm}
+              key={level.id}
+              name={level.level}
+              value={level.id}
+              className={levelButton === level.level ? "focusedButton" : ""}
+              onClick={(event) => handleFocusLevelButton(event)}
             >
-              {buttonText}
+              {level.level}
             </button>
           ))}
         </section>
       </section>
 
-      <p>
-        Mes langages informatiques
-        <span className="select_languages_span">
-          <span>{" { "}</span>
-          sélectionnez au moins un langage <span>{" } "}</span>
-        </span>
-        <span> : </span>
-      </p>
       <section className="computer_language_checkbox_container">
-        {programmingLanguages.map(({ id, text }) => (
-          <div key={id}>
-            <input
-              type="checkbox"
-              id="checkbox"
-              value={id}
-              onChange={fillLanguagesArray}
-            />
-            <label htmlFor="checkbox">{text}</label>
-          </div>
-        ))}
+        <p>
+          Mes langages informatiques
+          <span className="select_languages_span">
+            <span>{" { "}</span>
+            sélectionnez au moins un langage
+            <span>{" } "}</span>
+          </span>
+          <span> : </span>
+        </p>
+        <section className="programming_languages">
+          {programmingLanguages.map((programmingLanguage) => (
+            <div key={programmingLanguage.id}>
+              <input
+                type="checkbox"
+                name="programmingLanguagesId"
+                id="checkbox"
+                value={programmingLanguage.id}
+                onChange={fillLanguagesArray}
+              />
+              <label htmlFor="checkbox">
+                {programmingLanguage.programming_language}
+              </label>
+            </div>
+          ))}
+        </section>
       </section>
-      <p>{isError ? "Remplissez tous les champs" : ""}</p>
-      <section className="final_button_to_inscription_container">
-        <input
-          type="submit"
-          value="Finaliser l'inscription"
-          className="final_button_to_inscription"
-          onClick={registerCandidate}
-        />
-      </section>
+      <p>{formIsFilled ? "" : "Remplissez tous les champs"}</p>
+
+      <button
+        type="submit"
+        className={formIsFilled ? "" : "invisible"}
+        onClick={formIsFilled ? () => sendCandidateInfos() : null}
+      >
+        Finaliser l'inscription
+      </button>
     </form>
   );
 }
+
+CandidateStepTwo.propTypes = {
+  formTools: PropTypes.shape({
+    handleFormSubmit: PropTypes.func.isRequired,
+    sendCandidateInfos: PropTypes.func.isRequired,
+    handleChangeFormCandidate: PropTypes.func.isRequired,
+    setCandidateInfos: PropTypes.func.isRequired,
+    candidateInfos: PropTypes.shape({
+      appetencesId: PropTypes.arrayOf(PropTypes.string).isRequired,
+      levelId: PropTypes.number.isRequired,
+      contractTypesId: PropTypes.number.isRequired,
+      workRhythmsId: PropTypes.number.isRequired,
+      languages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+    formIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 
 export default CandidateStepTwo;

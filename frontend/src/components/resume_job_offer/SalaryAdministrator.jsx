@@ -1,21 +1,42 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+
+import { readSalaryById, modifySalary } from "../../services/salaryService";
+
+import LoginContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/salaryAdministrator.css";
 
 function SalaryAdministrator() {
-  const [unlock, setUnlock] = useState(true);
+  const {
+    loginUser: { id },
+  } = useContext(LoginContext);
+  const [unlock, setUnlock] = useState(false);
   const [salaryValue, setSalaryValue] = useState("");
+
+  const fetchSalary = () => {
+    readSalaryById(id).then((salary) => setSalaryValue(salary));
+  };
+
+  const handleClickUnlock = () => {
+    setUnlock(!unlock);
+    modifySalary(id, { salary: salaryValue }).then(() => {
+      fetchSalary();
+    });
+  };
 
   const handleChange = (event) => {
     setSalaryValue(event.target.value);
   };
 
-  const handleClickUnlock = () => {
-    setUnlock(!unlock);
-  };
+  const displayedValue = unlock
+    ? salaryValue.salary
+    : `${salaryValue.salary} €`;
+  console.info("Salary value :", salaryValue.salary);
 
-  const displayedValue = unlock ? salaryValue : `${salaryValue} €`;
+  useEffect(() => {
+    fetchSalary();
+  }, []);
 
   return (
     <>
@@ -25,11 +46,11 @@ function SalaryAdministrator() {
         name="salary"
         className={unlock ? "" : "disabled"}
         value={displayedValue}
-        onChange={handleChange}
+        onChange={(event) => handleChange(event)}
       />
       <button
         type="button"
-        onClick={() => handleClickUnlock()}
+        onClick={handleClickUnlock}
         className={unlock ? "unlocked" : "locked"}
       >
         {" . "}

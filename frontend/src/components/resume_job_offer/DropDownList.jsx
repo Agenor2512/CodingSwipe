@@ -1,24 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import "../../styles/resume_job_offer/dropDownList.css";
 
-function DropDownList() {
-  const userSpecialty = [
-    {
-      key: "frontend",
-      text: "Frontend",
-    },
-    {
-      key: "backend",
-      text: "Backend",
-    },
-    {
-      key: "full-stack",
-      text: "Full stack",
-    },
-  ];
-
+function DropDownList({ appetences, userAppetence }) {
   const [specialty, setSpecialty] = useState("");
 
   const handleChangeSpecialty = (event) => {
@@ -27,14 +13,25 @@ function DropDownList() {
 
   return (
     <select onChange={handleChangeSpecialty}>
-      <option value="">BDD value</option>
-      {userSpecialty.map(({ key, text }) => (
-        <option key={key} value={text}>
-          {text}
+      <option value="">{userAppetence}</option>
+      {appetences.map(({ id, appetence }) => (
+        <option key={id} value={appetence}>
+          {appetence}
         </option>
       ))}
     </select>
   );
 }
+
+DropDownList.propTypes = {
+  appetences: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      appetence: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  // eslint-disable-next-line react/require-default-props
+  userAppetence: PropTypes.string,
+};
 
 export default DropDownList;

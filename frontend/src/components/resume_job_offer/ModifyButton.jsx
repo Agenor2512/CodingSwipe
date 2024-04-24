@@ -1,42 +1,67 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
+import React, { useState, useContext, useEffect } from "react";
+
+import {
+  readBiographyById,
+  modifyBiography,
+} from "../../services/biographiesService";
+
+import {
+  readDescriptionById,
+  modifyDescription,
+} from "../../services/descriptionsService";
 
 import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/modifyButton.css";
 
-function ModifyButton({ candidate }) {
-  const { loginUser } = useContext(LoginUserContext);
+function ModifyButton() {
+  const {
+    loginUser: { id, role },
+  } = useContext(LoginUserContext);
 
-  console.info(candidate);
-  const [description, setDescription] = useState(candidate.biography);
+  const [content, setContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
-  console.info("CANDIDATE DEPUIS COMPONENT", candidate.biography);
+  const fetchBiography = () => {
+    readBiographyById(id).then(({ biography }) => setContent(biography));
+  };
 
-  const updateInfosAboutCandidate = () => {
-    axios
-      .put(`http://localhost:3310/api/biography/${loginUser.id}`, {
-        biography: description,
-      })
-      .then((response) => console.info(response))
-      .catch((error) => console.error(error));
+  const fetchDescription = () => {
+    readDescriptionById(id).then((response) => {
+      const { description } = response;
+      setContent(description);
+    });
   };
 
   const handleEdit = () => {
     setIsEditing(true);
-    setDescription(description);
   };
 
   const handleSave = () => {
     setIsEditing(false);
-    updateInfosAboutCandidate();
+
+    if (role === "candidate") {
+      modifyBiography(id, {
+        biography: content,
+      }).then(() => fetchBiography());
+    } else {
+      modifyDescription(id, { description: content }).then(() =>
+        fetchDescription()
+      );
+    }
   };
 
   const handleChange = (event) => {
-    setDescription(event.target.value);
+    setContent(event.target.value);
   };
+
+  useEffect(() => {
+    if (role === "candidate") {
+      fetchBiography();
+    } else {
+      fetchDescription();
+    }
+  }, []);
 
   return (
     <div>
@@ -44,7 +69,7 @@ function ModifyButton({ candidate }) {
         <>
           <textarea
             type="text"
-            value={description}
+            value={content}
             onChange={handleChange}
             placeholder="Dites-en plus sur vous"
           />
@@ -54,7 +79,7 @@ function ModifyButton({ candidate }) {
         </>
       ) : (
         <>
-          <p>{description}</p>
+          <p>{content}</p>
           <button type="button" onClick={handleEdit}>
             Modifier
           </button>
@@ -65,9 +90,3 @@ function ModifyButton({ candidate }) {
 }
 
 export default ModifyButton;
-
-ModifyButton.propTypes = {
-  candidate: PropTypes.shape({
-    biography: PropTypes.string.isRequired,
-  }).isRequired,
-};
