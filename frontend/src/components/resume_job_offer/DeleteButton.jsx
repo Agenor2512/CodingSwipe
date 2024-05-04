@@ -98,7 +98,7 @@ DeleteButton.propTypes = {
   setExperiences: PropTypes.func,
   experienceId: PropTypes.number,
   setMissions: PropTypes.func,
-  missionId: PropTypes.func,
+  missionId: PropTypes.number,
 };
 
 export default DeleteButton;

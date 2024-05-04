@@ -59,7 +59,7 @@ create table enterprise (
 
 create table job_offer (
   id varchar(36) not null,
-  salary varchar(100),
+  salary varchar(100) not null,
   contract_types_id int not null,
   work_rhythms_id int not null,
   appetences_id int not null,

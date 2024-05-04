@@ -149,6 +149,10 @@ section > .overlay > .modal_container > form > button {
 }
 
 @media screen and (min-width: 600px) {
+  .candidate_modal {
+    min-height: 10vh;
+  }
+
   .candidate_modal::-webkit-scrollbar {
     width: 5px;
   }

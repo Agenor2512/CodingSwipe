@@ -294,14 +294,14 @@ EnterpriseStepTwo.propTypes = {
       description: PropTypes.string.isRequired,
       legalStatusId: PropTypes.string.isRequired,
       businessSectorsId: PropTypes.string.isRequired,
-      salary: PropTypes.number.isRequired,
+      salary: PropTypes.string.isRequired,
       contractTypesId: PropTypes.string.isRequired,
       workRhythmsId: PropTypes.string.isRequired,
       appetencesId: PropTypes.string.isRequired,
       languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
-    setFormIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.func.isRequired,
   }).isRequired,
 };
 

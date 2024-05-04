@@ -24,6 +24,7 @@ function Resume() {
   const [workRhythms, setWorkRhythms] = useState([]);
   const [appetences, setAppetences] = useState([]);
   const [resume, setResume] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     readAllProgrammingLanguages().then((resumeProgrammingLanguages) =>
@@ -46,17 +47,25 @@ function Resume() {
       setAppetences(resumeAppetences)
     );
 
-    readResumeById(loginUser.id).then((candidateResume) =>
-      setResume(candidateResume)
-    );
+    readResumeById(loginUser.id)
+      .then((candidateResume) => setResume(candidateResume))
+      .then(() => setIsLoading(false));
   }, []);
 
   console.info("Resume : ", resume);
 
+  const getFirstLetter = () => {
+    if (isLoading === false) {
+      const { firstname } = resume.infos;
+      return firstname.charAt(0);
+    }
+    return "";
+  };
+
   return (
     <div className="users_infos_container">
       <div className="users_infos_header">
-        <div>W</div>
+        <div>{getFirstLetter()}</div>
         <section>
           <h1>Développeur/Développeuse</h1>
           <DropDownList
