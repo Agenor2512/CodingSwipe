@@ -6,9 +6,10 @@ services:
     volumes:
       - .:/var/www
       - ./docker-entry.sh:/etc/entrypoint.sh
-    entrypoint: [ "sh", "/etc/entrypoint.sh" ]
+    entrypoint: ["sh", "/etc/entrypoint.sh"]
     ports:
-      - "3310:3310"
+      - "8080:3310"
+      - "3000:3000"
     environment:
       APP_PORT: 3310
       APP_SECRET: 123456789
@@ -24,7 +25,15 @@ services:
   database:
     image: mysql/mysql-server:8.0
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uuser", "-ppassword" ] # Command to check health.
+      test: [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-uuser",
+          "-ppassword",
+        ] # Command to check health.
       interval: 5s # Interval between health checks.
       timeout: 5s # Timeout for each health checking.
       retries: 20 # Hou many times retries.
@@ -39,4 +48,3 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
       - "3306"
-
