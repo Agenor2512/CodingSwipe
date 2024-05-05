@@ -1,3 +1,4 @@
+/* eslint-disable  react/require-default-props */
 import { useContext } from "react";
 import PropTypes from "prop-types";
 
@@ -25,7 +26,7 @@ function HomePageSwipe({ triggerMatchesRefresh }) {
 }
 
 HomePageSwipe.propTypes = {
-  triggerMatchesRefresh: PropTypes.func.isRequired,
+  triggerMatchesRefresh: PropTypes.func,
 };
 
 export default HomePageSwipe;

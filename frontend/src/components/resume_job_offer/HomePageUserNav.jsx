@@ -143,7 +143,7 @@ function HomePageUserNav({ handleTabClick, pageType, refreshMatches }) {
 HomePageUserNav.propTypes = {
   handleTabClick: PropTypes.func.isRequired,
   pageType: PropTypes.string.isRequired,
-  refreshMatches: PropTypes.func.isRequired,
+  refreshMatches: PropTypes.number.isRequired,
 };
 
 export default HomePageUserNav;
