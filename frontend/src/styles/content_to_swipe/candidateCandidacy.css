@@ -79,7 +79,8 @@
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop
-  > .soft_skills,
+  > .soft_skills
+  > div,
 .candidate_infos_container
   > div
   > .skills_languages_experiences_desktop

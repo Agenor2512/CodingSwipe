@@ -18,16 +18,23 @@ function Matchs() {
   } = useContext(LoginUserContext);
 
   const [matches, setMatches] = useState([]);
+  const [refreshMatches, setRefreshMatches] = useState(1);
+
+  const triggerMatchesRefresh = () => {
+    setRefreshMatches(Math.random());
+  };
 
   useEffect(() => {
     if (role === "candidate") {
-      readCandidateMatchesById(id).then((allMatches) => setMatches(allMatches));
+      readCandidateMatchesById(id)
+        .then((allMatches) => setMatches(allMatches))
+        .then(() => triggerMatchesRefresh());
     } else if (role === "enterprise") {
-      readEnterpriseMatchesById(id).then((allMatches) =>
-        setMatches(allMatches)
-      );
+      readEnterpriseMatchesById(id)
+        .then((allMatches) => setMatches(allMatches))
+        .then(() => triggerMatchesRefresh());
     }
-  }, []);
+  }, [refreshMatches]);
 
   console.info("Matches : ", matches);
 
@@ -35,7 +42,7 @@ function Matchs() {
     <section className="match_container">
       {matches &&
         matches.map((match) => (
-          <div key={match.id} className="match_card">
+          <div key={match.name} className="match_card">
             {role === "candidate" ? (
               <div className="match_card_content">
                 <div>{getFirstLetter(match.name)}</div>

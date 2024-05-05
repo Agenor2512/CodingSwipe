@@ -395,6 +395,61 @@ insert into enterprise (id, name, siret, description, email, password, departmen
   69,
   1,
   5
+),
+(
+  "3de1feec-a19a-4f16-9226-af682acdab47",
+  "FoodDelivery",
+  9487916520031,
+  "Plateforme de livraison de repas à domicile",
+  "fooddelivery@gmail.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  92,
+  1,
+  5
+),
+(
+  "3de1feec-a19a-4f11-9226-af682acdab48",
+  "EcoTech",
+  9487916210012,
+  "Startup spécialisée dans les technologies écologiques",
+  "ecotech@gmail.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  40,
+  1,
+  5
+),
+(
+  "3de1feec-a19a-4f16-9226-af686acdab49",
+  "HealthTrack",
+  9441916210023,
+  "Startup développant des applications de suivi de santé",
+  "healthtrack@startup.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  71,
+  1,
+  5
+),
+(
+  "3de1feec-a19a-4f16-9226-af676acdab50",
+  "GreenRides",
+  9441916212220,
+  "Startup de covoiturage écologique",
+  "greenrides@startup.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  12,
+  1,
+  5
+),
+(
+  "3df1feec-a19a-4f16-9226-af676acdab51",
+  "EduTech",
+  9441917212220,
+  "Startup fournissant des solutions éducatives innovantes",
+  "edutech@startup.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  69,
+  1,
+  5
 );
 
 insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetences_id, enterprise_id) values 
@@ -437,6 +492,46 @@ insert into job_offer (id, salary, contract_types_id, work_rhythms_id, appetence
   3,
   2,
   "2df1feec-a19a-4f16-9226-af676acdab46"
+),
+(
+  "3de1feec-a19a-4f16-9226-af682acdab47",
+  28000,
+  1,
+  3,
+  2,
+  "3de1feec-a19a-4f16-9226-af682acdab47"
+),
+(
+  "3de1feec-a19a-4f11-9226-af682acdab48",
+  42000,
+  2,
+  2,
+  3,
+  "3de1feec-a19a-4f11-9226-af682acdab48"
+),
+(
+  "3de1feec-a19a-4f16-9226-af686acdab49",
+  18000,
+  3,
+  1,
+  1,
+  "3de1feec-a19a-4f16-9226-af686acdab49"
+),
+(
+  "3de1feec-a19a-4f16-9226-af676acdab50",
+  24000,
+  2,
+  2,
+  2,
+  "3de1feec-a19a-4f16-9226-af676acdab50"
+),
+(
+  "3df1feec-a19a-4f16-9226-af676acdab51",
+  30000,
+  1,
+  3,
+  2,
+  "3df1feec-a19a-4f16-9226-af676acdab51"
 );
 
 insert into job_offer_has_programming_languages (job_offer_id, programming_languages_id) values
@@ -450,7 +545,18 @@ insert into job_offer_has_programming_languages (job_offer_id, programming_langu
 ("3de1feec-a19a-4f16-9226-af676acdab45", 1),
 ("3de1feec-a19a-4f16-9226-af676acdab45", 8),
 ("3df1feec-a19a-4f16-9226-af676acdab46", 6),
-("3df1feec-a19a-4f16-9226-af676acdab46", 4);
+("3df1feec-a19a-4f16-9226-af676acdab46", 4),
+("3de1feec-a19a-4f16-9226-af682acdab47", 12),
+("3de1feec-a19a-4f11-9226-af682acdab48", 1),
+("3de1feec-a19a-4f11-9226-af682acdab48", 17),
+("3de1feec-a19a-4f16-9226-af686acdab49", 6),
+("3de1feec-a19a-4f16-9226-af686acdab49", 9),
+("3de1feec-a19a-4f16-9226-af686acdab49", 14),
+("3de1feec-a19a-4f16-9226-af676acdab50", 2),
+("3de1feec-a19a-4f16-9226-af676acdab50", 1),
+("3de1feec-a19a-4f16-9226-af676acdab50", 8),
+("3df1feec-a19a-4f16-9226-af676acdab51", 6),
+("3df1feec-a19a-4f16-9226-af676acdab51", 4);
 
 insert into missions (missions, enterprise_id) values
 ("Développer une application mobile de gestion des tâches pour la plateforme Android", "2de1feec-a19a-4f16-9226-af682acdab42"),
@@ -462,7 +568,17 @@ insert into missions (missions, enterprise_id) values
 ("Créer une application de suivi de fitness personnalisée pour une entreprise de santé et de bien-être", "2de1feec-a19a-4f16-9226-af676acdab45"),
 ("Développer un système de gestion de la relation client (CRM) sur mesure pour une société de conseil en gestion", "2de1feec-a19a-4f16-9226-af676acdab45"),
 ("Concevoir et mettre en œuvre un algorithme d''apprentissage automatique pour une entreprise de technologie", "2df1feec-a19a-4f16-9226-af676acdab46"),
-("Développer une application de planification financière pour une société de services financiers", "2df1feec-a19a-4f16-9226-af676acdab46");
+("Développer une application de planification financière pour une société de services financiers", "2df1feec-a19a-4f16-9226-af676acdab46"),
+("Développer une application mobile de gestion des commandes pour la plateforme iOS", "3de1feec-a19a-4f16-9226-af682acdab47"),
+("Créer un système de suivi des ventes et des clients pour une entreprise de commerce en ligne", "3de1feec-a19a-4f11-9226-af682acdab48"),
+("Concevoir et mettre en œuvre un algorithme de recommandation de produits pour une plateforme de commerce électronique", "3de1feec-a19a-4f16-9226-af686acdab49"),
+("Effectuer une analyse de données pour optimiser les opérations de livraison pour une entreprise de logistique", "3de1feec-a19a-4f16-9226-af686acdab49"),
+("Développer un site Web réactif et intuitif pour une startup de tourisme", "3de1feec-a19a-4f16-9226-af676acdab50"),
+("Concevoir et mettre en œuvre un système de gestion des stocks pour une entreprise de distribution", "3de1feec-a19a-4f16-9226-af676acdab50"),
+("Créer une application de suivi des performances pour une startup de remise en forme", "3df1feec-a19a-4f16-9226-af676acdab51"),
+("Développer un système de réservation en ligne pour une entreprise de voyages", "3df1feec-a19a-4f16-9226-af676acdab51"),
+("Concevoir et mettre en œuvre un algorithme d'apprentissage automatique pour une startup de santé", "3de1feec-a19a-4f16-9226-af686acdab49"),
+("Développer une application de gestion de portefeuille pour une startup financière", "3de1feec-a19a-4f11-9226-af682acdab48");
 
 insert into candidate (id, firstname, lastname, email, password, department_id) values
 (
@@ -504,6 +620,46 @@ insert into candidate (id, firstname, lastname, email, password, department_id) 
   "antoine.dubois@example.com",
   "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
   75
+),
+(
+  "2de1feec-a19a-4f16-9226-af792acdab42",
+  "Sophie",
+  "Moreau",
+  "sophie.moreau@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  75
+),
+(
+  "2de1feec-a19a-4f16-9226-af762acdab43",
+  "Pierre",
+  "Leroy",
+  "pierre.leroy@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  28
+),
+(
+  "2de1feec-a12a-4f16-9226-af762acdab44",
+  "Camille",
+  "Dubois",
+  "camille.dubois@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  34
+),
+(
+  "2de2feec-a12a-4f16-9226-af762acdab45",
+  "Nicolas",
+  "Muller",
+  "nicolas.muller@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  6
+),
+(
+  "2de1feec-a12a-4f26-9226-af762acdab46",
+  "Juliette",
+  "Girard",
+  "juliette.girard@example.com",
+  "$argon2id$v=19$m=19456,t=2,p=1$bMQ1ZujvsLQx6ansi4CHoQ$DENsQ9QIZs5HTAByVCuIIkBxReBkPmdyBCkyWSn4byA",
+  5
 );
 
 insert into levels (level) values
@@ -572,6 +728,51 @@ insert into resume (id, biography, appetences_id, candidate_id, contract_types_i
   2,
   1,
   2
+),
+(
+  "2de1feec-a19a-4f16-9226-af792acdab47",
+  "Bonjour, je suis Sophie Moreau. Je suis passionnée par la conception d'interfaces utilisateur élégantes et intuitives pour les applications web et mobiles.",
+  2,
+  "2de1feec-a19a-4f16-9226-af792acdab42",
+  2,
+  2,
+  2
+),
+(
+  "2de1feec-a19a-4f16-9226-af762acdab46",
+  "Salut, je suis Pierre Leroy. Je suis un développeur fullstack expérimenté avec une passion pour l'optimisation des performances et la sécurité des applications.",
+  3,
+  "2de1feec-a19a-4f16-9226-af762acdab43",
+  1,
+  3,
+  3
+),
+(
+  "2de1feec-a12a-4f16-9226-af762acdab45",
+  "Hello, je suis Camille Dubois. Je suis spécialisé dans le développement d'applications mobiles réactives et rapides pour les plates-formes iOS et Android.",
+  1,
+  "2de1feec-a12a-4f16-9226-af762acdab44",
+  1,
+  1,
+  2
+),
+(
+  "2de2feec-a12a-4f16-9226-af762acdab43",
+  "Hi, je suis Nicolas Muller. Je suis passionné par l'exploration des dernières technologies et par la création d'applications innovantes pour résoudre des problèmes du monde réel.",
+  3,
+  "2de2feec-a12a-4f16-9226-af762acdab45",
+  3,
+  2,
+  1
+),
+(
+  "2de1feec-a12a-4f26-9226-af762acdab44",
+  "Salutations, je suis Juliette Girard. Je suis une développeuse back-end compétente avec une solide expérience dans la conception et le déploiement de services web à haute disponibilité.",
+  2,
+  "2de1feec-a12a-4f26-9226-af762acdab46",
+  2,
+  1,
+  2
 );
 
 insert into resume_has_programming_languages (resume_id, programming_languages_id) values
@@ -589,7 +790,22 @@ insert into resume_has_programming_languages (resume_id, programming_languages_i
 ("2de2feec-a12a-4f16-9226-af752acdab43", 11),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 8),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 6),
-("2de1feec-a12a-4f26-9226-af752acdab44", 19);
+("2de1feec-a12a-4f26-9226-af752acdab44", 19),
+("2de1feec-a19a-4f16-9226-af792acdab47", 12),
+("2de1feec-a19a-4f16-9226-af792acdab47", 10),
+("2de1feec-a19a-4f16-9226-af792acdab47", 19),
+("2de1feec-a19a-4f16-9226-af762acdab46", 1),
+("2de1feec-a19a-4f16-9226-af762acdab46", 6),
+("2de1feec-a19a-4f16-9226-af762acdab46", 17),
+("2de1feec-a12a-4f16-9226-af762acdab45", 12),
+("2de1feec-a12a-4f16-9226-af762acdab45", 17),
+("2de1feec-a12a-4f16-9226-af762acdab45", 6),
+("2de2feec-a12a-4f16-9226-af762acdab43", 9),
+("2de2feec-a12a-4f16-9226-af762acdab43", 10),
+("2de2feec-a12a-4f16-9226-af762acdab43", 11),
+("2de1feec-a12a-4f26-9226-af762acdab44", 8),
+("2de1feec-a12a-4f26-9226-af762acdab44", 6),
+("2de1feec-a12a-4f26-9226-af762acdab44", 19);
 
 insert into resume_has_soft_skills (resume_id, soft_skills_id) values
 ("2de1feec-a19a-4f16-9226-af782acdab47", 5),
@@ -606,7 +822,22 @@ insert into resume_has_soft_skills (resume_id, soft_skills_id) values
 ("2de2feec-a12a-4f16-9226-af752acdab43", 8),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 8),
 ("2de1feec-a12a-4f26-9226-af752acdab44", 4),
-("2de1feec-a12a-4f26-9226-af752acdab44", 12);
+("2de1feec-a12a-4f26-9226-af752acdab44", 12),
+("2de1feec-a19a-4f16-9226-af792acdab47", 5),
+("2de1feec-a19a-4f16-9226-af792acdab47", 2),
+("2de1feec-a19a-4f16-9226-af792acdab47", 4),
+("2de1feec-a19a-4f16-9226-af762acdab46", 3),
+("2de1feec-a19a-4f16-9226-af762acdab46", 10),
+("2de1feec-a19a-4f16-9226-af762acdab46", 14),
+("2de1feec-a12a-4f16-9226-af762acdab45", 6),
+("2de1feec-a12a-4f16-9226-af762acdab45", 10),
+("2de1feec-a12a-4f16-9226-af762acdab45", 12),
+("2de2feec-a12a-4f16-9226-af762acdab43", 6),
+("2de2feec-a12a-4f16-9226-af762acdab43", 10),
+("2de2feec-a12a-4f16-9226-af762acdab43", 8),
+("2de1feec-a12a-4f26-9226-af762acdab44", 8),
+("2de1feec-a12a-4f26-9226-af762acdab44", 4),
+("2de1feec-a12a-4f26-9226-af762acdab44", 12);
 
 insert into experiences (candidate_id, job_title, company, experiences) values
 (
@@ -668,6 +899,66 @@ insert into experiences (candidate_id, job_title, company, experiences) values
   "Développeur fullstack",
   "Peugeot",
   "Développement d'applications de gestion de la chaîne logistique en utilisant React pour le front-end et Java avec Spring Boot pour le back-end. Collaboration avec les équipes métier pour identifier et résoudre les problèmes opérationnels."
+),
+(
+  "2de1feec-a19a-4f16-9226-af792acdab42",
+  "Développeur front-end",
+  "Microsoft",
+  "Conception et développement d'interfaces utilisateur interactives et réactives en utilisant Angular et Vue.js. Collaboration étroite avec les équipes de conception pour créer des expériences utilisateur exceptionnelles."
+),
+(
+  "2de1feec-a19a-4f16-9226-af792acdab42",
+  "Développeur mobile",
+  "Apple",
+  "Développement d'applications iOS de haute qualité en utilisant Swift et SwiftUI. Intégration de fonctionnalités avancées telles que la réalité augmentée et la géolocalisation."
+),
+(
+  "2de1feec-a19a-4f16-9226-af762acdab43",
+  "Développeur back-end",
+  "Facebook",
+  "Conception et développement de services web évolutifs en utilisant PHP et Laravel. Intégration de solutions de sécurité avancées pour protéger les données des utilisateurs."
+),
+(
+  "2de1feec-a19a-4f16-9226-af762acdab43",
+  "Développeur fullstack",
+  "Instagram",
+  "Création de fonctionnalités front-end innovantes en utilisant React et développement de services back-end RESTful avec Node.js. Optimisation des performances pour gérer des millions d'utilisateurs simultanés."
+),
+(
+  "2de1feec-a12a-4f16-9226-af762acdab44",
+  "Développeur back-end",
+  "Twitter",
+  "Développement d'APIs robustes et évolutives en utilisant Python et Django. Conception de bases de données performantes pour stocker et gérer les données des utilisateurs."
+),
+(
+  "2de1feec-a12a-4f16-9226-af762acdab44",
+  "Développeur fullstack",
+  "Snapchat",
+  "Conception et développement de fonctionnalités front-end attrayantes en utilisant React Native. Création de services back-end RESTful avec Node.js pour prendre en charge les interactions en temps réel."
+),
+(
+  "2de1feec-a12a-4f16-9226-af762acdab44",
+  "Développeur back-end",
+  "LinkedIn",
+  "Développement d'applications web haute disponibilité en utilisant Java et Spring. Intégration de solutions de sécurité avancées pour protéger les données des utilisateurs."
+),
+(
+  "2de2feec-a12a-4f16-9226-af762acdab45",
+  "Développeur fullstack",
+  "Netflix",
+  "Conception et développement de fonctionnalités front-end interactives en utilisant React. Création de services back-end évolutifs avec Node.js pour prendre en charge les demandes des utilisateurs à grande échelle."
+),
+(
+  "2de1feec-a12a-4f26-9226-af762acdab46",
+  "Développeur back-end",
+  "Amazon Web Services",
+  "Conception et développement de services web sécurisés et évolutifs en utilisant Java et Spring. Mise en œuvre de solutions de sécurité avancées pour protéger les données des clients."
+),
+(
+  "2de1feec-a12a-4f26-9226-af762acdab46",
+  "Développeur fullstack",
+  "Microsoft Azure",
+  "Développement d'applications cloud évolutives en utilisant Angular pour le front-end et Node.js pour le back-end. Gestion des bases de données NoSQL pour stocker et gérer les données des clients."
 );
 
 insert into enterprise_like (enterprise_id, resume_id) values 
