@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import PropTypes from "prop-types";
 
 import {
   readCandidateMatchesById,
@@ -9,7 +10,7 @@ import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/matchs.css";
 
-function Matchs() {
+function Matchs({ refreshMatches }) {
   function getFirstLetter(name) {
     return name.charAt(0).toUpperCase();
   }
@@ -18,21 +19,14 @@ function Matchs() {
   } = useContext(LoginUserContext);
 
   const [matches, setMatches] = useState([]);
-  const [refreshMatches, setRefreshMatches] = useState(1);
-
-  const triggerMatchesRefresh = () => {
-    setRefreshMatches(Math.random());
-  };
 
   useEffect(() => {
     if (role === "candidate") {
-      readCandidateMatchesById(id)
-        .then((allMatches) => setMatches(allMatches))
-        .then(() => triggerMatchesRefresh());
+      readCandidateMatchesById(id).then((allMatches) => setMatches(allMatches));
     } else if (role === "enterprise") {
-      readEnterpriseMatchesById(id)
-        .then((allMatches) => setMatches(allMatches))
-        .then(() => triggerMatchesRefresh());
+      readEnterpriseMatchesById(id).then((allMatches) =>
+        setMatches(allMatches)
+      );
     }
   }, [refreshMatches]);
 
@@ -69,5 +63,9 @@ function Matchs() {
     </section>
   );
 }
+
+Matchs.propTypes = {
+  refreshMatches: PropTypes.func.isRequired,
+};
 
 export default Matchs;
