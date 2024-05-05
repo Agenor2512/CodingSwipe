@@ -48,8 +48,8 @@ class EnterpriseManager extends AbstractManager {
     const [rows] = await this.database.query(
       `select e.id from ${this.table} e
       inner join job_offer jo on e.id = jo.enterprise_id
-      left join candidate_like cl on jo.id = cl.job_offer_id
-      where cl.candidate_id is null or cl.candidate_id != ? limit 1`,
+      left join candidate_like cl on jo.id = cl.job_offer_id and cl.candidate_id = ?
+      where cl.candidate_id is null limit 1`,
       [id]
     );
     return rows[0];

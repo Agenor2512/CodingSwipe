@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import PropTypes from "prop-types";
 
 import {
   readCandidateMatchesById,
@@ -9,7 +10,7 @@ import LoginUserContext from "../../context/LoginUserContext";
 
 import "../../styles/resume_job_offer/matchs.css";
 
-function Matchs() {
+function Matchs({ refreshMatches }) {
   function getFirstLetter(name) {
     return name.charAt(0).toUpperCase();
   }
@@ -27,7 +28,7 @@ function Matchs() {
         setMatches(allMatches)
       );
     }
-  }, []);
+  }, [refreshMatches]);
 
   console.info("Matches : ", matches);
 
@@ -35,7 +36,7 @@ function Matchs() {
     <section className="match_container">
       {matches &&
         matches.map((match) => (
-          <div key={match.id} className="match_card">
+          <div key={match.name} className="match_card">
             {role === "candidate" ? (
               <div className="match_card_content">
                 <div>{getFirstLetter(match.name)}</div>
@@ -62,5 +63,9 @@ function Matchs() {
     </section>
   );
 }
+
+Matchs.propTypes = {
+  refreshMatches: PropTypes.func.isRequired,
+};
 
 export default Matchs;

@@ -11,7 +11,7 @@ import nothingToSeeIcon from "../../assets/triste.png";
 
 import "../../styles/content_to_swipe/candidateCandidacy.css";
 
-function CandidateCandidacy() {
+function CandidateCandidacy({ triggerMatchesRefresh }) {
   const { loginUser } = useContext(LoginUserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [resume, setResume] = useState({});
@@ -103,7 +103,10 @@ function CandidateCandidacy() {
             resumeId={resume.infos.resumeId}
             enterpriseId={loginUser.id}
             setIsLoading={setIsLoading}
-            triggerRefresh={triggerResumeRefresh}
+            triggerRefresh={() => {
+              triggerResumeRefresh();
+              triggerMatchesRefresh();
+            }}
           />
         </div>
       );

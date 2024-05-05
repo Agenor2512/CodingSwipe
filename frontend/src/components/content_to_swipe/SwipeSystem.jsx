@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 
 import LoginUserContext from "../../context/LoginUserContext";
@@ -19,16 +19,24 @@ function SwipeSystem({
   triggerRefresh,
 }) {
   const { loginUser } = useContext(LoginUserContext);
+  const [clicked, setClicked] = useState(false);
 
   const sendLike = () => {
-    if (loginUser.role === "enterprise") {
-      sendEnterpriseLike({ resumeId, enterpriseId }).then(() =>
-        triggerRefresh()
-      );
-    } else {
-      sendCandidateLike({ jobOfferId, candidateId }).then(() =>
-        triggerRefresh()
-      );
+    if (!clicked) {
+      if (loginUser.role === "enterprise") {
+        sendEnterpriseLike({ resumeId, enterpriseId }).then(() =>
+          triggerRefresh()
+        );
+      } else {
+        sendCandidateLike({ jobOfferId, candidateId }).then(() =>
+          triggerRefresh()
+        );
+      }
+      setClicked(true);
+
+      setTimeout(() => {
+        setClicked(false);
+      }, 500);
     }
   };
 
@@ -44,7 +52,11 @@ function SwipeSystem({
     <section className="swipe_system_container">
       <img src={swipeBackground} alt="swipe background" />
       <div>
-        <button type="button" onClick={sendLike}>
+        <button
+          type="button"
+          onClick={sendLike}
+          className={clicked ? "clicked" : ""}
+        >
           <img
             className="like_icon"
             src="/src/assets/heart_swipe.svg"
@@ -65,11 +77,18 @@ function SwipeSystem({
 }
 
 SwipeSystem.propTypes = {
-  jobOfferId: PropTypes.string.isRequired,
-  candidateId: PropTypes.string.isRequired,
-  resumeId: PropTypes.string.isRequired,
-  enterpriseId: PropTypes.string.isRequired,
+  jobOfferId: PropTypes.string,
+  candidateId: PropTypes.string,
+  resumeId: PropTypes.string,
+  enterpriseId: PropTypes.string,
   triggerRefresh: PropTypes.func.isRequired,
+};
+
+SwipeSystem.defaultProps = {
+  jobOfferId: "",
+  candidateId: "",
+  resumeId: "",
+  enterpriseId: "",
 };
 
 export default SwipeSystem;

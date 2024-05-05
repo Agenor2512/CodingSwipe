@@ -11,7 +11,7 @@ import nothingToSeeIcon from "../../assets/triste.png";
 
 import "../../styles/content_to_swipe/enterpriseProposal.css";
 
-function EnterpriseProposal() {
+function EnterpriseProposal({ triggerMatchesRefresh }) {
   const { loginUser } = useContext(LoginUserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [jobOffer, setJobOffer] = useState({});
@@ -99,7 +99,10 @@ function EnterpriseProposal() {
             jobOfferId={jobOffer.infos.jobOfferId}
             candidateId={loginUser.id}
             setJobOffer={setJobOffer}
-            triggerRefresh={triggerOfferRefresh}
+            triggerRefresh={() => {
+              triggerOfferRefresh();
+              triggerMatchesRefresh();
+            }}
           />
         </div>
       );

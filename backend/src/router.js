@@ -38,8 +38,6 @@ router.post(
   authenticationControllers.login
 );
 
-router.get("/verify", authenticationValidator.validateAuthentication);
-
 router.delete("/logout", authenticationControllers.logout);
 
 // Enterprise part
@@ -54,6 +52,7 @@ router.post(
 router.post("/enterprises/likes", enterpriseLikeControllers.add);
 router.get(
   "/enterprises/matches/:id",
+  authenticationValidator.validateAuthentication,
   matchesControllers.readEnterpriseMatchesById
 );
 
@@ -69,6 +68,7 @@ router.post(
 router.post("/candidates/likes", candidateLikeControllers.add);
 router.get(
   "/candidates/matches/:id",
+  authenticationValidator.validateAuthentication,
   matchesControllers.readCandidateMatchesById
 );
 
@@ -119,8 +119,16 @@ router.get(
   missionControllers.readById
 );
 router.post("/missions", missionControllers.add);
-router.delete("/missions/:id", missionControllers.remove);
-router.get("/experiences/:id", experienceControllers.readById);
+router.delete(
+  "/missions/:id",
+  authenticationValidator.validateAuthentication,
+  missionControllers.remove
+);
+router.get(
+  "/experiences/:id",
+  authenticationValidator.validateAuthentication,
+  experienceControllers.readById
+);
 router.post("/experiences", experienceControllers.add);
 router.delete(
   "/experiences/:id",

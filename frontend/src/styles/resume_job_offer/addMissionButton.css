@@ -153,6 +153,10 @@
 }
 
 @media screen and (min-width: 600px) {
+  .enterprise_modal {
+    min-height: 10vh;
+  }
+
   .enterprise_modal > ul > li {
     margin: 0.3rem 0;
   }
