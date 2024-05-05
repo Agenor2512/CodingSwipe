@@ -239,14 +239,14 @@ CandidateStepTwo.propTypes = {
     handleChangeFormCandidate: PropTypes.func.isRequired,
     setCandidateInfos: PropTypes.func.isRequired,
     candidateInfos: PropTypes.shape({
-      appetencesId: PropTypes.arrayOf(PropTypes.string).isRequired,
-      levelId: PropTypes.number.isRequired,
-      contractTypesId: PropTypes.number.isRequired,
-      workRhythmsId: PropTypes.number.isRequired,
+      appetencesId: PropTypes.string.isRequired,
+      levelId: PropTypes.string.isRequired,
+      contractTypesId: PropTypes.string.isRequired,
+      workRhythmsId: PropTypes.string.isRequired,
       languages: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
-    setFormIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.func.isRequired,
   }).isRequired,
 };
 

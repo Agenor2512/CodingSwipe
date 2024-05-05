@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import PropTypes from "prop-types";
+
 import LoginUserContext from "../context/LoginUserContext";
 
 import EnterpriseProposal from "../components/content_to_swipe/EnterpriseProposal";
@@ -6,7 +8,7 @@ import CandidateCandidacy from "../components/content_to_swipe/CandidateCandidac
 
 import "../styles/pages/homePageSwipe.css";
 
-function HomePageSwipe() {
+function HomePageSwipe({ triggerMatchesRefresh }) {
   const { loginUser } = useContext(LoginUserContext);
 
   console.info(loginUser);
@@ -14,12 +16,16 @@ function HomePageSwipe() {
   return (
     <div className="homepage_swipe">
       {loginUser.role === "enterprise" ? (
-        <CandidateCandidacy />
+        <CandidateCandidacy triggerMatchesRefresh={triggerMatchesRefresh} />
       ) : (
-        <EnterpriseProposal />
+        <EnterpriseProposal triggerMatchesRefresh={triggerMatchesRefresh} />
       )}
     </div>
   );
 }
+
+HomePageSwipe.propTypes = {
+  triggerMatchesRefresh: PropTypes.func.isRequired,
+};
 
 export default HomePageSwipe;

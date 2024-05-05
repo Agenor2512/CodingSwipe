@@ -24,6 +24,7 @@ function JobOffer() {
   const [workRhythms, setWorkRhythms] = useState([]);
   const [appetences, setAppetences] = useState([]);
   const [jobOffer, setJobOffer] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     readAllProgrammingLanguages().then((jobOfferProgrammingLanguages) =>
@@ -42,15 +43,23 @@ function JobOffer() {
       setAppetences(jobOfferAppetences)
     );
 
-    readOfferById(loginUser.id).then((enterpriseOffer) =>
-      setJobOffer(enterpriseOffer)
-    );
+    readOfferById(loginUser.id)
+      .then((enterpriseOffer) => setJobOffer(enterpriseOffer))
+      .then(() => setIsLoading(false));
   }, []);
+
+  const getFirstLetter = () => {
+    if (isLoading === false) {
+      const { name } = jobOffer.infos;
+      return name.charAt(0);
+    }
+    return "";
+  };
 
   return (
     <div className="users_infos_container">
       <div className="users_infos_header">
-        <div>W</div>
+        <div>{getFirstLetter()}</div>
         <section>
           <h1>Développeur/Développeuse</h1>
           <DropDownList

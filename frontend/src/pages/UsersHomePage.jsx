@@ -10,6 +10,11 @@ import "../styles/pages/usersHomePage.css";
 
 function UsersHomePage() {
   const [pageType, setPageType] = useState("profile");
+  const [refreshMatches, setRefreshMatches] = useState(1);
+
+  const triggerMatchesRefresh = () => {
+    setRefreshMatches(Math.random());
+  };
 
   const handleTabClick = (type) => {
     setPageType(type);
@@ -19,7 +24,7 @@ function UsersHomePage() {
     if (pageType === "messages") {
       return <HomePageMessages />;
     } else if (pageType === "match") {
-      return <HomePageSwipe />;
+      return <HomePageSwipe triggerMatchesRefresh={triggerMatchesRefresh} />;
     } else {
       return <HomePageProfile />;
     }
@@ -27,7 +32,11 @@ function UsersHomePage() {
 
   return (
     <div className="users_homepage">
-      <HomePageUserNav handleTabClick={handleTabClick} pageType={pageType} />
+      <HomePageUserNav
+        handleTabClick={handleTabClick}
+        pageType={pageType}
+        refreshMatches={refreshMatches}
+      />
       {displayRightPages()}
     </div>
   );

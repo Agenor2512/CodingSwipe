@@ -167,10 +167,10 @@ CandidateStepOne.propTypes = {
       password: PropTypes.string.isRequired,
       passwordCheck: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      departmentId: PropTypes.number.isRequired,
+      departmentId: PropTypes.string.isRequired,
     }).isRequired,
     formIsFilled: PropTypes.bool.isRequired,
-    setFormIsFilled: PropTypes.bool.isRequired,
+    setFormIsFilled: PropTypes.func.isRequired,
   }).isRequired,
 };
 

@@ -12,7 +12,7 @@ import ModalDisconnection from "../ModalDisconnection";
 
 import "../../styles/resume_job_offer/homePageUserNav.css";
 
-function HomePageUserNav({ handleTabClick, pageType }) {
+function HomePageUserNav({ handleTabClick, pageType, refreshMatches }) {
   const messagesData = [
     {
       id: 1,
@@ -80,7 +80,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
             </li>
           </Link>
         </ul>
-        {pageType === "match" && <Matchs />}
+        {pageType === "match" && <Matchs refreshMatches={refreshMatches} />}
         <Messages messagesData={messagesData} />
         <ModalDisconnection />
       </div>
@@ -122,7 +122,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
               </li>
             </Link>
           </ul>
-          {pageType === "match" && <Matchs />}
+          {pageType === "match" && <Matchs refreshMatches={refreshMatches} />}
           <ModalDisconnection />
         </div>
 
@@ -143,6 +143,7 @@ function HomePageUserNav({ handleTabClick, pageType }) {
 HomePageUserNav.propTypes = {
   handleTabClick: PropTypes.func.isRequired,
   pageType: PropTypes.string.isRequired,
+  refreshMatches: PropTypes.func.isRequired,
 };
 
 export default HomePageUserNav;
